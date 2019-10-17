@@ -10,31 +10,42 @@
 export raw_directory='/projects/p30954/func_data'
 
 # This is where your sourcedata directory will live
-# It should be the directory you are planning to use with bidskit
+# Where do you want to put your sourcedata folder?
 
-export project_directory='/projects/p30954/BIDS'
+export project_directory='/projects/p30954'
 
 
 # END USER SPECIFICATION
 
-if [ -d "$project_directory/1" ]; then
+# start by checking for folders needed for bidskit conversion
+# create them if they don't already exist
+
+if [ -d "$project_directory/sourcedata" ]; then
+	echo "sourcedata directory exists!"
+else
+	echo "Creating sourcedata folder"
+	mkdir $project_directory/sourcedata
+fi
+
+
+if [ -d "$project_directory/sourcedata/1" ]; then
 	echo "Session 1 project directory exists!"
 else
 	echo "Creating a session 1 project directory"
-	mkdir $project_directory/1
+	mkdir $project_directory/sourcedata/1
 fi
 
-if [ -d "$project_directory/2" ]; then
+if [ -d "$project_directory/sourcedata/2" ]; then
 	echo "Session 2 project directory exists!"
 else
 	echo "Creating a session 2 project directory"
-	mkdir $project_directory/2
+	mkdir $project_directory/sourcedata/2
 fi
 
 echo "Finding NIFTI files for session 1...."
 echo "Transferring!"
-find $raw_directory/*MR1/ -iname *.nii -exec ln -s {} $project_directory/1/ \;
+find $raw_directory/*MR1/ -iname *.nii -exec ln -s {} $project_directory/sourcedata/1/ \;
 
 echo "Finding NIFTI files for session 2...."
 echo "Transferring!"
-find $raw_directory/*MR2/ -iname *.nii -exec ln -s {} $project_directory/2/ \;
+find $raw_directory/*MR2/ -iname *.nii -exec ln -s {} $project_directory/sourcedata/2/ \;
