@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # In this script I'm going to be moving files around so that we can download
-# DICOM's from NUNDA, run this script, and have it be ready for bidskit after
+# NIFTI's from NUNDA, run this script, and have it be ready for bidskit after
 # that. 
 
 # USER SPECIFICATION
@@ -43,11 +43,11 @@ for sort in `seq 1 $sessions`;do
 		# This will actually move subject folders into session folders
 		# So we kind of begin the restructuring here
 		mkdir $raw_directory/$sort
-		mv $raw_directory/*_MR$sort $raw_directory/$sort
+		mv $raw_directory/*CV$sort $raw_directory/$sort
 	fi
 	echo "renaming subject folders"
 	cd $raw_directory/$sort
-	rename -s _MR$sort '' *
+	rename -s CV$sort '' *
 done
 
 # Need to rename my folders so they don't have session numbers in them.
@@ -69,7 +69,7 @@ for sess in `seq 1 $sessions`;do
 		fi
 	
 				
-		echo "Finding DICOMs for session $sess...."
+		echo "Finding NIFTI files for session $sess...."
 		echo "Transferring!"
 		find $raw_directory/$sess/$sub/ -iname *.dcm -exec ln -s {} $project_directory/sourcedata/$sub/$sess/ \;
 	done
