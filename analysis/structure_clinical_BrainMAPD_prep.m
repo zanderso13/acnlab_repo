@@ -109,20 +109,20 @@ scatter(lh_pos_insula_vol, rh_pos_insula_vol);
 xlabel('Left hemisphere');ylabel('Right hemisphere');
 
 %% Load in some Tri level factor scores and plot them. That's the goal here
-clinicalfname = filenames(fullfile(clinicaldir, '*FS.mat'));
+clinicalfname = filenames(fullfile(clinicaldir, 'Multi*FS.mat'));
 load(clinicalfname{1});
 
 % Plot distribution of z-scored factor scores
 % They're normally distributed... so ya
 figure(); 
 subplot(1,3,1)
-violinplot(BrainMAPDT1M1TrilevelFS1.T1M1gendis); legend off
+violinplot(trilevelmultimethodFS.GenDis); legend off
 title('Subplot 1:General Distress')
 subplot(1,3,2)
-violinplot(BrainMAPDT1M1TrilevelFS1.T1M1anhedon); legend off
+violinplot(trilevelmultimethodFS.Anhedon); legend off
 title('Subplot 2: Anhedonia')
 subplot(1,3,3)
-violinplot(BrainMAPDT1M1TrilevelFS1.T1M1fears); legend off
+violinplot(trilevelmultimethodFS.Fears); legend off
 title('Subplot 3: Fears')
 
 %% Load in the SCID and output some frequency charts looking at hom many of each disorder we have. 
@@ -352,13 +352,13 @@ for sub = 1:length(final_table_bins)
     % to a table. 
     % insert structural data
     if isempty(find(final_table_bins(sub,1) == temp_lh_struct_data(:,1))) == 1
-        final_table_bins(sub,10:width(lh_tabl)+8) = NaN;
+        final_table_bins(sub,14:width(lh_tabl)+13) = NaN;
         final_table_bins(sub,2:8) = 0;
         continue
     else
         curr_index_struct_data = find(final_table_bins(sub,1) == temp_lh_struct_data(:,1));
         final_table_bins(sub,2:8) = 0;
-        final_table_bins(sub,10:width(lh_tabl)+8) = table2array(lh_tabl(curr_index_struct_data,2:width(lh_tabl)));
+        final_table_bins(sub,14:width(lh_tabl)+12) = table2array(lh_tabl(curr_index_struct_data,2:width(lh_tabl)));
     end
     
     % insert dsm data
@@ -396,6 +396,18 @@ for sub = 1:length(final_table_bins)
         curr_index_bin_data = find(final_table_bins(sub,1) == clinical_bins.PID(:));
         final_table_bins(sub,2) = clinical_bins.Bin(curr_index_bin_data);
     end
+    
+    % insert trilevel data
+    if isempty(find(final_table_bins(sub,1) == trilevelmultimethodFS.id(:))) 
+        final_table_bins(sub,10:12) = NaN;
+        continue
+    else
+        curr_index_tri_data = find(final_table_bins(sub,1) == trilevelmultimethodFS.id(:));
+        final_table_bins(sub,10:13) = [trilevelmultimethodFS.GenDis(curr_index_tri_data), trilevelmultimethodFS.Anhedon(curr_index_tri_data), trilevelmultimethodFS.Fears(curr_index_tri_data), trilevelmultimethodFS.Arousal(curr_index_tri_data)];
+    end
+    
+    
+    
 end
     
 % Doing another janky edit. The above code (although I don't like how I did it) gets the job done.
@@ -472,7 +484,7 @@ com_hist_input = [high_high_com, high_low_com, med_med_com, low_high_com, low_lo
 BrainMAPD_subject_struct_table = array2table(final_table_bins);
 BrainMAPD_subject_struct_table = [BrainMAPD_subject_struct_table,array2table(temp_rh_struct_data(:,1:75))];
 
-BrainMAPD_subject_struct_table.Properties.VariableNames = {'PID', 'Clinical_bins', 'Dep_lifetime', 'Anx_lifetime', 'Comorbid_lifetime', 'MDE_current', 'PDD_current', 'Anx_current', 'Sex', lh_tabl.Properties.VariableNames{2:75}, 'BrainSegVolNotVent', 'eTIV' 'PID2', rh_tabl.Properties.VariableNames{2:75}};
+BrainMAPD_subject_struct_table.Properties.VariableNames = {'PID', 'Clinical_bins', 'Dep_lifetime', 'Anx_lifetime', 'Comorbid_lifetime', 'MDE_current', 'PDD_current', 'Anx_current', 'Sex', 'GenDis', 'Anhedon', 'Fears','Arousal', lh_tabl.Properties.VariableNames{2:75}, 'BrainSegVolNotVent', 'eTIV' 'PID2', rh_tabl.Properties.VariableNames{2:75}};
 BrainMAPD_subject_struct_table(find(BrainMAPD_subject_struct_table.Sex == 2), :) = [];
 BrainMAPD_subject_diagnosis_table = BrainMAPD_subject_struct_table(:,1:8);
 
@@ -504,9 +516,62 @@ anova_input_sex = BrainMAPD_subject_struct_table.Sex;
 anova_input_headsize = BrainMAPD_subject_struct_table.eTIV;
 
 %% Model with GLM
-mdl_lh_post = fitlm(regressors, lh_post_insula, 'Categorical', logical([1 1 1 1 0]))
+mdl1_lh_post = fitlm(regressors, lh_post_insula, 'Categorical', logical([1 1 1 1 0]))
 mdl2_rh_post = fitlm(regressors, rh_post_insula, 'Categorical', logical([1 1 1 1 0]))
 mdl3_lh_ant = fitlm(regressors, lh_ant_insula, 'Categorical', logical([1 1 1 1 0]))
 mdl4_rh_ant = fitlm(regressors, rh_ant_insula, 'Categorical', logical([1 1 1 1 0]))
 
+%% Hierarchical model 
+% Need to model my nuisance regressors first
+% Then I'll include diagnoses in the model
+% I'll finish up by manually subtracting R^2 values
+
+level_one_regressors = [BrainMAPD_subject_struct_table.Sex, BrainMAPD_subject_struct_table.eTIV];
+
+level_one_model_rh_ant = fitlm(level_one_regressors, rh_ant_insula, 'Categorical', logical([1,0]))
+level_one_model_lh_ant = fitlm(level_one_regressors, lh_ant_insula, 'Categorical', logical([1,0]))
+level_one_model_rh_post = fitlm(level_one_regressors, rh_post_insula, 'Categorical', logical([1,0]))
+level_one_model_lh_post = fitlm(level_one_regressors, lh_post_insula, 'Categorical', logical([1,0]))
+
+% Subtract R^2 values to get the variance accounted for by internalizing
+% disorders generally
+% whole lot of nuthin
+
+Rsquared_internalizing_RAnt = level_one_model_rh_ant.Rsquared.Ordinary - mdl4_rh_ant.Rsquared.Ordinary;
+Rsquared_internalizing_LAnt = level_one_model_lh_ant.Rsquared.Ordinary - mdl3_lh_ant.Rsquared.Ordinary;
+Rsquared_internalizing_RPost = level_one_model_rh_post.Rsquared.Ordinary - mdl2_rh_post.Rsquared.Ordinary;
+Rsquared_internalizing_LPost = level_one_model_lh_post.Rsquared.Ordinary - mdl1_lh_post.Rsquared.Ordinary;
+
+%% New set of models for Trilevel factors
+% Still going to do this hierarchically. If I find an effect for one or all
+% of the tri-level factor scores then I'm going to need to put them into
+% the same model with DSM to make sure their accounting for variance in the
+% data above and beyond DSM diagnoses
+
+trilevel_regressors = [BrainMAPD_subject_struct_table.GenDis, BrainMAPD_subject_struct_table.Anhedon, BrainMAPD_subject_struct_table.Fears, BrainMAPD_subject_struct_table.Sex, BrainMAPD_subject_struct_table.eTIV];
+
+level_two_trilevel_rh_ant = fitlm(trilevel_regressors, rh_ant_insula, 'Categorical', logical([0,0,0,1,0]))
+level_two_trilevel_lh_ant = fitlm(trilevel_regressors, lh_ant_insula, 'Categorical', logical([0,0,0,1,0]))
+level_two_trilevel_rh_post = fitlm(trilevel_regressors, rh_post_insula, 'Categorical', logical([0,0,0,1,0]))
+level_two_trilevel_lh_post = fitlm(trilevel_regressors, lh_post_insula, 'Categorical', logical([0,0,0,1,0]))
+
+Rsquared_trilevel_symptom_RAnt = level_one_model_rh_ant.Rsquared.Ordinary - level_two_trilevel_rh_ant.Rsquared.Ordinary;
+Rsquared_trilevel_symptom_LAnt = level_one_model_lh_ant.Rsquared.Ordinary - level_two_trilevel_lh_ant.Rsquared.Ordinary;
+Rsquared_trilevel_symptom_RPost = level_one_model_rh_post.Rsquared.Ordinary - level_two_trilevel_rh_post.Rsquared.Ordinary;
+Rsquared_trilevel_symptom_LPost = level_one_model_lh_post.Rsquared.Ordinary - level_two_trilevel_lh_post.Rsquared.Ordinary;
+
+%% Now to model everything together to show trilevel symptoms predict above and beyond DSM
+
+whole_model_regressors = [BrainMAPD_subject_struct_table.Dep_lifetime, BrainMAPD_subject_struct_table.Anx_lifetime, BrainMAPD_subject_struct_table.Comorbid_lifetime, BrainMAPD_subject_struct_table.GenDis, BrainMAPD_subject_struct_table.Anhedon, BrainMAPD_subject_struct_table.Fears, BrainMAPD_subject_struct_table.Sex, BrainMAPD_subject_struct_table.eTIV];
+
+overall_mdl_rh_ant = fitlm(whole_model_regressors, rh_ant_insula, 'Categorical', logical([1,1,1,0,0,0,1,0,]))
+
+%% in level_two_trilevel_rh_post we see a significant effect of BrainMAPD_subject_struct_table.Anhedon on R posterior insula volume (t = -2.0595, p = .040447)
+% This could make sense. Need to dig into what anhedonia really is. But now
+% we're going to relate this specific ROI to Anxious-Misery to see if there
+% is a relationship with a symptom specific profile. 
+anx_misery_regressors = [BrainMAPD_subject_struct_table.Arousal, BrainMAPD_subject_struct_table.Sex, BrainMAPD_subject_struct_table.eTIV];
+
+anx_misery_mdl_rh_post = fitlm(anx_misery_regressors, rh_post_insula, 'Categorical', logical([0,1,0]))
+anx_misery_mdl_lh_post = fitlm(anx_misery_regressors, lh_post_insula, 'Categorical', logical([0,1,0]))
 
