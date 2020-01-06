@@ -13,6 +13,7 @@ repodir = '/home/zaz3744/repo';
 spmdir = '/home/zaz3744/spm12';
 contrastdir = '/projects/p30954/ann_contrasts';
 clinicaldir = '/projects/p30954/clinical_data';
+medicationdir = '/projects/p30954/demographic_data';
 
 % I've extracted significant results. If you're going back to dig through
 % more of Ann's contrasts set the following variable to 0. Otherwise
@@ -26,10 +27,10 @@ significant = 1;
 load(fullfile(contrastdir, 'mid_significant_contrasts.mat'))
 
 % Looking at Gain vs No Gain
-% load(fullfile(contrastdir, 'mid_contrasts_gain_vs_no_gain.mat'))
+% gain = load(fullfile(contrastdir, 'mid_contrasts_gain_vs_no_gain.mat'))
 
 % Looking at Loss vs No Loss
-% load(fullfile(contrastdir, 'mid_contrasts_loss_vs_no_loss.mat'))
+% loss = load(fullfile(contrastdir, 'mid_contrasts_loss_vs_no_loss.mat'))
 
 % Looking at Ant Gain vs Ant No Gain
 % load(fullfile(contrastdir, 'mid_contrasts_ant_gain_vs_ant_no_gain.mat'))
@@ -49,7 +50,7 @@ load(fullfile(contrastdir, 'mid_significant_contrasts.mat'))
 % load(fullfile(contrastdir, 'mid_contrasts_ant_loss_vs_ant_no_loss.mat'))
 
 % drop exclusions briefly
-curr_analysis_table(curr_analysis_table.Exclusions==1,:) = [];
+% curr_analysis_table(curr_analysis_table.Exclusions==1,:) = [];
 % curr_analysis_table.Properties.VariableNames = {'PID','Dep','Anx','Comorbid','GenDis','Anhed','Fears','rOFC_Oldham_GainVsNone','lOFC_Oldham_GainVsNone','rVS_Oldham_GainVsNone','lVS_Oldham_GainVsNone'};
 % analyses are going to be a GLM for DSM diagnoses and trilevel model stuff
 % separately
@@ -94,6 +95,9 @@ elseif significant == 2
     [rVS_Loss_Loss_p, rVS_Loss_Loss_tbl, rVS_Loss_Loss_stats] = anova1(curr_analysis_table.Oldham_rVS_Loss_Loss, anova_regressors);
     [rVS_Rew_Gain_p, rVS_Rew_Gain_tbl, rVS_Rew_Gain_stats] = anova1(curr_analysis_table.Oldham_rVS_Rew_Gain, anova_regressors);
     [rVS_Rew_Loss_p, rVS_Rew_Loss_tbl, rVS_Rew_Loss_stats] = anova1(curr_analysis_table.Oldham_rVS_Rew_Loss, anova_regressors);
+   
+    [biVS_AntLossNoLoss_p,biVS_AntLossNoLoss_tbl,biVS_AntLossNoLoss_stats] = anova1(curr_analysis_table.biVS_mean_LossNoLoss, anova_regressors_strings);
+    [biVS_AntGainNoGain_p,biVS_AntGainNoGain_tbl,biVS_AntGainNoGain_stats] = anova1(curr_analysis_table.biVS_mean_GainNoGain, anova_regressors);
     
 else
 
@@ -139,11 +143,11 @@ end
 % %% ok great, now remember to add your repo to the path if you haven't already
 % % But now load in the contrast document and clinical data
 % 
-load(fullfile(contrastdir, 'mid_contrasts_ann.mat'));
-trilevelfname = filenames(fullfile(clinicaldir, 'Multi*FS.mat'));
-load(trilevelfname{1});
-dsmfname = filenames(fullfile(clinicaldir, 'BrainMAPD_subject_diagnosis_table.mat'));
-load(dsmfname{1})
+% load(fullfile(contrastdir, 'mid_contrasts_ann.mat'));
+% trilevelfname = filenames(fullfile(clinicaldir, 'Multi*FS.mat'));
+% load(trilevelfname{1});
+% dsmfname = filenames(fullfile(clinicaldir, 'BrainMAPD_subject_diagnosis_table.mat'));
+% load(dsmfname{1})
 % %% Alright time to wrangle some doggies
 % % Need to match up dsm, trilevel, and contrast data
 % 
@@ -153,16 +157,19 @@ load(dsmfname{1})
 % % loop through the PID's in curr_analysis_table and snag the contrasts I
 % % want and clinical data I want
 % 
-% for sub = 1:length(curr_analysis_table)
+% temp_analysis_table = zeros(224,4);
+% for sub = 1:length(curr_analysis_table.PID(:))
 %     % dsm
-%     if isempty(find(BrainMAPD_subject_diagnosis_table.PID(:) == curr_analysis_table(sub,1))) == 1
+%     if isempty(find(medbin.PID(:) == curr_analysis_table.PID(sub))) == 1
 %         disp(curr_analysis_table(sub,1))
 %         
 %     else
-%         curr_dsm_index = find(BrainMAPD_subject_diagnosis_table.PID(:) == curr_analysis_table(sub,1));
-%         curr_analysis_table(sub, 2:4) = [BrainMAPD_subject_diagnosis_table.Dep_lifetime(curr_dsm_index), BrainMAPD_subject_diagnosis_table.Anx_lifetime(curr_dsm_index), BrainMAPD_subject_diagnosis_table.Comorbid_lifetime(curr_dsm_index)];
+%         curr_med_index = find(medbin.PID(:) == curr_analysis_table.PID(sub));
+%         temp_analysis_table(sub, 1:4) = [medbin.PID(curr_med_index),medbin.T1M1sqmedcurrdopyn1(curr_med_index),medbin.T1M1sqmedcurrdopyn2(curr_med_index),medbin.T1M1sqmedcurrdopyn3(curr_med_index)];%, T1MedicationsBF11S1.Anx_lifetime(curr_dsm_index), BrainMAPD_subject_diagnosis_table.Comorbid_lifetime(curr_dsm_index)];
 %     end
-%     % trilevel
+% end    
+%     
+% %     % trilevel
 %     if isempty(find(trilevelmultimethodFS.id(:) == curr_analysis_table(sub,1))) == 1
 %         disp(curr_analysis_table(sub,1))
 %         
