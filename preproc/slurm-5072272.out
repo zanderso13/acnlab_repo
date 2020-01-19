@@ -1,0 +1,619 @@
+modules loaded
+/projects/b1108
+beginning preprocessing
+	[31m1: [ERR] Files with such naming scheme are not part of BIDS specification. This error is most commonly caused by typos in file names that make them not BIDS compatible. Please consult the specification and make sure your files are named correctly. If this is not a file naming issue (for example when including files not yet covered by the BIDS specification) you should include a ".bidsignore" file in your dataset (see https://github.com/bids-standard/bids-validator#bidsignore for details). Please note that derived (processed) data should be placed in /derivatives folder and source data (such as DICOMS or behavioural logs in proprietary formats) should be placed in the /sourcedata folder. (code: 1 - NOT_INCLUDED)[39m
+		./missing-files/missing_anat_ses-1.txt
+			Evidence: missing_anat_ses-1.txt
+		./missing-files/missing_anat_ses-2.txt
+			Evidence: missing_anat_ses-2.txt
+		./missing-files/missing_anat_ses-3.txt
+			Evidence: missing_anat_ses-3.txt
+		./missing-files/missing_anat_ses-4.txt
+			Evidence: missing_anat_ses-4.txt
+		./missing-files/missing_dwi_ses-1.txt
+			Evidence: missing_dwi_ses-1.txt
+		./missing-files/missing_dwi_ses-2.txt
+			Evidence: missing_dwi_ses-2.txt
+		./missing-files/missing_dwi_ses-3.txt
+			Evidence: missing_dwi_ses-3.txt
+		./missing-files/missing_dwi_ses-4.txt
+			Evidence: missing_dwi_ses-4.txt
+		./missing_anat_ses-4_retry.txt
+			Evidence: missing_anat_ses-4_retry.txt
+		./sub-10074/ses-2/anat/sub-10074_ses-1_run-01_T1w.json
+			Evidence: sub-10074_ses-1_run-01_T1w.json
+		[31m... and 13 more files having this issue (Use --verbose to see them all).[39m
+
+[36m	Please visit https://neurostars.org/search?q=NOT_INCLUDED for existing conversations about this issue.[39m
+
+	[31m2: [ERR] Session label in the filename doesn't match with the path of the file. File seems to be saved in incorrect session directory. (code: 65 - SESSION_LABEL_IN_FILENAME_DOESNOT_MATCH_DIRECTORY)[39m
+		./sub-10074/ses-2/anat/sub-10074_ses-1_run-01_T1w.json
+			Evidence: File: /sub-10074/ses-2/anat/sub-10074_ses-1_run-01_T1w.json is saved in incorrect session directory as per ses-id in filename.
+		./sub-10074/ses-2/anat/sub-10074_ses-1_run-01_T1w.nii.gz
+			Evidence: File: /sub-10074/ses-2/anat/sub-10074_ses-1_run-01_T1w.nii.gz is saved in incorrect session directory as per ses-id in filename.
+		./sub-10074/ses-2/anat/sub-10074_ses-1_run-02_T1w.json
+			Evidence: File: /sub-10074/ses-2/anat/sub-10074_ses-1_run-02_T1w.json is saved in incorrect session directory as per ses-id in filename.
+		./sub-10074/ses-2/anat/sub-10074_ses-1_run-02_T1w.nii.gz
+			Evidence: File: /sub-10074/ses-2/anat/sub-10074_ses-1_run-02_T1w.nii.gz is saved in incorrect session directory as per ses-id in filename.
+		./sub-10074/ses-2/anat/sub-10074_ses-1_run-03_T1w.json
+			Evidence: File: /sub-10074/ses-2/anat/sub-10074_ses-1_run-03_T1w.json is saved in incorrect session directory as per ses-id in filename.
+		./sub-10074/ses-2/anat/sub-10074_ses-1_run-03_T1w.nii.gz
+			Evidence: File: /sub-10074/ses-2/anat/sub-10074_ses-1_run-03_T1w.nii.gz is saved in incorrect session directory as per ses-id in filename.
+		./sub-10074/ses-2/anat/sub-10074_ses-1_run-04_T1w.json
+			Evidence: File: /sub-10074/ses-2/anat/sub-10074_ses-1_run-04_T1w.json is saved in incorrect session directory as per ses-id in filename.
+		./sub-10074/ses-2/anat/sub-10074_ses-1_run-04_T1w.nii.gz
+			Evidence: File: /sub-10074/ses-2/anat/sub-10074_ses-1_run-04_T1w.nii.gz is saved in incorrect session directory as per ses-id in filename.
+
+[36m	Please visit https://neurostars.org/search?q=SESSION_LABEL_IN_FILENAME_DOESNOT_MATCH_DIRECTORY for existing conversations about this issue.[39m
+
+
+        [34m[4mSummary:[24m[39m                    [34m[4mAvailable Tasks:[24m[39m        [34m[4mAvailable Modalities:[24m[39m 
+        6479 Files, 409.07GB        MID                     T1w                   
+        279 - Subjects                                      dwi                   
+        4 - Sessions                                        bold                  
+                                                            events                
+
+
+[36m	If you have any questions, please post on https://neurostars.org/tags/bids.[39m
+
+Making sure the input data is BIDS compliant (warnings can be ignored in most cases).
+200119-11:39:51,931 nipype.workflow IMPORTANT:
+	 
+    Running fMRIPREP version 1.5.4:
+      * BIDS dataset path: /projects/b1108/data/BrainMAPD.
+      * Participant list: ['10074'].
+      * Run identifier: 20200119-113629_c54adeac-8e56-4861-8626-d3ecb4868bb9.
+    
+200119-11:39:58,505 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.0)
+200119-11:40:02,136 nipype.workflow IMPORTANT:
+	 Creating bold processing workflow for "/projects/b1108/data/BrainMAPD/sub-10074/ses-2/func/sub-10074_ses-2_task-MID_run-01_bold.nii.gz" (0.25 GB / 281 TRs). Memory resampled/largemem=1.00/1.71 GB.
+200119-11:40:02,896 nipype.workflow IMPORTANT:
+	 No single-band-reference found for sub-10074_ses-2_task-MID_run-01_bold.nii.gz
+200119-11:40:05,969 nipype.workflow IMPORTANT:
+	 Slice-timing correction will be included.
+200119-11:40:08,293 nipype.workflow IMPORTANT:
+	 Creating bold processing workflow for "/projects/b1108/data/BrainMAPD/sub-10074/ses-2/func/sub-10074_ses-2_task-MID_run-02_bold.nii.gz" (0.25 GB / 281 TRs). Memory resampled/largemem=1.01/1.72 GB.
+200119-11:40:09,42 nipype.workflow IMPORTANT:
+	 No single-band-reference found for sub-10074_ses-2_task-MID_run-02_bold.nii.gz
+200119-11:40:12,21 nipype.workflow IMPORTANT:
+	 Slice-timing correction will be included.
+200119-11:40:20,305 nipype.workflow IMPORTANT:
+	 Works derived from this fMRIPrep execution should include the following boilerplate:
+
+
+Results included in this manuscript come from preprocessing
+performed using *fMRIPrep* 1.5.4
+(@fmriprep1; @fmriprep2; RRID:SCR_016216),
+which is based on *Nipype* 1.3.1
+(@nipype1; @nipype2; RRID:SCR_002502).
+
+Anatomical data preprocessing
+
+: A total of 8 T1-weighted (T1w) images were found within the input
+BIDS dataset.
+All of them were corrected for intensity non-uniformity (INU)
+with `N4BiasFieldCorrection` [@n4], distributed with ANTs 2.2.0 [@ants, RRID:SCR_004757].
+The T1w-reference was then skull-stripped with a *Nipype* implementation of
+the `antsBrainExtraction.sh` workflow (from ANTs), using OASIS30ANTs
+as target template.
+Brain tissue segmentation of cerebrospinal fluid (CSF),
+white-matter (WM) and gray-matter (GM) was performed on
+the brain-extracted T1w using `fast` [FSL 5.0.9, RRID:SCR_002823,
+@fsl_fast].
+A T1w-reference map was computed after registration of
+8 T1w images (after INU-correction) using
+`mri_robust_template` [FreeSurfer 6.0.1, @fs_template].
+Volume-based spatial normalization to one standard space (MNI152NLin2009cAsym) was performed through
+nonlinear registration with `antsRegistration` (ANTs 2.2.0),
+using brain-extracted versions of both T1w reference and the T1w template.
+The following template was selected for spatial normalization:
+*ICBM 152 Nonlinear Asymmetrical template version 2009c* [@mni152nlin2009casym, RRID:SCR_008796; TemplateFlow ID: MNI152NLin2009cAsym].
+
+Functional data preprocessing
+
+: For each of the 2 BOLD runs found per subject (across all
+tasks and sessions), the following preprocessing was performed.
+First, a reference volume and its skull-stripped version were generated
+using a custom methodology of *fMRIPrep*.
+Susceptibility distortion correction (SDC) was omitted.
+The BOLD reference was then co-registered to the T1w reference using
+`flirt` [FSL 5.0.9, @flirt] with the boundary-based registration [@bbr]
+cost-function.
+Co-registration was configured with nine degrees of freedom to account
+for distortions remaining in the BOLD reference.
+Head-motion parameters with respect to the BOLD reference
+(transformation matrices, and six corresponding rotation and translation
+parameters) are estimated before any spatiotemporal filtering using
+`mcflirt` [FSL 5.0.9, @mcflirt].
+BOLD runs were slice-time corrected using `3dTshift` from
+AFNI 20160207 [@afni, RRID:SCR_005927].
+The BOLD time-series (including slice-timing correction when applied)
+were resampled onto their original, native space by applying
+the transforms to correct for head-motion.
+These resampled BOLD time-series will be referred to as *preprocessed
+BOLD in original space*, or just *preprocessed BOLD*.
+The BOLD time-series were resampled into standard space,
+generating a *preprocessed BOLD run in ['MNI152NLin2009cAsym'] space*.
+First, a reference volume and its skull-stripped version were generated
+using a custom methodology of *fMRIPrep*.
+Several confounding time-series were calculated based on the
+*preprocessed BOLD*: framewise displacement (FD), DVARS and
+three region-wise global signals.
+FD and DVARS are calculated for each functional run, both using their
+implementations in *Nipype* [following the definitions by @power_fd_dvars].
+The three global signals are extracted within the CSF, the WM, and
+the whole-brain masks.
+Additionally, a set of physiological regressors were extracted to
+allow for component-based noise correction [*CompCor*, @compcor].
+Principal components are estimated after high-pass filtering the
+*preprocessed BOLD* time-series (using a discrete cosine filter with
+128s cut-off) for the two *CompCor* variants: temporal (tCompCor)
+and anatomical (aCompCor).
+tCompCor components are then calculated from the top 5% variable
+voxels within a mask covering the subcortical regions.
+This subcortical mask is obtained by heavily eroding the brain mask,
+which ensures it does not include cortical GM regions.
+For aCompCor, components are calculated within the intersection of
+the aforementioned mask and the union of CSF and WM masks calculated
+in T1w space, after their projection to the native space of each
+functional run (using the inverse BOLD-to-T1w transformation). Components
+are also calculated separately within the WM and CSF masks.
+For each CompCor decomposition, the *k* components with the largest singular
+values are retained, such that the retained components' time series are
+sufficient to explain 50 percent of variance across the nuisance mask (CSF,
+WM, combined, or temporal). The remaining components are dropped from
+consideration.
+The head-motion estimates calculated in the correction step were also
+placed within the corresponding confounds file.
+The confound time series derived from head motion estimates and global
+signals were expanded with the inclusion of temporal derivatives and
+quadratic terms for each [@confounds_satterthwaite_2013].
+Frames that exceeded a threshold of 0.5 mm FD or 1.5 standardised DVARS
+were annotated as motion outliers.
+All resamplings can be performed with *a single interpolation
+step* by composing all the pertinent transformations (i.e. head-motion
+transform matrices, susceptibility distortion correction when available,
+and co-registrations to anatomical and output spaces).
+Gridded (volumetric) resamplings were performed using `antsApplyTransforms` (ANTs),
+configured with Lanczos interpolation to minimize the smoothing
+effects of other kernels [@lanczos].
+Non-gridded (surface) resamplings were performed using `mri_vol2surf`
+(FreeSurfer).
+
+
+Many internal operations of *fMRIPrep* use
+*Nilearn* 0.6.0 [@nilearn, RRID:SCR_001362],
+mostly within the functional processing workflow.
+For more details of the pipeline, see [the section corresponding
+to workflows in *fMRIPrep*'s documentation](https://fmriprep.readthedocs.io/en/latest/workflows.html "FMRIPrep's documentation").
+
+
+### Copyright Waiver
+
+The above boilerplate text was automatically generated by fMRIPrep
+with the express intention that users should copy and paste this
+text into their manuscripts *unchanged*.
+It is released under the [CC0](https://creativecommons.org/publicdomain/zero/1.0/) license.
+
+### References
+
+
+200119-11:40:43,919 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10074_wf.func_preproc_ses_2_task_MID_run_02_wf.func_derivatives_wf.raw_sources" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/func_preproc_ses_2_task_MID_run_02_wf/func_derivatives_wf/raw_sources".
+200119-11:40:43,933 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10074_wf.func_preproc_ses_2_task_MID_run_01_wf.func_derivatives_wf.raw_sources" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/func_preproc_ses_2_task_MID_run_01_wf/func_derivatives_wf/raw_sources".
+200119-11:40:43,961 nipype.workflow INFO:
+	 [Node] Running "raw_sources" ("nipype.interfaces.utility.wrappers.Function")
+200119-11:40:43,972 nipype.workflow INFO:
+	 [Node] Running "raw_sources" ("nipype.interfaces.utility.wrappers.Function")
+200119-11:40:43,987 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10074_wf.func_preproc_ses_2_task_MID_run_02_wf.func_derivatives_wf.raw_sources".
+200119-11:40:44,0 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10074_wf.func_preproc_ses_2_task_MID_run_01_wf.func_derivatives_wf.raw_sources".
+200119-11:41:06,825 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10074_wf.anat_preproc_wf.brain_extraction_wf.lap_tmpl" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/brain_extraction_wf/lap_tmpl".
+200119-11:41:06,828 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10074_wf.anat_preproc_wf.brain_extraction_wf.res_tmpl" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/brain_extraction_wf/res_tmpl".
+200119-11:41:06,864 nipype.workflow INFO:
+	 [Node] Running "lap_tmpl" ("niworkflows.interfaces.ants.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 tpl-OASIS30ANTs_res-01_T1w_maths.nii.gz Laplacian /home/zaz3744/.cache/templateflow/tpl-OASIS30ANTs/tpl-OASIS30ANTs_res-01_T1w.nii.gz 1.5 1
+200119-11:41:06,877 nipype.workflow INFO:
+	 [Node] Running "res_tmpl" ("niworkflows.interfaces.ants.ResampleImageBySpacing"), a CommandLine Interface with command:
+ResampleImageBySpacing 3 /home/zaz3744/.cache/templateflow/tpl-OASIS30ANTs/tpl-OASIS30ANTs_res-01_T1w.nii.gz tpl-OASIS30ANTs_res-01_T1w_resampled.nii.gz 4 4 4 1
+200119-11:41:06,889 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10074_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_reference_wf.validate" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reference_wf/validate".
+200119-11:41:06,897 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10074_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_reference_wf.validate" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reference_wf/validate".
+200119-11:41:06,921 nipype.workflow INFO:
+	 [Node] Running "validate" ("niworkflows.interfaces.images.ValidateImage")
+200119-11:41:06,945 nipype.workflow INFO:
+	 [Node] Running "validate" ("niworkflows.interfaces.images.ValidateImage")
+200119-11:41:07,205 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10074_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_reference_wf.validate".
+200119-11:41:07,210 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10074_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_reference_wf.validate".
+200119-11:41:07,676 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10074_wf.bidssrc" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/bidssrc".
+200119-11:41:07,731 nipype.workflow INFO:
+	 [Node] Running "bidssrc" ("niworkflows.interfaces.bids.BIDSDataGrabber")
+200119-11:41:07,732 nipype.interface WARNING:
+	 No "t2w" images found for sub-<undefined>
+200119-11:41:07,732 nipype.interface WARNING:
+	 No "flair" images found for sub-<undefined>
+200119-11:41:07,732 nipype.interface WARNING:
+	 No "fmap" images found for sub-<undefined>
+200119-11:41:07,732 nipype.interface WARNING:
+	 No "sbref" images found for sub-<undefined>
+200119-11:41:07,732 nipype.interface WARNING:
+	 No "roi" images found for sub-<undefined>
+200119-11:41:07,736 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10074_wf.bidssrc".
+200119-11:41:08,133 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.0)
+200119-11:41:08,138 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.0)
+200119-11:41:18,183 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10074_wf.anat_preproc_wf.brain_extraction_wf.res_tmpl".
+200119-11:41:39,417 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10074_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_reference_wf.gen_ref" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reference_wf/gen_ref".
+200119-11:41:39,540 nipype.workflow INFO:
+	 [Node] Running "gen_ref" ("niworkflows.interfaces.registration.EstimateReferenceImage")
+200119-11:41:39,922 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10074_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_reference_wf.gen_ref" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reference_wf/gen_ref".
+200119-11:41:39,992 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10074_wf.anat_preproc_wf.anat_template_wf.t1w_ref_dimensions" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_ref_dimensions".
+200119-11:41:40,36 nipype.workflow INFO:
+	 [Node] Running "gen_ref" ("niworkflows.interfaces.registration.EstimateReferenceImage")
+200119-11:41:40,924 nipype.workflow INFO:
+	 [Node] Running "t1w_ref_dimensions" ("niworkflows.interfaces.images.TemplateDimensions")
+200119-11:41:41,495 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10074_wf.bids_info" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/bids_info".
+200119-11:41:41,537 nipype.workflow INFO:
+	 [Node] Running "bids_info" ("niworkflows.interfaces.bids.BIDSInfo")
+200119-11:41:41,626 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10074_wf.anat_preproc_wf.anat_template_wf.t1w_ref_dimensions".
+200119-11:41:58,989 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10074_wf.anat_preproc_wf.anat_derivatives_wf.t1w_name" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_derivatives_wf/t1w_name".
+200119-11:41:59,11 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10074_wf.anat_preproc_wf.anat_derivatives_wf.raw_sources" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_derivatives_wf/raw_sources".
+200119-11:42:03,710 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.0)
+200119-11:42:04,597 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:04.597328:++ 3dvolreg: AFNI version=Debian-16.2.07~dfsg.1-5~nd16.04+1 (Jun 12 2017) [64-bit]
+200119-11:42:04,597 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:04.597744:++ Authored by: RW Cox
+200119-11:42:04,651 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:04.651679:** AFNI converts NIFTI_datatype=512 (UINT16) in file /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reference_wf/gen_ref/slice.nii.gz to FLOAT32
+200119-11:42:04,651 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:04.651867:     Warnings of this type will be muted for this session.
+200119-11:42:04,651 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:04.651867:     Set AFNI_NIFTI_TYPE_WARN to YES to see them all, NO to see none.
+200119-11:42:04,838 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:04.838260:[7m*+ WARNING:[0m   If you are performing spatial transformations on an oblique dset, 
+200119-11:42:04,838 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:04.838260:  such as /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reference_wf/gen_ref/slice.nii.gz,
+200119-11:42:04,838 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:04.838260:  or viewing/combining it with volumes of differing obliquity,
+200119-11:42:04,838 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:04.838260:  you should consider running: 
+200119-11:42:04,838 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:04.838260:     3dWarp -deoblique 
+200119-11:42:04,838 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:04.838260:  on this and  other oblique datasets in the same session.
+200119-11:42:04,838 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:04.838260: See 3dWarp -help for details.
+200119-11:42:04,838 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:04.838753:++ Oblique dataset:/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reference_wf/gen_ref/slice.nii.gz is 5.012470 degrees from plumb.
+200119-11:42:04,846 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:04.846291:++ Coarse del was 10, replaced with 6
+200119-11:42:05,510 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.0)
+200119-11:42:06,220 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:06.220141:++ 3dvolreg: AFNI version=Debian-16.2.07~dfsg.1-5~nd16.04+1 (Jun 12 2017) [64-bit]
+200119-11:42:06,220 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:06.220531:++ Authored by: RW Cox
+200119-11:42:06,248 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:06.248669:** AFNI converts NIFTI_datatype=512 (UINT16) in file /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reference_wf/gen_ref/slice.nii.gz to FLOAT32
+200119-11:42:06,248 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:06.248809:     Warnings of this type will be muted for this session.
+200119-11:42:06,248 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:06.248809:     Set AFNI_NIFTI_TYPE_WARN to YES to see them all, NO to see none.
+200119-11:42:06,249 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:06.249349:[7m*+ WARNING:[0m   If you are performing spatial transformations on an oblique dset, 
+200119-11:42:06,249 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:06.249349:  such as /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reference_wf/gen_ref/slice.nii.gz,
+200119-11:42:06,249 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:06.249349:  or viewing/combining it with volumes of differing obliquity,
+200119-11:42:06,249 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:06.249349:  you should consider running: 
+200119-11:42:06,249 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:06.249349:     3dWarp -deoblique 
+200119-11:42:06,249 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:06.249349:  on this and  other oblique datasets in the same session.
+200119-11:42:06,249 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:06.249349: See 3dWarp -help for details.
+200119-11:42:06,249 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:06.249755:++ Oblique dataset:/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reference_wf/gen_ref/slice.nii.gz is 5.012470 degrees from plumb.
+200119-11:42:06,249 nipype.interface INFO:
+	 stderr 2020-01-19T11:42:06.249865:++ Coarse del was 10, replaced with 6
+200119-11:42:28,85 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10074_wf.anat_preproc_wf.brain_extraction_wf.lap_tmpl".
+200119-11:42:49,433 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10074_wf.anat_preproc_wf.brain_extraction_wf.mrg_tmpl" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/brain_extraction_wf/mrg_tmpl".
+200119-11:43:08,323 nipype.workflow INFO:
+	 [Node] Running "raw_sources" ("nipype.interfaces.utility.wrappers.Function")
+200119-11:43:08,384 nipype.workflow INFO:
+	 [Node] Running "t1w_name" ("nipype.interfaces.utility.wrappers.Function")
+200119-11:43:08,387 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10074_wf.anat_preproc_wf.anat_derivatives_wf.raw_sources".
+200119-11:43:08,427 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10074_wf.anat_preproc_wf.anat_derivatives_wf.t1w_name".
+200119-11:43:12,189 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform3" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform/mapflow/_t1w_conform3".
+200119-11:43:12,196 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform6" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform/mapflow/_t1w_conform6".
+200119-11:43:12,230 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform2" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform/mapflow/_t1w_conform2".
+200119-11:43:12,254 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform1" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform/mapflow/_t1w_conform1".
+200119-11:43:12,270 nipype.workflow INFO:
+	 [Node] Running "_t1w_conform6" ("niworkflows.interfaces.images.Conform")
+200119-11:43:12,293 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform4" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform/mapflow/_t1w_conform4".
+200119-11:43:12,324 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform0" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform/mapflow/_t1w_conform0".
+200119-11:43:12,328 nipype.workflow INFO:
+	 [Node] Running "_t1w_conform2" ("niworkflows.interfaces.images.Conform")
+200119-11:43:12,332 nipype.workflow INFO:
+	 [Node] Running "_t1w_conform3" ("niworkflows.interfaces.images.Conform")
+200119-11:43:12,344 nipype.workflow INFO:
+	 [Node] Running "_t1w_conform4" ("niworkflows.interfaces.images.Conform")
+200119-11:43:12,358 nipype.workflow INFO:
+	 [Node] Running "_t1w_conform1" ("niworkflows.interfaces.images.Conform")
+200119-11:43:12,382 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform7" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform/mapflow/_t1w_conform7".
+200119-11:43:12,394 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform5" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform/mapflow/_t1w_conform5".
+200119-11:43:12,419 nipype.workflow INFO:
+	 [Node] Running "_t1w_conform0" ("niworkflows.interfaces.images.Conform")
+200119-11:43:12,446 nipype.workflow INFO:
+	 [Node] Running "_t1w_conform7" ("niworkflows.interfaces.images.Conform")
+200119-11:43:12,480 nipype.workflow INFO:
+	 [Node] Running "_t1w_conform5" ("niworkflows.interfaces.images.Conform")
+200119-11:43:12,567 nipype.workflow INFO:
+	 [Node] Finished "_t1w_conform6".
+200119-11:43:12,588 nipype.workflow INFO:
+	 [Node] Finished "_t1w_conform3".
+200119-11:43:12,618 nipype.workflow INFO:
+	 [Node] Finished "_t1w_conform2".
+200119-11:43:12,620 nipype.workflow INFO:
+	 [Node] Finished "_t1w_conform1".
+200119-11:43:12,626 nipype.workflow INFO:
+	 [Node] Finished "_t1w_conform4".
+200119-11:43:12,649 nipype.workflow INFO:
+	 [Node] Finished "_t1w_conform0".
+200119-11:43:12,669 nipype.workflow INFO:
+	 [Node] Finished "_t1w_conform7".
+200119-11:43:12,680 nipype.workflow INFO:
+	 [Node] Finished "_t1w_conform5".
+200119-11:43:28,856 nipype.workflow INFO:
+	 [Node] Running "mrg_tmpl" ("nipype.interfaces.utility.base.Merge")
+200119-11:43:28,875 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10074_wf.anat_preproc_wf.brain_extraction_wf.mrg_tmpl".
+200119-11:43:41,316 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10074_wf.anat_preproc_wf.anat_template_wf.t1w_conform" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform".
+200119-11:43:41,433 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform0" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform/mapflow/_t1w_conform0".
+200119-11:43:41,450 nipype.workflow INFO:
+	 [Node] Cached "_t1w_conform0" - collecting precomputed outputs
+200119-11:43:41,451 nipype.workflow INFO:
+	 [Node] "_t1w_conform0" found cached.
+200119-11:43:41,451 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform1" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform/mapflow/_t1w_conform1".
+200119-11:43:41,458 nipype.workflow INFO:
+	 [Node] Cached "_t1w_conform1" - collecting precomputed outputs
+200119-11:43:41,458 nipype.workflow INFO:
+	 [Node] "_t1w_conform1" found cached.
+200119-11:43:41,459 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform2" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform/mapflow/_t1w_conform2".
+200119-11:43:41,474 nipype.workflow INFO:
+	 [Node] Cached "_t1w_conform2" - collecting precomputed outputs
+200119-11:43:41,474 nipype.workflow INFO:
+	 [Node] "_t1w_conform2" found cached.
+200119-11:43:41,476 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform3" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform/mapflow/_t1w_conform3".
+200119-11:43:41,482 nipype.workflow INFO:
+	 [Node] Cached "_t1w_conform3" - collecting precomputed outputs
+200119-11:43:41,483 nipype.workflow INFO:
+	 [Node] "_t1w_conform3" found cached.
+200119-11:43:41,483 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform4" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform/mapflow/_t1w_conform4".
+200119-11:43:41,489 nipype.workflow INFO:
+	 [Node] Cached "_t1w_conform4" - collecting precomputed outputs
+200119-11:43:41,489 nipype.workflow INFO:
+	 [Node] "_t1w_conform4" found cached.
+200119-11:43:41,490 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform5" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform/mapflow/_t1w_conform5".
+200119-11:43:41,501 nipype.workflow INFO:
+	 [Node] Cached "_t1w_conform5" - collecting precomputed outputs
+200119-11:43:41,501 nipype.workflow INFO:
+	 [Node] "_t1w_conform5" found cached.
+200119-11:43:41,502 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform6" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform/mapflow/_t1w_conform6".
+200119-11:43:41,511 nipype.workflow INFO:
+	 [Node] Cached "_t1w_conform6" - collecting precomputed outputs
+200119-11:43:41,511 nipype.workflow INFO:
+	 [Node] "_t1w_conform6" found cached.
+200119-11:43:41,527 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform7" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform/mapflow/_t1w_conform7".
+200119-11:43:41,541 nipype.workflow INFO:
+	 [Node] Cached "_t1w_conform7" - collecting precomputed outputs
+200119-11:43:41,541 nipype.workflow INFO:
+	 [Node] "_t1w_conform7" found cached.
+200119-11:43:41,548 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10074_wf.anat_preproc_wf.anat_template_wf.t1w_conform".
+200119-11:43:45,910 nipype.workflow INFO:
+	 [Node] Setting-up "_n4_correct7" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/n4_correct/mapflow/_n4_correct7".
+200119-11:43:45,924 nipype.workflow INFO:
+	 [Node] Running "_n4_correct7" ("nipype.interfaces.ants.segmentation.N4BiasFieldCorrection"), a CommandLine Interface with command:
+N4BiasFieldCorrection -d 3 --input-image /projects/b1108/data/BrainMAPD/sub-10074/ses-2/anat/sub-10074_ses-1_run-04_T1w.nii.gz --output sub-10074_ses-1_run-04_T1w_corrected.nii.gz
+200119-11:43:46,695 nipype.workflow INFO:
+	 [Node] Setting-up "_n4_correct6" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/n4_correct/mapflow/_n4_correct6".
+200119-11:43:46,704 nipype.workflow INFO:
+	 [Node] Setting-up "_n4_correct5" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/n4_correct/mapflow/_n4_correct5".
+200119-11:43:46,798 nipype.workflow INFO:
+	 [Node] Running "_n4_correct5" ("nipype.interfaces.ants.segmentation.N4BiasFieldCorrection"), a CommandLine Interface with command:
+N4BiasFieldCorrection -d 3 --input-image /projects/b1108/data/BrainMAPD/sub-10074/ses-2/anat/sub-10074_ses-1_run-02_T1w.nii.gz --output sub-10074_ses-1_run-02_T1w_corrected.nii.gz
+200119-11:43:46,819 nipype.workflow INFO:
+	 [Node] Running "_n4_correct6" ("nipype.interfaces.ants.segmentation.N4BiasFieldCorrection"), a CommandLine Interface with command:
+N4BiasFieldCorrection -d 3 --input-image /projects/b1108/data/BrainMAPD/sub-10074/ses-2/anat/sub-10074_ses-1_run-03_T1w.nii.gz --output sub-10074_ses-1_run-03_T1w_corrected.nii.gz
+200119-11:43:49,192 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform_xfm0" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform_xfm/mapflow/_t1w_conform_xfm0".
+200119-11:43:49,225 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform_xfm7" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform_xfm/mapflow/_t1w_conform_xfm7".
+200119-11:43:49,233 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform_xfm3" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform_xfm/mapflow/_t1w_conform_xfm3".
+200119-11:43:49,259 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform_xfm6" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform_xfm/mapflow/_t1w_conform_xfm6".
+200119-11:43:49,260 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform_xfm1" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform_xfm/mapflow/_t1w_conform_xfm1".
+200119-11:43:49,300 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform_xfm4" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform_xfm/mapflow/_t1w_conform_xfm4".
+200119-11:43:49,301 nipype.workflow INFO:
+	 [Node] Running "_t1w_conform_xfm3" ("niworkflows.interfaces.freesurfer.PatchedLTAConvert"), a CommandLine Interface with command:
+lta_convert --inlta identity.nofile --outlta /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform_xfm/mapflow/_t1w_conform_xfm3/out.lta --src /projects/b1108/data/BrainMAPD/sub-10074/ses-1/anat/sub-10074_ses-1_run-04_T1w.nii.gz --trg /projects/b1108/data/BrainMAPD/sub-10074/ses-1/anat/sub-10074_ses-1_run-04_T1w.nii.gz
+200119-11:43:49,308 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform_xfm5" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform_xfm/mapflow/_t1w_conform_xfm5".
+200119-11:43:49,312 nipype.workflow INFO:
+	 [Node] Running "_t1w_conform_xfm0" ("niworkflows.interfaces.freesurfer.PatchedLTAConvert"), a CommandLine Interface with command:
+lta_convert --inlta identity.nofile --outlta /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform_xfm/mapflow/_t1w_conform_xfm0/out.lta --src /projects/b1108/data/BrainMAPD/sub-10074/ses-1/anat/sub-10074_ses-1_run-01_T1w.nii.gz --trg /projects/b1108/data/BrainMAPD/sub-10074/ses-1/anat/sub-10074_ses-1_run-01_T1w.nii.gz
+200119-11:43:49,319 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform_xfm2" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform_xfm/mapflow/_t1w_conform_xfm2".
+200119-11:43:49,343 nipype.workflow INFO:
+	 [Node] Running "_t1w_conform_xfm7" ("niworkflows.interfaces.freesurfer.PatchedLTAConvert"), a CommandLine Interface with command:
+lta_convert --inlta identity.nofile --outlta /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform_xfm/mapflow/_t1w_conform_xfm7/out.lta --src /projects/b1108/data/BrainMAPD/sub-10074/ses-2/anat/sub-10074_ses-1_run-04_T1w.nii.gz --trg /projects/b1108/data/BrainMAPD/sub-10074/ses-2/anat/sub-10074_ses-1_run-04_T1w.nii.gz
+200119-11:43:49,366 nipype.workflow INFO:
+	 [Node] Running "_t1w_conform_xfm1" ("niworkflows.interfaces.freesurfer.PatchedLTAConvert"), a CommandLine Interface with command:
+lta_convert --inlta identity.nofile --outlta /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform_xfm/mapflow/_t1w_conform_xfm1/out.lta --src /projects/b1108/data/BrainMAPD/sub-10074/ses-1/anat/sub-10074_ses-1_run-02_T1w.nii.gz --trg /projects/b1108/data/BrainMAPD/sub-10074/ses-1/anat/sub-10074_ses-1_run-02_T1w.nii.gz
+200119-11:43:49,383 nipype.workflow INFO:
+	 [Node] Running "_t1w_conform_xfm6" ("niworkflows.interfaces.freesurfer.PatchedLTAConvert"), a CommandLine Interface with command:
+lta_convert --inlta identity.nofile --outlta /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform_xfm/mapflow/_t1w_conform_xfm6/out.lta --src /projects/b1108/data/BrainMAPD/sub-10074/ses-2/anat/sub-10074_ses-1_run-03_T1w.nii.gz --trg /projects/b1108/data/BrainMAPD/sub-10074/ses-2/anat/sub-10074_ses-1_run-03_T1w.nii.gz
+200119-11:43:49,404 nipype.workflow INFO:
+	 [Node] Running "_t1w_conform_xfm5" ("niworkflows.interfaces.freesurfer.PatchedLTAConvert"), a CommandLine Interface with command:
+lta_convert --inlta identity.nofile --outlta /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform_xfm/mapflow/_t1w_conform_xfm5/out.lta --src /projects/b1108/data/BrainMAPD/sub-10074/ses-2/anat/sub-10074_ses-1_run-02_T1w.nii.gz --trg /projects/b1108/data/BrainMAPD/sub-10074/ses-2/anat/sub-10074_ses-1_run-02_T1w.nii.gz
+200119-11:43:49,411 nipype.workflow INFO:
+	 [Node] Running "_t1w_conform_xfm4" ("niworkflows.interfaces.freesurfer.PatchedLTAConvert"), a CommandLine Interface with command:
+lta_convert --inlta identity.nofile --outlta /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform_xfm/mapflow/_t1w_conform_xfm4/out.lta --src /projects/b1108/data/BrainMAPD/sub-10074/ses-2/anat/sub-10074_ses-1_run-01_T1w.nii.gz --trg /projects/b1108/data/BrainMAPD/sub-10074/ses-2/anat/sub-10074_ses-1_run-01_T1w.nii.gz
+200119-11:43:49,431 nipype.workflow INFO:
+	 [Node] Running "_t1w_conform_xfm2" ("niworkflows.interfaces.freesurfer.PatchedLTAConvert"), a CommandLine Interface with command:
+lta_convert --inlta identity.nofile --outlta /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform_xfm/mapflow/_t1w_conform_xfm2/out.lta --src /projects/b1108/data/BrainMAPD/sub-10074/ses-1/anat/sub-10074_ses-1_run-03_T1w.nii.gz --trg /projects/b1108/data/BrainMAPD/sub-10074/ses-1/anat/sub-10074_ses-1_run-03_T1w.nii.gz
+200119-11:43:51,466 nipype.workflow INFO:
+	 [Node] Finished "_t1w_conform_xfm2".
+200119-11:43:51,476 nipype.workflow INFO:
+	 [Node] Finished "_t1w_conform_xfm4".
+200119-11:43:51,532 nipype.workflow INFO:
+	 [Node] Finished "_t1w_conform_xfm7".
+200119-11:43:51,543 nipype.workflow INFO:
+	 [Node] Finished "_t1w_conform_xfm5".
+200119-11:43:51,552 nipype.workflow INFO:
+	 [Node] Finished "_t1w_conform_xfm0".
+200119-11:43:51,562 nipype.workflow INFO:
+	 [Node] Finished "_t1w_conform_xfm6".
+200119-11:43:51,739 nipype.workflow INFO:
+	 [Node] Finished "_t1w_conform_xfm3".
+200119-11:43:51,764 nipype.workflow INFO:
+	 [Node] Finished "_t1w_conform_xfm1".
+200119-11:43:53,406 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.0)
+200119-11:43:54,719 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.0)
+200119-11:43:54,762 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.0)
+200119-11:43:55,475 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10074_wf.anat_preproc_wf.anat_template_wf.t1w_conform_xfm" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform_xfm".
+200119-11:43:55,595 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform_xfm0" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform_xfm/mapflow/_t1w_conform_xfm0".
+200119-11:43:55,596 nipype.workflow INFO:
+	 [Node] Cached "_t1w_conform_xfm0" - collecting precomputed outputs
+200119-11:43:55,596 nipype.workflow INFO:
+	 [Node] "_t1w_conform_xfm0" found cached.
+200119-11:43:55,597 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform_xfm1" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform_xfm/mapflow/_t1w_conform_xfm1".
+200119-11:43:55,598 nipype.workflow INFO:
+	 [Node] Cached "_t1w_conform_xfm1" - collecting precomputed outputs
+200119-11:43:55,599 nipype.workflow INFO:
+	 [Node] "_t1w_conform_xfm1" found cached.
+200119-11:43:55,599 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform_xfm2" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform_xfm/mapflow/_t1w_conform_xfm2".
+200119-11:43:55,652 nipype.workflow INFO:
+	 [Node] Cached "_t1w_conform_xfm2" - collecting precomputed outputs
+200119-11:43:55,652 nipype.workflow INFO:
+	 [Node] "_t1w_conform_xfm2" found cached.
+200119-11:43:55,653 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform_xfm3" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform_xfm/mapflow/_t1w_conform_xfm3".
+200119-11:43:55,654 nipype.workflow INFO:
+	 [Node] Cached "_t1w_conform_xfm3" - collecting precomputed outputs
+200119-11:43:55,654 nipype.workflow INFO:
+	 [Node] "_t1w_conform_xfm3" found cached.
+200119-11:43:55,692 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform_xfm4" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform_xfm/mapflow/_t1w_conform_xfm4".
+200119-11:43:55,693 nipype.workflow INFO:
+	 [Node] Cached "_t1w_conform_xfm4" - collecting precomputed outputs
+200119-11:43:55,693 nipype.workflow INFO:
+	 [Node] "_t1w_conform_xfm4" found cached.
+200119-11:43:55,694 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform_xfm5" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform_xfm/mapflow/_t1w_conform_xfm5".
+200119-11:43:55,735 nipype.workflow INFO:
+	 [Node] Cached "_t1w_conform_xfm5" - collecting precomputed outputs
+200119-11:43:55,735 nipype.workflow INFO:
+	 [Node] "_t1w_conform_xfm5" found cached.
+200119-11:43:55,737 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform_xfm6" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform_xfm/mapflow/_t1w_conform_xfm6".
+200119-11:43:55,738 nipype.workflow INFO:
+	 [Node] Cached "_t1w_conform_xfm6" - collecting precomputed outputs
+200119-11:43:55,738 nipype.workflow INFO:
+	 [Node] "_t1w_conform_xfm6" found cached.
+200119-11:43:55,740 nipype.workflow INFO:
+	 [Node] Setting-up "_t1w_conform_xfm7" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/t1w_conform_xfm/mapflow/_t1w_conform_xfm7".
+200119-11:43:55,794 nipype.workflow INFO:
+	 [Node] Cached "_t1w_conform_xfm7" - collecting precomputed outputs
+200119-11:43:55,794 nipype.workflow INFO:
+	 [Node] "_t1w_conform_xfm7" found cached.
+200119-11:43:55,843 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10074_wf.anat_preproc_wf.anat_template_wf.t1w_conform_xfm".
+200119-11:44:04,528 nipype.workflow INFO:
+	 [Node] Setting-up "_n4_correct3" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/n4_correct/mapflow/_n4_correct3".
+200119-11:44:04,535 nipype.workflow INFO:
+	 [Node] Setting-up "_n4_correct0" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/n4_correct/mapflow/_n4_correct0".
+200119-11:44:04,604 nipype.workflow INFO:
+	 [Node] Setting-up "_n4_correct1" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/n4_correct/mapflow/_n4_correct1".
+200119-11:44:04,609 nipype.workflow INFO:
+	 [Node] Running "_n4_correct0" ("nipype.interfaces.ants.segmentation.N4BiasFieldCorrection"), a CommandLine Interface with command:
+N4BiasFieldCorrection -d 3 --input-image /projects/b1108/data/BrainMAPD/sub-10074/ses-1/anat/sub-10074_ses-1_run-01_T1w.nii.gz --output sub-10074_ses-1_run-01_T1w_corrected.nii.gz
+200119-11:44:04,613 nipype.workflow INFO:
+	 [Node] Running "_n4_correct3" ("nipype.interfaces.ants.segmentation.N4BiasFieldCorrection"), a CommandLine Interface with command:
+N4BiasFieldCorrection -d 3 --input-image /projects/b1108/data/BrainMAPD/sub-10074/ses-1/anat/sub-10074_ses-1_run-04_T1w.nii.gz --output sub-10074_ses-1_run-04_T1w_corrected.nii.gz
+200119-11:44:04,644 nipype.workflow INFO:
+	 [Node] Setting-up "_n4_correct2" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/n4_correct/mapflow/_n4_correct2".
+200119-11:44:04,664 nipype.workflow INFO:
+	 [Node] Setting-up "_n4_correct4" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10074_wf/anat_preproc_wf/anat_template_wf/n4_correct/mapflow/_n4_correct4".
+200119-11:44:04,707 nipype.workflow INFO:
+	 [Node] Running "_n4_correct1" ("nipype.interfaces.ants.segmentation.N4BiasFieldCorrection"), a CommandLine Interface with command:
+N4BiasFieldCorrection -d 3 --input-image /projects/b1108/data/BrainMAPD/sub-10074/ses-1/anat/sub-10074_ses-1_run-02_T1w.nii.gz --output sub-10074_ses-1_run-02_T1w_corrected.nii.gz
+200119-11:44:04,718 nipype.workflow INFO:
+	 [Node] Running "_n4_correct4" ("nipype.interfaces.ants.segmentation.N4BiasFieldCorrection"), a CommandLine Interface with command:
+N4BiasFieldCorrection -d 3 --input-image /projects/b1108/data/BrainMAPD/sub-10074/ses-2/anat/sub-10074_ses-1_run-01_T1w.nii.gz --output sub-10074_ses-1_run-01_T1w_corrected.nii.gz
+200119-11:44:04,723 nipype.workflow INFO:
+	 [Node] Running "_n4_correct2" ("nipype.interfaces.ants.segmentation.N4BiasFieldCorrection"), a CommandLine Interface with command:
+N4BiasFieldCorrection -d 3 --input-image /projects/b1108/data/BrainMAPD/sub-10074/ses-1/anat/sub-10074_ses-1_run-03_T1w.nii.gz --output sub-10074_ses-1_run-03_T1w_corrected.nii.gz
+200119-11:44:09,870 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.0)
+200119-11:44:09,876 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.0)
+200119-11:44:09,887 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.0)
+200119-11:44:09,903 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.0)
+200119-11:44:09,922 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.0)

@@ -8,6 +8,13 @@
 % then probably the tri-level features as well.
 
 % First to set up my directories of course
+% HELPFUL ANOVAN SYNTAX (took me way too long to figure this out):
+% [p,tbl,stats,terms] = anovan(lVS_loss,{anova_regressors,lVS_gain,sex,psych,dop},'varnames',{'Diagnosis','lVS_gain_anticipation','Sex','Psychotropic_meds','Dopaminergic_meds'},'continuous',[2])
+% Specifying which variable is continuous is very important, otherwise
+% everything breaks. Which makes sense, matlab doesn't know how many levels
+% of your variables there are! Good thing there wasn't accidently a repeat
+% in the loss activation I was testing... it would've treated it as
+% categorical then lol
 
 repodir = '/home/zaz3744/repo';
 spmdir = '/home/zaz3744/spm12';
@@ -21,7 +28,7 @@ medicationdir = '/projects/p30954/demographic_data';
 % can pull figures, stats, etc. Finally, setting it to 2 will let you look at VS specifically
 % Have fun, Party on Wayne
 
-significant = 1;
+significant = 0;
 
 % I've cherry picked the significant results. 
 load(fullfile(contrastdir, 'mid_significant_contrasts.mat'))
