@@ -9,7 +9,7 @@
 
 % First to set up my directories of course
 % HELPFUL ANOVAN SYNTAX (took me way too long to figure this out):
-% [p,tbl,stats,terms] = anovan(lVS_loss,{anova_regressors,lVS_gain,sex,psych,dop},'varnames',{'Diagnosis','lVS_gain_anticipation','Sex','Psychotropic_meds','Dopaminergic_meds'},'continuous',[2])
+[p,tbl,stats,terms] = anovan(lVS_loss,{anova_regressors,lVS_gain,sex,psych,dop},'varnames',{'Diagnosis','lVS_gain_anticipation','Sex','Psychotropic_meds','Dopaminergic_meds'},'continuous',[2])
 % Specifying which variable is continuous is very important, otherwise
 % everything breaks. Which makes sense, matlab doesn't know how many levels
 % of your variables there are! Good thing there wasn't accidently a repeat
