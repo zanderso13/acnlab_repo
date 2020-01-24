@@ -15,16 +15,22 @@ load(fullfile(datadir,'tri_level_final.mat'));
 load(fullfile(datadir,'mid_significant_contrasts.mat'));
 % Select cases
 for sub = 1:length(curr_analysis_table.PID)
-    if exist(find(trilevel.ID(:) == curr_analysis_table.PID(sub)))
+    if isempty(find(trilevel.ID(:) == curr_analysis_table.PID(sub))) == 0
         curr = find(trilevel.ID(:) == curr_analysis_table.PID(sub));
         GenDis(sub,1) = trilevel.GenDis(curr);
+        GenDis(sub,2) = curr_analysis_table.PID(sub);
         Fears(sub,1) = trilevel.Fears(curr);
+        Fears(sub,2) = curr_analysis_table.PID(sub);
         Anhed(sub,1) = trilevel.Anhedon(curr);
+        Anhed(sub,2) = curr_analysis_table.PID(sub);
     else
         disp(curr_analysis_table.PID(sub))
         GenDis(sub,1)=NaN;
+        GenDis(sub,2) = curr_analysis_table.PID(sub);
         Fears(sub,1)=NaN;
+        Fears(sub,2) = curr_analysis_table.PID(sub);
         Anhed(sub,1)=NaN;
+        Anhed(sub,2) = curr_analysis_table.PID(sub);
     end
 end
 
@@ -33,11 +39,19 @@ Diagnosis = curr_analysis_table.Diagnosis;
 
 
 %% Stats and graphs baby
+% Anhedonia
 [p,tbl,stats] = anova1(Anhed,Diagnosis)
 
-[c,m,h]=multcompare(stats)
+figure; [c,m,h]=multcompare(stats)
 
-[p,tbl,stats] = anova1(AnhedMult,Diagnosis)
+%% General Distress
+[p,tbl,stats] = anova1(GenDis,Diagnosis)
 
-[c,m,h]=multcompare(stats)
+figure; [c,m,h]=multcompare(stats)
+
+%% Fears
+
+[p,tbl,stats] = anova1(Fears,Diagnosis)
+
+figure; [c,m,h]=multcompare(stats)
 
