@@ -2,8 +2,10 @@
 contrastdir = '~/Documents/repo/acnlab_repo/data';
 addpath(genpath('~/Documents/repo'))
 %% load the table in thar
-curr_analysis_table = readtable(fullfile(contrastdir,'data.txt'));
-%% left VS Oldham and general set up
+% curr_analysis_table = readtable(fullfile(contrastdir,'data.txt'));
+load('mid_significant_contrasts.mat')
+
+%% General set up
 lVS_loss = curr_analysis_table.lVS_Oldham_Loss_Loss;
 lVS_gain = curr_analysis_table.lVS_Oldham_Loss_Gain;
 
@@ -23,8 +25,11 @@ anova_regressors_strings(anova_regressors(:,1)==4) = {'Comorbidity'};
 sex = curr_analysis_table.sex;
 psych = curr_analysis_table.PsychAny;
 dop = curr_analysis_table.DopAny;
+anhed = trilevel.Anhedon;
 
-[p,tbl,stats,terms] = anovan(lVS_loss,{anova_regressors_strings,lVS_gain,sex,psych},'varnames',{'Diagnosis','lVS_gain_anticipation','Sex','Psychotropic_meds'},'continuous',[2])
+%% lVS model
+
+[p,tbl,stats,terms] = anovan(lVS_loss,{anova_regressors_strings,anhed,lVS_gain,sex,psych},'varnames',{'Diagnosis','lVS_gain_anticipation','Sex','Psychotropic_meds'},'continuous',[3])
 
 [c,m,h]=multcompare(stats)
 

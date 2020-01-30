@@ -1,0 +1,35 @@
+#!/bin/bash
+
+sub=$1         #subject txt file with list of subjects
+
+projdir='/Users/zaz3744/Documents/current_projects/dti_BrainMAPD'   # path for $
+roidir='/Users/zaz3744/Downloads/FreeSurfer_MNI1321mmspace_ROIs'
+fibdir='src'
+
+trkdir=tracks                # Output directory for all generated .trk files
+fa_threshold=0            # QA threshold
+thread_count=4               # Set low for personal computer, but should be abl$
+seed_ori=primary               # Seed orientation
+seed_pos=voxel         # Seed position
+fiber_count=500               # FROM KEVIN’S SCRIPT - N/A Number of streamlines$
+step_size=0.5              # FROM KEVIN’S SCRIPT - N/A Step size           
+
+smoothing=0                      # Degree of smoothing
+min_length=0                        # Minimum fiber length in mm
+max_length=100  
+turn_thresh=20		# FROM KEVIN’S SCRIPT - N/A Turning angle cutoff thresh
+seed_count=2000000
+
+conn_val=qa,count,ncount
+
+#connectivity value- use qa only if track goes end to end over length of seed
+#fullfib='20130228_F046Y_130228155338.src.gz.odf8.f5rec.bal.reg1i2.qsdr.1.25.2m$
+
+fibfile=$(ls ${projdir}/${fibdir}/${sub})
+
+echo $fibfile
+
+#step 1: generate .trk files for each subject
+
+/Applications/dsi_studio.app/Contents/MacOS/dsi_studio --action=trk --source=${fibfile} --method=0 --fa_threshold=${fa_threshold} --turning_angle=${turn_thresh} --initial_dir=0 --seed_plan=1 --interpolation=0 --step_size=${step_size} --smoothing=${smoothing} --min_length=${min_length} --max_length=${max_length}} --seed_count=${seed_count} --seed=FreeSurferDKT:right_medial_orbitofrontal --export=stat,qa,dti_fa --output=${projdir}/$1-tracks.trk.gz
+

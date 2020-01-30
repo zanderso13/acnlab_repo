@@ -40,18 +40,18 @@ Diagnosis = curr_analysis_table.Diagnosis;
 
 %% Stats and graphs baby
 % Anhedonia
-[p,tbl,stats] = anova1(Anhed,Diagnosis)
+[p,tbl,stats] = anova1(Anhed(:,1),Diagnosis)
 
 figure; [c,m,h]=multcompare(stats)
 
 %% General Distress
-[p,tbl,stats] = anova1(GenDis,Diagnosis)
+[p,tbl,stats] = anova1(GenDis(:,1),Diagnosis)
 
 figure; [c,m,h]=multcompare(stats)
 
 %% Fears
 
-[p,tbl,stats] = anova1(Fears,Diagnosis)
+[p,tbl,stats] = anova1(Fears(:,1),Diagnosis)
 
 figure; [c,m,h]=multcompare(stats)
 

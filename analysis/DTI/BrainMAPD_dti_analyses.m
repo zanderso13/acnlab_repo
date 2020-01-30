@@ -6,7 +6,8 @@
 
 % Get your toolbox first and set up some paths
 repodir = '~/Documents/repo';
-datadir = '/Users/zaz3744/Documents/current_projects/dti_BrainMAPD/Right-Amyg_mOFC_len100';
+datadir = '/Users/zaz3744/Documents/current_projects/dti_BrainMAPD/Right-mOFC_wholebrain';
+clinicaldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/clinical_data';
 
 addpath(genpath(repodir))
 %% Snag those files
@@ -58,5 +59,58 @@ figure();
 histogram(all_stats.ad_mean)
 title('Average AD')
 
+%% Create list of subject IDs I have data for
+clear sub
+for sub = 1:length(fnames)
+    sub_id(sub) = str2num(fnames{sub}(83:87));
+end
+sub_id = sub_id';
 
+% Grab clinical data for those people and check for people who are missing
+% data
+
+clear sub
+load(fullfile(clinicaldir,'BrainMAPD_subject_diagnosis_table.mat'))
+for sub = 1:length(sub_id)
+    if isempty(find(BrainMAPD_subject_diagnosis_table.PID(:) == sub_id(sub))) == 0
+        curr = find(BrainMAPD_subject_diagnosis_table.PID(:) == sub_id(sub));
+        curr_dep(sub) = BrainMAPD_subject_diagnosis_table.Dep_lifetime(curr);
+        curr_anx(sub) = BrainMAPD_subject_diagnosis_table.Anx_lifetime(curr);
+        curr_com(sub) = BrainMAPD_subject_diagnosis_table.Comorbid_lifetime(curr);
+    else
+        disp(sub_id(sub))
+        curr_dep(sub) = NaN;
+        curr_anx(sub) = NaN;
+        curr_com(sub) = NaN;
+    end
+end
+
+%% create curr_analysis_table
+temp = table2array(all_stats);
+curr_analysis_table = [sub_id,curr_dep',curr_anx',curr_com',temp];    
+
+curr_analysis_table = array2table(curr_analysis_table);
+curr_analysis_table.Properties.VariableNames = {'PID','Dep','Anx','Com', all_stats.Properties.VariableNames{:}};    
+    
+%%     
+
+anova_regressors = ones(height(curr_analysis_table),1);
+anova_regressors(curr_analysis_table.Dep==1) = 2;
+anova_regressors(curr_analysis_table.Anx==1) = 3;
+anova_regressors(curr_analysis_table.Com==1) = 4;
+
+Diagnosis = cell(size(anova_regressors));
+Diagnosis(anova_regressors(:,1)==1) = {'Healthy'};
+Diagnosis(anova_regressors(:,1)==2) = {'Depression'};
+Diagnosis(anova_regressors(:,1)==3) = {'Anxiety'};
+Diagnosis(anova_regressors(:,1)==4) = {'Comorbidity'};
+
+
+
+
+
+
+
+
+    
 

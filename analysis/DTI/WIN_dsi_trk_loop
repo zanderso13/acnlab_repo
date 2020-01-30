@@ -17,7 +17,7 @@ cd ${projdir}
 for sub in ${subs}
 do
 	
-./BrainMAPD_dsi_trk_L-Amyg_mOFC ${sub}
+./large_track_extraction ${sub}
 
 echo ‘done for subject: ‘ ${sub}
 done
