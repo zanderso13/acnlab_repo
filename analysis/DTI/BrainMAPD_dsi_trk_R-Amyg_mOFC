@@ -17,7 +17,7 @@ turning_angle=0           # FROM KEVIN’S SCRIPT - N/A Turning angle cutoff thr
 smoothing=0                      # Degree of smoothing
 min_length=0                         # Minimum fiber length in mm
 max_length=100                        # Maximum fiber length in mm
-turn_thresh=30
+turn_thresh=0
 seed_count=2000000
 
 conn_val=qa,count,ncount

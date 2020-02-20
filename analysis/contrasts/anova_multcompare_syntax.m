@@ -1,6 +1,6 @@
 % addpaths
 contrastdir = '~/Documents/repo/acnlab_repo/data';
-addpath(genpath('~/Documents/repo'))
+addpath(genpath('~/Documents/rclepo'))
 %% load the table in thar
 % curr_analysis_table = readtable(fullfile(contrastdir,'data.txt'));
 load('mid_significant_contrasts.mat')
@@ -22,14 +22,15 @@ anova_regressors_strings(anova_regressors(:,1)==2) = {'Depression'};
 anova_regressors_strings(anova_regressors(:,1)==3) = {'Anxiety'};
 anova_regressors_strings(anova_regressors(:,1)==4) = {'Comorbidity'};
 
+site = curr_analysis_table.Site;
 sex = curr_analysis_table.sex;
 psych = curr_analysis_table.PsychAny;
 dop = curr_analysis_table.DopAny;
-anhed = trilevel.Anhedon;
+anhed = curr_analysis_table.Anhed;
 
 %% lVS model
 
-[p,tbl,stats,terms] = anovan(lVS_loss,{anova_regressors_strings,anhed,lVS_gain,sex,psych},'varnames',{'Diagnosis','lVS_gain_anticipation','Sex','Psychotropic_meds'},'continuous',[3])
+[p,tbl,stats,terms] = anovan(lVS_loss,{anova_regressors_strings,lVS_gain,sex,psych,site},'varnames',{'Diagnosis','lVS_gain_anticipation','Sex','Psychotropic_meds','Scan Site'},'continuous',[2])
 
 [c,m,h]=multcompare(stats)
 
@@ -37,7 +38,7 @@ anhed = trilevel.Anhedon;
 rOFC_loss = curr_analysis_table.Oldham_rOFC_loss;
 rOFC_gain = curr_analysis_table.Oldham_rOFC_gain;
 
-[p,tbl,stats,terms] = anovan(rOFC_gain,{anova_regressors_strings,rOFC_loss,sex,psych},'varnames',{'Diagnosis','rOFC loss receipt','Sex','Psychotropic_meds'},'continuous',[2])
+[p,tbl,stats,terms] = anovan(rOFC_gain,{anova_regressors_strings,rOFC_loss,sex,psych,site},'varnames',{'Diagnosis','rOFC loss receipt','Sex','Psychotropic_meds','Scan Site'},'continuous',[2])
 
 [c,m,h]=multcompare(stats)
 %% for Ng OFC bilateral
@@ -48,10 +49,10 @@ Ng_OFC_AntGain = curr_analysis_table.OFC_Ng_AntGain_v_AntNoGain_avg;
 Ng_OFC_AntLoss = curr_analysis_table.OFC_Ng_AntLoss_v_AntNoLoss_avg;
 
 % Gain controlling for Loss NOT SIG FOR BILATERAL
-[p,tbl,stats,terms] = anovan(Ng_OFC_gain,{anova_regressors_strings,Ng_OFC_loss,sex,psych},'varnames',{'Diagnosis','OFC loss outcome','Sex','Psychotropic_meds'},'continuous',[2])
+[p,tbl,stats,terms] = anovan(Ng_OFC_gain,{anova_regressors_strings,Ng_OFC_loss,sex,psych,site},'varnames',{'Diagnosis','OFC loss outcome','Sex','Psychotropic_meds','Scan Site'},'continuous',[2])
 
 % AntGain controlling for AntLoss NOT SIG FOR BILATERAL
-[p,tbl,stats,terms] = anovan(Ng_OFC_AntGain,{anova_regressors_strings,Ng_OFC_AntLoss,sex,psych},'varnames',{'Diagnosis','OFC loss antic','Sex','Psychotropic_meds'},'continuous',[2])
+[p,tbl,stats,terms] = anovan(Ng_OFC_AntGain,{anova_regressors_strings,Ng_OFC_AntLoss,sex,psych,site},'varnames',{'Diagnosis','OFC loss antic','Sex','Psychotropic_meds','Scan Site'},'continuous',[2])
 
 %% for Ng OFC right
  
@@ -61,10 +62,10 @@ R_Ng_OFC_AntGain = curr_analysis_table.R_OFC_Ng_AntGain_v_AntNoGain_avg;
 R_Ng_OFC_AntLoss = curr_analysis_table.R_OFC_Ng_AntLoss_v_AntNoLoss_avg;
 
 % Gain controlling for Loss NOT SIG FOR BILATERAL
-[p,tbl,stats,terms] = anovan(R_Ng_OFC_gain,{anova_regressors_strings,R_Ng_OFC_loss,sex,psych},'varnames',{'Diagnosis','OFC loss outcome','Sex','Psychotropic_meds'},'continuous',[2])
+[p,tbl,stats,terms] = anovan(R_Ng_OFC_gain,{anova_regressors_strings,R_Ng_OFC_loss,sex,psych,site},'varnames',{'Diagnosis','OFC loss outcome','Sex','Psychotropic_meds','Scan Site'},'continuous',[2])
 
 % AntGain controlling for AntLoss NOT SIG FOR BILATERAL
-[p,tbl,stats,terms] = anovan(R_Ng_OFC_AntGain,{anova_regressors_strings,R_Ng_OFC_AntLoss,sex,psych},'varnames',{'Diagnosis','OFC loss antic','Sex','Psychotropic_meds'},'continuous',[2])
+[p,tbl,stats,terms] = anovan(R_Ng_OFC_AntGain,{anova_regressors_strings,R_Ng_OFC_AntLoss,sex,psych,site},'varnames',{'Diagnosis','OFC loss antic','Sex','Psychotropic_meds','Scan Site'},'continuous',[2])
 
 %% for Ng OFC left
 

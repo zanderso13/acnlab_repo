@@ -16,6 +16,9 @@ load(fullfile(datadir,'mid_significant_contrasts.mat'));
 load(fullfile(clinicaldir,'BrainMAPD_clinical_diagnoses_final.mat'))
 %%
 % Select cases 
+
+trilevel dataset if we get enough power to actually consider current
+depression vs anhedonia, etc
 for sub = 1:length(curr_analysis_table.PID)
     if isempty(find(trilevel.ID(:) == curr_analysis_table.PID(sub))) == 0  
         curr = find(trilevel.ID(:) == curr_analysis_table.PID(sub));
@@ -40,23 +43,21 @@ end
 clear sub
 
 for sub = 1:length(curr_analysis_table.PID)
-    if isempty(find(clinical_info.PID(:) == curr_analysis_table.PID(sub))) == 0
-        curr2 = find(clinical_info.PID(:) == curr_analysis_table.PID(sub));
+    if isempty(find(clinical_info.PID(:) == curr_analysis_table.PID)) == 0
+        curr2 = find(clinical_info.PID(:) == curr_analysis_table.PID);
         Dep(sub,1) = clinical_info.dep_life_any(curr2);
-        Dep(sub,2) = curr_analysis_table.PID(sub);
+        Dep(sub,2) = curr_analysis_table.PID;
         Anx(sub,1) = clinical_info.anx_life_any(curr2);
-        Anx(sub,2) = curr_analysis_table.PID(sub);
+        Anx(sub,2) = trilevel.ID(sub);
         Com(sub,1) = clinical_info.comorbid_life_dep_anx(curr2);
-        Com(sub,2) = curr_analysis_table.PID(sub);
+        Com(sub,2) = trilevel.ID(sub);
         curr_dep(sub,1) = clinical_info.dep_curr_any(curr2);
-        curr_dep(sub,2) = curr_analysis_table.PID(sub);
+        curr_dep(sub,2) = trilevel.ID(sub);
         curr_anx(sub,1) = clinical_info.anx_curr_any(curr2);
-        curr_anx(sub,2) = curr_analysis_table.PID(sub);
-        curr_com(sub,1) = clinical_info.comorbid_curr_dep_anx(curr2);
-        curr_com(sub,2) = curr_analysis_table.PID(sub);
+        curr_anx(sub,2) = trilevel.ID(sub);
     else
         disp('Missing SCID for:')
-        disp(curr_analysis_table.PID(sub))
+        disp(trilevel.ID(sub))
         Dep(sub,1) = NaN;
         Dep(sub,2) = curr_analysis_table.PID(sub);
         Anx(sub,1) = NaN;
@@ -65,8 +66,6 @@ for sub = 1:length(curr_analysis_table.PID)
         curr_dep(sub,2) = curr_analysis_table.PID(sub);
         curr_anx(sub,1) = NaN;
         curr_anx(sub,2) = curr_analysis_table.PID(sub);
-        curr_com(sub,1) = NaN;
-        curr_com(sub,2) = curr_analysis_table.PID(sub);
     end
 end
 
@@ -86,15 +85,13 @@ lifetime_diagnosis(lifetime_regressors(:,1)==3) = {'Anxiety'};
 lifetime_diagnosis(lifetime_regressors(:,1)==4) = {'Comorbidity'};
 
 curr_regressors = ones(length(Dep),1);
-curr_regressors(curr_dep(:,1)==1,:) = 2;
-curr_regressors(curr_anx(:,1)==1,:) = 3;
-curr_regressors(curr_com(:,1)==1,:) = 4;
+curr_regressors(curr_dep(:,1)==1) = 2;
+curr_regressors(curr_anx(:,1)==1) = 3;
 
 curr_diagnosis = cell(length(curr_regressors),1);
 curr_diagnosis(curr_regressors(:,1)==1) = {'Healthy'};
 curr_diagnosis(curr_regressors(:,1)==2) = {'Current Depression'};
 curr_diagnosis(curr_regressors(:,1)==3) = {'Current Anxiety'};
-curr_diagnosis(curr_regressors(:,1)==4) = {'Current Comorbid'};
 %% Stats and graphs baby
 % Anhedonia
 [p,tbl,stats] = anova1(Anhed(:,1),curr_diagnosis)

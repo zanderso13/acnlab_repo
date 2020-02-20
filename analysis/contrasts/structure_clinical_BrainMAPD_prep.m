@@ -6,7 +6,7 @@
 
 % set up you subjects directory
 basedir = '/projects/p30954/struct_data/session1';
-clinicaldir = '/projects/p30954/clinical_data';
+clinicaldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/clinical_data';
 repodir = '/home/zaz3744/repo';
 demodir = '/projects/p30954/demographic_data';
 %%
@@ -126,8 +126,8 @@ violinplot(trilevelmultimethodFS.Fears); legend off
 title('Subplot 3: Fears')
 
 %% Load in the SCID and output some frequency charts looking at hom many of each disorder we have. 
-scidfname = filenames(fullfile(clinicaldir, 'SCID_data.mat'));
-load(scidfname{1});
+%scidfname = filenames(fullfile(clinicaldir, 'SCID_data.mat'));
+%load(scidfname{1});
 
 % Want to get counts for relevant DSM disorders
 % Past and curr(:)ent depression

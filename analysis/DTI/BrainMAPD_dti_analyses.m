@@ -6,10 +6,11 @@
 
 % Get your toolbox first and set up some paths
 repodir = '~/Documents/repo';
-datadir = '/Users/zaz3744/Documents/current_projects/dti_BrainMAPD/Right-mOFC_wholebrain';
+datadir = '/Users/zaz3744/Documents/current_projects/dti_BrainMAPD/LNAcc-LmOFC';
 clinicaldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/clinical_data';
 
 addpath(genpath(repodir))
+
 %% Snag those files
 % Load in stats txt files. Let's find out what we're looking at
 
@@ -62,7 +63,7 @@ title('Average AD')
 %% Create list of subject IDs I have data for
 clear sub
 for sub = 1:length(fnames)
-    sub_id(sub) = str2num(fnames{sub}(83:87));
+    sub_id(sub) = str2num(fnames{sub}(73:77));
 end
 sub_id = sub_id';
 
@@ -70,13 +71,13 @@ sub_id = sub_id';
 % data
 
 clear sub
-load(fullfile(clinicaldir,'BrainMAPD_subject_diagnosis_table.mat'))
+load(fullfile(clinicaldir,'BrainMAPD_clinical_diagnoses_final.mat'))
 for sub = 1:length(sub_id)
-    if isempty(find(BrainMAPD_subject_diagnosis_table.PID(:) == sub_id(sub))) == 0
-        curr = find(BrainMAPD_subject_diagnosis_table.PID(:) == sub_id(sub));
-        curr_dep(sub) = BrainMAPD_subject_diagnosis_table.Dep_lifetime(curr);
-        curr_anx(sub) = BrainMAPD_subject_diagnosis_table.Anx_lifetime(curr);
-        curr_com(sub) = BrainMAPD_subject_diagnosis_table.Comorbid_lifetime(curr);
+    if isempty(find(clinical_info.PID(:) == sub_id(sub))) == 0
+        curr = find(clinical_info.PID(:) == sub_id(sub));
+        curr_dep(sub) = clinical_info.dep_life_any(curr);
+        curr_anx(sub) = clinical_info.anx_life_any(curr);
+        curr_com(sub) = clinical_info.comorbid_life_dep_anx(curr);
     else
         disp(sub_id(sub))
         curr_dep(sub) = NaN;

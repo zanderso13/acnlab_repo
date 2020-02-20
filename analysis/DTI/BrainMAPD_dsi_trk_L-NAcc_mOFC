@@ -16,8 +16,8 @@ step_size=0.05              # FROM KEVIN’S SCRIPT - N/A Step size
 turning_angle=0           # FROM KEVIN’S SCRIPT - N/A Turning angle cutoff threshold
 smoothing=0                      # Degree of smoothing
 min_length=0                         # Minimum fiber length in mm
-max_length=30                        # Maximum fiber length in mm
-turn_thresh=30
+max_length=50                        # Maximum fiber length in mm
+turn_thresh=0
 seed_count=2000000
 
 conn_val=qa,count,ncount
@@ -31,4 +31,7 @@ echo $fibfile
 
 #step 1: generate .trk files for each subject
 
-/Applications/dsi_studio.app/Contents/MacOS/dsi_studio --action=trk --source=${fibfile} --method=0 --fa_threshold=${fa_threshold} --turn_thresh=${turn_thresh} --initial_dir=0 --seed_plan=1 --interpolation=0 --step_size=${step_size} --smoothing=${smoothing} --min_length=${min_length} --max_length=${max_length}} --seed_count=${seed_count} --seed=FreeSurferSeg:Left-Accumbens-area --roi=HCP842_tractography:Cortico_Striatal_Pathway_L --end=left_medial_orbitofrontal --export=stat,qa,dti_fa --output=${projdir}/$1-tracks.trk.gz
+/Applications/dsi_studio.app/Contents/MacOS/dsi_studio --action=trk --source=${fibfile} --method=0 --fa_threshold=${fa_threshold} --turn_thresh=${turn_thresh} --initial_dir=0 --seed_plan=1 --interpolation=0 --step_size=${step_size} --smoothing=${smoothing} --min_length=${min_length} --max_length=${max_length}} --seed_count=${seed_count} --seed=FreeSurferSeg:Left-Accumbens-area --roi=HCP842_tractography:Cortico_Striatal_Pathway_L --end=FreeSurferDKT:left_medial_orbitofrontal --export=stat,qa,dti_fa --output=${projdir}/$1-tracks.trk.gz
+
+#delete the trk files so my computer doesn't die
+rm ${projdir}/*trk.gz 
