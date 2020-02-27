@@ -2,7 +2,7 @@
 
 sub=$1         #subject txt file with list of subjects
 
-projdir='/Users/zaz3744/Documents/current_projects/dti_BrainMAPD'   # path for folder with subject data
+projdir='/Users/zaz3744/Documents/current_projects/ACNlab/dti_BrainMAPD'   # path for folder with subject data
 roidir='/Users/zaz3744/Downloads/FreeSurfer_MNI1321mmspace_ROIs'
 fibdir='src'
 

@@ -6,12 +6,12 @@
 
 % Get your toolbox first and set up some paths
 repodir = '~/Documents/repo';
-datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/dti_BrainMAPD/L-Amyg_NAcc';
+datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/dti_BrainMAPD/R-NAcc_mOFC';
 datamatdir = '/Users/zaz3744/Documents/current_projects/ACNlab/dti_BrainMAPD/mat_files';
 clinicaldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/clinical_data';
 immunedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/immune_data';
 track_file = 'RAmyg-RmOFC.mat';
-pull_from_txt = 0;
+pull_from_txt = 1;
 
 addpath(genpath(repodir))
 
@@ -117,8 +117,8 @@ curr_analysis_table = array2table(curr_analysis_table);
 curr_analysis_table.Properties.VariableNames = {'PID','Dep','Anx','Com','composite_immune','FA','QA'};    
 
 scatter(curr_analysis_table.composite_immune, curr_analysis_table.QA)
-corr(curr_analysis_table.composite_immune, curr_analysis_table.QA,'Rows','complete')
-
+corr_FA = corr(curr_analysis_table.composite_immune, curr_analysis_table.FA,'Rows','complete')
+corr_QA = corr(curr_analysis_table.composite_immune, curr_analysis_table.QA,'Rows','complete')
 %% Run the stats    
 
 anova_regressors = ones(height(curr_analysis_table),1);
