@@ -2,7 +2,7 @@
 
 sub=$1         #subject txt file with list of subjects
 
-projdir='/Users/zaz3744/Documents/current_projects/dti_BrainMAPD'   # path for folder with subject data
+projdir='/Users/zaz3744/Documents/current_projects/ACNlab/dti_BrainMAPD'   # path for folder with subject data
 roidir='/Users/zaz3744/Downloads/FreeSurfer_MNI1321mmspace_ROIs'
 fibdir='src'
 
@@ -31,5 +31,5 @@ echo $fibfile
 
 #step 1: generate .trk files for each subject
 
-/Applications/dsi_studio.app/Contents/MacOS/dsi_studio --action=trk --source=${fibfile} --method=0 --fa_threshold=${fa_threshold} --turn_thresh=${turn_thresh} --initial_dir=0 --seed_plan=1 --interpolation=0 --step_size=${step_size} --smoothing=${smoothing} --min_length=${min_length} --max_length=${max_length}} --fiber_count=${fiber_count} --seed_count=${seed_count} --seed=FreeSurferSeg:Right-Amygdala --roi=HCP842_tractography:Uncinate_Fasciculus_R --end=FreeSurferDKT:right_medial_orbitofrontal --export=stat,qa,dti_fa --output=${projdir}/$1-tracks_R-Amyg-mOFC.trk.gz
+/Applications/dsi_studio.app/Contents/MacOS/dsi_studio --action=trk --source=${fibfile} --method=0 --fa_threshold=${fa_threshold} --turning_angle=${turn_thresh} --initial_dir=0 --seed_plan=1 --interpolation=0 --step_size=${step_size} --smoothing=${smoothing} --min_length=${min_length} --max_length=${max_length}} --fiber_count=${fiber_count} --seed_count=${seed_count} --seed=FreeSurferSeg:Right-Amygdala --end=FreeSurferSeg:Right-Accumbens-area --export=stat,qa,dti_fa --output=${projdir}/$1-tracks.trk.gz
 

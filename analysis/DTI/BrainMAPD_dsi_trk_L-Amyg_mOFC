@@ -11,7 +11,7 @@ fa_threshold=0            # QA threshold
 thread_count=4               # Set low for personal computer, but should be able to max out at 24 threads on the cluster
 seed_ori=primary 	       # Seed orientation 
 seed_pos=voxel	       # Seed position
-fiber_count=5000               # FROM KEVIN’S SCRIPT - N/A Number of streamlines to generate; not using
+fiber_count=500               # FROM KEVIN’S SCRIPT - N/A Number of streamlines to generate; not using
 step_size=0.05              # FROM KEVIN’S SCRIPT - N/A Step size
 turning_angle=0           # FROM KEVIN’S SCRIPT - N/A Turning angle cutoff threshold
 smoothing=0                      # Degree of smoothing
@@ -31,5 +31,5 @@ echo $fibfile
 
 #step 1: generate .trk files for each subject
 
-/Applications/dsi_studio.app/Contents/MacOS/dsi_studio --action=trk --source=${fibfile} --method=0 --fa_threshold=${fa_threshold} --turning_angle=${turn_thresh} --initial_dir=0 --seed_plan=1 --interpolation=0 --step_size=${step_size} --smoothing=${smoothing} --min_length=${min_length} --max_length=${max_length}} --seed_count=${seed_count} --seed=FreeSurferSeg:Left-Amygdala --roi=HCP842_tractography:Uncinate_Fasciculus_L --end=FreeSurferDKT:left_medial_orbitofrontal --export=stat,qa,dti_fa --output=${projdir}/$1-tracks.trk.gz
+/Applications/dsi_studio.app/Contents/MacOS/dsi_studio --action=trk --source=${fibfile} --method=0 --fa_threshold=${fa_threshold} --turning_angle=${turn_thresh} --initial_dir=0 --seed_plan=1 --interpolation=0 --step_size=${step_size} --smoothing=${smoothing} --min_length=${min_length} --max_length=${max_length}} --fiber_count=${fiber_count} --seed_count=${seed_count} --seed=FreeSurferSeg:Left-Amygdala --roi=HCP842_tractography:Uncinate_Fasciculus_L --end=FreeSurferDKT:left_medial_orbitofrontal --export=stat,qa,dti_fa --output=${projdir}/$1-tracks.trk.gz
 

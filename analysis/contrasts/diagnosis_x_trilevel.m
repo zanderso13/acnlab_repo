@@ -54,6 +54,10 @@ for sub = 1:length(curr_analysis_table.PID)
         curr_anx(sub,2) = curr_analysis_table.PID(sub);
         curr_com(sub,1) = clinical_info.comorbid_curr_dep_anx(curr2);
         curr_com(sub,2) = curr_analysis_table.PID(sub);
+        dep_csr(sub,1) = clinical_info.max_dep_csr(curr2);
+        dep_csr(sub,2) = curr_analysis_table.PID(sub);
+        anx_csr(sub,1) = clinical_info.max_anx_csr(curr2);
+        anx_csr(sub,2) = curr_analysis_table.PID(sub);
     else
         disp('Missing SCID for:')
         disp(curr_analysis_table.PID(sub))
@@ -97,20 +101,48 @@ curr_diagnosis(curr_regressors(:,1)==3) = {'Current Anxiety'};
 curr_diagnosis(curr_regressors(:,1)==4) = {'Current Comorbid'};
 %% Stats and graphs baby
 % Anhedonia
-[p,tbl,stats] = anova1(Anhed(:,1),curr_diagnosis)
+[p,tbl,stats] = anova1(Anhed(:,1),lifetime_diagnosis)
 
 figure; [c,m,h]=multcompare(stats)
 
 %% General Distress
-[p,tbl,stats] = anova1(GenDis(:,1),curr_diagnosis)
+[p,tbl,stats] = anova1(GenDis(:,1),lifetime_diagnosis)
 
 figure; [c,m,h]=multcompare(stats)
 
 %% Fears
 
-[p,tbl,stats] = anova1(Fears(:,1),curr_diagnosis)
+[p,tbl,stats] = anova1(Fears(:,1),lifetime_diagnosis)
 
 figure; [c,m,h]=multcompare(stats)
+
+%% let's get some CSR's going
+% load the file that, as it turns out, wasn't hard to create
+
+figure();
+subplot(1,2,1)
+scatter(dep_csr(dep_csr(:,1) > 0,1),Anhed(dep_csr(:,1) > 0,1))
+title("Dep CSR vs Anhedonia")
+subplot(1,2,2) 
+scatter(anx_csr(anx_csr(:,1) > 0,1),Anhed(anx_csr(:,1) > 0,1)) 
+title("Anx CSR vs Anhedonia")
+
+figure(); 
+subplot(1,2,1)
+scatter(dep_csr(dep_csr(:,1) > 0,1),GenDis(dep_csr(:,1) > 0,1))
+title("Dep CSR vs General Distress")
+subplot(1,2,2) 
+scatter(anx_csr(anx_csr(:,1) > 0,1),GenDis(anx_csr(:,1) > 0,1)) 
+title("Anx CSR vs General Distress")
+
+figure();
+subplot(1,2,1)
+scatter(dep_csr(dep_csr(:,1) > 0,1),Fears(dep_csr(:,1) > 0,1))
+title("Dep CSR vs Fears")
+subplot(1,2,2) 
+scatter(anx_csr(anx_csr(:,1) > 0,1),Fears(anx_csr(:,1) > 0,1)) 
+title("Anx CSR vs Fears")
+
 
 
 
