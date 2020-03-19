@@ -31,5 +31,5 @@ echo $fibfile
 
 #step 1: generate .trk files for each subject
 
-/Applications/dsi_studio.app/Contents/MacOS/dsi_studio --action=trk --source=${fibfile} --method=0 --fa_threshold=${fa_threshold} --turning_angle=${turn_thresh} --initial_dir=0 --seed_plan=1 --interpolation=0 --step_size=${step_size} --smoothing=${smoothing} --min_length=${min_length} --max_length=${max_length}} --fiber_count=${fiber_count} --seed_count=${seed_count} --seed=FreeSurferSeg:Left-Amygdala --roi=HCP842_tractography:Uncinate_Fasciculus_L --end=FreeSurferDKT:left_medial_orbitofrontal --export=stat,qa,dti_fa --output=${projdir}/$1-tracks.trk.gz
+/Applications/dsi_studio.app/Contents/MacOS/dsi_studio --action=trk --source=${fibfile} --method=0 --fa_threshold=${fa_threshold} --turning_angle=${turn_thresh} --initial_dir=0 --seed_plan=1 --interpolation=0 --step_size=${step_size} --smoothing=${smoothing} --min_length=${min_length} --max_length=${max_length}} --fiber_count=${fiber_count} --seed_count=${seed_count} --seed=FreeSurferSeg:Left-Amygdala --end=FreeSurferDKT:left_medial_orbitofrontal --export=stat,qa,dti_fa --output=${projdir}/$1-tracks.trk.gz
 

@@ -1,20 +1,32 @@
+function [curr_analysis_table] = BrainMAPD_dti_extract(datadir,clinicaldir,immunedir,motiondir,demodir,datamatdir)
+
 % Helloooooooo campers. We gotta get some analyses going on these DTI data
 % pronto. First, what are we looking at. You'll soon find out
 % because we're starting with descriptives. After that we'll need to judge
 % how good or bad everything looks. More info to come following those
 % inevitable meetings and email chains. Party on Wayne
 
-% Get your toolbox first and set up some paths
-repodir = '~/Documents/repo';
-datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/dti_BrainMAPD/R-NAcc_mOFC';
-datamatdir = '/Users/zaz3744/Documents/current_projects/ACNlab/dti_BrainMAPD/mat_files';
-clinicaldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/clinical_data';
-immunedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/immune_data';
-track_file = 'RAmyg-RmOFC.mat';
-pull_from_txt = 1;
 
-addpath(genpath(repodir))
+pull_from_txt = 1; % set to 1 if you want to load from txt files and not from mat files
 
+
+%% Get framewise displacement to add as regressor
+fnames_motion = filenames(fullfile(motiondir,'*txt'));
+for sub_motion = 1:length(fnames_motion)
+    motion = load(fnames_motion{sub_motion});
+    if length(motion) == 129
+        FD_sub_id(:,sub_motion) = str2num(fnames_motion{sub_motion}(80:84));
+        FD_temp(:,sub_motion) = mean(motion,2);
+    else
+        FD_sub_id(:,sub_motion) = 0;
+        FD_temp(:,sub_motion) = NaN;
+    end  
+    FD = FD_temp';   
+    FD = nanmean(FD,2);
+    
+end
+% FD_sub_id = FD_sub_id';
+% FD(find(FD_sub_id==0),:)=[];
 %% Snag those files
 fnames = filenames(fullfile(datadir,'*.stat.txt'));
 if pull_from_txt == 1
@@ -73,7 +85,7 @@ for sub = 1:length(fnames)
     sub_id(sub) = str2num(fnames{sub}(80:84));
 end
 sub_id = sub_id';
-
+FD_final = [sub_id,FD];
 % Grab clinical data for those people and check for people who are missing
 % data
 
@@ -116,29 +128,61 @@ curr_analysis_table = [sub_id,curr_dep',curr_anx',curr_com',immune',fa_mean,qa_m
 curr_analysis_table = array2table(curr_analysis_table);
 curr_analysis_table.Properties.VariableNames = {'PID','Dep','Anx','Com','composite_immune','FA','QA'};    
 
-scatter(curr_analysis_table.composite_immune, curr_analysis_table.QA)
+figure()
+scatter(curr_analysis_table.composite_immune, curr_analysis_table.FA)
+% title(strcat(datadir(64:69), ' ', datadir(68:72),' FA'))
+
+
 corr_FA = corr(curr_analysis_table.composite_immune, curr_analysis_table.FA,'Rows','complete')
 corr_QA = corr(curr_analysis_table.composite_immune, curr_analysis_table.QA,'Rows','complete')
-%% Run the stats    
+
+%% Gonna get some analyses going here
+% going to focus on FA, as per Robin's request. First thing is to get my
+% covariates going. So pulling out gender from our original document. This
+% is slow but my computer is great so I'm just gonna go for it
+load(fullfile(datamatdir,'whole_brain_fa.mat'))
+load(fullfile(demodir,'demographics.mat'));
+clear sub
+for sub = 1:length(curr_analysis_table.PID)
+    if isempty(find(BrainMAPDT1S1Demo.PID(:) == curr_analysis_table.PID(sub))) == 0
+        curr = find(BrainMAPDT1S1Demo.PID(:) == curr_analysis_table.PID(sub));
+        gender(sub,1) = BrainMAPDT1S1Demo.sex(curr);
+    else
+        disp(sub_id(sub))
+        gender(sub,1) = NaN;
+    end
+end
+
+gender = array2table(gender);
+gender.Properties.VariableNames = {'gender'};
+curr_analysis_table = [curr_analysis_table,gender,whole_brain_fa];
+
+
+FD = array2table(FD);
+FD.Properties.VariableNames = {'FD'};
+curr_analysis_table = [curr_analysis_table,FD];
+%% Removing outliers first
+
+
+
+curr_analysis_table(find(isoutlier(curr_analysis_table.FA,'mean')),:)=[];
+
+dsm_diagnoses_regressors = [curr_analysis_table.Dep(:),curr_analysis_table.Anx(:),curr_analysis_table.Com(:)];
 
 anova_regressors = ones(height(curr_analysis_table),1);
-anova_regressors(curr_analysis_table.Dep==1) = 2;
-anova_regressors(curr_analysis_table.Anx==1) = 3;
-anova_regressors(curr_analysis_table.Com==1) = 4;
+anova_regressors(dsm_diagnoses_regressors(:,1)==1) = 2;
+anova_regressors(dsm_diagnoses_regressors(:,2)==1) = 3;
+anova_regressors(dsm_diagnoses_regressors(:,3)==1) = 4;
 
-Diagnosis = cell(size(anova_regressors));
-Diagnosis(anova_regressors(:,1)==1) = {'Healthy'};
-Diagnosis(anova_regressors(:,1)==2) = {'Depression'};
-Diagnosis(anova_regressors(:,1)==3) = {'Anxiety'};
-Diagnosis(anova_regressors(:,1)==4) = {'Comorbidity'};
+anova_regressors_strings = cell(size(anova_regressors));
+anova_regressors_strings(anova_regressors(:,1)==1) = {'Healthy'};
+anova_regressors_strings(anova_regressors(:,1)==2) = {'Depression'};
+anova_regressors_strings(anova_regressors(:,1)==3) = {'Anxiety'};
+anova_regressors_strings(anova_regressors(:,1)==4) = {'Comorbidity'};
 
-%% Gonna get some immune analyses going here
+anova_regressors_strings = cell2table(anova_regressors_strings);
 
-
-
-
-
-
+curr_analysis_table = [curr_analysis_table, anova_regressors_strings];
 
 
 
