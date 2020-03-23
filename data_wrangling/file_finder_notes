@@ -1,0 +1,5 @@
+# This syntax is really helpful. It will search through a directory for a file that should exist
+# If it doesn't find the file, it prints the directory into a text file
+# You can used this to double check for existence of files and then feed the result directly into shell scripts
+
+find MID_FSL_Run2 -mindepth 4 -maxdepth 4 -type d '!' -exec test -e "{}/cope2_standard.nii" ';' -print > sub_cope2.txt
