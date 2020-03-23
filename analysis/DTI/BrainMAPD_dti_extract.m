@@ -140,8 +140,9 @@ corr_QA = corr(curr_analysis_table.composite_immune, curr_analysis_table.QA,'Row
 % going to focus on FA, as per Robin's request. First thing is to get my
 % covariates going. So pulling out gender from our original document. This
 % is slow but my computer is great so I'm just gonna go for it
-load(fullfile(datamatdir,'whole_brain_fa.mat'))
+load(fullfile(datamatdir,'whole_brain_fa.mat'));
 load(fullfile(demodir,'demographics.mat'));
+load(fullfile(clinicaldir,'trilevel_factors.mat'));
 clear sub
 for sub = 1:length(curr_analysis_table.PID)
     if isempty(find(BrainMAPDT1S1Demo.PID(:) == curr_analysis_table.PID(sub))) == 0
@@ -161,9 +162,28 @@ curr_analysis_table = [curr_analysis_table,gender,whole_brain_fa];
 FD = array2table(FD);
 FD.Properties.VariableNames = {'FD'};
 curr_analysis_table = [curr_analysis_table,FD];
-%% Removing outliers first
+%trilevel factor extraction
+for sub = 1:length(curr_analysis_table.PID) 
+    if sum(curr_analysis_table.PID(:)==trilevel.ID(sub)) > 0
+        trilevel_temp(sub,1) = trilevel.GenDis(curr_analysis_table.PID(:)==trilevel.ID(sub));
+    else
+        trilevel_temp(sub,1) = NaN;
+    end
+    if sum(curr_analysis_table.PID(:)==trilevel.ID(sub)) > 0
+        trilevel_temp(sub,2) = trilevel.Anhedon(curr_analysis_table.PID(:)==trilevel.ID(sub));
+    else
+        trilevel_temp(sub,2) = NaN;
+    end
+    if sum(curr_analysis_table.PID(:)==trilevel.ID(sub)) > 0
+        trilevel_temp(sub,3) = trilevel.Fears(curr_analysis_table.PID(:)==trilevel.ID(sub));
+    else
+        trilevel_temp(sub,3) = NaN;
+    end
+end
+trilevel_temp = array2table(trilevel_temp); trilevel_temp.Properties.VariableNames = {'gendis','anhedon','fears'};
 
-
+curr_analysis_table = [curr_analysis_table,trilevel_temp];
+%% Removing outliers 
 
 curr_analysis_table(find(isoutlier(curr_analysis_table.FA,'mean')),:)=[];
 
