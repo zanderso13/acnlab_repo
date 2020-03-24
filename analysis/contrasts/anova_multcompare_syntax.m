@@ -1,6 +1,6 @@
 % addpaths
 contrastdir = '~/Documents/repo/acnlab_repo/data';
-addpath(genpath('~/Documents/rclepo'))
+addpath(genpath('~/Documents/repo'))
 %% load the table in thar
 % curr_analysis_table = readtable(fullfile(contrastdir,'data.txt'));
 load('mid_significant_contrasts.mat')
