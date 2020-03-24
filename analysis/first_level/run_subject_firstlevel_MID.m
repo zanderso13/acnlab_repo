@@ -3,7 +3,7 @@
 % (default) or 1. before running this file, must run
 % read_timings_make_onsets.m
 
-function run_subject_firstlevel_sponpain(URSI, ses, overwrite)
+function run_subject_firstlevel_sponpain(PID, ses, overwrite)
 
 
 %% var set up
@@ -27,22 +27,22 @@ end
 fprintf(['Preparing 1st level model for SPONPAIN task for ' URSI ' / ' subID], ['Overwrite = ' num2str(overwrite)]);
 
 % directories
-fl_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/results';
-preproc_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/nii';
-raw_dir = '/pl/active/ics/data/projects/wagerlab/labdata/data/OLP4CBP/Imaging/raw/bids';
-save_dir = '/projects/zaan8774/repo/OLP4CBP/data/spon_pain/confound_files';
+fl_dir = '/home/zaz3744/ACNlab/projects/BrainMAPD_func_conn/first_levels';
+preproc_dir = '/home/zaz3744/ACNlab/projects/BrainMAPD_func_conn/fmriprep';
+raw_dir = '/home/zaz3744/ACNlab/data/BrainMAPD';
+save_dir = '/home/zaz3744/repo/acnlab_repo/analysis/first_level';
 
-ndummies = 15;
-TR = .46;
+ndummies = 2;
+TR = 2;
 
-%% Model for sponpain task
+%% Model for MID task
 
 % FL directory for saving 1st level results: beta images, SPM.mat, etc.
-in{1} = {fullfile(fl_dir, sub_str, ses_str(ses,:), 'sponpain')};
+in{1} = {fullfile(fl_dir, sub_str, ses_str(ses,:), 'MID')};
 
 % preproc images
 rundir = fullfile(preproc_dir, URSI, ses_str(ses,[1:4 6]), 'func');
-in{2} = cellstr(spm_select('ExtFPList', rundir, '.*task-sponpain_space-MNI152NLin2009cAsym_desc-preproc_bold.nii', ndummies+1:9999));
+in{2} = cellstr(spm_select('ExtFPList', rundir, '.*task-MID_space-MNI152NLin2009cAsym_desc-preproc_bold.nii', ndummies+1:9999));
 
 if isempty(in{2}{1})
     warning('No preprocd functional found')
