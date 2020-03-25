@@ -3,7 +3,7 @@
 % (default) or 1. before running this file, must run
 % read_timings_make_onsets.m
 
-function run_subject_firstlevel_sponpain(PID, ses, overwrite)
+function run_subject_firstlevel_MID(PID, ses, overwrite)
 
 
 %% var set up
