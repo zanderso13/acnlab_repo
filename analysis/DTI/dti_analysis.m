@@ -8,12 +8,12 @@
 
 % So what are our tracks, this really will reference folder names. 
 
-track_list = {'L_Amyg_mOFC','L_Amyg_NAcc','L_NAcc_mOFC','R_Amyg_mOFC','R_Amyg_NAcc','R_NAcc_mOFC'};
+track_list = {'L_Amyg_mOFC','L_NAcc_Amyg','L_NAcc_mOFC','R_Amyg_mOFC','R_NAcc_Amyg','R_NAcc_mOFC'};
 suppress_figures = 1; % This is a little haphazard but this is easier than going back into the extraction script and removing the plots... so...
 
 % Get your toolbox first and set up some paths
 repodir = '~/Documents/repo';
-addpath(genpath(repodir))
+%addpath(genpath(repodir))
 basedir = '/Users/zaz3744/Documents/current_projects/ACNlab/dti_BrainMAPD/'; % basedir, add from above track list to get datadir which is the var you want
 datamatdir = '/Users/zaz3744/Documents/current_projects/ACNlab/dti_BrainMAPD/mat_files';
 figdir = '/Users/zaz3744/Documents/current_projects/ACNlab/dti_BrainMAPD/figures';
@@ -38,7 +38,7 @@ clear curr_analysis_table
 % showing decreases. I'm going to write a wrapper that will pull variables
 % from this for the repeated measures model.
 clear track
-plot_titles = {'L Amyg -> mOFC','L Amyg -> NAcc','L NAcc -> mOFC','R Amyg -> mOFC','R Amyg -> NAcc','R NAcc -> mOFC'};
+plot_titles = {'L Amyg -> mOFC','L NAcc -> Amyg','L NAcc -> mOFC','R Amyg -> mOFC','R NAcc -> Amyg','R NAcc -> mOFC'};
 for track = 1:length(track_list)
 
     [p,tbl,stats_fa,terms] = anovan(cumulative_analysis_struct.(track_list{track}).FA,{cumulative_analysis_struct.(track_list{track}).anova_regressors_strings,cumulative_analysis_struct.(track_list{track}).FD,cumulative_analysis_struct.(track_list{track}).gender,cumulative_analysis_struct.(track_list{track}).whole_brain_fa},'varnames',{'Diagnosis','Motion','gender','whole_brain_fa'},'continuous',[2,4])
@@ -54,7 +54,7 @@ end
 % here.
 
 clear track
-plot_titles = {'L Amyg -> mOFC','L Amyg -> NAcc','L NAcc -> mOFC','R Amyg -> mOFC','R Amyg -> NAcc','R NAcc -> mOFC'};
+plot_titles = {'L Amyg -> mOFC','L NAcc -> Amyg','L NAcc -> mOFC','R Amyg -> mOFC','R NAcc -> Amyg','R NAcc -> mOFC'};
 for track = 1:length(track_list)
     trilevel_mdl.(track_list{track}) = fitlm(cumulative_analysis_struct.(track_list{track}),'FA ~ gendis + anhedon + fears + FD + gender + whole_brain_fa')
     trilevel_mdl.(track_list{track}).Coefficients
@@ -146,8 +146,8 @@ for sub = 1:length(cumulative_analysis_struct.R_NAcc_mOFC.PID)
         curr_outcome_table(sub,1) = NaN;
     end
 
-    if sum(cumulative_analysis_struct.L_Amyg_NAcc.PID(:)==cumulative_analysis_struct.R_NAcc_mOFC.PID(sub)) > 0
-        curr_outcome_table(sub,2) = cumulative_analysis_struct.L_Amyg_NAcc.FA(cumulative_analysis_struct.L_Amyg_NAcc.PID(:)==cumulative_analysis_struct.R_NAcc_mOFC.PID(sub));
+    if sum(cumulative_analysis_struct.L_NAcc_Amyg.PID(:)==cumulative_analysis_struct.R_NAcc_mOFC.PID(sub)) > 0
+        curr_outcome_table(sub,2) = cumulative_analysis_struct.L_NAcc_Amyg.FA(cumulative_analysis_struct.L_NAcc_Amyg.PID(:)==cumulative_analysis_struct.R_NAcc_mOFC.PID(sub));
     else
         curr_outcome_table(sub,2) = NaN;
     end
@@ -165,8 +165,8 @@ for sub = 1:length(cumulative_analysis_struct.R_NAcc_mOFC.PID)
         curr_outcome_table(sub,4) = NaN;
     end
 
-    if sum(cumulative_analysis_struct.R_Amyg_NAcc.PID(:)==cumulative_analysis_struct.R_NAcc_mOFC.PID(sub)) > 0
-        curr_outcome_table(sub,5) = cumulative_analysis_struct.R_Amyg_NAcc.FA(cumulative_analysis_struct.R_Amyg_NAcc.PID(:)==cumulative_analysis_struct.R_NAcc_mOFC.PID(sub));
+    if sum(cumulative_analysis_struct.R_NAcc_Amyg.PID(:)==cumulative_analysis_struct.R_NAcc_mOFC.PID(sub)) > 0
+        curr_outcome_table(sub,5) = cumulative_analysis_struct.R_NAcc_Amyg.FA(cumulative_analysis_struct.R_NAcc_Amyg.PID(:)==cumulative_analysis_struct.R_NAcc_mOFC.PID(sub));
     else
         curr_outcome_table(sub,5) = NaN;
     end
@@ -178,7 +178,7 @@ for sub = 1:length(cumulative_analysis_struct.R_NAcc_mOFC.PID)
     end
 
 end
-%curr_outcome_table = [cumulative_analysis_struct.L_Amyg_mOFC.FA,cumulative_analysis_struct.L_Amyg_NAcc.FA,cumulative_analysis_struct.L_NAcc_mOFC.FA,cumulative_analysis_struct.R_Amyg_mOFC.FA,cumulative_analysis_struct.R_Amyg_NAcc.FA,cumulative_analysis_struct.R_NAcc_mOFC.FA];
+%curr_outcome_table = [cumulative_analysis_struct.L_Amyg_mOFC.FA,cumulative_analysis_struct.L_NAcc_Amyg.FA,cumulative_analysis_struct.L_NAcc_mOFC.FA,cumulative_analysis_struct.R_Amyg_mOFC.FA,cumulative_analysis_struct.R_NAcc_Amyg.FA,cumulative_analysis_struct.R_NAcc_mOFC.FA];
 curr_outcome_table = array2table(curr_outcome_table); curr_outcome_table.Properties.VariableNames = {'track1','track2','track3','track4','track5','track6'};
 
 diagnosis = cumulative_analysis_struct.R_NAcc_mOFC.anova_regressors_strings;diagnosis = array2table(diagnosis); diagnosis.Properties.VariableNames = {'diagnosis'};
@@ -196,10 +196,10 @@ curr_outcome_table = [curr_outcome_table,curr_regressors];
 %% This section specifies a repeated measures model taking into account all the tracks at once
 % key to tracks:
 % 1: L_Amyg_mOFC
-% 2: L_Amyg_NAcc
+% 2: L_NAcc_Amyg
 % 3: L_NAcc_mOFC
 % 4: R_Amyg_mOFC
-% 5: R_Amyg_NAcc
+% 5: R_NAcc_Amyg
 % 6: R_NAcc_mOFC
 Tracks = table([1 2 3 4 5 6]','VariableNames',{'WM_Tracks'});
 rm = fitrm(curr_outcome_table,'track1-track6~diagnosis+gender+motion+whole_brain_fa','WithinDesign',Tracks);
