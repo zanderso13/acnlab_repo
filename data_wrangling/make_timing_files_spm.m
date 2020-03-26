@@ -7,14 +7,14 @@
 datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/Oldham_ROI_by_diagnosis/TimingFiles_082218';
 antdir = '/FSL_anticipation_072418';
 condir = '/FSL_consumption_110818';
-savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files';
+savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-2';
 
 fnames_antloss = filenames(fullfile(datadir,antdir,'*/*Loss_Run1.txt'));
 fnames_antgain = filenames(fullfile(datadir,antdir,'*/*Win_Run1.txt'));
-fnames_hitconloss = filenames(fullfile(datadir,condir,'*/*Hit*Loss_Feedback_Run1.txt'));
-fnames_hitcongain = filenames(fullfile(datadir,condir,'*/*Hit*Win_Feedback_Run1.txt'));
-fnames_missconloss = filenames(fullfile(datadir,condir,'*/*Miss*Loss_Feedback_Run1.txt'));
-fnames_misscongain = filenames(fullfile(datadir,condir,'*/*Miss*Win_Feedback_Run1.txt'));
+fnames_hitconloss = filenames(fullfile(datadir,condir,'*/*Hit*Loss_Feedback_Run2.txt'));
+fnames_hitcongain = filenames(fullfile(datadir,condir,'*/*Hit*Win_Feedback_Run2.txt'));
+fnames_missconloss = filenames(fullfile(datadir,condir,'*/*Miss*Loss_Feedback_Run2.txt'));
+fnames_misscongain = filenames(fullfile(datadir,condir,'*/*Miss*Win_Feedback_Run2.txt'));
 
 for sub = 1:length(fnames_antloss)
     id = fnames_antgain{sub}(155:159);

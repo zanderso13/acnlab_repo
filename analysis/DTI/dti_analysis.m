@@ -58,7 +58,7 @@ end
 clear track
 plot_titles = {'L Amyg -> mOFC','L NAcc -> Amyg','L NAcc -> mOFC','R Amyg -> mOFC','R NAcc -> Amyg','R NAcc -> mOFC'};
 for track = 1:length(track_list)
-    trilevel_mdl.(track_list{track}) = fitlm(cumulative_analysis_struct.(track_list{track}),'FA ~ gendis + anhedon + fears + FD + gender + whole_brain_fa')
+    trilevel_mdl.(track_list{track}) = fitlm(cumulative_analysis_struct.(track_list{track}),'anhedon ~ FA + FD + gender + whole_brain_fa')
     trilevel_mdl.(track_list{track}).Coefficients
     anova(trilevel_mdl.(track_list{track}),'summary')
     

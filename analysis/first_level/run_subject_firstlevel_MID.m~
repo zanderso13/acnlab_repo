@@ -8,10 +8,10 @@ function run_subject_firstlevel_MID(PID, ses, run, overwrite)
 
 %% var set up
 if nargin==0 % defaults just for testing
-    PID = 'sub-20317';  
+    PID = 'sub-20302';  
     overwrite = 1;
     ses = 2;
-    run = 2;
+    run = 1;
 end
 
 if nargin==1
@@ -34,11 +34,11 @@ TR = 2;
 %% Model for MID task
 
 % FL directory for saving 1st level results: beta images, SPM.mat, etc.
-in{1} = {fullfile(fl_dir, PID, 'ses-2', strcat('run-', num2str(run)), 'MID')};
+in{1} = {fullfile(fl_dir, 'ses-2', num2str(run), 'MID')};
 
 % preproc images
 rundir = fullfile(preproc_dir, PID, 'ses-2', 'func');
-in{2} = cellstr(spm_select('ExtFPList', rundir, strcat('.*task-MID_run-0',num2str(run),'_space-MNI152NLin2009cAsym_desc-preproc_bold.nii'), ndummies+1:9999));
+in{2} = cellstr(spm_select('ExtFPList', rundir, strcat('.*task-MID_run-0',num2str(run)),'_space-MNI152NLin2009cAsym_desc-preproc_bold.nii', ndummies+1:9999));
 
 if isempty(in{2}{1})
     warning('No preprocd functional found')
@@ -47,7 +47,7 @@ end
 
 % onset files
 sub_str = PID(5:9);
-in{3} = filenames(fullfile(timing_dir, strcat('run-', num2str(run)), strcat(sub_str,'.mat')));
+in{3} = filenames(fullfile(timing_dir, strcat(sub_str,'.mat')));
 
 if isempty(in{3})
     warning('No modeling found (behav data might be missing)')
@@ -109,7 +109,7 @@ if ~skip
 
     % run spm FL estimation
     cwd = pwd;
-    job = 'MID_SPM_template.m';
+    job = 'subject_fl_spm_batch_template_MID.m';
     %%
     spm('defaults', 'FMRI')
     spm_jobman('serial',job,'',in{:});
