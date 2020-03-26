@@ -112,7 +112,7 @@ if ~skip
 
     % run spm FL estimation
     cwd = pwd;
-    job = 'subject_fl_spm_batch_template_sponpain.m';
+    job = 'subject_fl_spm_batch_template_MID.m';
     %%
     spm('defaults', 'FMRI')
     spm_jobman('serial',job,'',in{:});

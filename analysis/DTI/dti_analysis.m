@@ -10,20 +10,22 @@
 
 track_list = {'L_Amyg_mOFC','L_NAcc_Amyg','L_NAcc_mOFC','R_Amyg_mOFC','R_NAcc_Amyg','R_NAcc_mOFC'};
 suppress_figures = 1; % This is a little haphazard but this is easier than going back into the extraction script and removing the plots... so...
+% I should say the above will suppress graphs of the distributions of each
+% of the white matter outcomes we extract for these tracks.
 
 % Get your toolbox first and set up some paths
 repodir = '~/Documents/repo';
 %addpath(genpath(repodir))
-basedir = '/Users/zaz3744/Documents/current_projects/ACNlab/dti_BrainMAPD/'; % basedir, add from above track list to get datadir which is the var you want
-datamatdir = '/Users/zaz3744/Documents/current_projects/ACNlab/dti_BrainMAPD/mat_files';
-figdir = '/Users/zaz3744/Documents/current_projects/ACNlab/dti_BrainMAPD/figures';
+basedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/dti/'; % basedir, add from above track list to get datadir which is the var you want
+datamatdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/dti/mat_files';
+figdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/dti/figures';
 
 for track = 1:length(track_list)
     datadir = strcat(basedir,track_list{track});
     disp(strcat('Extracting stats for:', track_list{track}))
     clinicaldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/clinical_data';
     immunedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/immune_data';
-    motiondir = '/Users/zaz3744/Documents/current_projects/ACNlab/dti_BrainMAPD/nii/data';
+    motiondir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/dti/nii/data';
     demodir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD';
     [curr_analysis_table] = BrainMAPD_dti_extract(datadir,clinicaldir,immunedir,motiondir,demodir,datamatdir);
     cumulative_analysis_struct.(track_list{track}) = curr_analysis_table;
@@ -127,6 +129,54 @@ for track = 1:length(track_list)
     set(T, 'fontsize', 15, 'verticalalignment', 'top', 'horizontalalignment', 'left');
     title(plot_titles{track},'FontSize', 20)
     temp_file_name = strcat('Immune_',track_list{track},'.jpg');
+    saveas(gcf,fullfile(figdir,temp_file_name))
+end
+
+%% Run the model for neuroticism and BAS
+
+clear track
+for track = 1:length(track_list)
+    immune_mdl.(track_list{track}) = fitlm(cumulative_analysis_struct.(track_list{track}),'FA ~ BAS + FD + gender + whole_brain_fa')
+    immune_mdl.(track_list{track}).Coefficients
+    anova(immune_mdl.(track_list{track}),'summary')
+    
+    figure();
+    scatter(cumulative_analysis_struct.(track_list{track}).BAS(:),cumulative_analysis_struct.(track_list{track}).FA(:))
+    xlabel('Behavioral Activation Scale', 'FontSize', 15);
+    ylabel('Mean FA', 'FontSize', 15);
+    h5 = lsline();
+    h5.LineWidth = 5;
+    h5.Color = 'r';
+    r5 = corrcoef(cumulative_analysis_struct.(track_list{track}).BAS(:),cumulative_analysis_struct.(track_list{track}).FA(:),'rows','complete');
+    disp(r5(1,2));
+    str = [' r = ',num2str(r5(1,2))]
+    T = text(min(get(gca, 'xlim')), max(get(gca, 'ylim')), str); 
+    set(T, 'fontsize', 15, 'verticalalignment', 'top', 'horizontalalignment', 'left');
+    title(plot_titles{track},'FontSize', 20)
+    temp_file_name = strcat('BAS_',track_list{track},'.jpg');
+    saveas(gcf,fullfile(figdir,temp_file_name))
+end
+
+clear track
+for track = 1:length(track_list)
+    immune_mdl.(track_list{track}) = fitlm(cumulative_analysis_struct.(track_list{track}),'FA ~ neuroticism + FD + gender + whole_brain_fa')
+    immune_mdl.(track_list{track}).Coefficients
+    anova(immune_mdl.(track_list{track}),'summary')
+    
+    figure();
+    scatter(cumulative_analysis_struct.(track_list{track}).neuroticism(:),cumulative_analysis_struct.(track_list{track}).FA(:))
+    xlabel('Behavioral Activation Scale', 'FontSize', 15);
+    ylabel('Mean FA', 'FontSize', 15);
+    h5 = lsline();
+    h5.LineWidth = 5;
+    h5.Color = 'r';
+    r5 = corrcoef(cumulative_analysis_struct.(track_list{track}).neuroticism(:),cumulative_analysis_struct.(track_list{track}).FA(:),'rows','complete');
+    disp(r5(1,2));
+    str = [' r = ',num2str(r5(1,2))]
+    T = text(min(get(gca, 'xlim')), max(get(gca, 'ylim')), str); 
+    set(T, 'fontsize', 15, 'verticalalignment', 'top', 'horizontalalignment', 'left');
+    title(plot_titles{track},'FontSize', 20)
+    temp_file_name = strcat('Neuroticism_',track_list{track},'.jpg');
     saveas(gcf,fullfile(figdir,temp_file_name))
 end
 

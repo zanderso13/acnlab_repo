@@ -183,6 +183,40 @@ end
 trilevel_temp = array2table(trilevel_temp); trilevel_temp.Properties.VariableNames = {'gendis','anhedon','fears'};
 
 curr_analysis_table = [curr_analysis_table,trilevel_temp];
+
+%% Pulling neuroticism and behavioral activation scores. 
+% When Kate wrote her original paper she wrote it in terms of high risk for
+% BPD. So she looked at HPS (hypomanic personality scale?) and white
+% matter. The most analogous analysis I can do to this, is to look at the
+% two scales we based recruitment on. So here it goes.
+
+load(fullfile(clinicaldir, 'neuroticism_BAS_scales.mat'));
+
+PID = selfreportscreener(:,1);
+% epq is really hard for me to type and read... I'm changing the variable
+% name
+neuro_score = array2table(epq_score); neuro_score.Properties.VariableNames = {'neuroticism'};
+bas_score = array2table(bas_score); bas_score.Properties.VariableNames = {'BAS'};
+
+scale_table = [PID,neuro_score,bas_score];
+
+clear sub
+for sub = 1:length(curr_analysis_table.PID) 
+    if sum(curr_analysis_table.PID(:)==scale_table.PID(sub)) > 0
+        scale_temp(sub,1) = scale_table.neuroticism(curr_analysis_table.PID(:)==scale_table.PID(sub));
+        scale_temp(sub,2) = scale_table.BAS(curr_analysis_table.PID(:)==scale_table.PID(sub));
+    else
+        disp('Missing scales for:')
+        disp(curr_analysis_table.PID(sub))
+        scale_temp(sub,1) = NaN;
+        scale_temp(sub,2) = NaN;
+    end
+end
+
+scale_temp = array2table(scale_temp); scale_temp.Properties.VariableNames = {'neuroticism','BAS'};
+
+curr_analysis_table = [curr_analysis_table, scale_temp];
+
 %% Removing outliers 
 
 curr_analysis_table(find(isoutlier(curr_analysis_table.FA,'mean')),:)=[];

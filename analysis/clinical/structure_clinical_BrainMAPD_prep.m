@@ -1,18 +1,113 @@
-% This used to be a script to compare insula structure and clinical
-% measures... Eventually it turned into a workbench that I repurposed to
-% the point of insanity. SO! I've deleted a bunch of stuff. (I never really
-% wanted to study GMV anyway...
+% This is going to be the analysis script for comparing insula subregion
+% volume to tri-level factor scores. The script will first load in the .txt
+% output generated through the freesurfer pipeline, will plot the
+% distribution as a means of QC, will load in tri-level factor scores, and
+% then correlate feature of interest with insular sub regions.
 
 % set up you subjects directory
 basedir = '/projects/p30954/struct_data/session1';
 clinicaldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/clinical_data';
 repodir = '/home/zaz3744/repo';
 demodir = '/projects/p30954/demographic_data';
-
+%%
+addpath(genpath(repodir))
 %% load demographics
 demo_file = filenames(fullfile(demodir,'BrainMAPDT1S1Demo.mat'));
 load(demo_file{1});
+%%
+% find and load filenames into two tables, one for rh and one for lh. Also
+% turn these into character objs so I can pull subject numbers. Definitely
+% clunky but it's worked fine in the past I suppose. 
+% STRANGE UPDATE AND BUG: When I put spm12 into my repo folder and added it
+% to the path, this breaks. Super weird. Going to try resyncing spm12 and
+% playing around with path to find a fix for this but honestly, what the
+% hell?
+lh_struct_fnames = filenames(fullfile(basedir,'*/lh*.txt'));
+rh_struct_fnames = filenames(fullfile(basedir,'*/rh*.txt'));
+char_lh_struct_fnames = char(lh_struct_fnames);
+char_rh_struct_fnames = char(rh_struct_fnames);
+
+% It'll be easier if I load in one subject first to set the table variables
+% and what not
+lh_tabl = readtable(lh_struct_fnames{1});
+rh_tabl = readtable(rh_struct_fnames{1});
+
+% First variable name is wrong since I technically had freesurfer label
+% every sub id as "stats". This will fix the issue
+lh_tabl.Properties.VariableNames{1}='subject_number';
+rh_tabl.Properties.VariableNames{1}='subject_number';
+lh_tabl.subject_number{1}=char_lh_struct_fnames(1,39:43);
+rh_tabl.subject_number{1}=char_rh_struct_fnames(1,39:43);
+
+lh_tabl.subject_number{1} = str2num(lh_tabl.subject_number{1});
+rh_tabl.subject_number{1} = str2num(rh_tabl.subject_number{1});
+
+
+% load things in for lh
+for sub = 2:length(lh_struct_fnames)
+    data_temp=readtable(lh_struct_fnames{sub});
+    lh_tabl(sub,:) = data_temp(1,:);
+    lh_tabl.subject_number{sub} = char_lh_struct_fnames(sub,39:43);
+    lh_tabl.subject_number{sub} = str2num(lh_tabl.subject_number{sub});
+    clear data_temp
+end
+
+clear sub
+% same for rh
+for sub = 2:length(rh_struct_fnames)
+    data_temp=readtable(rh_struct_fnames{sub});
+    rh_tabl(sub,:) = data_temp(1,:);
+    rh_tabl.subject_number{sub} = char_rh_struct_fnames(sub,39:43);
+    rh_tabl.subject_number{sub} = str2num(rh_tabl.subject_number{sub});
+    clear data_temp
+end
     
+%% Going to check the distributions of the structural data now for each of the three insula sub regions
+% scatter plots of each of the subregions for both hemi should be
+% sufficient for now. I need to add code to look at the tri-level model
+% factors here too once I have them. Below are the regions of interest
+
+% ?h_S_circular_insula_ant_volume
+% ?h_S_circular_insula_inf_volume
+% ?h_S_circular_insula_sup_volume
+
+% anterior insula (looking at freeview this lines up with the dorsal
+% anterior insula I believe)
+% create_figure(['Distribution of gray matter volume in ant insula']); snapnow
+% scatter(lh_tabl.lh_S_circular_insula_ant_volume, rh_tabl.rh_S_circular_insula_ant_volume); 
+% xlabel('Left hemisphere');ylabel('Right hemisphere');
+
+% superior insula (also should line up with posterior insula from
+% pubs)
+% create_figure(['Distribution of gray matter volume in sup insula']); snapnow
+% scatter(lh_tabl.lh_S_circular_insula_sup_volume, rh_tabl.rh_S_circular_insula_sup_volume); 
+% xlabel('Left hemisphere');ylabel('Right hemisphere');
+%     
+% inferior insula (looking at freeview, lines up with ventral ant insula I'm interested in) I should double check all this once I get to lab
+% create_figure(['Distribution of gray matter volume in inf insula']); snapnow
+% scatter(lh_tabl.lh_S_circular_insula_inf_volume, rh_tabl.rh_S_circular_insula_inf_volume); 
+% xlabel('Left hemisphere');ylabel('Right hemisphere');
+%     
+
+% below will plot distributions for anterior/posterior split of insula. Ant
+% insula will include ?h_G_Ins_lg_S_cent_ins_volume and
+% ?h_S_circular_insula_ant_volume
+% posterior insula will include ?h_G_insular_short_volume,
+% lh_S_circular_insula_inf_volume, lh_S_circular_insula_sup_volume
+lh_ant_insula_vol = lh_tabl.lh_S_circular_insula_ant_volume + lh_tabl.lh_G_insular_short_volume;
+rh_ant_insula_vol = rh_tabl.rh_S_circular_insula_ant_volume + rh_tabl.rh_G_insular_short_volume;
+
+create_figure(['Distribution of gray matter volume in anterior insula']); 
+scatter(lh_ant_insula_vol, rh_ant_insula_vol); 
+xlabel('Left hemisphere');ylabel('Right hemisphere');
+
+lh_pos_insula_vol = lh_tabl.lh_G_Ins_lg_S_cent_ins_volume + lh_tabl.lh_S_circular_insula_inf_volume + lh_tabl.lh_S_circular_insula_sup_volume;
+rh_pos_insula_vol = rh_tabl.rh_G_Ins_lg_S_cent_ins_volume + rh_tabl.rh_S_circular_insula_inf_volume + rh_tabl.rh_S_circular_insula_sup_volume;
+
+create_figure(['Distribution of gray matter volume in posterior insula']); 
+scatter(lh_pos_insula_vol, rh_pos_insula_vol); 
+xlabel('Left hemisphere');ylabel('Right hemisphere');
+
 %% Load in some Tri level factor scores and plot them. That's the goal here
 clinicalfname = filenames(fullfile(clinicaldir, 'Multi*FS.mat'));
 load(clinicalfname{1});
