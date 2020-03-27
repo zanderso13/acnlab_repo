@@ -3,29 +3,36 @@
 % (default) or 1. before running this file, must run
 % read_timings_make_onsets.m
 
-function run_subject_firstlevel_MID(PID, ses, run, overwrite)
+function run_subject_firstlevel_MID(PID, ses, run, directories, overwrite)
 
 
 %% var set up
 if nargin==0 % defaults just for testing
-    PID = 'sub-20317';  
+    PID = 20341;  
     overwrite = 1;
     ses = 2;
     run = 2;
+    % directories
+    fl_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels';
+    preproc_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/fmriprep';
+    raw_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/raw';
+    timing_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files';
+    save_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels';
 end
+
+fl_dir = directories{1};
+preproc_dir = directories{2};
+raw_dir = directories{3};
+timing_dir = directories{4};
+save_dir = directories{5};
 
 if nargin==1
     overwrite = 1;
 end  
 
-fprintf(['Preparing 1st level model for MID task for ' PID ' / ' ses], ['Overwrite = ' num2str(overwrite)]);
+PID = strcat('sub-',num2str(PID));
 
-% directories
-fl_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels';
-preproc_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/fmriprep';
-raw_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/raw';
-timing_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files';
-save_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels';
+fprintf(['Preparing 1st level model for MID task for ' PID ' / ' ses], ['Overwrite = ' num2str(overwrite)]);
 
 
 ndummies = 2;
@@ -64,7 +71,7 @@ rawrun = filenames(fullfile(raw_dir, PID, 'ses-2', 'func', strcat('*task-MID_run
 
 % get nuis covs
 [Rfull, Rselected, n_spike_regs, FD] = make_nuisance_from_fmriprep_output(confound_fname{run}, rawrun, TR);%, 4);
-save(fullfile(save_dir, strcat(sub_str, '_ses', num2str(ses), '.mat')), 'FD')
+save(fullfile(save_dir, strcat(sub_str, '_ses', num2str(ses), '_run', num2str(run), '.mat')), 'FD')
 
 % choose which matrix to use
 R = Rselected;

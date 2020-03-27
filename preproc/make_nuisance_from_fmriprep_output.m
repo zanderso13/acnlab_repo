@@ -174,16 +174,23 @@ end
 R = R(1:length(nuisance_covs), any(table2array(R)));
 
 % Select a subset of regressors to return for use in GLM to return to user
-regs = R.Properties.VariableNames;
+% regs = R.Properties.VariableNames;
 dvars_cols = contains(regs,'dvars_spikes'); 
 spike_cols = contains(regs,'nuisance_covs'); 
-motion_cols = contains(regs,'rot') | contains(regs,'trans') | contains(regs,'diff'); 
-additional_spike_cols = contains(regs,'nuisance_covs_additional_spikes'); 
+% motion_cols = contains(regs,'rot') | contains(regs,'trans') | contains(regs,'diff'); 
+% % additional_spike_cols = contains(regs,'nuisance_covs_additional_spikes'); 
+% 
+Rselected = R(:,spike_cols | dvars_cols | additional_spike_cols);
+motion_final = [R.trans_x,R.trans_y,R.trans_z,R.rot_x,R.rot_y,R.rot_z,R.trans_x_derivative1,R.trans_y_derivative1,R.trans_z_derivative1,R.rot_x_derivative1,R.rot_y_derivative1,R.rot_z_derivative1,R.trans_x_power2,R.trans_y_power2,R.trans_z_power2,R.rot_x_power2,R.rot_y_power2,R.rot_z_power2,R.trans_x_derivative1_power2,R.trans_y_derivative1_power2,R.trans_z_derivative1_power2,R.rot_x_derivative1_power2,R.rot_y_derivative1_power2,R.rot_z_derivative1_power2];
+motion_final = array2table(motion_final);motion_final.Properties.VariableNames = {'trans_x','trans_y','trans_z','rot_x','rot_y','rot_z','trans_x_derivative1','trans_y_derivative1','trans_z_derivative1','rot_x_derivative1','rot_y_derivative1','rot_z_derivative1','trans_x_power2','trans_y_power2','trans_z_power2','rot_x_power2','rot_y_power2','rot_z_power2','trans_x_derivative1_power2','trans_y_derivative1_power2','trans_z_derivative1_power2','rot_x_derivative1_power2','rot_y_derivative1_power2','rot_z_derivative1_power2'};
+framewise_displacement_final = R.framewise_displacement;
+framewise_displacement_final = array2table(framewise_displacement_final);framewise_displacement_final.Properties.VariableNames = {'framewise_displacement'};
+csf_final = R.csf;
+csf_final = array2table(csf_final);csf_final.Properties.VariableNames = {'csf'};
+gsr_final = R.global_signal;
+gsr_final = array2table(gsr_final);gsr_final.Properties.VariableNames = {'global_signal'};
 
-Rselected = R(:,motion_cols | spike_cols | dvars_cols | additional_spike_cols);
-Rselected.framewise_displacement = R.framewise_displacement;
-Rselected.csf = R.csf;
-
+Rselected = [motion_final,framewise_displacement_final,csf_final,gsr_final,Rselected];
 % compute and output how many spikes total
 n_spike_regs = sum(dvars_cols | spike_cols | additional_spike_cols)
 n_spike_regs_percent = n_spike_regs / height(R)
