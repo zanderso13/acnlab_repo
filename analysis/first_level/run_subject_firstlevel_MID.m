@@ -4,20 +4,18 @@
 % read_timings_make_onsets.m
 
 function run_subject_firstlevel_MID(PID, ses, run, directories, overwrite)
-
-
 %% var set up
 if nargin==0 % defaults just for testing
-    PID = 20341;  
+    PID = 20309;  
     overwrite = 1;
     ses = 2;
     run = 2;
     % directories
-    fl_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels';
-    preproc_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/fmriprep';
-    raw_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/raw';
-    timing_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files';
-    save_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels';
+    directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels';
+    directories{2} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/fmriprep';
+    directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/raw';
+    directories{4} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files';
+    directories{5} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels';
 end
 
 fl_dir = directories{1};
