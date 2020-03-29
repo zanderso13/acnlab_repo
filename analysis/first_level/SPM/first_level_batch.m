@@ -19,7 +19,7 @@
 % Define some paths
 % This is going to generate a first level script to be submitted to the
 % cluster with each run. Where do you want all these .sh scripts saved?
-scriptdir = '';
+scriptdir = '/projects/b1108/projects/BrainMAPD_func_conn/first_levels/quest_submission';
 
 % Where are all your scripts saved for first levels? i.e. where is the
 % acnlab_repo folder?
@@ -27,11 +27,16 @@ scriptdir = '';
 repodir = '~/repo/acnlab_repo';
 
 % directories
-directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels';
-directories{2} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/fmriprep';
-directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/raw';
-directories{4} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files';
-directories{5} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels';
+% first is where your stats files will be output to
+directories{1} = '/projects/b1108/projects/BrainMAPD_func_conn/first_levels/first_level_output';
+% next is where the preprocessed data is
+directories{2} = '/projects/b1108/projects/BrainMAPD_func_conn/fmriprep';
+% where the raw data lives (raw meaning before preprocessing)
+directories{3} = '/projects/b1108/data/BrainMAPD';
+% the timing files for modelling (onsets, durations, names)
+directories{4} = '/projects/b1108/projects/BrainMAPD_func_conn/timing_files';
+% where framewise displacement files will be saved
+directories{5} = '/projects/b1108/projects/BrainMAPD_func_conn/framewise_displacement';
 
 % What run of your task are you looking at?
 run = 1;
