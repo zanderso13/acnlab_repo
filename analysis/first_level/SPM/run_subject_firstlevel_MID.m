@@ -8,16 +8,21 @@ function run_subject_firstlevel_MID(PID, ses, run, directories, overwrite)
 
 %% var set up
 if nargin==0 % defaults just for testing
-    PID = 20341;  
+    PID = 20309;  
     overwrite = 1;
     ses = 2;
     run = 2;
     % directories
-    fl_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels';
-    preproc_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/fmriprep';
-    raw_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/raw';
-    timing_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files';
-    save_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels';
+    % first is where your stats files will be output to
+    directories{1} = '/projects/b1108/projects/BrainMAPD_func_conn/first_levels/first_level_output';
+    % next is where the preprocessed data is
+    directories{2} = '/projects/b1108/projects/BrainMAPD_func_conn/fmriprep';
+    % where the raw data lives (raw meaning before preprocessing)
+    directories{3} = '/projects/b1108/data/BrainMAPD';
+    % the timing files for modelling (onsets, durations, names)
+    directories{4} = '/projects/b1108/projects/BrainMAPD_func_conn/timing_files';
+    % where framewise displacement files will be saved
+    directories{5} = '/projects/b1108/projects/BrainMAPD_func_conn/framewise_displacement';
 end
 
 fl_dir = directories{1};
