@@ -272,13 +272,13 @@ set fmri(totalVoxels) 183292928
 set fmri(ncopeinputs) 0
 
 # 4D AVW data or FEAT directory (1)
-set feat_files(1) "/projects/b1108/projects/MID_FSL_contrasts/MID_data/SUBJ/analysis/MID_Run1.feat"
+set feat_files(1) "/projects/b1108/projects/MID_FSL_contrasts/MID_data/21684/analysis/MID_Run1.feat"
 
 # Add confound EVs text file
 set fmri(confoundevs) 1
 
 # Confound EVs text file for analysis 1
-set confoundev_files(1) "/projects/b1108/projects/MID_FSL_contrasts/MID_data/SUBJ/motion/mo_confounds_MIDrun1_279TR.txt"
+set confoundev_files(1) "/projects/b1108/projects/MID_FSL_contrasts/MID_data/21684/motion/mo_confounds_MIDrun1_279TR.txt"
 
 # EV 1 title
 set fmri(evtitle1) "Anticipation_Loss"
@@ -313,7 +313,7 @@ set fmri(tempfilt_yn1) 1
 set fmri(deriv_yn1) 1
 
 # Custom EV file (EV 1)
-set fmri(custom1) "/projects/b1108/projects/MID_FSL_contrasts/zach_scripts/TimingFiles_082218/FSL_anticipation_072418/SUBJ_MID_Run1_Anticipation/SUBJ_Anticipation_Loss_Run1.txt"
+set fmri(custom1) "/projects/b1108/projects/MID_FSL_contrasts/zach_scripts/TimingFiles_082218/FSL_anticipation_072418/21684_MID_Run1_Anticipation/21684_Anticipation_Loss_Run1.txt"
 
 # Orthogonalise EV 1 wrt EV 0
 set fmri(ortho1.0) 0
@@ -366,7 +366,7 @@ set fmri(tempfilt_yn2) 1
 set fmri(deriv_yn2) 1
 
 # Custom EV file (EV 2)
-set fmri(custom2) "/projects/b1108/projects/MID_FSL_contrasts/zach_scripts/TimingFiles_082218/FSL_anticipation_072418/SUBJ_MID_Run1_Anticipation/SUBJ_Anticipation_Loss0_Run1.txt"
+set fmri(custom2) "/projects/b1108/projects/MID_FSL_contrasts/zach_scripts/TimingFiles_082218/FSL_anticipation_072418/21684_MID_Run1_Anticipation/21684_Anticipation_Loss0_Run1.txt"
 
 # Orthogonalise EV 2 wrt EV 0
 set fmri(ortho2.0) 0
@@ -419,7 +419,7 @@ set fmri(tempfilt_yn3) 1
 set fmri(deriv_yn3) 1
 
 # Custom EV file (EV 3)
-set fmri(custom3) "/projects/b1108/projects/MID_FSL_contrasts/zach_scripts/TimingFiles_082218/FSL_anticipation_072418/SUBJ_MID_Run1_Anticipation/SUBJ_Anticipation_Win_Run1.txt"
+set fmri(custom3) "/projects/b1108/projects/MID_FSL_contrasts/zach_scripts/TimingFiles_082218/FSL_anticipation_072418/21684_MID_Run1_Anticipation/21684_Anticipation_Win_Run1.txt"
 
 # Orthogonalise EV 3 wrt EV 0
 set fmri(ortho3.0) 0
@@ -472,7 +472,7 @@ set fmri(tempfilt_yn4) 1
 set fmri(deriv_yn4) 1
 
 # Custom EV file (EV 4)
-set fmri(custom4) "/projects/b1108/projects/MID_FSL_contrasts/zach_scripts/TimingFiles_082218/FSL_anticipation_072418/SUBJ_MID_Run1_Anticipation/SUBJ_Anticipation_Win0_Run1.txt"
+set fmri(custom4) "/projects/b1108/projects/MID_FSL_contrasts/zach_scripts/TimingFiles_082218/FSL_anticipation_072418/21684_MID_Run1_Anticipation/21684_Anticipation_Win0_Run1.txt"
 
 # Orthogonalise EV 4 wrt EV 0
 set fmri(ortho4.0) 0
@@ -525,7 +525,7 @@ set fmri(tempfilt_yn5) 1
 set fmri(deriv_yn5) 1
 
 # Custom EV file (EV 5)
-set fmri(custom5) "/projects/b1108/projects/MID_FSL_contrasts/zach_scripts/TimingFiles_082218/FSL_anticipation_072418/SUBJ_MID_Run1_Anticipation/SUBJ_Motor_Run1.txt"
+set fmri(custom5) "/projects/b1108/projects/MID_FSL_contrasts/zach_scripts/TimingFiles_082218/FSL_anticipation_072418/21684_MID_Run1_Anticipation/21684_Motor_Run1.txt"
 
 # Orthogonalise EV 5 wrt EV 0
 set fmri(ortho5.0) 0

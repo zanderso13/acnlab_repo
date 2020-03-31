@@ -1,19 +1,19 @@
 #!/bin/bash
 
-#SBATCH -A p30954
-#SBATCH -p short
-#SBATCH -t 1:00:00
-#SBATCH --mem=8G
-#SBATCH -J fsl_first_level_single_sub
+sub_ids=`cat ${1}`
 
-module purge fsl
-export FSLDIR='/home/zaz3744/projects/software/fsl'
+starting_id=$2
 
-. /home/zaz3744/projects/software/fsl/etc/fslconf/fsl.sh
+for sub in ${sub_ids}
+do
 
-subdir=${1}
+sed -i.bak "s/${starting_id}/${sub}/g" /projects/b1108/projects/MID_FSL_contrasts/zach_scripts/Anticipation.fsf
 
-cd /home/zaz3744/ACNlab/projects/MID_FSL_contrasts/MID_data/${subdir}
-pwd
+sbatch /projects/b1108/projects/MID_FSL_contrasts/zach_scripts/FSL_single_sub.sh ${sub}
 
-/home/zaz3744/projects/software/fsl/bin/feat /home/zaz3744/repo/acnlab_repo/analysis/first_level/FSL/GainvNoGain.fsf
+echo $sub
+echo $starting_id
+
+starting_id=${sub}
+
+done

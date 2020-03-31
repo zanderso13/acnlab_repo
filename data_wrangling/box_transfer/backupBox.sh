@@ -3,8 +3,8 @@
 set -o verbose
 
 now=`date +"%m_%d_%Y"`
-email="btklm07@gmail.com"
-backlog="/home/btk2142/backup_log_$now.txt"
+email="zacharyanderson2024@u.northwestern.edu"
+backlog="/home/zaz3744/backup_log_$now.txt"
 
 #rm .netrc
 
@@ -14,14 +14,14 @@ yes "" | openssl enc -in .netrc.enc \
 
 lftp ftp.box.com <<Backup
 
-lcd /projects/b1081/
+lcd /home/zaz3744/ACNlab/projects/BrainMAPD_func_conn
 cd Quest_Backup
-mirror --reverse --verbose --only-newer --log="$backlog"
+mirror --reverse --verbose --c --log="$backlog"
 quit
 
-Backup
+# Backup
 
 cd ~
-rm .netrc
+# rm .netrc
 
 mail -s "backup_log_$now" "$email" < "$backlog"

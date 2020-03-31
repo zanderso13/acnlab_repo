@@ -1,10 +1,19 @@
-basedir='/home/zaz3744/ACNlab/projects/MID_FSL_contrasts/MID_data'
+#!/bin/bash
 
-subs=`cat ${1}`
+sub_ids=`cat ${1}`
 
-for sub in ${subs}
+starting_id=$2
+
+for sub in ${sub_ids}
 do
 
-/home/zaz3744/repo/acnlab_repo/analysis/first_level/FSL/FSL_single_sub.sh ${sub}
+sed -i.bak "s/${starting_id}/${sub}/g" /projects/b1108/projects/MID_FSL_contrasts/zach_scripts/Anticipation.fsf
+
+sbatch /projects/b1108/projects/MID_FSL_contrasts/zach_scripts/FSL_single_sub.sh ${sub}
+
+echo $sub
+echo $starting_id
+
+starting_id=${sub}
 
 done
