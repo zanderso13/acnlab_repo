@@ -27,7 +27,7 @@ for track = 1:length(track_list)
     immunedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/immune_data';
     motiondir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/dti/nii/data';
     demodir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD';
-    [curr_analysis_table] = BrainMAPD_dti_extract(datadir,clinicaldir,immunedir,motiondir,demodir,datamatdir);
+    [curr_analysis_table] = BrainMAPD_dti_extract(datadir,clinicaldir,immunedir,motiondir,demodir,datamatdir,figdir);
     cumulative_analysis_struct.(track_list{track}) = curr_analysis_table;
     % add those paths though
     if suppress_figures == 1

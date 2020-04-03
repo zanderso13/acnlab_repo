@@ -6,7 +6,7 @@
 #SBATCH --mem=32G
 #SBATCH -J fsl_standardization
 
-module load fsl
+# module load fsl
 
 . ${FSLDIR}/etc/fslconf/fsl.sh
 
@@ -20,14 +20,14 @@ Usage() {
 # Subject list for loop
 subs=`cat ${1}`          # make sure txt file is full fib file names
 
-projdir='/home/zaz3744/projects'
+projdir='/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/MID_FSL_contrasts/anticipation'
 
 cd ${projdir}
 
 for sub in ${subs}
 do
 
-file=${sub}'/cope2.nii.gz'
+file=${sub}'/cope1.nii.gz'
 
 echo $file	
 fnirt --in=${file} --ref=MNI152_T1_2mm --verbose --iout=${file}_standard

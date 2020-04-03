@@ -9,10 +9,10 @@ run_str = 'run-1';
 task_str = 'MID';
 
 smoothing_kernel = 4;
-data = fmri_data(filenames(fullfile(fldir,'*',ses_str,run_str,task_str,'con_0001.nii')));
+data = fmri_data(filenames(fullfile(fldir,'*',ses_str,run_str,task_str,'con_0004.nii')));
 
 data = preprocess(data, 'smooth', smoothing_kernel);
 
-thresh_data = threshold(ttest(data),.05,'unc');
+thresh_data = threshold(ttest(data),.001,'unc');
 
 montage(thresh_data)

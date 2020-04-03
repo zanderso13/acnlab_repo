@@ -1,4 +1,4 @@
-function [curr_analysis_table] = BrainMAPD_dti_extract(datadir,clinicaldir,immunedir,motiondir,demodir,datamatdir)
+function [curr_analysis_table] = BrainMAPD_dti_extract(datadir,clinicaldir,immunedir,motiondir,demodir,datamatdir,figdir)
 
 % Helloooooooo campers. We gotta get some analyses going on these DTI data
 % pronto. First, what are we looking at. You'll soon find out
@@ -14,16 +14,21 @@ pull_from_txt = 1; % set to 1 if you want to load from txt files and not from ma
 fnames_motion = filenames(fullfile(motiondir,'*txt'));
 for sub_motion = 1:length(fnames_motion)
     motion = load(fnames_motion{sub_motion});
+    % need to convert radian units output from spm to mm. I'm making a
+    % pretty big assumption here but I'm hoping our age group has an
+    % average head radius ~ 50 mm as does Power et al (2012)
+    motion(:,4:6) = motion(:,4:6) * 50;
+    for mot = 2:length(motion)
+        diff_curr(1) = 0;
+        diff_curr(mot) = abs(sum(motion(mot,:) - motion(mot-1,:))); 
+    end    
     if length(motion) == 129
         FD_sub_id(:,sub_motion) = str2num(fnames_motion{sub_motion}(80:84));
-        FD_temp(:,sub_motion) = mean(motion,2);
+        FD(sub_motion) = mean(diff_curr);
     else
         FD_sub_id(:,sub_motion) = 0;
         FD_temp(:,sub_motion) = NaN;
     end  
-    FD = FD_temp';   
-    FD = nanmean(FD,2);
-    
 end
 % FD_sub_id = FD_sub_id';
 % FD(find(FD_sub_id==0),:)=[];
@@ -85,6 +90,7 @@ for sub = 1:length(fnames)
     sub_id(sub) = str2num(fnames{sub}(80:84));
 end
 sub_id = sub_id';
+FD = FD';
 FD_final = [sub_id,FD];
 % Grab clinical data for those people and check for people who are missing
 % data
@@ -220,6 +226,17 @@ curr_analysis_table = [curr_analysis_table, scale_temp];
 %% Removing outliers 
 
 curr_analysis_table(find(isoutlier(curr_analysis_table.FA,'mean')),:)=[];
+
+% I want to plot motion here, also want to save the output for Alexis
+figure();
+histogram(curr_analysis_table.FD)
+title('Framewise Displacement')
+saveas(gcf,fullfile(figdir,'FD.jpg'))
+motion_to_save = [curr_analysis_table.PID,curr_analysis_table.FD];
+dlmwrite(fullfile(datamatdir,'motion.txt'), motion_to_save)
+
+curr_analysis_table(curr_analysis_table.FD>0.3,:) = [];
+
 
 dsm_diagnoses_regressors = [curr_analysis_table.Dep(:),curr_analysis_table.Anx(:),curr_analysis_table.Com(:)];
 
