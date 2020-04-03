@@ -3,27 +3,28 @@
 % (default) or 1. before running this file, must run
 % read_timings_make_onsets.m
 
-function run_subject_firstlevel_MID(PID, ses, run, directories, overwrite)
+function run_subject_firstlevel_MID(PID, ses, run, overwrite)
 
 
 %% var set up
 if nargin==0 % defaults just for testing
-    PID = 10262;  
+    PID = 20150;  
     overwrite = 1;
     ses = 2;
     run = 1;
-    % directories
-    % first is where your stats files will be output to
-    directories{1} = '/home/zaz3744/ACNlab/projects/BrainMAPD_func_conn/first_levels';
-    % next is where the preprocessed data is
-    directories{2} = '/projects/b1108/projects/BrainMAPD_func_conn/fmriprep';
-    % where the raw data lives (raw meaning before preprocessing)
-    directories{3} = '/projects/b1108/data/BrainMAPD';
-    % the timing files for modelling (onsets, durations, names)
-    directories{4} = '/projects/b1108/projects/BrainMAPD_func_conn/timing_files';
-    % where framewise displacement files will be saved
-    directories{5} = '/home/zaz3744/ACNlab/projects/BrainMAPD_func_conn/framewise_displacement';
 end
+
+% directories
+% first is where your stats files will be output to
+directories{1} = '/projects/b1108/projects/BrainMAPD_func_conn/first_levels/first_level_output';
+% next is where the preprocessed data is
+directories{2} = '/projects/b1108/projects/BrainMAPD_func_conn/fmriprep';
+% where the raw data lives (raw meaning before preprocessing)
+directories{3} = '/projects/b1108/data/BrainMAPD';
+% the timing files for modelling (onsets, durations, names)
+directories{4} = '/projects/b1108/projects/BrainMAPD_func_conn/first_levels/timing_files';
+% where framewise displacement files will be saved
+directories{5} = '/projects/b1108/projects/BrainMAPD_func_conn/first_levels/framewise_displacement';
 
 fl_dir = directories{1};
 preproc_dir = directories{2};
@@ -73,7 +74,7 @@ confound_fname = filenames(fullfile(preproc_dir, PID, 'ses-2', 'func', '*task-MI
 
 % find the raw image file, for spike detection
 rawrun = filenames(fullfile(raw_dir, PID, 'ses-2', 'func', strcat('*task-MID_run-0',num2str(run),'_bold.nii*')));
-
+cd(fullfile(preproc_dir, PID));
 % get nuis covs
 [Rfull, Rselected, n_spike_regs, FD] = make_nuisance_from_fmriprep_output(confound_fname{run}, rawrun, TR);%, 4);
 save(fullfile(save_dir, strcat(sub_str, '_ses', num2str(ses), '_run', num2str(run), '.mat')), 'FD')

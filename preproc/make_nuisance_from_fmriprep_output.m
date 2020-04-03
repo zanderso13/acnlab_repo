@@ -130,33 +130,33 @@ R = [R dvars_spikes_regs];
 % creation of nuisance regressors without considering the following TRs
 % Add them if user requested, for both nuisance_covs and dvars_spikes_regs
 
-if exist('spike_additional_vols')
-        
-    % concatenate generated spike nuisance covs and also dvars regs. We
-    % would like to flag subsequent TR's with respect to both of these
-    % measures.
-    nuisance_covs_with_timing_adjustment = [nuisance_covs, table2array(dvars_spikes_regs)];
-    spikes = [spikes{1};dvars_spikes];
-    nuisance_covs_additional_spikes = zeros(length(nuisance_covs),length(spikes)*spike_additional_vols);
-    
-    % This loop will create a separate column with ones in each row (TR) 
-    % we would like to consider a nuisance regressor
-    % Performs this function for dvars and spikes. From now on we'll
-    % consider the two as a single set of regressors
-    for i = 1:length(spikes) 
-        nuisance_covs_additional_spikes(spikes(i)+1 : spikes(i)+spike_additional_vols,(i*spike_additional_vols-(spike_additional_vols-1)):(i*spike_additional_vols)) = eye(spike_additional_vols);
-    end
-
-    % if any spikes went beyond the end, trim it down
-    nuisance_covs_additional_spikes = nuisance_covs_additional_spikes(1:height(R),:);
-
-    % Add the additional spikes to the larger covariance matrix
-    % if any already exist in R, drop them first so can (re)add them
-    % without issue
-    additional_spike_cols = contains(R.Properties.VariableNames,'additional_spikes'); 
-    R(:,additional_spike_cols) = []; 
-    R = [R array2table(nuisance_covs_additional_spikes)];
-end
+% if exist('spike_additional_vols')
+%         
+%     % concatenate generated spike nuisance covs and also dvars regs. We
+%     % would like to flag subsequent TR's with respect to both of these
+%     % measures.
+%     nuisance_covs_with_timing_adjustment = [nuisance_covs, table2array(dvars_spikes_regs)];
+%     spikes = [spikes{1};dvars_spikes];
+%     nuisance_covs_additional_spikes = zeros(length(nuisance_covs),length(spikes)*spike_additional_vols);
+%     
+%     % This loop will create a separate column with ones in each row (TR) 
+%     % we would like to consider a nuisance regressor
+%     % Performs this function for dvars and spikes. From now on we'll
+%     % consider the two as a single set of regressors
+%     for i = 1:length(spikes) 
+%         nuisance_covs_additional_spikes(spikes(i)+1 : spikes(i)+spike_additional_vols,(i*spike_additional_vols-(spike_additional_vols-1)):(i*spike_additional_vols)) = eye(spike_additional_vols);
+%     end
+% 
+%     % if any spikes went beyond the end, trim it down
+%     nuisance_covs_additional_spikes = nuisance_covs_additional_spikes(1:height(R),:);
+% 
+%     % Add the additional spikes to the larger covariance matrix
+%     % if any already exist in R, drop them first so can (re)add them
+%     % without issue
+%     additional_spike_cols = contains(R.Properties.VariableNames,'additional_spikes'); 
+%     R(:,additional_spike_cols) = []; 
+%     R = [R array2table(nuisance_covs_additional_spikes)];
+% end
 
 
 % Now, remove redundant spike regressors
