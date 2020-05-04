@@ -36,10 +36,10 @@ directories{3} = '/projects/b1108/data/BrainMAPD';
 % the timing files for modelling (onsets, durations, names)
 directories{4} = '/projects/b1108/projects/BrainMAPD_func_conn/timing_files';
 % where framewise displacement files will be saved
-directories{5} = '/projects/b1108/projects/BrainMAPD_func_conn/framewise_displacement';
+directories{5} = '/projects/b1108/projects/BrainMAPD_func_conn/additional_files';
 
 % What run of your task are you looking at?
-run = 1;
+run = 2;
 % What session appears in your raw filenames when in BIDS format?
 ses = 2;
 % Do you want to overwrite previously estimated first levels or just add to
@@ -61,7 +61,7 @@ sublist = string(sublist);
 % option will still be helpful here to turn things on or off.
 
 if overwrite == 0
-    fl_list = filenames(fullfile(directories{1},'*/ses-2/run-1/MID/con_0001.nii'));
+    fl_list = filenames(fullfile(directories{1},'*/ses-2/',strcat('run-',num2str(run)),'/MID/SPM.mat'));
     counter = 1;
     for sub = 1:length(sublist)
         curr_sub = num2str(sublist(sub));
@@ -77,17 +77,14 @@ end
 % Run/submit first level script
 
 cd(scriptdir)
-for sub = 1:length(new_list)
-    PID = new_list(sub);
-    ses = 2;
-    run = 1;
-    overwrite = 0;
-    run_subject_firstlevel_MID(PID,ses,run,overwrite)
-%     % to run directly (interactively)
-%     %run_subject_firstlevel_acute(URSIs{i}, ses, 1)    
-%     %continue
-%     
-% 
+for sub = 1:length(sublist)
+    PID = sublist(sub);
+%     ses = 2;
+%     run = 2;
+%    overwrite = 0;
+%     run_subject_firstlevel_MID(PID,ses,run,overwrite)
+    disp(PID)
+
 %        s = ['#!/bin/bash\n\n'...
 %     '#SBATCH -A p30954\n'...
 %     '#SBATCH -p short\n'...
@@ -102,7 +99,7 @@ for sub = 1:length(new_list)
 %     
 %     !chmod 777 first_level_script.sh
 %     !sbatch first_level_script.sh
-    
+%     
 end
 % I probably want to add flags or warnings that will be easy to reference
 % later with respect to motion problems, missing data, corrupted files,

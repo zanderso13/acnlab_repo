@@ -1,0 +1,2 @@
+/home/zaz3744/ACNlab/projects/BrainMAPD_DTI/time_point_2/src/sub-10471_ses-4_run-01_dwi.nii.gz.src.gz
+/home/zaz3744/ACNlab/projects/BrainMAPD_DTI/time_point_2/src/sub-21130_ses-4_run-01_dwi.nii.gz.src.gz

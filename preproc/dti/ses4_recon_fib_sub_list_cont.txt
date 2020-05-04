@@ -1,0 +1,8 @@
+/home/zaz3744/ACNlab/projects/BrainMAPD_DTI/time_point_2/src/sub-10074_ses-4_run-01_dwi.nii.gz.src.gz
+/home/zaz3744/ACNlab/projects/BrainMAPD_DTI/time_point_2/src/sub-10388_ses-4_run-01_dwi.nii.gz.src.gz
+/home/zaz3744/ACNlab/projects/BrainMAPD_DTI/time_point_2/src/sub-10466_ses-4_run-01_dwi.nii.gz.src.gz
+/home/zaz3744/ACNlab/projects/BrainMAPD_DTI/time_point_2/src/sub-20664_ses-4_run-01_dwi.nii.gz.src.gz
+/home/zaz3744/ACNlab/projects/BrainMAPD_DTI/time_point_2/src/sub-20695_ses-4_run-01_dwi.nii.gz.src.gz
+/home/zaz3744/ACNlab/projects/BrainMAPD_DTI/time_point_2/src/sub-20703_ses-4_run-01_dwi.nii.gz.src.gz
+/home/zaz3744/ACNlab/projects/BrainMAPD_DTI/time_point_2/src/sub-21130_ses-4_run-01_dwi.nii.gz.src.gz
+/home/zaz3744/ACNlab/projects/BrainMAPD_DTI/time_point_2/src/sub-21238_ses-4_run-01_dwi.nii.gz.src.gz
