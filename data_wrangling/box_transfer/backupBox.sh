@@ -16,7 +16,7 @@ lftp ftp.box.com <<Backup
 
 lcd /home/zaz3744/ACNlab/projects/BrainMAPD_func_conn
 cd Quest_Backup
-mirror --reverse --verbose --c --log="$backlog"
+mirror --reverse --verbose --only-newer --log="$backlog" #-c essentially does rsync
 quit
 
 # Backup

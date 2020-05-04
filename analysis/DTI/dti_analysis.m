@@ -79,7 +79,7 @@ for track = 1:length(track_list)
     %title(plot_titles{track},'FontSize', 30)
     subplot(1,3,2)
     scatter(cumulative_analysis_struct.(track_list{track}).anhedon(:),cumulative_analysis_struct.(track_list{track}).FA(:))
-    xlabel('Anhedonia', 'FontSize', 15);
+    xlabel('Positive Affect', 'FontSize', 15);
     ylabel('Mean FA', 'FontSize', 15);
     h5 = lsline();
     h5.LineWidth = 5;

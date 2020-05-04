@@ -23,14 +23,14 @@ for sub_motion = 1:length(fnames_motion)
         diff_curr(mot) = abs(sum(motion(mot,:) - motion(mot-1,:))); 
     end    
     if length(motion) == 129
-        FD_sub_id(:,sub_motion) = str2num(fnames_motion{sub_motion}(80:84));
-        FD(sub_motion) = mean(diff_curr);
+        FD(sub_motion,1) = str2num(fnames_motion{sub_motion}(80:84));
+        FD(sub_motion,2) = mean(diff_curr);
     else
-        FD_sub_id(:,sub_motion) = 0;
-        FD_temp(:,sub_motion) = NaN;
+        FD(sub_motion,1) = str2num(fnames_motion{sub_motion}(80:84));
+        FD(sub_motion,2) = NaN;
     end  
 end
-% FD_sub_id = FD_sub_id';
+
 % FD(find(FD_sub_id==0),:)=[];
 %% Snag those files
 fnames = filenames(fullfile(datadir,'*.stat.txt'));
@@ -90,12 +90,25 @@ for sub = 1:length(fnames)
     sub_id(sub) = str2num(fnames{sub}(80:84));
 end
 sub_id = sub_id';
-FD = FD';
-FD_final = [sub_id,FD];
+%FD stuff goes here
+clear sub
+clear curr
+for sub = 1:length(sub_id)
+    if isempty(find(FD(:,1) == sub_id(sub))) == 0
+        curr = find(FD(:,1) == sub_id(sub));
+        curr_FD(sub,1) = FD(curr,2);
+    else
+        disp(strcat(num2str(sub_id(sub)),' missing FD'))
+        curr_FD(sub,1) = NaN;
+    end
+end
+        
+FD_final = [sub_id,curr_FD];
 % Grab clinical data for those people and check for people who are missing
 % data
 
 clear sub
+clear curr
 load(fullfile(clinicaldir,'BrainMAPD_clinical_diagnoses_final.mat'))
 for sub = 1:length(sub_id)
     if isempty(find(clinical_info.PID(:) == sub_id(sub))) == 0
@@ -104,7 +117,7 @@ for sub = 1:length(sub_id)
         curr_anx(sub) = clinical_info.anx_life_any(curr);
         curr_com(sub) = clinical_info.comorbid_life_dep_anx(curr);
     else
-        disp(sub_id(sub))
+        disp(strcat(num2str(sub_id(sub)), ' missing clinical info'))
         curr_dep(sub) = NaN;
         curr_anx(sub) = NaN;
         curr_com(sub) = NaN;
@@ -136,7 +149,7 @@ curr_analysis_table.Properties.VariableNames = {'PID','Dep','Anx','Com','composi
 
 figure()
 scatter(curr_analysis_table.composite_immune, curr_analysis_table.FA)
-% title(strcat(datadir(64:69), ' ', datadir(68:72),' FA'))
+title(strcat(datadir(64:69), ' ', datadir(68:72),' FA'))
 
 
 corr_FA = corr(curr_analysis_table.composite_immune, curr_analysis_table.FA,'Rows','complete')
@@ -146,10 +159,11 @@ corr_QA = corr(curr_analysis_table.composite_immune, curr_analysis_table.QA,'Row
 % going to focus on FA, as per Robin's request. First thing is to get my
 % covariates going. So pulling out gender from our original document. This
 % is slow but my computer is great so I'm just gonna go for it
-load(fullfile(datamatdir,'whole_brain_fa.mat'));
+load(fullfile(datamatdir,'motion_corrected_whole_brain_fa.mat'));
 load(fullfile(demodir,'demographics.mat'));
 load(fullfile(clinicaldir,'trilevel_factors.mat'));
 clear sub
+clear curr
 for sub = 1:length(curr_analysis_table.PID)
     if isempty(find(BrainMAPDT1S1Demo.PID(:) == curr_analysis_table.PID(sub))) == 0
         curr = find(BrainMAPDT1S1Demo.PID(:) == curr_analysis_table.PID(sub));
@@ -162,10 +176,27 @@ end
 
 gender = array2table(gender);
 gender.Properties.VariableNames = {'gender'};
-curr_analysis_table = [curr_analysis_table,gender,whole_brain_fa];
+
+clear sub
+clear curr
+for sub = 1:length(curr_analysis_table.PID)
+    if isempty(find(contains(whole_brain_fa.PID_whole_brain(:),num2str(curr_analysis_table.PID(sub)))))==0
+        curr = find(contains(whole_brain_fa.PID_whole_brain(:),num2str(curr_analysis_table.PID(sub))));
+        whole_brain_fa_curr(sub,1) = whole_brain_fa.whole_brain_fa(curr);
+    else
+        disp(whole_brain_fa.PID_whole_brain(sub))
+        whole_brain_fa_curr(sub,1) = NaN;
+    end
+    
+end
+
+whole_brain_fa_curr = array2table(whole_brain_fa_curr);
+whole_brain_fa_curr.Properties.VariableNames = {'whole_brain_fa'};
+
+curr_analysis_table = [curr_analysis_table,gender,whole_brain_fa_curr];
 
 
-FD = array2table(FD);
+FD = array2table(FD_final(:,2));
 FD.Properties.VariableNames = {'FD'};
 curr_analysis_table = [curr_analysis_table,FD];
 %trilevel factor extraction

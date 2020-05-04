@@ -7,17 +7,23 @@
 % con_0003 - loss consumption
 % con_0004 - gain consumption
 
-
-fldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/home/zaz3744/ACNlab/projects/BrainMAPD_func_conn/first_levels/first_level_output';
+% SPM directories
+fldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output';
 ses_str = 'ses-2';
-run_str = 'run-1';
+run_str = 'run-2';
 task_str = 'MID';
 
+% FSL directories
+% fldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/MID_FSL_contrasts/anticipation';
+% ses_str = '*';
+% run_str = 'analysis/MID_Run1.feat';
+% task_str = 'stats';
+
 smoothing_kernel = 6;
-data = fmri_data(filenames(fullfile(fldir,'*',ses_str,run_str,task_str,'con_0004.nii')));
+data = fmri_data(filenames(fullfile(fldir,'*',ses_str,run_str,task_str,'con_0001.nii')));
 
 data = preprocess(data, 'smooth', smoothing_kernel);
 
-thresh_data = threshold(ttest(data),.05,'unc');
+thresh_data = threshold(ttest(data),.001,'unc');
 
 montage(thresh_data)

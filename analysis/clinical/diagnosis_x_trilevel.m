@@ -8,7 +8,8 @@
 repodir = '~/Documents/repo';
 datadir = '/Users/zaz3744/Documents/repo/acnlab_repo/data';
 clinicaldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/clinical_data';
-addpath(genpath(repodir))
+figdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/clinical_data/figures';
+%addpath(genpath(repodir))
 
 %% Load in data files
 load(fullfile(datadir,'tri_level_final.mat'));
@@ -118,7 +119,86 @@ figure; [c,m,h]=multcompare(stats)
 
 %% let's get some CSR's going
 % load the file that, as it turns out, wasn't hard to create
+% current 
+figure();
+subplot(1,2,1)
+scatter(curr_dep(:,1),Anhed(:,1))
+h1 = lsline();
+h1.LineWidth = 5;
+h1.Color = 'r';
+r1 = corrcoef(curr_dep(:,1),Anhed(:,1),'rows','complete');
+disp(r1(1,2));
+str = [' r = ',num2str(r1(1,2))]
+T = text(min(get(gca, 'xlim')), max(get(gca, 'ylim')), str); 
+set(T, 'fontsize', 14, 'verticalalignment', 'top', 'horizontalalignment', 'left');
+title("Dep CSR Current vs Positive Affect")
+subplot(1,2,2) 
+scatter(curr_anx(:,1),Anhed(:,1)) 
+h2 = lsline();
+h2.LineWidth = 5;
+h2.Color = 'r';
+r2 = corrcoef(curr_anx(:,1),Anhed(:,1),'rows','complete');
+disp(r2(1,2));
+str = [' r = ',num2str(r2(1,2))]
+T = text(min(get(gca, 'xlim')), max(get(gca, 'ylim')), str); 
+set(T, 'fontsize', 14, 'verticalalignment', 'top', 'horizontalalignment', 'left');
+title("Anx CSR Current vs Positive Affect")
+temp_file_name = strcat('CurrentCSR_PositiveAffect.jpg');
+saveas(gcf,fullfile(figdir,temp_file_name))
 
+figure(); 
+subplot(1,2,1)
+scatter(curr_dep(:,1),GenDis(:,1))
+h3 = lsline();
+h3.LineWidth = 5;
+h3.Color = 'r';
+r3 = corrcoef(curr_dep(:,1),GenDis(:,1),'rows','complete');
+disp(r3(1,2));
+str = [' r = ',num2str(r3(1,2))]
+T = text(min(get(gca, 'xlim')), max(get(gca, 'ylim')), str); 
+set(T, 'fontsize', 14, 'verticalalignment', 'top', 'horizontalalignment', 'left');
+title("Dep CSR Current vs General Distress")
+subplot(1,2,2) 
+scatter(curr_anx(:,1),GenDis(:,1))
+h4 = lsline();
+h4.LineWidth = 5;
+h4.Color = 'r';
+r4 = corrcoef(curr_anx(:,1),GenDis(:,1),'rows','complete');
+disp(r4(1,2));
+str = [' r = ',num2str(r4(1,2))]
+T = text(min(get(gca, 'xlim')), max(get(gca, 'ylim')), str); 
+set(T, 'fontsize', 14, 'verticalalignment', 'top', 'horizontalalignment', 'left');
+title("Anx CSR Current vs General Distress")
+temp_file_name = strcat('CurrentCSR_GeneralDistress.jpg');
+saveas(gcf,fullfile(figdir,temp_file_name))
+    
+figure();
+subplot(1,2,1)
+scatter(curr_dep(:,1),Fears(:,1))
+h5 = lsline();
+h5.LineWidth = 5;
+h5.Color = 'r';
+r5 = corrcoef(curr_dep(:,1),Fears(:,1),'rows','complete');
+disp(r5(1,2));
+str = [' r = ',num2str(r5(1,2))]
+T = text(min(get(gca, 'xlim')), max(get(gca, 'ylim')), str); 
+set(T, 'fontsize', 14, 'verticalalignment', 'top', 'horizontalalignment', 'left');
+title("Dep CSR Current vs Fears")
+subplot(1,2,2) 
+scatter(curr_anx(:,1),Fears(:,1)) 
+h6 = lsline();
+h6.LineWidth = 5;
+h6.Color = 'r';
+r6 = corrcoef(curr_anx(:,1),Fears(:,1),'rows','complete');
+disp(r6(1,2));
+str = [' r = ',num2str(r6(1,2))]
+T = text(min(get(gca, 'xlim')), max(get(gca, 'ylim')), str); 
+set(T, 'fontsize', 14, 'verticalalignment', 'top', 'horizontalalignment', 'left');
+title("Anx CSR Current vs Fears")
+temp_file_name = strcat('CurrentCSR_Fears.jpg');
+saveas(gcf,fullfile(figdir,temp_file_name))
+
+% lifetime
 figure();
 subplot(1,2,1)
 scatter(dep_csr(:,1),Anhed(:,1))
@@ -130,7 +210,7 @@ disp(r1(1,2));
 str = [' r = ',num2str(r1(1,2))]
 T = text(min(get(gca, 'xlim')), max(get(gca, 'ylim')), str); 
 set(T, 'fontsize', 14, 'verticalalignment', 'top', 'horizontalalignment', 'left');
-title("Dep CSR current vs Anhedonia")
+title("Dep CSR Lifetime vs Positive Affect")
 subplot(1,2,2) 
 scatter(anx_csr(:,1),Anhed(:,1)) 
 h2 = lsline();
@@ -141,7 +221,9 @@ disp(r2(1,2));
 str = [' r = ',num2str(r2(1,2))]
 T = text(min(get(gca, 'xlim')), max(get(gca, 'ylim')), str); 
 set(T, 'fontsize', 14, 'verticalalignment', 'top', 'horizontalalignment', 'left');
-title("Anx CSR current vs Anhedonia")
+title("Anx CSR Lifetime vs Positive Affect")
+temp_file_name = strcat('LifetimeCSR_PositiveAffect.jpg');
+saveas(gcf,fullfile(figdir,temp_file_name))
 
 figure(); 
 subplot(1,2,1)
@@ -154,7 +236,7 @@ disp(r3(1,2));
 str = [' r = ',num2str(r3(1,2))]
 T = text(min(get(gca, 'xlim')), max(get(gca, 'ylim')), str); 
 set(T, 'fontsize', 14, 'verticalalignment', 'top', 'horizontalalignment', 'left');
-title("Dep CSR current vs General Distress")
+title("Dep CSR Lifetime vs General Distress")
 subplot(1,2,2) 
 scatter(anx_csr(:,1),GenDis(:,1))
 h4 = lsline();
@@ -165,8 +247,10 @@ disp(r4(1,2));
 str = [' r = ',num2str(r4(1,2))]
 T = text(min(get(gca, 'xlim')), max(get(gca, 'ylim')), str); 
 set(T, 'fontsize', 14, 'verticalalignment', 'top', 'horizontalalignment', 'left');
-title("Anx CSR current vs General Distress")
-
+title("Anx CSR Lifetime vs General Distress")
+temp_file_name = strcat('LifetimeCSR_GeneralDistress.jpg');
+saveas(gcf,fullfile(figdir,temp_file_name))
+    
 figure();
 subplot(1,2,1)
 scatter(dep_csr(:,1),Fears(:,1))
@@ -178,7 +262,7 @@ disp(r5(1,2));
 str = [' r = ',num2str(r5(1,2))]
 T = text(min(get(gca, 'xlim')), max(get(gca, 'ylim')), str); 
 set(T, 'fontsize', 14, 'verticalalignment', 'top', 'horizontalalignment', 'left');
-title("Dep CSR current vs Fears")
+title("Dep CSR Lifetime vs Fears")
 subplot(1,2,2) 
 scatter(anx_csr(:,1),Fears(:,1)) 
 h6 = lsline();
@@ -189,8 +273,6 @@ disp(r6(1,2));
 str = [' r = ',num2str(r6(1,2))]
 T = text(min(get(gca, 'xlim')), max(get(gca, 'ylim')), str); 
 set(T, 'fontsize', 14, 'verticalalignment', 'top', 'horizontalalignment', 'left');
-title("Anx CSR current vs Fears")
-
-
-
-
+title("Anx CSR Lifetime vs Fears")
+temp_file_name = strcat('LifetimeCSR_Fears.jpg');
+saveas(gcf,fullfile(figdir,temp_file_name))
