@@ -119,36 +119,26 @@ right_vs_loss_anticipation_mask = fmri_data(fullfile(maskdir,'anticipation/right
 %% Extract activation from contrasts OFC
 
 % Gain consumption
-bi_ofc_gain_con = data_gain_con.dat .* right_ofc_consumption_mask.dat;
+bi_ofc_gain_con = data_gain_con.dat .* bi_ofc_consumption_mask.dat;
 bi_ofc_gain_con(bi_ofc_gain_con==0)=NaN;
 bi_ofc_gain_con_bold_avg = nanmean(bi_ofc_gain_con);
 % Loss consumption
-bi_ofc_loss_con = data_loss_con.dat .* right_ofc_consumption_mask.dat;
+bi_ofc_loss_con = data_loss_con.dat .* bi_ofc_consumption_mask.dat;
 bi_ofc_loss_con(bi_ofc_loss_con==0)=NaN;
 bi_ofc_loss_con_bold_avg = nanmean(bi_ofc_loss_con);
 % Gain anticipation
-bi_vs_gain_ant = data_gain_ant.dat .* left_vs_rew_anticipation_mask.dat;
-bi_vs_gain_ant(bi_vs_gain_ant==0)=NaN;
-bi_vs_gain_ant_bold_avg = nanmean(bi_vs_gain_ant);
+bi_ofc_gain_ant = data_gain_ant.dat .* bi_ofc_anticipation_mask.dat;
+bi_ofc_gain_ant(bi_ofc_gain_ant==0)=NaN;
+bi_ofc_gain_ant_bold_avg = nanmean(bi_ofc_gain_ant)
 % Loss anticipation
-bi_vs_loss_ant = data_loss_ant.dat .* left_vs_loss_anticipation_mask.dat;
-bi_vs_loss_ant(bi_vs_loss_ant==0)=NaN;
-bi_vs_loss_ant_bold_avg = nanmean(bi_vs_loss_ant);
+bi_ofc_loss_ant = data_loss_ant.dat .* bi_ofc_anticipation_mask.dat;
+bi_ofc_loss_ant(bi_ofc_loss_ant==0)=NaN;
+bi_ofc_loss_ant_bold_avg = nanmean(bi_ofc_loss_ant);
 
 %% Regression analysis
 % Get regressors
-anova_diagnoses = sum([R(:,1), (R(:,2)*2), (R(:,3)*3)],2);  
+anova_diagnoses = sum(R(:,1), (R(:,2)*2), (R(:,3)  
 
-anova_regressors_strings = cell(size(anova_diagnoses));
-anova_regressors_strings(anova_diagnoses(:,1)==0) = {'Healthy'};
-anova_regressors_strings(anova_diagnoses(:,1)==1) = {'Depression'};
-anova_regressors_strings(anova_diagnoses(:,1)==2) = {'Anxiety'};
-anova_regressors_strings(anova_diagnoses(:,1)==3) = {'Comorbidity'};
-
-[biOFC_gaincon_p,biOFC_gaincon_tbl,biOFC_gaincon_stats] = anova1(bi_ofc_gain_con_bold_avg(:),anova_regressors_strings);
-[biOFC_losscon_p,biOFC_losscon_tbl,biOFC_losscon_stats] = anova1(bi_ofc_loss_con_bold_avg(:),anova_regressors_strings);
-[biVS_gainant_p,biVS_gainant_tbl,biVS_gainant_stats] = anova1(bi_vs_gain_ant_bold_avg(:),anova_regressors_strings);
-[biVS_lossant_p,biVS_lossant_tbl,biVS_lossant_stats] = anova1(bi_vs_loss_ant_bold_avg(:),anova_regressors_strings);
 
 %% OLD
 % %% Replace 0's with scaled contrast numbers so SPM doesn't freak out.
