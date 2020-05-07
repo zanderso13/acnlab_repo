@@ -69,32 +69,32 @@ fnames_gain_anticipation_temp = filenames(fullfile(datadir, '*/ses-2/run-1/MID/s
 fnames_loss_anticipation_temp = filenames(fullfile(datadir, '*/ses-2/run-1/MID/scon_0001.nii'));
 
 
-fnames_gain_consumption = fnames_gain_consumption_temp(subj_motion<.25);
-fnames_loss_consumption = fnames_loss_consumption_temp(subj_motion<.25);
-fnames_gain_anticipation = fnames_gain_anticipation_temp(subj_motion<.25);
-fnames_loss_anticipation = fnames_loss_anticipation_temp(subj_motion<.25);
-R = R(subj_motion<.25,:);
+fnames_gain_consumption = fnames_gain_consumption_temp(subj_motion<.3);
+fnames_loss_consumption = fnames_loss_consumption_temp(subj_motion<.3);
+fnames_gain_anticipation = fnames_gain_anticipation_temp(subj_motion<.3);
+fnames_loss_anticipation = fnames_loss_anticipation_temp(subj_motion<.3);
+R = R(subj_motion<.3,:);
 
 %% BEGIN WHOLE BRAIN ANALYSIS SECTION
 % Gain Consumption
 data_gain_con = fmri_data(fnames_gain_consumption)
 data_gain_con.X = R;
-out_gain_consump = regress(data_gain_con, .001, 'unc')
+out_gain_consump = regress(data_gain_con, .01, 'unc')
 
 %% Loss Consumption
 data_loss_con = fmri_data(fnames_loss_consumption)
 data_loss_con.X = R;
-out_loss_consump = regress(data_loss_con, .001, 'unc')
+out_loss_consump = regress(data_loss_con, .01, 'unc')
 
 %% Gain Anticipation
 data_gain_ant = fmri_data(fnames_gain_anticipation)
 data_gain_ant.X = R;
-out_gain_anticipation = regress(data_gain_ant, .001, 'unc')
+out_gain_anticipation = regress(data_gain_ant, .01, 'unc')
 
 %% Loss Anticipation
 data_loss_ant = fmri_data(fnames_loss_anticipation)
 data_loss_ant.X = R;
-out_loss_anticipation = regress(data_loss_ant, .001, 'unc')
+out_loss_anticipation = regress(data_loss_ant, .01, 'unc')
 
 
 %% ROI ANALYSIS
