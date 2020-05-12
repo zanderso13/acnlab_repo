@@ -61,11 +61,11 @@ sublist = string(sublist);
 % option will still be helpful here to turn things on or off.
 
 if overwrite == 0
-    fl_list = filenames(fullfile(directories{1},'*/ses-2/',strcat('run-',num2str(run)),'/MID/SPM.mat'));
+    smooth_list = filenames(fullfile(directories{2},'*/ses-2/func/',strcat('ssub*','*run*',num2str(run),'*')));
     counter = 1;
     for sub = 1:length(sublist)
         curr_sub = num2str(sublist(sub));
-        if isempty(find(contains(fl_list,curr_sub)))
+        if isempty(find(contains(smooth_list,curr_sub)))
             new_list(counter) = sublist(sub);
             counter = counter + 1;
         else
@@ -77,65 +77,26 @@ end
 % Run/submit first level script
 
 cd(scriptdir)
-for sub = 1:length(new_list)
-    PID = new_list(sub);
+for sub = 1:length(sublist)
+    PID = sublist(sub);
 %     ses = 2;
 %     run = 2;
 %    overwrite = 0;
-%     run_subject_firstlevel_MID(PID,ses,run,overwrite)
+%     single_sub_smooth(PID,ses,run,overwrite)
 
-       s = ['#!/bin/bash\n\n'...
-    '#SBATCH -A p30954\n'...
-    '#SBATCH -p short\n'...
-    '#SBATCH -t 00:10:00\n'...  
-    '#SBATCH --mem=30G\n\n'...
-    'matlab -nodisplay -nosplash -nodesktop -r "addpath(genpath(''' repodir ''')); run_subject_firstlevel_MID(' num2str(PID) ', ' num2str(ses) ',' num2str(run) ',' num2str(overwrite) '); quit"\n\n'];
-  
-    scriptfile = fullfile(scriptdir, 'first_level_script.sh');
-    fout = fopen(scriptfile, 'w');
-    fprintf(fout, s);
-    
-    
-    !chmod 777 first_level_script.sh
-    !sbatch first_level_script.sh
-    
+        s = ['#!/bin/bash\n\n'...
+     '#SBATCH -A p30954\n'...
+     '#SBATCH -p short\n'...
+     '#SBATCH -t 00:10:00\n'...  
+     '#SBATCH --mem=30G\n\n'...
+     'matlab -nodisplay -nosplash -nodesktop -r "addpath(genpath(''' repodir ''')); single_sub_smooth(' num2str(PID) ', ' num2str(ses) ',' num2str(run) ',' num2str(overwrite) '); quit"\n\n'];
+   
+     scriptfile = fullfile(scriptdir, 'smoothing_script.sh');
+     fout = fopen(scriptfile, 'w');
+     fprintf(fout, s);
+     
+     
+     !chmod 777 smoothing_script.sh
+     !sbatch smoothing_script.sh
+     
 end
-% I probably want to add flags or warnings that will be easy to reference
-% later with respect to motion problems, missing data, corrupted files,
-% etc.
-
-
-
-% for i=1:length(URSIs)
-%     
-%     % to make jobs, to be submitted w/ sbatch
-%     overwrite = 1;
-%     ses = 2;
-%     
-%     if ~overwrite % if not overwriting, can skip right here, before job submission
-%         [subID, ~, ~, sub_str, ses_str] = get_subjID_from_URSI(URSIs{i});    
-%         if exist(fullfile(fl_dir, sub_str, ses_str(ses,:), 'sponpain','SPM.mat'),'file') % skip if SPM.mat exists
-%             fprintf('skipping %d\n', i)
-%             continue
-%         end
-%     end
-%     
-%     
-%     % to run directly (interactively)
-%     %run_subject_firstlevel_acute(URSIs{i}, ses, 1)    
-%     %continue
-% 
-% 
-%        s = ['#!/bin/bash\n\n'...
-%     '#SBATCH -p blanca-ics\n'...
-%     '#SBATCH -n 1\n'...
-%     '#SBATCH --time 2:00:00\n'...  
-%     '#SBATCH --mem=30G\n\n'...
-%     'matlab -nodisplay -nosplash -nodesktop -r "addpath(genpath(''' repodir ''')); run_subject_firstlevel_sponpain(''' URSIs{i} ''', ' num2str(ses) ',' num2str(overwrite) '); quit"\n\n'];
-%   
-%     scriptfile = fullfile(scriptdir, 'first_level_script.sh');
-%     fout = fopen(scriptfile, 'w');
-%     fprintf(fout, s);
-%     
-%     !sbatch first_level_script.sh
-% end

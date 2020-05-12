@@ -1,0 +1,1471 @@
+modules loaded
+/projects/b1108
+beginning preprocessing
+	[31m1: [ERR] Files with such naming scheme are not part of BIDS specification. This error is most commonly caused by typos in file names that make them not BIDS compatible. Please consult the specification and make sure your files are named correctly. If this is not a file naming issue (for example when including files not yet covered by the BIDS specification) you should include a ".bidsignore" file in your dataset (see https://github.com/bids-standard/bids-validator#bidsignore for details). Please note that derived (processed) data should be placed in /derivatives folder and source data (such as DICOMS or behavioural logs in proprietary formats) should be placed in the /sourcedata folder. (code: 1 - NOT_INCLUDED)[39m
+		./$backlog
+			Evidence: $backlog
+		./DTI_ses-2.txt
+			Evidence: DTI_ses-2.txt
+		./FEAR_day1.txt
+			Evidence: FEAR_day1.txt
+		./Fear_ses-3.txt
+			Evidence: Fear_ses-3.txt
+		./MID_ses-1.txt
+			Evidence: MID_ses-1.txt
+		./NEED_TO_SORT/T1_dti_to_sort/sub-10001_ses-2_run-01_dwi.nii.gz
+			Evidence: sub-10001_ses-2_run-01_dwi.nii.gz
+		./NEED_TO_SORT/T1_dti_to_sort/sub-10002_ses-2_run-01_dwi.nii.gz
+			Evidence: sub-10002_ses-2_run-01_dwi.nii.gz
+		./NEED_TO_SORT/T1_dti_to_sort/sub-10004_ses-2_run-01_dwi.nii.gz
+			Evidence: sub-10004_ses-2_run-01_dwi.nii.gz
+		./NEED_TO_SORT/T1_dti_to_sort/sub-10006_ses-1_run-01_dwi.nii.gz
+			Evidence: sub-10006_ses-1_run-01_dwi.nii.gz
+		./NEED_TO_SORT/T1_dti_to_sort/sub-10008_ses-2_run-01_dwi.nii.gz
+			Evidence: sub-10008_ses-2_run-01_dwi.nii.gz
+		[31m... and 226 more files having this issue (Use --verbose to see them all).[39m
+
+[36m	Please visit https://neurostars.org/search?q=NOT_INCLUDED for existing conversations about this issue.[39m
+
+	[31m2: [ERR] Sub label contain an Illegal Character hyphen or underscore. Please edit the filename as per BIDS spec. (code: 62 - SUBJECT_VALUE_CONTAINS_ILLEGAL_CHARACTER)[39m
+		./NEED_TO_SORT/T4_rest_to_sort/sub-20136_MR4/ses-4/func/sub-20136_MR4_ses-4_task-REST_run-01_bold.json
+			Evidence: sub name contains illegal character:/NEED_TO_SORT/T4_rest_to_sort/sub-20136_MR4/ses-4/func/sub-20136_MR4_ses-4_task-REST_run-01_bold.json
+		./NEED_TO_SORT/T4_rest_to_sort/sub-20136_MR4/ses-4/func/sub-20136_MR4_ses-4_task-REST_run-01_events.tsv
+			Evidence: sub name contains illegal character:/NEED_TO_SORT/T4_rest_to_sort/sub-20136_MR4/ses-4/func/sub-20136_MR4_ses-4_task-REST_run-01_events.tsv
+		./NEED_TO_SORT/T4_rest_to_sort/sub-20221_MR4/ses-4/func/sub-20221_MR4_ses-4_task-REST_run-01_bold_defaced.nii.gz
+			Evidence: sub name contains illegal character:/NEED_TO_SORT/T4_rest_to_sort/sub-20221_MR4/ses-4/func/sub-20221_MR4_ses-4_task-REST_run-01_bold_defaced.nii.gz
+		./NEED_TO_SORT/T4_rest_to_sort/sub-20275_MR4/ses-4/func/sub-20275_MR4_ses-4_task-REST_run-01_bold.json
+			Evidence: sub name contains illegal character:/NEED_TO_SORT/T4_rest_to_sort/sub-20275_MR4/ses-4/func/sub-20275_MR4_ses-4_task-REST_run-01_bold.json
+		./NEED_TO_SORT/T4_rest_to_sort/sub-20275_MR4/ses-4/func/sub-20275_MR4_ses-4_task-REST_run-01_events.tsv
+			Evidence: sub name contains illegal character:/NEED_TO_SORT/T4_rest_to_sort/sub-20275_MR4/ses-4/func/sub-20275_MR4_ses-4_task-REST_run-01_events.tsv
+		./NEED_TO_SORT/T4_rest_to_sort/sub-20344_MR4/ses-4/func/sub-20344_MR4_ses-4_task-REST_run-01_bold_defaced.nii.gz
+			Evidence: sub name contains illegal character:/NEED_TO_SORT/T4_rest_to_sort/sub-20344_MR4/ses-4/func/sub-20344_MR4_ses-4_task-REST_run-01_bold_defaced.nii.gz
+		./NEED_TO_SORT/T4_rest_to_sort/sub-20347_MR4/ses-4/func/sub-20347_MR4_ses-4_task-REST_run-01_bold.json
+			Evidence: sub name contains illegal character:/NEED_TO_SORT/T4_rest_to_sort/sub-20347_MR4/ses-4/func/sub-20347_MR4_ses-4_task-REST_run-01_bold.json
+		./NEED_TO_SORT/T4_rest_to_sort/sub-20347_MR4/ses-4/func/sub-20347_MR4_ses-4_task-REST_run-01_events.tsv
+			Evidence: sub name contains illegal character:/NEED_TO_SORT/T4_rest_to_sort/sub-20347_MR4/ses-4/func/sub-20347_MR4_ses-4_task-REST_run-01_events.tsv
+		./NEED_TO_SORT/T4_rest_to_sort/sub-20358_MR4/ses-4/func/sub-20358_MR4_ses-4_task-REST_run-01_bold_defaced.nii.gz
+			Evidence: sub name contains illegal character:/NEED_TO_SORT/T4_rest_to_sort/sub-20358_MR4/ses-4/func/sub-20358_MR4_ses-4_task-REST_run-01_bold_defaced.nii.gz
+		./NEED_TO_SORT/T4_rest_to_sort/sub-20384_MR4/ses-4/func/sub-20384_MR4_ses-4_task-REST_run-01_bold.json
+			Evidence: sub name contains illegal character:/NEED_TO_SORT/T4_rest_to_sort/sub-20384_MR4/ses-4/func/sub-20384_MR4_ses-4_task-REST_run-01_bold.json
+		[31m... and 48 more files having this issue (Use --verbose to see them all).[39m
+
+[36m	Please visit https://neurostars.org/search?q=SUBJECT_VALUE_CONTAINS_ILLEGAL_CHARACTER for existing conversations about this issue.[39m
+
+	[31m3: [ERR] Ses label contain an Illegal Character hyphen or underscore. Please edit the filename as per BIDS spec. (code: 63 - SESSION_VALUE_CONTAINS_ILLEGAL_CHARACTER)[39m
+		./ses-4_FEAR_run-01.txt
+			Evidence: ses name contains illegal character:/ses-4_FEAR_run-01.txt
+		./ses-4_FEAR_run-03.txt
+			Evidence: ses name contains illegal character:/ses-4_FEAR_run-03.txt
+
+[36m	Please visit https://neurostars.org/search?q=SESSION_VALUE_CONTAINS_ILLEGAL_CHARACTER for existing conversations about this issue.[39m
+
+	[31m4: [ERR] Subject label in the filename doesn't match with the path of the file. File seems to be saved in incorrect subject directory. (code: 64 - SUBJECT_LABEL_IN_FILENAME_DOESNOT_MATCH_DIRECTORY)[39m
+		./NEED_TO_SORT/T1_dti_to_sort/sub-10001_ses-2_run-01_dwi.nii.gz
+			Evidence: File: /NEED_TO_SORT/T1_dti_to_sort/sub-10001_ses-2_run-01_dwi.nii.gz is saved in incorrect subject directory as per sub-id in filename.
+		./NEED_TO_SORT/T1_dti_to_sort/sub-10002_ses-2_run-01_dwi.nii.gz
+			Evidence: File: /NEED_TO_SORT/T1_dti_to_sort/sub-10002_ses-2_run-01_dwi.nii.gz is saved in incorrect subject directory as per sub-id in filename.
+		./NEED_TO_SORT/T1_dti_to_sort/sub-10004_ses-2_run-01_dwi.nii.gz
+			Evidence: File: /NEED_TO_SORT/T1_dti_to_sort/sub-10004_ses-2_run-01_dwi.nii.gz is saved in incorrect subject directory as per sub-id in filename.
+		./NEED_TO_SORT/T1_dti_to_sort/sub-10006_ses-1_run-01_dwi.nii.gz
+			Evidence: File: /NEED_TO_SORT/T1_dti_to_sort/sub-10006_ses-1_run-01_dwi.nii.gz is saved in incorrect subject directory as per sub-id in filename.
+		./NEED_TO_SORT/T1_dti_to_sort/sub-10008_ses-2_run-01_dwi.nii.gz
+			Evidence: File: /NEED_TO_SORT/T1_dti_to_sort/sub-10008_ses-2_run-01_dwi.nii.gz is saved in incorrect subject directory as per sub-id in filename.
+		./NEED_TO_SORT/T1_dti_to_sort/sub-10010_ses-2_run-01_dwi.nii.gz
+			Evidence: File: /NEED_TO_SORT/T1_dti_to_sort/sub-10010_ses-2_run-01_dwi.nii.gz is saved in incorrect subject directory as per sub-id in filename.
+		./NEED_TO_SORT/T1_dti_to_sort/sub-10029_ses-2_run-01_dwi.nii.gz
+			Evidence: File: /NEED_TO_SORT/T1_dti_to_sort/sub-10029_ses-2_run-01_dwi.nii.gz is saved in incorrect subject directory as per sub-id in filename.
+		./NEED_TO_SORT/T1_dti_to_sort/sub-10034_ses-1_run-01_dwi.nii.gz
+			Evidence: File: /NEED_TO_SORT/T1_dti_to_sort/sub-10034_ses-1_run-01_dwi.nii.gz is saved in incorrect subject directory as per sub-id in filename.
+		./NEED_TO_SORT/T1_dti_to_sort/sub-10041_ses-1_run-01_dwi.nii.gz
+			Evidence: File: /NEED_TO_SORT/T1_dti_to_sort/sub-10041_ses-1_run-01_dwi.nii.gz is saved in incorrect subject directory as per sub-id in filename.
+		./NEED_TO_SORT/T1_dti_to_sort/sub-10059_ses-1_run-01_dwi.nii.gz
+			Evidence: File: /NEED_TO_SORT/T1_dti_to_sort/sub-10059_ses-1_run-01_dwi.nii.gz is saved in incorrect subject directory as per sub-id in filename.
+		[31m... and 180 more files having this issue (Use --verbose to see them all).[39m
+
+[36m	Please visit https://neurostars.org/search?q=SUBJECT_LABEL_IN_FILENAME_DOESNOT_MATCH_DIRECTORY for existing conversations about this issue.[39m
+
+	[31m5: [ERR] Session label in the filename doesn't match with the path of the file. File seems to be saved in incorrect session directory. (code: 65 - SESSION_LABEL_IN_FILENAME_DOESNOT_MATCH_DIRECTORY)[39m
+		./NEED_TO_SORT/T1_dti_to_sort/sub-10001_ses-2_run-01_dwi.nii.gz
+			Evidence: File: /NEED_TO_SORT/T1_dti_to_sort/sub-10001_ses-2_run-01_dwi.nii.gz is saved in incorrect session directory as per ses-id in filename.
+		./NEED_TO_SORT/T1_dti_to_sort/sub-10002_ses-2_run-01_dwi.nii.gz
+			Evidence: File: /NEED_TO_SORT/T1_dti_to_sort/sub-10002_ses-2_run-01_dwi.nii.gz is saved in incorrect session directory as per ses-id in filename.
+		./NEED_TO_SORT/T1_dti_to_sort/sub-10004_ses-2_run-01_dwi.nii.gz
+			Evidence: File: /NEED_TO_SORT/T1_dti_to_sort/sub-10004_ses-2_run-01_dwi.nii.gz is saved in incorrect session directory as per ses-id in filename.
+		./NEED_TO_SORT/T1_dti_to_sort/sub-10006_ses-1_run-01_dwi.nii.gz
+			Evidence: File: /NEED_TO_SORT/T1_dti_to_sort/sub-10006_ses-1_run-01_dwi.nii.gz is saved in incorrect session directory as per ses-id in filename.
+		./NEED_TO_SORT/T1_dti_to_sort/sub-10008_ses-2_run-01_dwi.nii.gz
+			Evidence: File: /NEED_TO_SORT/T1_dti_to_sort/sub-10008_ses-2_run-01_dwi.nii.gz is saved in incorrect session directory as per ses-id in filename.
+		./NEED_TO_SORT/T1_dti_to_sort/sub-10010_ses-2_run-01_dwi.nii.gz
+			Evidence: File: /NEED_TO_SORT/T1_dti_to_sort/sub-10010_ses-2_run-01_dwi.nii.gz is saved in incorrect session directory as per ses-id in filename.
+		./NEED_TO_SORT/T1_dti_to_sort/sub-10029_ses-2_run-01_dwi.nii.gz
+			Evidence: File: /NEED_TO_SORT/T1_dti_to_sort/sub-10029_ses-2_run-01_dwi.nii.gz is saved in incorrect session directory as per ses-id in filename.
+		./NEED_TO_SORT/T1_dti_to_sort/sub-10034_ses-1_run-01_dwi.nii.gz
+			Evidence: File: /NEED_TO_SORT/T1_dti_to_sort/sub-10034_ses-1_run-01_dwi.nii.gz is saved in incorrect session directory as per ses-id in filename.
+		./NEED_TO_SORT/T1_dti_to_sort/sub-10041_ses-1_run-01_dwi.nii.gz
+			Evidence: File: /NEED_TO_SORT/T1_dti_to_sort/sub-10041_ses-1_run-01_dwi.nii.gz is saved in incorrect session directory as per ses-id in filename.
+		./NEED_TO_SORT/T1_dti_to_sort/sub-10059_ses-1_run-01_dwi.nii.gz
+			Evidence: File: /NEED_TO_SORT/T1_dti_to_sort/sub-10059_ses-1_run-01_dwi.nii.gz is saved in incorrect session directory as per ses-id in filename.
+		[31m... and 69 more files having this issue (Use --verbose to see them all).[39m
+
+[36m	Please visit https://neurostars.org/search?q=SESSION_LABEL_IN_FILENAME_DOESNOT_MATCH_DIRECTORY for existing conversations about this issue.[39m
+
+	[31m6: [ERR] No BIDS compatible data found for at least one subject. (code: 67 - NO_VALID_DATA_FOUND_FOR_SUBJECT)[39m
+		./sub-20136_MR4
+		./sub-20221_MR4
+		./sub-20275_MR4
+		./sub-20344_MR4
+		./sub-20347_MR4
+		./sub-20358_MR4
+		./sub-20384_MR4
+		./sub-20387_MR4
+		./sub-20457_MR4
+		./sub-20460_MR4
+		[31m... and 27 more files having this issue (Use --verbose to see them all).[39m
+
+[36m	Please visit https://neurostars.org/search?q=NO_VALID_DATA_FOUND_FOR_SUBJECT for existing conversations about this issue.[39m
+
+
+        [34m[4mSummary:[24m[39m                   [34m[4mAvailable Tasks:[24m[39m        [34m[4mAvailable Modalities:[24m[39m 
+        11184 Files, 1.26TB        MID                     T1w                   
+        280 - Subjects             REST                    dwi                   
+        4 - Sessions                                       bold                  
+                                                           events                
+
+
+[36m	If you have any questions, please post on https://neurostars.org/tags/bids.[39m
+
+Making sure the input data is BIDS compliant (warnings can be ignored in most cases).
+You are using fMRIPrep-1.5.4, and a newer version of fMRIPrep is available: 20.0.6.
+Please check out our documentation about how and when to upgrade:
+https://fmriprep.readthedocs.io/en/latest/faq.html#upgrading
+WARNING: Version 1.5.4 of fMRIPrep (current) has been FLAGGED
+(reason: Phase-difference fieldmap bug).
+That means some severe flaw was found in it and we strongly
+discourage its usage.
+200510-11:09:26,889 nipype.workflow IMPORTANT:
+	 
+    Running fMRIPREP version 1.5.4:
+      * BIDS dataset path: /projects/b1108/data/BrainMAPD.
+      * Participant list: ['10090'].
+      * Run identifier: 20200510-105243_e59af611-f1ab-4235-94c1-af72ec23143b.
+    
+200510-11:09:32,826 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.2)
+200510-11:09:37,226 nipype.workflow IMPORTANT:
+	 Creating bold processing workflow for "/projects/b1108/data/BrainMAPD/sub-10090/ses-1/func/sub-10090_ses-1_task-MID_run-01_bold.nii.gz" (0.24 GB / 281 TRs). Memory resampled/largemem=0.97/1.64 GB.
+200510-11:09:37,984 nipype.workflow IMPORTANT:
+	 No single-band-reference found for sub-10090_ses-1_task-MID_run-01_bold.nii.gz
+200510-11:09:42,606 nipype.workflow IMPORTANT:
+	 Slice-timing correction will be included.
+200510-11:09:45,396 nipype.workflow IMPORTANT:
+	 Creating bold processing workflow for "/projects/b1108/data/BrainMAPD/sub-10090/ses-1/func/sub-10090_ses-1_task-MID_run-02_bold.nii.gz" (0.24 GB / 281 TRs). Memory resampled/largemem=0.97/1.65 GB.
+200510-11:09:46,79 nipype.workflow IMPORTANT:
+	 No single-band-reference found for sub-10090_ses-1_task-MID_run-02_bold.nii.gz
+200510-11:09:49,43 nipype.workflow IMPORTANT:
+	 Slice-timing correction will be included.
+200510-11:09:51,563 nipype.workflow IMPORTANT:
+	 Creating bold processing workflow for "/projects/b1108/data/BrainMAPD/sub-10090/ses-2/func/sub-10090_ses-2_task-MID_run-01_bold.nii" (0.34 GB / 281 TRs). Memory resampled/largemem=1.37/2.33 GB.
+200510-11:09:52,226 nipype.workflow IMPORTANT:
+	 No single-band-reference found for sub-10090_ses-2_task-MID_run-01_bold.nii
+200510-11:09:54,542 nipype.workflow IMPORTANT:
+	 Slice-timing correction will be included.
+200510-11:09:56,960 nipype.workflow IMPORTANT:
+	 Creating bold processing workflow for "/projects/b1108/data/BrainMAPD/sub-10090/ses-2/func/sub-10090_ses-2_task-MID_run-02_bold.nii" (0.34 GB / 281 TRs). Memory resampled/largemem=1.37/2.33 GB.
+200510-11:09:57,606 nipype.workflow IMPORTANT:
+	 No single-band-reference found for sub-10090_ses-2_task-MID_run-02_bold.nii
+200510-11:10:00,344 nipype.workflow IMPORTANT:
+	 Slice-timing correction will be included.
+200510-11:10:09,935 nipype.workflow IMPORTANT:
+	 Works derived from this fMRIPrep execution should include the following boilerplate:
+
+
+Results included in this manuscript come from preprocessing
+performed using *fMRIPrep* 1.5.4
+(@fmriprep1; @fmriprep2; RRID:SCR_016216),
+which is based on *Nipype* 1.3.1
+(@nipype1; @nipype2; RRID:SCR_002502).
+
+Anatomical data preprocessing
+
+: A total of 4 T1-weighted (T1w) images were found within the input
+BIDS dataset.
+All of them were corrected for intensity non-uniformity (INU)
+with `N4BiasFieldCorrection` [@n4], distributed with ANTs 2.2.0 [@ants, RRID:SCR_004757].
+The T1w-reference was then skull-stripped with a *Nipype* implementation of
+the `antsBrainExtraction.sh` workflow (from ANTs), using OASIS30ANTs
+as target template.
+Brain tissue segmentation of cerebrospinal fluid (CSF),
+white-matter (WM) and gray-matter (GM) was performed on
+the brain-extracted T1w using `fast` [FSL 5.0.9, RRID:SCR_002823,
+@fsl_fast].
+A T1w-reference map was computed after registration of
+4 T1w images (after INU-correction) using
+`mri_robust_template` [FreeSurfer 6.0.1, @fs_template].
+Volume-based spatial normalization to one standard space (MNI152NLin2009cAsym) was performed through
+nonlinear registration with `antsRegistration` (ANTs 2.2.0),
+using brain-extracted versions of both T1w reference and the T1w template.
+The following template was selected for spatial normalization:
+*ICBM 152 Nonlinear Asymmetrical template version 2009c* [@mni152nlin2009casym, RRID:SCR_008796; TemplateFlow ID: MNI152NLin2009cAsym].
+
+Functional data preprocessing
+
+: For each of the 4 BOLD runs found per subject (across all
+tasks and sessions), the following preprocessing was performed.
+First, a reference volume and its skull-stripped version were generated
+using a custom methodology of *fMRIPrep*.
+Susceptibility distortion correction (SDC) was omitted.
+The BOLD reference was then co-registered to the T1w reference using
+`flirt` [FSL 5.0.9, @flirt] with the boundary-based registration [@bbr]
+cost-function.
+Co-registration was configured with nine degrees of freedom to account
+for distortions remaining in the BOLD reference.
+Head-motion parameters with respect to the BOLD reference
+(transformation matrices, and six corresponding rotation and translation
+parameters) are estimated before any spatiotemporal filtering using
+`mcflirt` [FSL 5.0.9, @mcflirt].
+BOLD runs were slice-time corrected using `3dTshift` from
+AFNI 20160207 [@afni, RRID:SCR_005927].
+The BOLD time-series (including slice-timing correction when applied)
+were resampled onto their original, native space by applying
+the transforms to correct for head-motion.
+These resampled BOLD time-series will be referred to as *preprocessed
+BOLD in original space*, or just *preprocessed BOLD*.
+The BOLD time-series were resampled into standard space,
+generating a *preprocessed BOLD run in ['MNI152NLin2009cAsym'] space*.
+First, a reference volume and its skull-stripped version were generated
+using a custom methodology of *fMRIPrep*.
+Several confounding time-series were calculated based on the
+*preprocessed BOLD*: framewise displacement (FD), DVARS and
+three region-wise global signals.
+FD and DVARS are calculated for each functional run, both using their
+implementations in *Nipype* [following the definitions by @power_fd_dvars].
+The three global signals are extracted within the CSF, the WM, and
+the whole-brain masks.
+Additionally, a set of physiological regressors were extracted to
+allow for component-based noise correction [*CompCor*, @compcor].
+Principal components are estimated after high-pass filtering the
+*preprocessed BOLD* time-series (using a discrete cosine filter with
+128s cut-off) for the two *CompCor* variants: temporal (tCompCor)
+and anatomical (aCompCor).
+tCompCor components are then calculated from the top 5% variable
+voxels within a mask covering the subcortical regions.
+This subcortical mask is obtained by heavily eroding the brain mask,
+which ensures it does not include cortical GM regions.
+For aCompCor, components are calculated within the intersection of
+the aforementioned mask and the union of CSF and WM masks calculated
+in T1w space, after their projection to the native space of each
+functional run (using the inverse BOLD-to-T1w transformation). Components
+are also calculated separately within the WM and CSF masks.
+For each CompCor decomposition, the *k* components with the largest singular
+values are retained, such that the retained components' time series are
+sufficient to explain 50 percent of variance across the nuisance mask (CSF,
+WM, combined, or temporal). The remaining components are dropped from
+consideration.
+The head-motion estimates calculated in the correction step were also
+placed within the corresponding confounds file.
+The confound time series derived from head motion estimates and global
+signals were expanded with the inclusion of temporal derivatives and
+quadratic terms for each [@confounds_satterthwaite_2013].
+Frames that exceeded a threshold of 0.5 mm FD or 1.5 standardised DVARS
+were annotated as motion outliers.
+All resamplings can be performed with *a single interpolation
+step* by composing all the pertinent transformations (i.e. head-motion
+transform matrices, susceptibility distortion correction when available,
+and co-registrations to anatomical and output spaces).
+Gridded (volumetric) resamplings were performed using `antsApplyTransforms` (ANTs),
+configured with Lanczos interpolation to minimize the smoothing
+effects of other kernels [@lanczos].
+Non-gridded (surface) resamplings were performed using `mri_vol2surf`
+(FreeSurfer).
+
+
+Many internal operations of *fMRIPrep* use
+*Nilearn* 0.6.0 [@nilearn, RRID:SCR_001362],
+mostly within the functional processing workflow.
+For more details of the pipeline, see [the section corresponding
+to workflows in *fMRIPrep*'s documentation](https://fmriprep.readthedocs.io/en/latest/workflows.html "FMRIPrep's documentation").
+
+
+### Copyright Waiver
+
+The above boilerplate text was automatically generated by fMRIPrep
+with the express intention that users should copy and paste this
+text into their manuscripts *unchanged*.
+It is released under the [CC0](https://creativecommons.org/publicdomain/zero/1.0/) license.
+
+### References
+
+
+200510-11:12:43,516 nipype.utils WARNING:
+	 No metadata was found in the pkl file. Make sure you are currently using the same Nipype version from the generated pkl.
+200510-11:12:43,519 nipype.workflow ERROR:
+	 Node std_tpms.a0 failed to run on host qnode6138.
+200510-11:12:43,833 nipype.workflow ERROR:
+	 Saving crash info to /projects/b1108/projects/BrainMAPD_func_conn/fmriprep/sub-10090/log/20200510-105243_e59af611-f1ab-4235-94c1-af72ec23143b/crash-20200510-111243-zaz3744-std_tpms.a0-5465621b-1dfe-4922-b721-9e0713bceb66.txt
+Traceback (most recent call last):
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/plugins/multiproc.py", line 267, in _send_procs_to_workers
+    num_subnodes = self.procs[jobid].num_subnodes()
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 1233, in num_subnodes
+    self._get_inputs()
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 1248, in _get_inputs
+    super(MapNode, self)._get_inputs()
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 537, in _get_inputs
+    outputs = _load_resultfile(results_fname).outputs
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/utils.py", line 306, in load_resultfile
+    result = loadpkl(results_file)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/utils/filemanip.py", line 785, in loadpkl
+    raise e
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/utils/filemanip.py", line 760, in loadpkl
+    unpkl = pickle.loads(pkl_contents)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/has_traits.py", line 1440, in __setstate__
+    self.trait_set( trait_change_notify = trait_change_notify, **state )
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/has_traits.py", line 1543, in trait_set
+    setattr( self, name, value )
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/interfaces/base/traits_extension.py", line 317, in validate
+    value = super(File, self).validate(objekt, name, value, return_pathlike=True)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/interfaces/base/traits_extension.py", line 141, in validate
+    self.error(objekt, name, str(value))
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/trait_handlers.py", line 172, in error
+    value )
+traits.trait_errors.TraitError: The 't1w_file' trait of a _TemplateFlowSelectOutputSpec instance must be a pathlike object or string representing an existing file, but a value of '/home/sme0171/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-01_T1w.nii.gz' <class 'str'> was specified.
+
+
+When creating this crashfile, the results file corresponding
+to the node could not be found.
+200510-11:13:13,626 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.anat_preproc_wf.anat_norm_wf.tpl_moving" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/anat_norm_wf/_template_MNI152NLin2009cAsym./tpl_moving".
+200510-11:13:13,644 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.anat_preproc_wf.anat_norm_wf.std_mask" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/anat_norm_wf/_template_MNI152NLin2009cAsym./std_mask".
+200510-11:13:13,649 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.anat_preproc_wf.anat_norm_wf.std_dseg" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/anat_norm_wf/_template_MNI152NLin2009cAsym./std_dseg".
+200510-11:13:16,425 nipype.utils WARNING:
+	 No metadata was found in the pkl file. Make sure you are currently using the same Nipype version from the generated pkl.
+200510-11:13:16,398 nipype.utils WARNING:
+	 No metadata was found in the pkl file. Make sure you are currently using the same Nipype version from the generated pkl.
+exception calling callback for <Future at 0x2b7f0ef67240 state=finished raised FileNotFoundError>
+concurrent.futures.process._RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/plugins/multiproc.py", line 69, in run_node
+    result['result'] = node.run(updatehash=updatehash)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 450, in run
+    self._get_hashval()
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 499, in _get_hashval
+    self._get_inputs()
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 537, in _get_inputs
+    outputs = _load_resultfile(results_fname).outputs
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/utils.py", line 306, in load_resultfile
+    result = loadpkl(results_file)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/utils/filemanip.py", line 785, in loadpkl
+    raise e
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/utils/filemanip.py", line 760, in loadpkl
+    unpkl = pickle.loads(pkl_contents)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/has_traits.py", line 1440, in __setstate__
+    self.trait_set( trait_change_notify = trait_change_notify, **state )
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/has_traits.py", line 1543, in trait_set
+    setattr( self, name, value )
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/interfaces/base/traits_extension.py", line 317, in validate
+    value = super(File, self).validate(objekt, name, value, return_pathlike=True)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/interfaces/base/traits_extension.py", line 141, in validate
+    self.error(objekt, name, str(value))
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/trait_handlers.py", line 172, in error
+    value )
+traits.trait_errors.TraitError: The 't1w_file' trait of a _TemplateFlowSelectOutputSpec instance must be a pathlike object or string representing an existing file, but a value of '/home/sme0171/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-01_T1w.nii.gz' <class 'str'> was specified.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/miniconda/lib/python3.7/concurrent/futures/process.py", line 232, in _process_worker
+    r = call_item.fn(*call_item.args, **call_item.kwargs)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/plugins/multiproc.py", line 72, in run_node
+    result['result'] = node.result
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 198, in result
+    op.join(self.output_dir(), 'result_%s.pklz' % self.name))
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/utils.py", line 304, in load_resultfile
+    raise FileNotFoundError(results_file)
+FileNotFoundError: /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/anat_norm_wf/_template_MNI152NLin2009cAsym./std_mask/result_std_mask.pklz
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/miniconda/lib/python3.7/concurrent/futures/_base.py", line 324, in _invoke_callbacks
+    callback(self)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/plugins/multiproc.py", line 149, in _async_callback
+    result = args.result()
+  File "/usr/local/miniconda/lib/python3.7/concurrent/futures/_base.py", line 425, in result
+    return self.__get_result()
+  File "/usr/local/miniconda/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+FileNotFoundError: /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/anat_norm_wf/_template_MNI152NLin2009cAsym./std_mask/result_std_mask.pklz
+200510-11:13:16,467 nipype.utils WARNING:
+	 No metadata was found in the pkl file. Make sure you are currently using the same Nipype version from the generated pkl.
+exception calling callback for <Future at 0x2b7f0f333da0 state=finished raised FileNotFoundError>
+concurrent.futures.process._RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/plugins/multiproc.py", line 69, in run_node
+    result['result'] = node.run(updatehash=updatehash)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 450, in run
+    self._get_hashval()
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 499, in _get_hashval
+    self._get_inputs()
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 537, in _get_inputs
+    outputs = _load_resultfile(results_fname).outputs
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/utils.py", line 306, in load_resultfile
+    result = loadpkl(results_file)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/utils/filemanip.py", line 785, in loadpkl
+    raise e
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/utils/filemanip.py", line 760, in loadpkl
+    unpkl = pickle.loads(pkl_contents)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/has_traits.py", line 1440, in __setstate__
+    self.trait_set( trait_change_notify = trait_change_notify, **state )
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/has_traits.py", line 1543, in trait_set
+    setattr( self, name, value )
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/interfaces/base/traits_extension.py", line 317, in validate
+    value = super(File, self).validate(objekt, name, value, return_pathlike=True)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/interfaces/base/traits_extension.py", line 141, in validate
+    self.error(objekt, name, str(value))
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/trait_handlers.py", line 172, in error
+    value )
+traits.trait_errors.TraitError: The 't1w_file' trait of a _TemplateFlowSelectOutputSpec instance must be a pathlike object or string representing an existing file, but a value of '/home/sme0171/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-01_T1w.nii.gz' <class 'str'> was specified.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/miniconda/lib/python3.7/concurrent/futures/process.py", line 232, in _process_worker
+    r = call_item.fn(*call_item.args, **call_item.kwargs)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/plugins/multiproc.py", line 72, in run_node
+    result['result'] = node.result
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 198, in result
+    op.join(self.output_dir(), 'result_%s.pklz' % self.name))
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/utils.py", line 304, in load_resultfile
+    raise FileNotFoundError(results_file)
+FileNotFoundError: /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/anat_norm_wf/_template_MNI152NLin2009cAsym./std_dseg/result_std_dseg.pklz
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/miniconda/lib/python3.7/concurrent/futures/_base.py", line 324, in _invoke_callbacks
+    callback(self)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/plugins/multiproc.py", line 149, in _async_callback
+    result = args.result()
+  File "/usr/local/miniconda/lib/python3.7/concurrent/futures/_base.py", line 425, in result
+    return self.__get_result()
+  File "/usr/local/miniconda/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+FileNotFoundError: /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/anat_norm_wf/_template_MNI152NLin2009cAsym./std_dseg/result_std_dseg.pklz
+exception calling callback for <Future at 0x2b7f0f3339e8 state=finished raised FileNotFoundError>
+concurrent.futures.process._RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/plugins/multiproc.py", line 69, in run_node
+    result['result'] = node.run(updatehash=updatehash)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 450, in run
+    self._get_hashval()
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 499, in _get_hashval
+    self._get_inputs()
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 537, in _get_inputs
+    outputs = _load_resultfile(results_fname).outputs
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/utils.py", line 306, in load_resultfile
+    result = loadpkl(results_file)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/utils/filemanip.py", line 785, in loadpkl
+    raise e
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/utils/filemanip.py", line 760, in loadpkl
+    unpkl = pickle.loads(pkl_contents)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/has_traits.py", line 1440, in __setstate__
+    self.trait_set( trait_change_notify = trait_change_notify, **state )
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/has_traits.py", line 1543, in trait_set
+    setattr( self, name, value )
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/interfaces/base/traits_extension.py", line 317, in validate
+    value = super(File, self).validate(objekt, name, value, return_pathlike=True)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/interfaces/base/traits_extension.py", line 141, in validate
+    self.error(objekt, name, str(value))
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/trait_handlers.py", line 172, in error
+    value )
+traits.trait_errors.TraitError: The 't1w_file' trait of a _TemplateFlowSelectOutputSpec instance must be a pathlike object or string representing an existing file, but a value of '/home/sme0171/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-01_T1w.nii.gz' <class 'str'> was specified.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/miniconda/lib/python3.7/concurrent/futures/process.py", line 232, in _process_worker
+    r = call_item.fn(*call_item.args, **call_item.kwargs)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/plugins/multiproc.py", line 72, in run_node
+    result['result'] = node.result
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 198, in result
+    op.join(self.output_dir(), 'result_%s.pklz' % self.name))
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/utils.py", line 304, in load_resultfile
+    raise FileNotFoundError(results_file)
+FileNotFoundError: /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/anat_norm_wf/_template_MNI152NLin2009cAsym./tpl_moving/result_tpl_moving.pklz
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/miniconda/lib/python3.7/concurrent/futures/_base.py", line 324, in _invoke_callbacks
+    callback(self)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/plugins/multiproc.py", line 149, in _async_callback
+    result = args.result()
+  File "/usr/local/miniconda/lib/python3.7/concurrent/futures/_base.py", line 425, in result
+    return self.__get_result()
+  File "/usr/local/miniconda/lib/python3.7/concurrent/futures/_base.py", line 384, in __get_result
+    raise self._exception
+FileNotFoundError: /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/anat_norm_wf/_template_MNI152NLin2009cAsym./tpl_moving/result_tpl_moving.pklz
+200510-11:13:27,462 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_reg_wf.fsl_bbr_wf.flt_bbr" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reg_wf/fsl_bbr_wf/flt_bbr".
+200510-11:13:27,464 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_reg_wf.fsl_bbr_wf.flt_bbr" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/flt_bbr".
+200510-11:13:27,465 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_reg_wf.fsl_bbr_wf.flt_bbr" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/flt_bbr".
+200510-11:13:27,512 nipype.workflow INFO:
+	 [Node] Running "flt_bbr" ("niworkflows.interfaces.registration.FLIRTRPT"), a CommandLine Interface with command:
+flirt -in /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz -ref /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/brain_extraction_wf/copy_xform/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform.nii.gz -out uni_xform_masked_flirt.nii.gz -omat uni_xform_masked_flirt.mat -searchcost bbr -dof 6 -init /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/flt_bbr_init/uni_xform_masked_flirt.mat -schedule /usr/share/fsl/5.0/etc/flirtsch/bbr.sch -wmseg /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/t1w_dseg/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform_seg_wm.nii.gz
+200510-11:13:27,517 nipype.workflow INFO:
+	 [Node] Running "flt_bbr" ("niworkflows.interfaces.registration.FLIRTRPT"), a CommandLine Interface with command:
+flirt -in /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz -ref /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/brain_extraction_wf/copy_xform/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform.nii.gz -out uni_xform_masked_flirt.nii.gz -omat uni_xform_masked_flirt.mat -searchcost bbr -dof 6 -init /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reg_wf/fsl_bbr_wf/flt_bbr_init/uni_xform_masked_flirt.mat -schedule /usr/share/fsl/5.0/etc/flirtsch/bbr.sch -wmseg /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/t1w_dseg/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform_seg_wm.nii.gz
+200510-11:13:27,527 nipype.workflow INFO:
+	 [Node] Running "flt_bbr" ("niworkflows.interfaces.registration.FLIRTRPT"), a CommandLine Interface with command:
+flirt -in /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz -ref /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/brain_extraction_wf/copy_xform/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform.nii.gz -out uni_xform_masked_flirt.nii.gz -omat uni_xform_masked_flirt.mat -searchcost bbr -dof 6 -init /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/flt_bbr_init/uni_xform_masked_flirt.mat -schedule /usr/share/fsl/5.0/etc/flirtsch/bbr.sch -wmseg /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/t1w_dseg/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform_seg_wm.nii.gz
+200510-11:27:38,120 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_reg_wf.fsl_bbr_wf.flt_bbr".
+200510-11:28:05,388 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_reg_wf.fsl_bbr_wf.flt_bbr".
+200510-11:28:07,844 nipype.workflow INFO:
+	 [Node] Setting-up "_fsl_to_lta1" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta/mapflow/_fsl_to_lta1".
+200510-11:28:07,847 nipype.workflow INFO:
+	 [Node] Setting-up "_fsl_to_lta0" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta/mapflow/_fsl_to_lta0".
+200510-11:28:07,958 nipype.workflow INFO:
+	 [Node] Running "_fsl_to_lta1" ("niworkflows.interfaces.freesurfer.PatchedLTAConvert"), a CommandLine Interface with command:
+lta_convert --infsl /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reg_wf/fsl_bbr_wf/flt_bbr_init/uni_xform_masked_flirt.mat --outlta /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta/mapflow/_fsl_to_lta1/out.lta --src /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz --trg /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/brain_extraction_wf/copy_xform/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform.nii.gz
+200510-11:28:07,971 nipype.workflow INFO:
+	 [Node] Running "_fsl_to_lta0" ("niworkflows.interfaces.freesurfer.PatchedLTAConvert"), a CommandLine Interface with command:
+lta_convert --infsl /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reg_wf/fsl_bbr_wf/flt_bbr/uni_xform_masked_flirt.mat --outlta /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta/mapflow/_fsl_to_lta0/out.lta --src /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz --trg /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/brain_extraction_wf/copy_xform/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform.nii.gz
+200510-11:28:08,472 nipype.workflow INFO:
+	 [Node] Finished "_fsl_to_lta0".
+200510-11:28:08,478 nipype.workflow INFO:
+	 [Node] Finished "_fsl_to_lta1".
+200510-11:28:09,896 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_reg_wf.fsl_bbr_wf.flt_bbr".
+200510-11:28:40,204 nipype.workflow INFO:
+	 [Node] Setting-up "_fsl_to_lta1" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta/mapflow/_fsl_to_lta1".
+200510-11:28:40,218 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_reg_wf.fsl_bbr_wf.fsl_to_lta" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta".
+200510-11:28:40,227 nipype.workflow INFO:
+	 [Node] Setting-up "_fsl_to_lta0" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta/mapflow/_fsl_to_lta0".
+200510-11:28:40,249 nipype.workflow INFO:
+	 [Node] Running "_fsl_to_lta1" ("niworkflows.interfaces.freesurfer.PatchedLTAConvert"), a CommandLine Interface with command:
+lta_convert --infsl /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/flt_bbr_init/uni_xform_masked_flirt.mat --outlta /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta/mapflow/_fsl_to_lta1/out.lta --src /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz --trg /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/brain_extraction_wf/copy_xform/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform.nii.gz
+200510-11:28:40,261 nipype.workflow INFO:
+	 [Node] Setting-up "_fsl_to_lta0" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta/mapflow/_fsl_to_lta0".
+200510-11:28:40,263 nipype.workflow INFO:
+	 [Node] Cached "_fsl_to_lta0" - collecting precomputed outputs
+200510-11:28:40,263 nipype.workflow INFO:
+	 [Node] "_fsl_to_lta0" found cached.
+200510-11:28:40,265 nipype.workflow INFO:
+	 [Node] Setting-up "_fsl_to_lta1" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta/mapflow/_fsl_to_lta1".
+200510-11:28:40,269 nipype.workflow INFO:
+	 [Node] Running "_fsl_to_lta0" ("niworkflows.interfaces.freesurfer.PatchedLTAConvert"), a CommandLine Interface with command:
+lta_convert --infsl /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/flt_bbr/uni_xform_masked_flirt.mat --outlta /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta/mapflow/_fsl_to_lta0/out.lta --src /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz --trg /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/brain_extraction_wf/copy_xform/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform.nii.gz
+200510-11:28:40,275 nipype.workflow INFO:
+	 [Node] Cached "_fsl_to_lta1" - collecting precomputed outputs
+200510-11:28:40,276 nipype.workflow INFO:
+	 [Node] "_fsl_to_lta1" found cached.
+200510-11:28:40,302 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_reg_wf.fsl_bbr_wf.fsl_to_lta".
+200510-11:28:40,763 nipype.workflow INFO:
+	 [Node] Finished "_fsl_to_lta1".
+200510-11:28:40,773 nipype.workflow INFO:
+	 [Node] Finished "_fsl_to_lta0".
+200510-11:28:44,852 nipype.workflow INFO:
+	 [Node] Setting-up "_fsl_to_lta1" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta/mapflow/_fsl_to_lta1".
+200510-11:28:44,848 nipype.workflow INFO:
+	 [Node] Setting-up "_fsl_to_lta0" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta/mapflow/_fsl_to_lta0".
+200510-11:28:44,892 nipype.workflow INFO:
+	 [Node] Running "_fsl_to_lta1" ("niworkflows.interfaces.freesurfer.PatchedLTAConvert"), a CommandLine Interface with command:
+lta_convert --infsl /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/flt_bbr_init/uni_xform_masked_flirt.mat --outlta /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta/mapflow/_fsl_to_lta1/out.lta --src /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz --trg /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/brain_extraction_wf/copy_xform/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform.nii.gz
+200510-11:28:44,900 nipype.workflow INFO:
+	 [Node] Running "_fsl_to_lta0" ("niworkflows.interfaces.freesurfer.PatchedLTAConvert"), a CommandLine Interface with command:
+lta_convert --infsl /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/flt_bbr/uni_xform_masked_flirt.mat --outlta /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta/mapflow/_fsl_to_lta0/out.lta --src /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz --trg /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/brain_extraction_wf/copy_xform/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform.nii.gz
+200510-11:28:45,339 nipype.workflow INFO:
+	 [Node] Finished "_fsl_to_lta1".
+200510-11:28:45,357 nipype.workflow INFO:
+	 [Node] Finished "_fsl_to_lta0".
+200510-11:28:45,418 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_reg_wf.fsl_bbr_wf.compare_transforms" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reg_wf/fsl_bbr_wf/compare_transforms".
+200510-11:28:59,666 nipype.workflow INFO:
+	 [Node] Running "compare_transforms" ("nipype.interfaces.utility.wrappers.Function")
+200510-11:28:59,706 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_reg_wf.fsl_bbr_wf.compare_transforms".
+200510-11:29:01,103 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_reg_wf.fsl_bbr_wf.fsl_to_lta" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta".
+200510-11:29:01,130 nipype.workflow INFO:
+	 [Node] Setting-up "_fsl_to_lta0" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta/mapflow/_fsl_to_lta0".
+200510-11:29:01,132 nipype.workflow INFO:
+	 [Node] Cached "_fsl_to_lta0" - collecting precomputed outputs
+200510-11:29:01,132 nipype.workflow INFO:
+	 [Node] "_fsl_to_lta0" found cached.
+200510-11:29:01,133 nipype.workflow INFO:
+	 [Node] Setting-up "_fsl_to_lta1" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta/mapflow/_fsl_to_lta1".
+200510-11:29:01,135 nipype.workflow INFO:
+	 [Node] Cached "_fsl_to_lta1" - collecting precomputed outputs
+200510-11:29:01,135 nipype.workflow INFO:
+	 [Node] "_fsl_to_lta1" found cached.
+200510-11:29:01,159 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_reg_wf.fsl_bbr_wf.fsl_to_lta".
+200510-11:29:02,670 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_reg_wf.fsl_bbr_wf.fsl_to_lta" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta".
+200510-11:29:02,678 nipype.workflow INFO:
+	 [Node] Setting-up "_fsl_to_lta0" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta/mapflow/_fsl_to_lta0".
+200510-11:29:02,683 nipype.workflow INFO:
+	 [Node] Cached "_fsl_to_lta0" - collecting precomputed outputs
+200510-11:29:02,683 nipype.workflow INFO:
+	 [Node] "_fsl_to_lta0" found cached.
+200510-11:29:02,684 nipype.workflow INFO:
+	 [Node] Setting-up "_fsl_to_lta1" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta/mapflow/_fsl_to_lta1".
+200510-11:29:02,686 nipype.workflow INFO:
+	 [Node] Cached "_fsl_to_lta1" - collecting precomputed outputs
+200510-11:29:02,686 nipype.workflow INFO:
+	 [Node] "_fsl_to_lta1" found cached.
+200510-11:29:02,688 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_reg_wf.fsl_bbr_wf.fsl_to_lta".
+200510-11:29:07,318 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_reg_wf.fsl_bbr_wf.compare_transforms" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/compare_transforms".
+200510-11:29:07,327 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_reg_wf.fsl_bbr_wf.fsl2itk_fwd" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_fwd".
+200510-11:29:08,255 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_reg_wf.fsl_bbr_wf.invt_bbr" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reg_wf/fsl_bbr_wf/invt_bbr".
+200510-11:29:08,304 nipype.workflow INFO:
+	 [Node] Running "invt_bbr" ("nipype.interfaces.fsl.utils.ConvertXFM"), a CommandLine Interface with command:
+convert_xfm -omat /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reg_wf/fsl_bbr_wf/invt_bbr/uni_xform_masked_flirt_inv.mat -inverse /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reg_wf/fsl_bbr_wf/flt_bbr/uni_xform_masked_flirt.mat
+200510-11:29:08,512 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_reg_wf.fsl_bbr_wf.invt_bbr".
+200510-11:29:09,688 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_reg_wf.fsl_bbr_wf.compare_transforms" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/compare_transforms".
+200510-11:29:16,667 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_reg_wf.fsl_bbr_wf.fsl2itk_inv" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_inv".
+200510-11:29:26,34 nipype.workflow INFO:
+	 [Node] Running "fsl2itk_fwd" ("nipype.interfaces.c3.C3dAffineTool"), a CommandLine Interface with command:
+c3d_affine_tool -ref /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/brain_extraction_wf/copy_xform/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform.nii.gz -src /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reg_wf/fsl_bbr_wf/flt_bbr/uni_xform_masked_flirt.mat -fsl2ras -oitk /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_fwd/affine.txt
+200510-11:29:26,825 nipype.workflow INFO:
+	 [Node] Running "compare_transforms" ("nipype.interfaces.utility.wrappers.Function")
+200510-11:29:27,2 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_reg_wf.fsl_bbr_wf.compare_transforms".
+200510-11:29:28,193 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_reg_wf.fsl_bbr_wf.fsl2itk_fwd".
+200510-11:29:28,542 nipype.workflow INFO:
+	 [Node] Running "compare_transforms" ("nipype.interfaces.utility.wrappers.Function")
+200510-11:29:28,627 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_reg_wf.fsl_bbr_wf.compare_transforms".
+200510-11:29:32,502 nipype.workflow INFO:
+	 [Node] Running "fsl2itk_inv" ("nipype.interfaces.c3.C3dAffineTool"), a CommandLine Interface with command:
+c3d_affine_tool -ref /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz -src /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/brain_extraction_wf/copy_xform/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform.nii.gz /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reg_wf/fsl_bbr_wf/invt_bbr/uni_xform_masked_flirt_inv.mat -fsl2ras -oitk /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_inv/affine.txt
+200510-11:29:35,368 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_reg_wf.fsl_bbr_wf.fsl2itk_inv".
+200510-11:29:37,672 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.acc_tfm" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_confounds_wf/acc_tfm".
+200510-11:29:37,675 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.wm_tfm" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_confounds_wf/wm_tfm".
+200510-11:29:37,687 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.csf_tfm" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_confounds_wf/csf_tfm".
+200510-11:29:37,706 nipype.workflow INFO:
+	 [Node] Running "acc_tfm" ("niworkflows.interfaces.fixes.FixHeaderApplyTransforms"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --float 1 --input /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_confounds_wf/acc_roi/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform_prob_0_tpmsum_roi.nii.gz --interpolation NearestNeighbor --output sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform_prob_0_tpmsum_roi_trans.nii.gz --reference-image /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz --transform /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_inv/affine.txt
+200510-11:29:37,713 nipype.workflow INFO:
+	 [Node] Running "wm_tfm" ("niworkflows.interfaces.fixes.FixHeaderApplyTransforms"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --float 1 --input /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_confounds_wf/wm_roi/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform_prob_2_roi.nii.gz --interpolation NearestNeighbor --output sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform_prob_2_roi_trans.nii.gz --reference-image /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz --transform /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_inv/affine.txt
+200510-11:29:37,728 nipype.workflow INFO:
+	 [Node] Running "csf_tfm" ("niworkflows.interfaces.fixes.FixHeaderApplyTransforms"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --float 1 --input /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_confounds_wf/csf_roi/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform_prob_0_roi.nii.gz --interpolation NearestNeighbor --output sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform_prob_0_roi_trans.nii.gz --reference-image /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz --transform /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_inv/affine.txt
+200510-11:29:42,858 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.2)
+200510-11:29:42,864 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.2)
+200510-11:29:42,870 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.2)
+200510-11:29:42,941 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_reg_wf.fsl_bbr_wf.fsl2itk_fwd" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_fwd".
+200510-11:29:45,765 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_reg_wf.fsl_bbr_wf.invt_bbr" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/invt_bbr".
+200510-11:29:45,879 nipype.workflow INFO:
+	 [Node] Running "invt_bbr" ("nipype.interfaces.fsl.utils.ConvertXFM"), a CommandLine Interface with command:
+convert_xfm -omat /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/invt_bbr/uni_xform_masked_flirt_inv.mat -inverse /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/flt_bbr/uni_xform_masked_flirt.mat
+200510-11:29:46,221 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_reg_wf.fsl_bbr_wf.invt_bbr".
+200510-11:29:46,709 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_reg_wf.fsl_bbr_wf.fsl2itk_fwd" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_fwd".
+200510-11:29:47,971 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.acc_tfm".
+200510-11:29:47,973 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.csf_tfm".
+200510-11:29:47,977 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.wm_tfm".
+200510-11:29:48,83 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_reg_wf.fsl_bbr_wf.fsl2itk_inv" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_inv".
+200510-11:29:48,91 nipype.workflow INFO:
+	 [Node] Running "fsl2itk_inv" ("nipype.interfaces.c3.C3dAffineTool"), a CommandLine Interface with command:
+c3d_affine_tool -ref /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz -src /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/brain_extraction_wf/copy_xform/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform.nii.gz /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/invt_bbr/uni_xform_masked_flirt_inv.mat -fsl2ras -oitk /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_inv/affine.txt
+200510-11:29:48,880 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_reg_wf.fsl_bbr_wf.invt_bbr" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/invt_bbr".
+200510-11:29:49,450 nipype.workflow INFO:
+	 [Node] Running "invt_bbr" ("nipype.interfaces.fsl.utils.ConvertXFM"), a CommandLine Interface with command:
+convert_xfm -omat /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/invt_bbr/uni_xform_masked_flirt_inv.mat -inverse /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/flt_bbr/uni_xform_masked_flirt.mat
+200510-11:29:49,655 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_reg_wf.fsl_bbr_wf.invt_bbr".
+200510-11:29:49,743 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.acc_msk" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_confounds_wf/acc_msk".
+200510-11:29:49,746 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.wm_msk" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_confounds_wf/wm_msk".
+200510-11:29:49,750 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.csf_msk" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_confounds_wf/csf_msk".
+200510-11:29:49,769 nipype.workflow INFO:
+	 [Node] Running "wm_msk" ("nipype.interfaces.utility.wrappers.Function")
+200510-11:29:49,774 nipype.workflow INFO:
+	 [Node] Running "acc_msk" ("nipype.interfaces.utility.wrappers.Function")
+200510-11:29:49,848 nipype.workflow INFO:
+	 [Node] Running "csf_msk" ("nipype.interfaces.utility.wrappers.Function")
+200510-11:29:50,153 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.wm_msk".
+200510-11:29:50,199 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.acc_msk".
+200510-11:29:50,237 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.csf_msk".
+200510-11:29:51,246 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_reg_wf.fsl_bbr_wf.fsl2itk_inv".
+200510-11:29:51,645 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_reg_wf.fsl_bbr_wf.fsl2itk_inv" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_inv".
+200510-11:29:51,679 nipype.workflow INFO:
+	 [Node] Running "fsl2itk_inv" ("nipype.interfaces.c3.C3dAffineTool"), a CommandLine Interface with command:
+c3d_affine_tool -ref /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz -src /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/brain_extraction_wf/copy_xform/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform.nii.gz /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/invt_bbr/uni_xform_masked_flirt_inv.mat -fsl2ras -oitk /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_inv/affine.txt
+200510-11:29:54,978 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_reg_wf.fsl_bbr_wf.fsl2itk_inv".
+200510-11:29:55,403 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.acompcor" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_confounds_wf/acompcor".
+200510-11:29:55,411 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.tcc_tfm" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_confounds_wf/tcc_tfm".
+200510-11:29:55,414 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.acc_tfm" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_confounds_wf/acc_tfm".
+200510-11:29:55,430 nipype.workflow INFO:
+	 [Node] Running "acompcor" ("niworkflows.interfaces.patches.RobustACompCor")
+200510-11:29:55,439 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.wm_tfm" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_confounds_wf/wm_tfm".
+200510-11:29:55,441 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.csf_tfm" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_confounds_wf/csf_tfm".
+200510-11:29:55,461 nipype.workflow INFO:
+	 [Node] Running "tcc_tfm" ("niworkflows.interfaces.fixes.FixHeaderApplyTransforms"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --float 1 --input /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_confounds_wf/csf_roi/09_relabel_wm_mask_xform_eroded.nii.gz --interpolation NearestNeighbor --output 09_relabel_wm_mask_xform_eroded_trans.nii.gz --reference-image /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz --transform /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_inv/affine.txt
+200510-11:29:55,466 nipype.workflow INFO:
+	 [Node] Running "acc_tfm" ("niworkflows.interfaces.fixes.FixHeaderApplyTransforms"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --float 1 --input /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_confounds_wf/acc_roi/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform_prob_0_tpmsum_roi.nii.gz --interpolation NearestNeighbor --output sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform_prob_0_tpmsum_roi_trans.nii.gz --reference-image /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz --transform /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_inv/affine.txt
+200510-11:29:55,482 nipype.workflow INFO:
+	 [Node] Running "wm_tfm" ("niworkflows.interfaces.fixes.FixHeaderApplyTransforms"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --float 1 --input /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_confounds_wf/wm_roi/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform_prob_2_roi.nii.gz --interpolation NearestNeighbor --output sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform_prob_2_roi_trans.nii.gz --reference-image /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz --transform /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_inv/affine.txt
+200510-11:29:55,490 nipype.workflow INFO:
+	 [Node] Running "csf_tfm" ("niworkflows.interfaces.fixes.FixHeaderApplyTransforms"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --float 1 --input /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_confounds_wf/csf_roi/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform_prob_0_roi.nii.gz --interpolation NearestNeighbor --output sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform_prob_0_roi_trans.nii.gz --reference-image /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz --transform /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_inv/affine.txt
+200510-11:29:55,507 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.signals" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_confounds_wf/signals".
+200510-11:29:55,604 nipype.workflow INFO:
+	 [Node] Running "signals" ("niworkflows.interfaces.images.SignalExtraction")
+200510-11:29:58,239 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.tcc_tfm" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_confounds_wf/tcc_tfm".
+200510-11:29:58,241 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.acc_tfm" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_confounds_wf/acc_tfm".
+200510-11:29:58,279 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.csf_tfm" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_confounds_wf/csf_tfm".
+200510-11:29:58,294 nipype.workflow INFO:
+	 [Node] Running "acc_tfm" ("niworkflows.interfaces.fixes.FixHeaderApplyTransforms"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --float 1 --input /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_confounds_wf/acc_roi/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform_prob_0_tpmsum_roi.nii.gz --interpolation NearestNeighbor --output sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform_prob_0_tpmsum_roi_trans.nii.gz --reference-image /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz --transform /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_inv/affine.txt
+200510-11:29:58,302 nipype.workflow INFO:
+	 [Node] Running "tcc_tfm" ("niworkflows.interfaces.fixes.FixHeaderApplyTransforms"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --float 1 --input /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_confounds_wf/csf_roi/09_relabel_wm_mask_xform_eroded.nii.gz --interpolation NearestNeighbor --output 09_relabel_wm_mask_xform_eroded_trans.nii.gz --reference-image /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz --transform /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_inv/affine.txt
+200510-11:29:58,305 nipype.workflow INFO:
+	 [Node] Running "csf_tfm" ("niworkflows.interfaces.fixes.FixHeaderApplyTransforms"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --float 1 --input /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_confounds_wf/csf_roi/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform_prob_0_roi.nii.gz --interpolation NearestNeighbor --output sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform_prob_0_roi_trans.nii.gz --reference-image /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz --transform /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_inv/affine.txt
+200510-11:30:00,957 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.2)
+200510-11:30:00,968 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.2)
+200510-11:30:00,974 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.2)
+200510-11:30:01,145 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.2)
+200510-11:30:04,841 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.2)
+200510-11:30:04,873 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.2)
+200510-11:30:04,886 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.2)
+200510-11:30:07,645 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.acc_tfm".
+200510-11:30:07,710 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.tcc_tfm".
+200510-11:30:07,750 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.wm_tfm".
+200510-11:30:07,952 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.csf_tfm".
+200510-11:30:10,617 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.csf_tfm".
+200510-11:30:10,647 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.tcc_tfm".
+200510-11:30:10,719 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.acc_tfm".
+200510-11:30:10,768 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.tcc_msk" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_confounds_wf/tcc_msk".
+200510-11:30:10,774 nipype.workflow INFO:
+	 [Node] Running "tcc_msk" ("nipype.interfaces.utility.wrappers.Function")
+200510-11:30:10,822 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.acc_msk" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_confounds_wf/acc_msk".
+200510-11:30:10,826 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.wm_msk" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_confounds_wf/wm_msk".
+200510-11:30:10,829 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.csf_msk" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_confounds_wf/csf_msk".
+200510-11:30:10,841 nipype.workflow INFO:
+	 [Node] Running "acc_msk" ("nipype.interfaces.utility.wrappers.Function")
+200510-11:30:10,845 nipype.workflow INFO:
+	 [Node] Running "wm_msk" ("nipype.interfaces.utility.wrappers.Function")
+200510-11:30:11,370 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.tcc_msk".
+200510-11:30:11,384 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.acc_msk".
+200510-11:30:11,409 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.wm_msk".
+200510-11:30:12,698 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.tcc_msk" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_confounds_wf/tcc_msk".
+200510-11:30:12,701 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.acc_msk" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_confounds_wf/acc_msk".
+200510-11:30:12,705 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.csf_msk" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_confounds_wf/csf_msk".
+200510-11:30:12,712 nipype.workflow INFO:
+	 [Node] Running "tcc_msk" ("nipype.interfaces.utility.wrappers.Function")
+200510-11:30:12,715 nipype.workflow INFO:
+	 [Node] Running "acc_msk" ("nipype.interfaces.utility.wrappers.Function")
+200510-11:30:12,724 nipype.workflow INFO:
+	 [Node] Running "csf_msk" ("nipype.interfaces.utility.wrappers.Function")
+200510-11:30:13,238 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.tcc_msk".
+200510-11:30:13,257 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.csf_msk".
+200510-11:30:13,267 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.acc_msk".
+200510-11:30:16,642 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.tcompcor" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_confounds_wf/tcompcor".
+200510-11:30:16,651 nipype.workflow INFO:
+	 [Node] Running "tcompcor" ("niworkflows.interfaces.patches.RobustTCompCor")
+200510-11:30:22,177 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.mask_t1w_tfm" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/mask_t1w_tfm".
+200510-11:30:22,368 nipype.workflow INFO:
+	 [Node] Running "mask_t1w_tfm" ("niworkflows.interfaces.fixes.FixHeaderApplyTransforms"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --float 1 --input /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz --interpolation MultiLabel --output ref_bold_corrected_brain_mask_maths_trans.nii.gz --reference-image /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/gen_ref/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform_reference.nii.gz --transform /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_fwd/affine.txt
+200510-11:30:27,363 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.2)
+200510-11:30:34,183 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_to_t1w_transform" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_to_t1w_transform".
+200510-11:30:35,759 nipype.workflow INFO:
+	 [Node] Running "bold_to_t1w_transform" ("niworkflows.interfaces.itk.MultiApplyTransforms")
+200510-11:30:36,141 nipype.workflow INFO:
+	 [Node] Running "fsl2itk_fwd" ("nipype.interfaces.c3.C3dAffineTool"), a CommandLine Interface with command:
+c3d_affine_tool -ref /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/brain_extraction_wf/copy_xform/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform.nii.gz -src /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/flt_bbr/uni_xform_masked_flirt.mat -fsl2ras -oitk /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_fwd/affine.txt
+200510-11:30:40,275 nipype.workflow INFO:
+	 [Node] Running "fsl2itk_fwd" ("nipype.interfaces.c3.C3dAffineTool"), a CommandLine Interface with command:
+c3d_affine_tool -ref /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/anat_preproc_wf/brain_extraction_wf/copy_xform/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform.nii.gz -src /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/flt_bbr/uni_xform_masked_flirt.mat -fsl2ras -oitk /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_fwd/affine.txt
+200510-11:30:41,357 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_reg_wf.fsl_bbr_wf.fsl2itk_fwd".
+200510-11:30:42,154 nipype.utils WARNING:
+	 Could not check for version updates: 
+502 Server Error: Bad Gateway for url: https://rig.mit.edu/et/projects/nipy/nipype
+200510-11:30:42,159 nipype.utils WARNING:
+	 Could not check for version updates: 
+502 Server Error: Bad Gateway for url: https://rig.mit.edu/et/projects/nipy/nipype
+200510-11:30:42,168 nipype.utils WARNING:
+	 Could not check for version updates: 
+502 Server Error: Bad Gateway for url: https://rig.mit.edu/et/projects/nipy/nipype
+200510-11:30:42,170 nipype.utils WARNING:
+	 Could not check for version updates: 
+502 Server Error: Bad Gateway for url: https://rig.mit.edu/et/projects/nipy/nipype
+200510-11:30:42,172 nipype.utils WARNING:
+	 Could not check for version updates: 
+502 Server Error: Bad Gateway for url: https://rig.mit.edu/et/projects/nipy/nipype
+200510-11:30:42,174 nipype.utils WARNING:
+	 Could not check for version updates: 
+502 Server Error: Bad Gateway for url: https://rig.mit.edu/et/projects/nipy/nipype
+200510-11:30:42,235 nipype.utils WARNING:
+	 Could not check for version updates: 
+502 Server Error: Bad Gateway for url: https://rig.mit.edu/et/projects/nipy/nipype
+200510-11:30:42,254 nipype.utils WARNING:
+	 Could not check for version updates: 
+502 Server Error: Bad Gateway for url: https://rig.mit.edu/et/projects/nipy/nipype
+200510-11:30:46,580 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_reg_wf.fsl_bbr_wf.fsl2itk_fwd".
+200510-11:30:46,867 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.tcc_tfm" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_confounds_wf/tcc_tfm".
+200510-11:30:47,132 nipype.workflow INFO:
+	 [Node] Running "tcc_tfm" ("niworkflows.interfaces.fixes.FixHeaderApplyTransforms"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --float 1 --input /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_confounds_wf/csf_roi/09_relabel_wm_mask_xform_eroded.nii.gz --interpolation NearestNeighbor --output 09_relabel_wm_mask_xform_eroded_trans.nii.gz --reference-image /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz --transform /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_inv/affine.txt
+200510-11:30:48,480 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.mask_t1w_tfm" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/mask_t1w_tfm".
+200510-11:30:48,493 nipype.workflow INFO:
+	 [Node] Running "mask_t1w_tfm" ("niworkflows.interfaces.fixes.FixHeaderApplyTransforms"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --float 1 --input /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz --interpolation MultiLabel --output ref_bold_corrected_brain_mask_maths_trans.nii.gz --reference-image /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/gen_ref/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform_reference.nii.gz --transform /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_fwd/affine.txt
+200510-11:30:54,246 nipype.utils WARNING:
+	 Could not check for version updates: 
+502 Server Error: Bad Gateway for url: https://rig.mit.edu/et/projects/nipy/nipype
+200510-11:30:54,552 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.mask_t1w_tfm" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/mask_t1w_tfm".
+200510-11:30:54,571 nipype.workflow INFO:
+	 [Node] Running "mask_t1w_tfm" ("niworkflows.interfaces.fixes.FixHeaderApplyTransforms"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --float 1 --input /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz --interpolation MultiLabel --output ref_bold_corrected_brain_mask_maths_trans.nii.gz --reference-image /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/gen_ref/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform_reference.nii.gz --transform /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_fwd/affine.txt
+200510-11:30:55,707 nipype.utils WARNING:
+	 Could not check for version updates: 
+502 Server Error: Bad Gateway for url: https://rig.mit.edu/et/projects/nipy/nipype
+200510-11:30:57,921 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.wm_tfm" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_confounds_wf/wm_tfm".
+200510-11:30:58,134 nipype.workflow INFO:
+	 [Node] Running "wm_tfm" ("niworkflows.interfaces.fixes.FixHeaderApplyTransforms"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --float 1 --input /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_confounds_wf/wm_roi/sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform_prob_2_roi.nii.gz --interpolation NearestNeighbor --output sub-10090_ses-1_run-01_T1w_template_corrected_masked_xform_prob_2_roi_trans.nii.gz --reference-image /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz --transform /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_inv/affine.txt
+200510-11:31:02,123 nipype.utils WARNING:
+	 Could not check for version updates: 
+502 Server Error: Bad Gateway for url: https://rig.mit.edu/et/projects/nipy/nipype
+200510-11:31:02,153 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.tcc_tfm".
+200510-11:31:06,695 nipype.utils WARNING:
+	 Could not check for version updates: 
+502 Server Error: Bad Gateway for url: https://rig.mit.edu/et/projects/nipy/nipype
+200510-11:31:06,813 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_to_t1w_transform" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_to_t1w_transform".
+200510-11:31:09,37 nipype.workflow INFO:
+	 [Node] Running "bold_to_t1w_transform" ("niworkflows.interfaces.itk.MultiApplyTransforms")
+200510-11:31:13,56 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.signals".
+200510-11:31:13,418 nipype.workflow INFO:
+	 [Node] Running "csf_msk" ("nipype.interfaces.utility.wrappers.Function")
+200510-11:31:13,951 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.wm_tfm".
+200510-11:31:14,263 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.csf_msk".
+200510-11:31:16,415 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.2)
+200510-11:31:16,426 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.2)
+200510-11:31:16,433 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.2)
+200510-11:31:16,443 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.2)
+200510-11:31:16,445 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.2)
+200510-11:31:16,450 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.2)
+200510-11:31:16,458 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.2)
+200510-11:31:16,580 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.2)
+200510-11:31:17,147 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.acompcor".
+200510-11:31:17,637 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.wm_msk" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_confounds_wf/wm_msk".
+200510-11:31:17,640 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.tcc_msk" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_confounds_wf/tcc_msk".
+200510-11:31:17,648 nipype.workflow INFO:
+	 [Node] Running "wm_msk" ("nipype.interfaces.utility.wrappers.Function")
+200510-11:31:17,653 nipype.workflow INFO:
+	 [Node] Running "tcc_msk" ("nipype.interfaces.utility.wrappers.Function")
+200510-11:31:18,315 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.tcc_msk".
+200510-11:31:18,340 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.wm_msk".
+200510-11:31:19,91 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.tcompcor" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_confounds_wf/tcompcor".
+200510-11:31:23,918 nipype.workflow INFO:
+	 [Node] Running "tcompcor" ("niworkflows.interfaces.patches.RobustTCompCor")
+200510-11:31:25,892 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.tcompcor".
+200510-11:31:32,551 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.tcompcor" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_confounds_wf/tcompcor".
+200510-11:31:32,558 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.acc_metadata_fmt" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_confounds_wf/acc_metadata_fmt".
+200510-11:31:32,656 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.acompcor" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_confounds_wf/acompcor".
+200510-11:31:32,746 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.signals" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_confounds_wf/signals".
+200510-11:31:32,803 nipype.workflow INFO:
+	 [Node] Running "acc_metadata_fmt" ("niworkflows.interfaces.utils.TSV2JSON")
+200510-11:31:32,804 nipype.workflow INFO:
+	 [Node] Running "tcompcor" ("niworkflows.interfaces.patches.RobustTCompCor")
+200510-11:31:32,808 nipype.workflow INFO:
+	 [Node] Running "acompcor" ("niworkflows.interfaces.patches.RobustACompCor")
+200510-11:31:33,127 nipype.workflow INFO:
+	 [Node] Running "signals" ("niworkflows.interfaces.images.SignalExtraction")
+200510-11:31:35,463 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.acc_metadata_fmt".
+200510-11:31:36,798 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.tcc_metadata_fmt" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_confounds_wf/tcc_metadata_fmt".
+200510-11:31:36,814 nipype.workflow INFO:
+	 [Node] Running "tcc_metadata_fmt" ("niworkflows.interfaces.utils.TSV2JSON")
+200510-11:31:37,807 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.tcc_metadata_fmt".
+200510-11:31:44,840 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.signals" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_confounds_wf/signals".
+200510-11:31:45,97 nipype.workflow INFO:
+	 [Node] Running "signals" ("niworkflows.interfaces.images.SignalExtraction")
+200510-11:31:48,833 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.rois_plot" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_confounds_wf/rois_plot".
+200510-11:31:52,695 nipype.workflow INFO:
+	 [Node] Running "rois_plot" ("niworkflows.interfaces.masks.ROIsPlot")
+200510-11:31:54,206 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.mask_t1w_tfm".
+200510-11:31:58,733 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.acompcor" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_confounds_wf/acompcor".
+200510-11:31:58,764 nipype.workflow INFO:
+	 [Node] Running "acompcor" ("niworkflows.interfaces.patches.RobustACompCor")
+200510-11:32:38,949 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.mask_t1w_tfm".
+200510-11:32:44,573 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.pre_mask_dilate" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/pre_mask_dilate".
+200510-11:32:44,590 nipype.workflow INFO:
+	 [Node] Running "pre_mask_dilate" ("nipype.interfaces.fsl.maths.DilateImage"), a CommandLine Interface with command:
+fslmaths -dt char /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/mask_t1w_tfm/ref_bold_corrected_brain_mask_maths_trans.nii.gz -kernel sphere 3.0000 -dilF /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/pre_mask_dilate/ref_bold_corrected_brain_mask_maths_trans_dil.nii.gz
+200510-11:32:47,112 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.mask_t1w_tfm".
+200510-11:32:52,300 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.pre_mask_dilate" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/pre_mask_dilate".
+200510-11:32:52,353 nipype.workflow INFO:
+	 [Node] Running "pre_mask_dilate" ("nipype.interfaces.fsl.maths.DilateImage"), a CommandLine Interface with command:
+fslmaths -dt char /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/mask_t1w_tfm/ref_bold_corrected_brain_mask_maths_trans.nii.gz -kernel sphere 3.0000 -dilF /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/pre_mask_dilate/ref_bold_corrected_brain_mask_maths_trans_dil.nii.gz
+200510-11:33:01,655 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.pre_mask_dilate".
+200510-11:33:06,44 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.pre_mask_dilate" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/pre_mask_dilate".
+200510-11:33:06,67 nipype.workflow INFO:
+	 [Node] Running "pre_mask_dilate" ("nipype.interfaces.fsl.maths.DilateImage"), a CommandLine Interface with command:
+fslmaths -dt char /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/mask_t1w_tfm/ref_bold_corrected_brain_mask_maths_trans.nii.gz -kernel sphere 3.0000 -dilF /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/pre_mask_dilate/ref_bold_corrected_brain_mask_maths_trans_dil.nii.gz
+200510-11:33:06,952 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.tcompcor".
+200510-11:33:08,596 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.pre_mask_dilate".
+200510-11:33:10,706 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.tcc_metadata_fmt" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_confounds_wf/tcc_metadata_fmt".
+200510-11:33:10,797 nipype.workflow INFO:
+	 [Node] Running "tcc_metadata_fmt" ("niworkflows.interfaces.utils.TSV2JSON")
+200510-11:33:11,547 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.tcc_metadata_fmt".
+200510-11:33:16,467 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.tcompcor".
+200510-11:33:19,956 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.pre_mask_dilate".
+200510-11:33:21,50 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.tcc_metadata_fmt" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_confounds_wf/tcc_metadata_fmt".
+200510-11:33:21,72 nipype.workflow INFO:
+	 [Node] Running "tcc_metadata_fmt" ("niworkflows.interfaces.utils.TSV2JSON")
+200510-11:33:21,632 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.tcc_metadata_fmt".
+200510-11:33:33,624 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.signals".
+200510-11:33:36,766 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.rois_plot" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_confounds_wf/rois_plot".
+200510-11:33:38,344 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.acompcor".
+200510-11:33:40,118 nipype.workflow INFO:
+	 [Node] Running "rois_plot" ("niworkflows.interfaces.masks.ROIsPlot")
+200510-11:33:40,375 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.rois_plot" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_confounds_wf/rois_plot".
+200510-11:33:40,411 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.compcor_plot" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_confounds_wf/compcor_plot".
+200510-11:33:40,519 nipype.workflow INFO:
+	 [Node] Running "compcor_plot" ("niworkflows.interfaces.plotting.CompCorVariancePlot")
+200510-11:33:44,63 nipype.workflow INFO:
+	 [Node] Running "rois_plot" ("niworkflows.interfaces.masks.ROIsPlot")
+200510-11:33:44,400 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.signals".
+200510-11:33:50,134 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.compcor_plot".
+200510-11:33:53,945 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.conf_corr_plot" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_confounds_wf/conf_corr_plot".
+200510-11:33:53,957 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.model_expansion" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_confounds_wf/model_expansion".
+200510-11:34:01,516 nipype.workflow INFO:
+	 [Node] Running "conf_corr_plot" ("niworkflows.interfaces.plotting.ConfoundsCorrelationPlot")
+200510-11:34:02,408 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.acompcor".
+200510-11:34:02,744 nipype.workflow INFO:
+	 [Node] Running "model_expansion" ("niworkflows.interfaces.confounds.ExpandModel")
+200510-11:34:08,4 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.model_expansion".
+200510-11:34:14,827 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.acc_metadata_fmt" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_confounds_wf/acc_metadata_fmt".
+200510-11:34:15,52 nipype.workflow INFO:
+	 [Node] Running "acc_metadata_fmt" ("niworkflows.interfaces.utils.TSV2JSON")
+200510-11:34:16,554 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.acc_metadata_fmt".
+200510-11:34:30,67 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.acc_metadata_fmt" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_confounds_wf/acc_metadata_fmt".
+200510-11:34:30,139 nipype.workflow INFO:
+	 [Node] Running "acc_metadata_fmt" ("niworkflows.interfaces.utils.TSV2JSON")
+200510-11:34:32,202 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.acc_metadata_fmt".
+200510-11:34:39,766 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.spike_regressors" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_confounds_wf/spike_regressors".
+200510-11:34:39,768 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.compcor_plot" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_confounds_wf/compcor_plot".
+200510-11:34:40,13 nipype.workflow INFO:
+	 [Node] Running "compcor_plot" ("niworkflows.interfaces.plotting.CompCorVariancePlot")
+200510-11:34:40,21 nipype.workflow INFO:
+	 [Node] Running "spike_regressors" ("niworkflows.interfaces.confounds.SpikeRegressors")
+200510-11:34:44,326 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.spike_regressors".
+200510-11:34:49,0 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.compcor_plot".
+200510-11:34:52,486 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.conf_corr_plot" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_confounds_wf/conf_corr_plot".
+200510-11:34:52,505 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.model_expansion" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_confounds_wf/model_expansion".
+200510-11:34:55,237 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.compcor_plot" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_confounds_wf/compcor_plot".
+200510-11:34:55,304 nipype.workflow INFO:
+	 [Node] Running "compcor_plot" ("niworkflows.interfaces.plotting.CompCorVariancePlot")
+200510-11:34:55,827 nipype.workflow INFO:
+	 [Node] Running "conf_corr_plot" ("niworkflows.interfaces.plotting.ConfoundsCorrelationPlot")
+200510-11:34:55,852 nipype.workflow INFO:
+	 [Node] Running "model_expansion" ("niworkflows.interfaces.confounds.ExpandModel")
+200510-11:35:02,104 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.model_expansion".
+200510-11:35:04,152 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.compcor_plot".
+200510-11:35:07,276 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.conf_corr_plot" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_confounds_wf/conf_corr_plot".
+200510-11:35:07,309 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.model_expansion" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_confounds_wf/model_expansion".
+200510-11:35:10,680 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.conf_corr_plot".
+200510-11:35:10,847 nipype.workflow INFO:
+	 [Node] Running "model_expansion" ("niworkflows.interfaces.confounds.ExpandModel")
+200510-11:35:14,500 nipype.workflow INFO:
+	 [Node] Running "conf_corr_plot" ("niworkflows.interfaces.plotting.ConfoundsCorrelationPlot")
+200510-11:35:17,797 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.model_expansion".
+200510-11:35:54,905 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.rois_plot".
+200510-11:35:55,495 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.spike_regressors" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_confounds_wf/spike_regressors".
+200510-11:35:55,572 nipype.workflow INFO:
+	 [Node] Running "spike_regressors" ("niworkflows.interfaces.confounds.SpikeRegressors")
+200510-11:35:59,115 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.spike_regressors".
+200510-11:36:01,222 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.spike_regressors" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_confounds_wf/spike_regressors".
+200510-11:36:01,244 nipype.workflow INFO:
+	 [Node] Running "spike_regressors" ("niworkflows.interfaces.confounds.SpikeRegressors")
+200510-11:36:04,824 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.spike_regressors".
+200510-11:36:06,735 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.conf_corr_plot".
+200510-11:36:25,372 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_confounds_wf.conf_corr_plot".
+200510-11:37:20,435 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_confounds_wf.rois_plot".
+200510-11:37:22,840 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_to_t1w_transform" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_to_t1w_transform".
+200510-11:37:23,65 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_confounds_wf.rois_plot".
+200510-11:37:24,588 nipype.workflow INFO:
+	 [Node] Running "bold_to_t1w_transform" ("niworkflows.interfaces.itk.MultiApplyTransforms")
+200510-12:03:51,478 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_to_t1w_transform".
+200510-12:03:55,124 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.merge" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/merge".
+200510-12:03:56,259 nipype.workflow INFO:
+	 [Node] Running "merge" ("niworkflows.interfaces.nilearn.Merge")
+200510-12:04:17,512 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_to_t1w_transform".
+200510-12:04:20,626 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.merge" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/merge".
+200510-12:04:21,633 nipype.workflow INFO:
+	 [Node] Running "merge" ("niworkflows.interfaces.nilearn.Merge")
+200510-12:07:06,992 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_to_t1w_transform".
+200510-12:07:07,650 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.merge" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/merge".
+200510-12:07:07,913 nipype.workflow INFO:
+	 [Node] Running "merge" ("niworkflows.interfaces.nilearn.Merge")
+200510-12:07:12,692 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.merge".
+200510-12:07:13,627 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_reference_wf.validate" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/validate".
+200510-12:07:14,59 nipype.workflow INFO:
+	 [Node] Running "validate" ("niworkflows.interfaces.images.ValidateImage")
+200510-12:07:14,90 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_reference_wf.validate".
+200510-12:07:15,599 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_reference_wf.gen_ref" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/gen_ref".
+200510-12:07:15,603 nipype.workflow INFO:
+	 [Node] Running "gen_ref" ("niworkflows.interfaces.registration.EstimateReferenceImage")
+200510-12:07:18,953 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.merge".
+200510-12:07:19,604 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.validate" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/validate".
+200510-12:07:19,649 nipype.workflow INFO:
+	 [Node] Running "validate" ("niworkflows.interfaces.images.ValidateImage")
+200510-12:07:19,664 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.validate".
+200510-12:07:19,716 nipype.interface INFO:
+	 stderr 2020-05-10T12:07:19.716633:++ 3dvolreg: AFNI version=Debian-16.2.07~dfsg.1-5~nd16.04+1 (Jun 12 2017) [64-bit]
+200510-12:07:19,716 nipype.interface INFO:
+	 stderr 2020-05-10T12:07:19.716633:++ Authored by: RW Cox
+200510-12:07:19,752 nipype.interface INFO:
+	 stderr 2020-05-10T12:07:19.752793:++ Coarse del was 10, replaced with 7
+200510-12:07:21,643 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.gen_ref" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/gen_ref".
+200510-12:07:21,648 nipype.workflow INFO:
+	 [Node] Running "gen_ref" ("niworkflows.interfaces.registration.EstimateReferenceImage")
+200510-12:07:26,106 nipype.interface INFO:
+	 stderr 2020-05-10T12:07:26.106501:++ 3dvolreg: AFNI version=Debian-16.2.07~dfsg.1-5~nd16.04+1 (Jun 12 2017) [64-bit]
+200510-12:07:26,110 nipype.interface INFO:
+	 stderr 2020-05-10T12:07:26.110552:++ Authored by: RW Cox
+200510-12:07:26,111 nipype.interface INFO:
+	 stderr 2020-05-10T12:07:26.111592:++ Coarse del was 10, replaced with 7
+200510-12:08:22,534 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.merge".
+200510-12:08:23,668 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.validate" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/validate".
+200510-12:08:23,673 nipype.workflow INFO:
+	 [Node] Running "validate" ("niworkflows.interfaces.images.ValidateImage")
+200510-12:08:23,688 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.validate".
+200510-12:08:25,669 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.gen_ref" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/gen_ref".
+200510-12:08:25,719 nipype.workflow INFO:
+	 [Node] Running "gen_ref" ("niworkflows.interfaces.registration.EstimateReferenceImage")
+200510-12:08:31,195 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.2)
+200510-12:08:31,481 nipype.interface INFO:
+	 stderr 2020-05-10T12:08:31.481735:++ 3dvolreg: AFNI version=Debian-16.2.07~dfsg.1-5~nd16.04+1 (Jun 12 2017) [64-bit]
+200510-12:08:31,485 nipype.interface INFO:
+	 stderr 2020-05-10T12:08:31.485673:++ Authored by: RW Cox
+200510-12:08:31,492 nipype.interface INFO:
+	 stderr 2020-05-10T12:08:31.492599:++ Coarse del was 10, replaced with 7
+200510-12:09:01,223 nipype.interface INFO:
+	 stderr 2020-05-10T12:09:01.223895:++ Max displacement in automask = 0.19 (mm) at sub-brick 9
+200510-12:09:01,224 nipype.interface INFO:
+	 stderr 2020-05-10T12:09:01.224112:++ Max delta displ  in automask = 0.14 (mm) at sub-brick 1
+200510-12:09:08,311 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_reference_wf.gen_ref".
+200510-12:09:09,807 nipype.interface INFO:
+	 stderr 2020-05-10T12:09:09.807688:++ Max displacement in automask = 0.21 (mm) at sub-brick 14
+200510-12:09:09,807 nipype.interface INFO:
+	 stderr 2020-05-10T12:09:09.807909:++ Max delta displ  in automask = 0.15 (mm) at sub-brick 14
+200510-12:09:11,692 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.n4_correct" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/n4_correct".
+200510-12:09:12,30 nipype.workflow INFO:
+	 [Node] Running "n4_correct" ("niworkflows.interfaces.fixes.FixN4BiasFieldCorrection"), a CommandLine Interface with command:
+N4BiasFieldCorrection --bspline-fitting [ 200 ] -d 3 --input-image /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/n4_correct/ref_bold_scaled.nii.gz --mask-image /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/check_hdr/ref_bold_corrected_brain_mask_maths_trans_dil_hdr.nii.gz --output ref_bold_corrected.nii.gz -r
+200510-12:09:13,524 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.2)
+200510-12:09:16,172 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.gen_ref".
+200510-12:09:19,695 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.n4_correct" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/n4_correct".
+200510-12:09:20,79 nipype.workflow INFO:
+	 [Node] Running "n4_correct" ("niworkflows.interfaces.fixes.FixN4BiasFieldCorrection"), a CommandLine Interface with command:
+N4BiasFieldCorrection --bspline-fitting [ 200 ] -d 3 --input-image /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/n4_correct/ref_bold_scaled.nii.gz --mask-image /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/check_hdr/ref_bold_corrected_brain_mask_maths_trans_dil_hdr.nii.gz --output ref_bold_corrected.nii.gz -r
+200510-12:09:21,279 nipype.utils INFO:
+	 Running nipype version 1.3.1 (latest: 1.4.2)
+200510-12:09:28,421 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.n4_correct".
+200510-12:09:29,700 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_pass" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass".
+200510-12:09:29,706 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_pass" ("nipype.interfaces.fsl.preprocess.BET"), a CommandLine Interface with command:
+bet /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/n4_correct/ref_bold_corrected.nii.gz /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain.nii.gz -f 0.20 -m
+200510-12:09:35,135 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_pass".
+200510-12:09:35,722 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_dilate" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate".
+200510-12:09:35,728 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_dilate" ("nipype.interfaces.fsl.maths.DilateImage"), a CommandLine Interface with command:
+fslmaths -dt char /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain_mask.nii.gz -kernel sphere 6.0000 -dilF /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate/ref_bold_corrected_brain_mask_dil.nii.gz
+200510-12:09:36,158 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.n4_correct".
+200510-12:09:37,712 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_pass" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass".
+200510-12:09:37,717 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_pass" ("nipype.interfaces.fsl.preprocess.BET"), a CommandLine Interface with command:
+bet /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/n4_correct/ref_bold_corrected.nii.gz /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain.nii.gz -f 0.20 -m
+200510-12:09:42,954 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_dilate".
+200510-12:09:42,995 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_pass".
+200510-12:09:43,567 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_dilate" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate".
+200510-12:09:43,570 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_mask" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_mask".
+200510-12:09:43,577 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_dilate" ("nipype.interfaces.fsl.maths.DilateImage"), a CommandLine Interface with command:
+fslmaths -dt char /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain_mask.nii.gz -kernel sphere 6.0000 -dilF /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate/ref_bold_corrected_brain_mask_dil.nii.gz
+200510-12:09:43,583 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_mask" ("nipype.interfaces.fsl.maths.ApplyMask"), a CommandLine Interface with command:
+fslmaths /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain.nii.gz -mas /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate/ref_bold_corrected_brain_mask_dil.nii.gz /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_mask/ref_bold_corrected_brain_masked.nii.gz
+200510-12:09:44,58 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_mask".
+200510-12:09:45,707 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.unifize" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/unifize".
+200510-12:09:45,714 nipype.workflow INFO:
+	 [Node] Running "unifize" ("nipype.interfaces.afni.utils.Unifize"), a CommandLine Interface with command:
+3dUnifize -clfrac 0.2 -rbt 18.3 65.0 90.0 -prefix uni.nii.gz -T2 -input /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/unifize/ref_bold_corrected_brain_masked.nii.gz
+200510-12:09:50,713 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_dilate".
+200510-12:09:51,721 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_mask" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_mask".
+200510-12:09:51,727 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_mask" ("nipype.interfaces.fsl.maths.ApplyMask"), a CommandLine Interface with command:
+fslmaths /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain.nii.gz -mas /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate/ref_bold_corrected_brain_mask_dil.nii.gz /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_mask/ref_bold_corrected_brain_masked.nii.gz
+200510-12:09:52,255 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_mask".
+200510-12:09:53,720 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.unifize" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/unifize".
+200510-12:09:53,726 nipype.workflow INFO:
+	 [Node] Running "unifize" ("nipype.interfaces.afni.utils.Unifize"), a CommandLine Interface with command:
+3dUnifize -clfrac 0.2 -rbt 18.3 65.0 90.0 -prefix uni.nii.gz -T2 -input /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/unifize/ref_bold_corrected_brain_masked.nii.gz
+200510-12:09:58,895 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.unifize".
+200510-12:09:59,723 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_unifize" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/fixhdr_unifize".
+200510-12:09:59,730 nipype.workflow INFO:
+	 [Node] Running "fixhdr_unifize" ("niworkflows.interfaces.utils.CopyXForm")
+200510-12:09:59,975 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_unifize".
+200510-12:10:01,724 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_second_pass" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_second_pass".
+200510-12:10:01,730 nipype.workflow INFO:
+	 [Node] Running "skullstrip_second_pass" ("nipype.interfaces.afni.preprocess.Automask"), a CommandLine Interface with command:
+3dAutomask -apply_prefix uni_xform_masked.nii.gz -dilate 1 -prefix uni_xform_mask.nii.gz /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_second_pass/uni_xform.nii.gz
+200510-12:10:02,464 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_second_pass".
+200510-12:10:03,720 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_skullstrip2" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/fixhdr_skullstrip2".
+200510-12:10:03,725 nipype.workflow INFO:
+	 [Node] Running "fixhdr_skullstrip2" ("niworkflows.interfaces.utils.CopyXForm")
+200510-12:10:03,813 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_skullstrip2".
+200510-12:10:04,974 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.unifize".
+200510-12:10:05,578 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_unifize" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/fixhdr_unifize".
+200510-12:10:05,582 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.combine_masks" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks".
+200510-12:10:05,588 nipype.workflow INFO:
+	 [Node] Running "fixhdr_unifize" ("niworkflows.interfaces.utils.CopyXForm")
+200510-12:10:05,590 nipype.workflow INFO:
+	 [Node] Running "combine_masks" ("nipype.interfaces.fsl.maths.BinaryMaths"), a CommandLine Interface with command:
+fslmaths /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain_mask.nii.gz -mul /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/fixhdr_skullstrip2/uni_xform_mask_xform.nii.gz /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz
+200510-12:10:05,917 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.combine_masks".
+200510-12:10:05,932 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_unifize".
+200510-12:10:05,977 nipype.interface INFO:
+	 stderr 2020-05-10T12:10:05.977739:++ Max displacement in automask = 0.21 (mm) at sub-brick 14
+200510-12:10:05,977 nipype.interface INFO:
+	 stderr 2020-05-10T12:10:05.977918:++ Max delta displ  in automask = 0.15 (mm) at sub-brick 14
+200510-12:10:07,564 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_second_pass" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_second_pass".
+200510-12:10:07,570 nipype.workflow INFO:
+	 [Node] Running "skullstrip_second_pass" ("nipype.interfaces.afni.preprocess.Automask"), a CommandLine Interface with command:
+3dAutomask -apply_prefix uni_xform_masked.nii.gz -dilate 1 -prefix uni_xform_mask.nii.gz /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_second_pass/uni_xform.nii.gz
+200510-12:10:07,586 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.apply_mask" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask".
+200510-12:10:07,593 nipype.workflow INFO:
+	 [Node] Running "apply_mask" ("nipype.interfaces.fsl.maths.ApplyMask"), a CommandLine Interface with command:
+fslmaths /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/fixhdr_unifize/uni_xform.nii.gz -mas /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz
+200510-12:10:08,79 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.apply_mask".
+200510-12:10:08,266 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_second_pass".
+200510-12:10:08,701 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.gen_ref".
+200510-12:10:09,450 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_skullstrip2" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/fixhdr_skullstrip2".
+200510-12:10:09,457 nipype.workflow INFO:
+	 [Node] Running "fixhdr_skullstrip2" ("niworkflows.interfaces.utils.CopyXForm")
+200510-12:10:09,539 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_skullstrip2".
+200510-12:10:11,448 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.combine_masks" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks".
+200510-12:10:11,453 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.n4_correct" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/n4_correct".
+200510-12:10:11,461 nipype.workflow INFO:
+	 [Node] Running "combine_masks" ("nipype.interfaces.fsl.maths.BinaryMaths"), a CommandLine Interface with command:
+fslmaths /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain_mask.nii.gz -mul /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/fixhdr_skullstrip2/uni_xform_mask_xform.nii.gz /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz
+200510-12:10:11,731 nipype.workflow INFO:
+	 [Node] Running "n4_correct" ("niworkflows.interfaces.fixes.FixN4BiasFieldCorrection"), a CommandLine Interface with command:
+N4BiasFieldCorrection --bspline-fitting [ 200 ] -d 3 --input-image /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/n4_correct/ref_bold_scaled.nii.gz --mask-image /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/check_hdr/ref_bold_corrected_brain_mask_maths_trans_dil_hdr.nii.gz --output ref_bold_corrected.nii.gz -r
+200510-12:10:11,744 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.combine_masks".
+200510-12:10:13,570 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.apply_mask" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask".
+200510-12:10:13,577 nipype.workflow INFO:
+	 [Node] Running "apply_mask" ("nipype.interfaces.fsl.maths.ApplyMask"), a CommandLine Interface with command:
+fslmaths /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/fixhdr_unifize/uni_xform.nii.gz -mas /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_2_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz
+200510-12:10:13,868 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_2_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.apply_mask".
+200510-12:10:16,883 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.n4_correct".
+200510-12:10:17,452 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_pass" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass".
+200510-12:10:17,457 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_pass" ("nipype.interfaces.fsl.preprocess.BET"), a CommandLine Interface with command:
+bet /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/n4_correct/ref_bold_corrected.nii.gz /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain.nii.gz -f 0.20 -m
+200510-12:10:19,73 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_pass".
+200510-12:10:19,455 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_dilate" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate".
+200510-12:10:19,461 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_dilate" ("nipype.interfaces.fsl.maths.DilateImage"), a CommandLine Interface with command:
+fslmaths -dt char /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain_mask.nii.gz -kernel sphere 6.0000 -dilF /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate/ref_bold_corrected_brain_mask_dil.nii.gz
+200510-12:10:22,49 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_dilate".
+200510-12:10:23,458 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_mask" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_mask".
+200510-12:10:23,465 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_mask" ("nipype.interfaces.fsl.maths.ApplyMask"), a CommandLine Interface with command:
+fslmaths /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain.nii.gz -mas /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate/ref_bold_corrected_brain_mask_dil.nii.gz /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_mask/ref_bold_corrected_brain_masked.nii.gz
+200510-12:10:23,664 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_mask".
+200510-12:10:25,460 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.unifize" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/unifize".
+200510-12:10:25,467 nipype.workflow INFO:
+	 [Node] Running "unifize" ("nipype.interfaces.afni.utils.Unifize"), a CommandLine Interface with command:
+3dUnifize -clfrac 0.2 -rbt 18.3 65.0 90.0 -prefix uni.nii.gz -T2 -input /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/unifize/ref_bold_corrected_brain_masked.nii.gz
+200510-12:10:30,76 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.unifize".
+200510-12:10:31,463 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_unifize" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/fixhdr_unifize".
+200510-12:10:31,470 nipype.workflow INFO:
+	 [Node] Running "fixhdr_unifize" ("niworkflows.interfaces.utils.CopyXForm")
+200510-12:10:31,568 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_unifize".
+200510-12:10:33,470 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_second_pass" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_second_pass".
+200510-12:10:33,477 nipype.workflow INFO:
+	 [Node] Running "skullstrip_second_pass" ("nipype.interfaces.afni.preprocess.Automask"), a CommandLine Interface with command:
+3dAutomask -apply_prefix uni_xform_masked.nii.gz -dilate 1 -prefix uni_xform_mask.nii.gz /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_second_pass/uni_xform.nii.gz
+200510-12:10:33,756 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_second_pass".
+200510-12:10:35,468 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_skullstrip2" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/fixhdr_skullstrip2".
+200510-12:10:35,474 nipype.workflow INFO:
+	 [Node] Running "fixhdr_skullstrip2" ("niworkflows.interfaces.utils.CopyXForm")
+200510-12:10:35,512 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_skullstrip2".
+200510-12:10:37,470 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.combine_masks" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks".
+200510-12:10:37,477 nipype.workflow INFO:
+	 [Node] Running "combine_masks" ("nipype.interfaces.fsl.maths.BinaryMaths"), a CommandLine Interface with command:
+fslmaths /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain_mask.nii.gz -mul /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/fixhdr_skullstrip2/uni_xform_mask_xform.nii.gz /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz
+200510-12:10:37,604 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.combine_masks".
+200510-12:10:39,472 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.apply_mask" in "/projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask".
+200510-12:10:39,479 nipype.workflow INFO:
+	 [Node] Running "apply_mask" ("nipype.interfaces.fsl.maths.ApplyMask"), a CommandLine Interface with command:
+fslmaths /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/fixhdr_unifize/uni_xform.nii.gz -mas /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz /projects/b1108/projects/BrainMAPD_func_conn/work/fmriprep_wf/single_subject_10090_wf/func_preproc_ses_1_task_MID_run_02_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz
+200510-12:10:39,652 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_10090_wf.func_preproc_ses_1_task_MID_run_02_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.apply_mask".
+slurmstepd: error: *** JOB 340646 ON qnode6138 CANCELLED AT 2020-05-10T22:43:37 DUE TO TIME LIMIT ***

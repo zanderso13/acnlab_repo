@@ -8,10 +8,10 @@ function run_subject_firstlevel_MID(PID, ses, run, overwrite)
 
 %% var set up
 if nargin==0 % defaults just for testing
-    PID = 10001;  
+    PID = 21684;  
     overwrite = 1;
     ses = 2;
-    run = 2;
+    run = 1;
 end
 
 % directories
@@ -47,11 +47,11 @@ TR = 2;
 %% Model for MID task
 
 % FL directory for saving 1st level results: beta images, SPM.mat, etc.
-in{1} = {fullfile(fl_dir, PID, 'ses-2', strcat('run-', num2str(run)), 'MID')};
+in{1} = {fullfile(fl_dir, PID, strcat('ses-',num2str(ses)), strcat('run-', num2str(run)), 'MID')};
 
 % preproc images
-rundir = fullfile(preproc_dir, PID, 'ses-2', 'func');
-in{2} = cellstr(spm_select('ExtFPList', rundir, strcat('.*task-MID_run-0',num2str(run),'_space-MNI152NLin2009cAsym_desc-preproc_bold.nii'), ndummies+1:9999));
+rundir = fullfile(preproc_dir, PID, strcat('ses-', num2str(ses)), 'func');
+in{2} = cellstr(spm_select('ExtFPList', rundir, strcat('ssub.*task-MID_run-0',num2str(run),'_space-MNI152NLin2009cAsym_desc-preproc_bold.nii'), ndummies+1:9999));
 
 if isempty(in{2}{1})
     warning('No preprocd functional found')
@@ -70,10 +70,10 @@ end
 %% nuisance covs
 
 % fmriprep output
-confound_fname = filenames(fullfile(preproc_dir, PID, 'ses-2', 'func', '*task-MID*confounds*.tsv'));
+confound_fname = filenames(fullfile(preproc_dir, PID, strcat('ses-',num2str(ses)), 'func', '*task-MID*confounds*.tsv'));
 
 % find the raw image file, for spike detection
-rawrun = filenames(fullfile(raw_dir, PID, 'ses-2', 'func', strcat('*task-MID_run-0',num2str(run),'_bold.nii*')));
+rawrun = filenames(fullfile(raw_dir, PID, strcat('ses-',num2str(ses)), 'func', strcat('*task-MID_run-0',num2str(run),'_bold.nii*')));
 cd(fullfile(preproc_dir, PID));
 % get nuis covs
 [Rfull, Rselected, n_spike_regs, FD, gsr_final] = make_nuisance_from_fmriprep_output(confound_fname{run}, rawrun, TR);%, 4);

@@ -12,7 +12,7 @@ subs=`cat ${1}`          # make sure txt file is full fib file names
 
 for sub in ${subs}
 do
-	
+echo $sub	
 sbatch ./single_sub_fmriprep.sh ${sub}
 
 echo ‘done for subject: ‘ ${sub}
