@@ -16,15 +16,15 @@ end
 
 % directories
 % first is where your stats files will be output to
-directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels';
+directories{1} = '/projects/b1108/projects/BrainMAPD_func_conn/first_levels/first_level_output';
 % next is where the preprocessed data is
-directories{2} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/fmriprep';
+directories{2} = '/projects/b1108/projects/BrainMAPD_func_conn/fmriprep';
 % where the raw data lives (raw meaning before preprocessing)
-directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/raw_data_storage';
+directories{3} = '/projects/b1108/data/BrainMAPD';
 % the timing files for modelling (onsets, durations, names)
-directories{4} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files';
+directories{4} = '/projects/b1108/projects/BrainMAPD_func_conn/timing_files';
 % where framewise displacement files will be saved
-directories{5} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files';
+directories{5} = '/projects/b1108/projects/BrainMAPD_func_conn/first_levels/additional_files';
 
 fl_dir = directories{1};
 preproc_dir = directories{2};
