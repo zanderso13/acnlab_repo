@@ -10,7 +10,7 @@
 % SPM directories
 fldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output';
 ses_str = 'ses-2';
-run_str = 'run-2';
+run_str = 'run-1';
 task_str = 'MID';
 
 % FSL directories
@@ -19,10 +19,10 @@ task_str = 'MID';
 % run_str = 'analysis/MID_Run1.feat';
 % task_str = 'stats';
 
-smoothing_kernel = 6;
-data = fmri_data(filenames(fullfile(fldir,'*',ses_str,run_str,task_str,'con_0001.nii')));
+smoothing_kernel = 4;
+data = fmri_data(filenames(fullfile(fldir,'*',ses_str,run_str,task_str,'con_0004.nii')));
 
-data = preprocess(data, 'smooth', smoothing_kernel);
+%data = preprocess(data, 'smooth', smoothing_kernel);
 
 thresh_data = threshold(ttest(data),.001,'unc');
 

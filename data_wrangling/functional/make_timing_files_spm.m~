@@ -7,7 +7,7 @@
 datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/Oldham_ROI_by_diagnosis/TimingFiles_082218';
 antdir = '/FSL_anticipation_072418';
 condir = '/FSL_consumption_110818';
-savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-2';
+savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1';
 
 fnames_antloss_any = filenames(fullfile(datadir,antdir,'*/*Loss_Run2.txt'));
 fnames_antloss_zero = filenames(fullfile(datadir,antdir,'*/*Loss0_Run2.txt'));
@@ -69,9 +69,9 @@ end
 % tonight (5/13/20 in case future Zach cares about the date) so pitter
 % patter let's get at 'er
 
-datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-2';
+datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1';
 
-savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-2/anticipation_timing';
+savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/anticipation_timing';
 
 
 timing_fnames = filenames(fullfile(datadir, '*.mat'));
@@ -91,9 +91,9 @@ end
 %% Possibly splitting these up will be useful
 % now for consumption
 
-datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-2';
+datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1';
 
-savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-2/consumption_timing';
+savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/consumption_timing';
 
 timing_fnames = filenames(fullfile(datadir, '*.mat'));
 

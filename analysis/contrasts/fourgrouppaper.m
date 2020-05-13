@@ -2,7 +2,7 @@
 % You've been sitting on this and you know it bud. Pull your head out of
 % your ass and let's get at er
 maskdir = '/Users/zaz3744/Documents/current_projects/ACNlab/masks/ROI_BrainMAPD';
-datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output/run-1';
+datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output/';
 figdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/Oldham_ROI_by_diagnosis/second_level_output';
 motiondir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/Oldham_ROI_by_diagnosis/motion';
 clinicaldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/clinical_data';
@@ -13,9 +13,8 @@ savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/Oldham_ROI
 
 motion_fnames = filenames(fullfile(motiondir, '*run1.mat'));
 con1_fnames = filenames(fullfile(datadir,'*/ses-2/run-1/MID/con*1.nii'));
-
 for sub = 1:length(con1_fnames)
-    curr_id = con1_fnames{sub}(112:116);
+    curr_id = con1_fnames{sub}(106:110);
     curr_file = contains(motion_fnames,curr_id);
     load(motion_fnames{curr_file});
     sub_id{sub,1} = motion_fnames{sub}(94:98);
@@ -63,10 +62,10 @@ save(fullfile(savedir,'temp_second_level_regressors.mat'),'R')
 %% Remove motion outliers based on FD
 
 
-fnames_gain_consumption_temp = filenames(fullfile(datadir, '*/ses-2/run-1/MID/scon_0004.nii'));
-fnames_loss_consumption_temp = filenames(fullfile(datadir, '*/ses-2/run-1/MID/scon_0003.nii'));
-fnames_gain_anticipation_temp = filenames(fullfile(datadir, '*/ses-2/run-1/MID/scon_0002.nii'));
-fnames_loss_anticipation_temp = filenames(fullfile(datadir, '*/ses-2/run-1/MID/scon_0001.nii'));
+fnames_gain_consumption_temp = filenames(fullfile(datadir, '*/ses-2/run-1/MID/con_0004.nii'));
+fnames_loss_consumption_temp = filenames(fullfile(datadir, '*/ses-2/run-1/MID/con_0003.nii'));
+fnames_gain_anticipation_temp = filenames(fullfile(datadir, '*/ses-2/run-1/MID/con_0002.nii'));
+fnames_loss_anticipation_temp = filenames(fullfile(datadir, '*/ses-2/run-1/MID/con_0001.nii'));
 
 
 fnames_gain_consumption = fnames_gain_consumption_temp(subj_motion<.3);
