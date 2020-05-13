@@ -8,7 +8,7 @@ function run_subject_firstlevel_MID(PID, ses, run, overwrite)
 
 %% var set up
 if nargin==0 % defaults just for testing
-    PID = 21684;  
+    PID = 20358;  
     overwrite = 1;
     ses = 2;
     run = 1;
@@ -16,15 +16,15 @@ end
 
 % directories
 % first is where your stats files will be output to
-directories{1} = '/projects/b1108/projects/BrainMAPD_func_conn/first_levels/first_level_output';
+directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels';
 % next is where the preprocessed data is
-directories{2} = '/projects/b1108/projects/BrainMAPD_func_conn/fmriprep';
+directories{2} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/fmriprep';
 % where the raw data lives (raw meaning before preprocessing)
-directories{3} = '/projects/b1108/data/BrainMAPD';
+directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/raw_data_storage';
 % the timing files for modelling (onsets, durations, names)
-directories{4} = '/projects/b1108/projects/BrainMAPD_func_conn/timing_files';
+directories{4} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files';
 % where framewise displacement files will be saved
-directories{5} = '/projects/b1108/projects/BrainMAPD_func_conn/first_levels/additional_files';
+directories{5} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files';
 
 fl_dir = directories{1};
 preproc_dir = directories{2};
@@ -51,7 +51,7 @@ in{1} = {fullfile(fl_dir, PID, strcat('ses-',num2str(ses)), strcat('run-', num2s
 
 % preproc images
 rundir = fullfile(preproc_dir, PID, strcat('ses-', num2str(ses)), 'func');
-in{2} = cellstr(spm_select('ExtFPList', rundir, strcat('ssub.*task-MID_run-0',num2str(run),'_space-MNI152NLin2009cAsym_desc-preproc_bold.nii'), ndummies+1:9999));
+in{2} = cellstr(spm_select('ExtFPList', rundir, strcat('sub.*task-MID_run-0',num2str(run),'_space-MNI152NLin2009cAsym_desc-preproc_bold.nii'), ndummies+1:9999));
 
 if isempty(in{2}{1})
     warning('No preprocd functional found')
@@ -60,7 +60,7 @@ end
 
 % onset files
 sub_str = PID(5:9);
-in{3} = filenames(fullfile(timing_dir, strcat('run-', num2str(run)), 'consumption_timing/', strcat(sub_str,'.mat')));
+in{3} = filenames(fullfile(timing_dir, strcat('run-', num2str(run)), 'consumption_timing/', strcat('consumption_',sub_str,'.mat')));
 
 if isempty(in{3})
     warning('No modeling found (behav data might be missing)')
@@ -122,7 +122,7 @@ if ~skip
 
     % run spm FL estimation
     cwd = pwd;
-    job = 'MID_SPM_template.m';
+    job = 'MID_SPM_consumption_template.m';
     %%
     spm('defaults', 'FMRI')
     spm_jobman('serial',job,'',in{:});

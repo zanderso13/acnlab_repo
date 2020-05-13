@@ -60,7 +60,7 @@ end
 
 % onset files
 sub_str = PID(5:9);
-in{3} = filenames(fullfile(timing_dir, strcat('run-', num2str(run)), 'anticipation_timing/', strcat(sub_str,'.mat')));
+in{3} = filenames(fullfile(timing_dir, strcat('run-', num2str(run)), 'anticipation_timing/', strcat('anticipation_',sub_str,'.mat')));
 
 if isempty(in{3})
     warning('No modeling found (behav data might be missing)')
@@ -122,7 +122,7 @@ if ~skip
 
     % run spm FL estimation
     cwd = pwd;
-    job = 'MID_SPM_template.m';
+    job = 'MID_SPM_anticipation_template.m';
     %%
     spm('defaults', 'FMRI')
     spm_jobman('serial',job,'',in{:});

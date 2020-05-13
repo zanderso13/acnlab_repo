@@ -98,7 +98,7 @@ savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/
 timing_fnames = filenames(fullfile(datadir, '*.mat'));
 
 for sub = 1:length(timing_fnames)
-    id = timing_fnames{1}(95:99);
+    id = timing_fnames{sub}(95:99);
     old = load(timing_fnames{sub});
     durations = [old.durations(5:10),old.durations(11)];
     names = [old.names(5:10),old.names(11)];
