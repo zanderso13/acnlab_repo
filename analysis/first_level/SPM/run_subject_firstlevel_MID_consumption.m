@@ -3,12 +3,12 @@
 % (default) or 1. before running this file, must run
 % read_timings_make_onsets.m
 
-function run_subject_firstlevel_MID(PID, ses, run, overwrite)
+function run_subject_firstlevel_MID_consumption(PID, ses, run, overwrite)
 
 
 %% var set up
 if nargin==0 % defaults just for testing
-    PID = 20358;  
+    PID = 20695;  
     overwrite = 1;
     ses = 2;
     run = 1;
@@ -16,7 +16,7 @@ end
 
 % directories
 % first is where your stats files will be output to
-directories{1} = '/projects/b1108/projects/BrainMAPD_func_conn/first_levels/first_level_output';
+directories{1} = '/projects/b1108/projects/BrainMAPD_func_conn/first_levels/first_level_output/consumption';
 % next is where the preprocessed data is
 directories{2} = '/projects/b1108/projects/BrainMAPD_func_conn/fmriprep';
 % where the raw data lives (raw meaning before preprocessing)
@@ -51,7 +51,7 @@ in{1} = {fullfile(fl_dir, PID, strcat('ses-',num2str(ses)), strcat('run-', num2s
 
 % preproc images
 rundir = fullfile(preproc_dir, PID, strcat('ses-', num2str(ses)), 'func');
-in{2} = cellstr(spm_select('ExtFPList', rundir, strcat('sub.*task-MID_run-0',num2str(run),'_space-MNI152NLin2009cAsym_desc-preproc_bold.nii'), ndummies+1:9999));
+in{2} = cellstr(spm_select('ExtFPList', rundir, strcat('ssub.*task-MID_run-0',num2str(run),'_space-MNI152NLin2009cAsym_desc-preproc_bold.nii'), ndummies+1:9999));
 
 if isempty(in{2}{1})
     warning('No preprocd functional found')

@@ -28,7 +28,7 @@ repodir = '~/repo';
 
 % directories
 % first is where your stats files will be output to
-directories{1} = '/projects/b1108/projects/BrainMAPD_func_conn/first_levels/first_level_output';
+directories{1} = '/projects/b1108/projects/BrainMAPD_func_conn/first_levels/first_level_output/consumption';
 % next is where the preprocessed data is
 directories{2} = '/projects/b1108/projects/BrainMAPD_func_conn/fmriprep';
 % where the raw data lives (raw meaning before preprocessing)
@@ -82,23 +82,23 @@ for sub = 1:length(new_list)
 %     ses = 2;
 %     run = 2;
 %    overwrite = 0;
-%     run_subject_firstlevel_MID(PID,ses,run,overwrite)
+     run_subject_firstlevel_MID_consumption(PID,ses,run,overwrite)
 
-       s = ['#!/bin/bash\n\n'...
-    '#SBATCH -A p30954\n'...
-    '#SBATCH -p short\n'...
-    '#SBATCH -t 00:10:00\n'...  
-    '#SBATCH --mem=30G\n\n'...
-    'matlab -nodisplay -nosplash -nodesktop -r "addpath(genpath(''' repodir ''')); run_subject_firstlevel_MID(' num2str(PID) ', ' num2str(ses) ',' num2str(run) ',' num2str(overwrite) '); quit"\n\n'];
-  
-    scriptfile = fullfile(scriptdir, 'first_level_script.sh');
-    fout = fopen(scriptfile, 'w');
-    fprintf(fout, s);
-    
-    
-    !chmod 777 first_level_script.sh
-    !sbatch first_level_script.sh
-    
+%        s = ['#!/bin/bash\n\n'...
+%     '#SBATCH -A p30954\n'...
+%     '#SBATCH -p short\n'...
+%     '#SBATCH -t 00:10:00\n'...  
+%     '#SBATCH --mem=30G\n\n'...
+%     'matlab -nodisplay -nosplash -nodesktop -r "addpath(genpath(''' repodir ''')); run_subject_firstlevel_MID_consumption(' num2str(PID) ', ' num2str(ses) ',' num2str(run) ',' num2str(overwrite) '); quit"\n\n'];
+%   
+%     scriptfile = fullfile(scriptdir, 'first_level_script.sh');
+%     fout = fopen(scriptfile, 'w');
+%     fprintf(fout, s);
+%     
+%     
+%     !chmod 777 first_level_script.sh
+%     !sbatch first_level_script.sh
+%     
 end
 % I probably want to add flags or warnings that will be easy to reference
 % later with respect to motion problems, missing data, corrupted files,

@@ -3,12 +3,12 @@
 % (default) or 1. before running this file, must run
 % read_timings_make_onsets.m
 
-function run_subject_firstlevel_MID(PID, ses, run, overwrite)
+function run_subject_firstlevel_MID_anticipation(PID, ses, run, overwrite)
 
 
 %% var set up
 if nargin==0 % defaults just for testing
-    PID = 21684;  
+    PID = 10004;  
     overwrite = 1;
     ses = 2;
     run = 1;
@@ -16,7 +16,7 @@ end
 
 % directories
 % first is where your stats files will be output to
-directories{1} = '/projects/b1108/projects/BrainMAPD_func_conn/first_levels/first_level_output';
+directories{1} = '/projects/b1108/projects/BrainMAPD_func_conn/first_levels/first_level_output/anticipation';
 % next is where the preprocessed data is
 directories{2} = '/projects/b1108/projects/BrainMAPD_func_conn/fmriprep';
 % where the raw data lives (raw meaning before preprocessing)

@@ -8,10 +8,10 @@ function run_subject_firstlevel_MID(PID, ses, run, overwrite)
 
 %% var set up
 if nargin==0 % defaults just for testing
-    PID = 21684;  
+    PID = 20695;  
     overwrite = 1;
     ses = 2;
-    run = 1;
+    run = 2;
 end
 
 % directories
@@ -41,7 +41,7 @@ PID = strcat('sub-',num2str(PID));
 fprintf(['Preparing 1st level model for MID task for ' PID ' / ' ses], ['Overwrite = ' num2str(overwrite)]);
 
 
-ndummies = 2;
+ndummies = 4;
 TR = 2;
 
 %% Model for MID task
