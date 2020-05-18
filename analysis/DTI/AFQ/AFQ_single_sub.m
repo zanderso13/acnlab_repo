@@ -1,3 +1,5 @@
+function [sub_dir] = AFQ_single_sub()
+
 
 repodir = '/home/zaz3744/repo';
 savedir = '/home/zaz3744/projects';
