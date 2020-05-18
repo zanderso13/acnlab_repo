@@ -1,6 +1,6 @@
 
-repodir = '~/repo';
-
+repodir = '/home/zaz3744/repo';
+savedir = '/home/zaz3744/projects';
 
 spm_dir=char(strcat(repodir, filesep, filesep, 'spm8')); 
 addpath(spm_dir); 
@@ -44,3 +44,4 @@ b0 = readFileNifti(fullfile(sub_dir,'bin','b0.nii.gz'));
 % Then add the slice X = -2 to the 3d rendering.
 AFQ_AddImageTo3dPlot(b0,[-2, 0, 0]);
 
+save(fullfile(savedir,'AFQ_test.mat'))

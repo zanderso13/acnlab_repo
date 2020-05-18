@@ -91,18 +91,18 @@ end
 %% Possibly splitting these up will be useful
 % now for consumption
 
-datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-2';
+datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1';
 
-savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-2/consumption_timing';
+savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/consumption_timing';
 
 timing_fnames = filenames(fullfile(datadir, '*.mat'));
 
 for sub = 1:length(timing_fnames)
     id = timing_fnames{sub}(95:99);
     old = load(timing_fnames{sub});
-    durations = [old.durations(5:10),old.durations(11)];
-    names = [old.names(5:10),old.names(11)];
-    onsets = [old.onsets(5:10),old.onsets(11)];
+    durations = [old.durations(6:7),old.durations(9:11)];
+    names = [old.names(6:7),old.names(9:11)];
+    onsets = [old.onsets(6:7),old.onsets(9:11)];
     filename = fullfile(savedir,strcat('consumption_',id,'.mat'));
     save(filename, 'onsets','durations','names')
     clear durations onsets names old id

@@ -2,7 +2,7 @@
 % You've been sitting on this and you know it bud. Pull your head out of
 % your ass and let's get at er
 maskdir = '/Users/zaz3744/Documents/current_projects/ACNlab/masks/ROI_BrainMAPD';
-datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output/';
+datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output/anticipation';
 figdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/Oldham_ROI_by_diagnosis/second_level_output';
 motiondir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/Oldham_ROI_by_diagnosis/motion';
 clinicaldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/clinical_data';
@@ -14,7 +14,7 @@ savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/Oldham_ROI
 motion_fnames = filenames(fullfile(motiondir, '*run1.mat'));
 con1_fnames = filenames(fullfile(datadir,'*/ses-2/run-1/MID/con*1.nii'));
 for sub = 1:length(con1_fnames)
-    curr_id = con1_fnames{sub}(106:110);
+    curr_id = con1_fnames{sub}(119:123);
     curr_file = contains(motion_fnames,curr_id);
     load(motion_fnames{curr_file});
     sub_id{sub,1} = motion_fnames{sub}(94:98);
@@ -61,40 +61,37 @@ save(fullfile(savedir,'temp_second_level_regressors.mat'),'R')
 
 %% Remove motion outliers based on FD
 
-
-fnames_gain_consumption_temp = filenames(fullfile(datadir, '*/ses-2/run-1/MID/con_0004.nii'));
-fnames_loss_consumption_temp = filenames(fullfile(datadir, '*/ses-2/run-1/MID/con_0003.nii'));
-fnames_gain_anticipation_temp = filenames(fullfile(datadir, '*/ses-2/run-1/MID/con_0002.nii'));
-fnames_loss_anticipation_temp = filenames(fullfile(datadir, '*/ses-2/run-1/MID/con_0001.nii'));
+fnames_gain_consumption_temp = filenames(fullfile(datadir, '*/ses-2/run-1/MID/scon_0002.nii'));
+fnames_loss_consumption_temp = filenames(fullfile(datadir, '*/ses-2/run-1/MID/scon_0001.nii'));
 
 
-fnames_gain_consumption = fnames_gain_consumption_temp(subj_motion<.3);
-fnames_loss_consumption = fnames_loss_consumption_temp(subj_motion<.3);
-fnames_gain_anticipation = fnames_gain_anticipation_temp(subj_motion<.3);
-fnames_loss_anticipation = fnames_loss_anticipation_temp(subj_motion<.3);
+fnames_gain_vs_no_gain = fnames_gain_consumption_temp(subj_motion<.3);
+fnames_loss_vs_no_loss = fnames_loss_consumption_temp(subj_motion<.3);
+
 R = R(subj_motion<.3,:);
 
 %% BEGIN WHOLE BRAIN ANALYSIS SECTION
-% Gain Consumption
-data_gain_con = fmri_data(fnames_gain_consumption)
+% Current Gain Contrast
+data_gain_con = fmri_data(fnames_gain_vs_no_gain)
 data_gain_con.X = R;
 out_gain_consump = regress(data_gain_con, .01, 'unc')
+out_gain_consump_coord = image2coordinates(out_gain_consump.t);
 
-%% Loss Consumption
-data_loss_con = fmri_data(fnames_loss_consumption)
+out_gain_consump_coord_anx = tal2mni(out_gain_consump_coord{1});
+out_gain_consump_coord_dep = tal2mni(out_gain_consump_coord{2});
+out_gain_consump_coord_com = tal2mni(out_gain_consump_coord{3});
+out_gain_consump_coord_avg = tal2mni(out_gain_consump_coord{4});
+
+%% Current Loss Contrast
+data_loss_con = fmri_data(fnames_loss_vs_no_loss)
 data_loss_con.X = R;
 out_loss_consump = regress(data_loss_con, .01, 'unc')
+out_loss_consump_coord = image2coordinates(out_loss_consump.t);
 
-%% Gain Anticipation
-data_gain_ant = fmri_data(fnames_gain_anticipation)
-data_gain_ant.X = R;
-out_gain_anticipation = regress(data_gain_ant, .01, 'unc')
-
-%% Loss Anticipation
-data_loss_ant = fmri_data(fnames_loss_anticipation)
-data_loss_ant.X = R;
-out_loss_anticipation = regress(data_loss_ant, .01, 'unc')
-
+out_loss_consump_coord_anx = tal2mni(out_loss_consump_coord{1});
+out_loss_consump_coord_dep = tal2mni(out_loss_consump_coord{2});
+out_loss_consump_coord_com = tal2mni(out_loss_consump_coord{3});
+out_loss_consump_coord_avg = tal2mni(out_loss_consump_coord{4});
 
 %% ROI ANALYSIS
 % load in masks of interest
@@ -125,14 +122,7 @@ bi_ofc_gain_con_bold_avg = nanmean(bi_ofc_gain_con);
 bi_ofc_loss_con = data_loss_con.dat .* right_ofc_consumption_mask.dat;
 bi_ofc_loss_con(bi_ofc_loss_con==0)=NaN;
 bi_ofc_loss_con_bold_avg = nanmean(bi_ofc_loss_con);
-% Gain anticipation
-bi_vs_gain_ant = data_gain_ant.dat .* left_vs_rew_anticipation_mask.dat;
-bi_vs_gain_ant(bi_vs_gain_ant==0)=NaN;
-bi_vs_gain_ant_bold_avg = nanmean(bi_vs_gain_ant);
-% Loss anticipation
-bi_vs_loss_ant = data_loss_ant.dat .* left_vs_loss_anticipation_mask.dat;
-bi_vs_loss_ant(bi_vs_loss_ant==0)=NaN;
-bi_vs_loss_ant_bold_avg = nanmean(bi_vs_loss_ant);
+
 
 %% Regression analysis
 % Get regressors
@@ -146,8 +136,6 @@ anova_regressors_strings(anova_diagnoses(:,1)==3) = {'Comorbidity'};
 
 [biOFC_gaincon_p,biOFC_gaincon_tbl,biOFC_gaincon_stats] = anova1(bi_ofc_gain_con_bold_avg(:),anova_regressors_strings);
 [biOFC_losscon_p,biOFC_losscon_tbl,biOFC_losscon_stats] = anova1(bi_ofc_loss_con_bold_avg(:),anova_regressors_strings);
-[biVS_gainant_p,biVS_gainant_tbl,biVS_gainant_stats] = anova1(bi_vs_gain_ant_bold_avg(:),anova_regressors_strings);
-[biVS_lossant_p,biVS_lossant_tbl,biVS_lossant_stats] = anova1(bi_vs_loss_ant_bold_avg(:),anova_regressors_strings);
 
 %% OLD
 % %% Replace 0's with scaled contrast numbers so SPM doesn't freak out.
