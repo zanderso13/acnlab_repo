@@ -7,18 +7,18 @@
 datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/Oldham_ROI_by_diagnosis/TimingFiles_082218';
 antdir = '/FSL_anticipation_072418';
 condir = '/FSL_consumption_110818';
-savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-2';
+savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1';
 
-fnames_antloss_any = filenames(fullfile(datadir,antdir,'*/*Loss_Run2.txt'));
-fnames_antloss_zero = filenames(fullfile(datadir,antdir,'*/*Loss0_Run2.txt'));
-fnames_antgain_any = filenames(fullfile(datadir,antdir,'*/*Win_Run2.txt'));
-fnames_antgain_zero = filenames(fullfile(datadir,antdir,'*/*Win0_Run2.txt'));
-fnames_hitconloss = filenames(fullfile(datadir,condir,'*/*Hit*Loss_Feedback_Run2.txt'));
-fnames_hitcongain = filenames(fullfile(datadir,condir,'*/*Hit*Win_Feedback_Run2.txt'));
-fnames_hitcongain0 = filenames(fullfile(datadir,condir,'*/*Hit*Win_0_Feedback_Run2.txt'));
-fnames_missconloss = filenames(fullfile(datadir,condir,'*/*Miss*Loss_Feedback_Run2.txt'));
-fnames_misscongain = filenames(fullfile(datadir,condir,'*/*Miss*Win_Feedback_Run2.txt'));
-fnames_missconloss0 = filenames(fullfile(datadir,condir,'*/*Miss*Loss_0_Feedback_Run2.txt'));
+fnames_antloss_any = filenames(fullfile(datadir,antdir,'*/*Loss_Run1.txt'));
+fnames_antloss_zero = filenames(fullfile(datadir,antdir,'*/*Loss0_Run1.txt'));
+fnames_antgain_any = filenames(fullfile(datadir,antdir,'*/*Win_Run1.txt'));
+fnames_antgain_zero = filenames(fullfile(datadir,antdir,'*/*Win0_Run1.txt'));
+fnames_hitconloss = filenames(fullfile(datadir,condir,'*/*Hit*Loss_Feedback_Run1.txt'));
+fnames_hitcongain = filenames(fullfile(datadir,condir,'*/*Hit*Win_Feedback_Run1.txt'));
+fnames_hitcongain0 = filenames(fullfile(datadir,condir,'*/*Hit*Win_0_Feedback_Run1.txt'));
+fnames_missconloss = filenames(fullfile(datadir,condir,'*/*Miss*Loss_Feedback_Run1.txt'));
+fnames_misscongain = filenames(fullfile(datadir,condir,'*/*Miss*Win_Feedback_Run1.txt'));
+fnames_missconloss0 = filenames(fullfile(datadir,condir,'*/*Miss*Loss_0_Feedback_Run1.txt'));
 fnames_motor = filenames(fullfile(datadir,antdir,'*/*Motor_Run2.txt'));
 
 for sub = 1:length(fnames_antloss_any)
@@ -41,7 +41,7 @@ for sub = 1:length(fnames_antloss_any)
         disp(id)
     else        
         onsets_temp = [dat_antloss_any(:,1);dat_antloss_zero(:,1);dat_antgain_any(:,1);dat_antgain_zero(:,1);dat_hitconloss(:,1);dat_missconloss(:,1);dat_hitcongain(:,1);dat_misscongain(:,1);dat_hitcongain0(:,1);dat_missconloss0(:,1);dat_motor(:,1)];
-        names_temp = cellstr([string(repmat('antloss',size(dat_antloss_any,1),1));string(repmat('antlosszero',size(dat_antloss_zero,1),1));string(repmat('antgain',size(dat_antgain_any,1),1));string(repmat('antgainzero',size(dat_antgain_zero,1),1));string(repmat('hitconloss',size(dat_hitconloss,1),1));string(repmat('hitcongain',size(dat_hitcongain,1),1));string(repmat('missconloss',size(dat_missconloss,1),1));string(repmat('misscongain',size(dat_misscongain,1),1));string(repmat('hitcongain0',size(dat_hitcongain0,1),1));string(repmat('missconloss0',size(dat_missconloss0,1),1));string(repmat('motor',size(dat_motor,1),1))]);
+        names_temp = cellstr([string(repmat('antloss',size(dat_antloss_any,1),1));string(repmat('antlosszero',size(dat_antloss_zero,1),1));string(repmat('antgain',size(dat_antgain_any,1),1));string(repmat('antgainzero',size(dat_antgain_zero,1),1));string(repmat('hitconloss',size(dat_hitconloss,1),1));string(repmat('missconloss',size(dat_missconloss,1),1));string(repmat('hitcongain',size(dat_hitcongain,1),1));string(repmat('misscongain',size(dat_misscongain,1),1));string(repmat('hitcongain0',size(dat_hitcongain0,1),1));string(repmat('missconloss0',size(dat_missconloss0,1),1));string(repmat('motor',size(dat_motor,1),1))]);
         durations_temp = ones(length(onsets_temp),1)*4;
         names = {'antloss','antlosszero','antgain','antgainzero','hitconloss','missconloss','hitcongain','misscongain','hitcongain0','missconloss0','motor'};
         onsets = {onsets_temp(string(names_temp)=='antloss',:)',onsets_temp(string(names_temp)=='antlosszero',:)',onsets_temp(string(names_temp)=='antgain',:)',onsets_temp(string(names_temp)=='antgainzero',:)',onsets_temp(string(names_temp)=='hitconloss',:)',onsets_temp(string(names_temp)=='missconloss',:)',onsets_temp(string(names_temp)=='hitcongain',:)',onsets_temp(string(names_temp)=='misscongain',:)',onsets_temp(string(names_temp)=='hitcongain0',:)',onsets_temp(string(names_temp)=='missconloss0',:)',onsets_temp(string(names_temp)=='motor',:)'};
@@ -69,9 +69,9 @@ end
 % tonight (5/13/20 in case future Zach cares about the date) so pitter
 % patter let's get at 'er
 
-datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-2';
+datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1';
 
-savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-2/anticipation_timing';
+savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/anticipation_timing';
 
 
 timing_fnames = filenames(fullfile(datadir, '*.mat'));
@@ -91,9 +91,9 @@ end
 %% Possibly splitting these up will be useful
 % now for consumption
 
-datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1';
+datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-2';
 
-savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/consumption_timing';
+savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-2/consumption_timing';
 
 timing_fnames = filenames(fullfile(datadir, '*.mat'));
 

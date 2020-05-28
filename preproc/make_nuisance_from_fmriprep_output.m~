@@ -210,9 +210,9 @@ if size(R,2)==length(regs) == 0
 end
     
     
-Rselected = R(:,spike_cols | dvars_cols); %| additional_spike_cols);
-motion_final = [R.trans_x,R.trans_y,R.trans_z,R.rot_x,R.rot_y,R.rot_z,R.trans_x_derivative1,R.trans_y_derivative1,R.trans_z_derivative1,R.rot_x_derivative1,R.rot_y_derivative1,R.rot_z_derivative1]; %,R.trans_x_power2,R.trans_y_power2,R.trans_z_power2,R.rot_x_power2,R.rot_y_power2,R.rot_z_power2,R.trans_x_derivative1_power2,R.trans_y_derivative1_power2,R.trans_z_derivative1_power2,R.rot_x_derivative1_power2,R.rot_y_derivative1_power2,R.rot_z_derivative1_power2];
-motion_final = array2table(motion_final);motion_final.Properties.VariableNames = {'trans_x','trans_y','trans_z','rot_x','rot_y','rot_z','trans_x_derivative1','trans_y_derivative1','trans_z_derivative1','rot_x_derivative1','rot_y_derivative1','rot_z_derivative1'}; %,'trans_x_power2','trans_y_power2','trans_z_power2','rot_x_power2','rot_y_power2','rot_z_power2','trans_x_derivative1_power2','trans_y_derivative1_power2','trans_z_derivative1_power2','rot_x_derivative1_power2','rot_y_derivative1_power2','rot_z_derivative1_power2'};
+Rselected = R(:,spike_cols | dvars_cols | additional_spike_cols);
+motion_final = [R.trans_x,R.trans_y,R.trans_z,R.rot_x,R.rot_y,R.rot_z,R.trans_x_derivative1,R.trans_y_derivative1,R.trans_z_derivative1,R.rot_x_derivative1,R.rot_y_derivative1,R.rot_z_derivative1,R.trans_x_power2,R.trans_y_power2,R.trans_z_power2,R.rot_x_power2,R.rot_y_power2,R.rot_z_power2,R.trans_x_derivative1_power2,R.trans_y_derivative1_power2,R.trans_z_derivative1_power2,R.rot_x_derivative1_power2,R.rot_y_derivative1_power2,R.rot_z_derivative1_power2];
+motion_final = array2table(motion_final);motion_final.Properties.VariableNames = {'trans_x','trans_y','trans_z','rot_x','rot_y','rot_z','trans_x_derivative1','trans_y_derivative1','trans_z_derivative1','rot_x_derivative1','rot_y_derivative1','rot_z_derivative1','trans_x_power2','trans_y_power2','trans_z_power2','rot_x_power2','rot_y_power2','rot_z_power2','trans_x_derivative1_power2','trans_y_derivative1_power2','trans_z_derivative1_power2','rot_x_derivative1_power2','rot_y_derivative1_power2','rot_z_derivative1_power2'};
 framewise_displacement_final = R.framewise_displacement;
 framewise_displacement_final = array2table(framewise_displacement_final);framewise_displacement_final.Properties.VariableNames = {'framewise_displacement'};
 csf_final = R.csf;

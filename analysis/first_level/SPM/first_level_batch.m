@@ -91,9 +91,9 @@ for sub = 1:length(new_list)
 %     '#SBATCH --mem=30G\n\n'...
 %     'matlab -nodisplay -nosplash -nodesktop -r "addpath(genpath(''' repodir ''')); run_subject_firstlevel_MID_consumption(' num2str(PID) ', ' num2str(ses) ',' num2str(run) ',' num2str(overwrite) '); quit"\n\n'];
 %   
-%     scriptfile = fullfile(scriptdir, 'first_level_script.sh');
-%     fout = fopen(scriptfile, 'w');
-%     fprintf(fout, s);
+    scriptfile = fullfile(scriptdir, 'first_level_script.sh');
+    fout = fopen(scriptfile, 'w');
+    fprintf(fout, s);
 %     
 %     
 %     !chmod 777 first_level_script.sh
