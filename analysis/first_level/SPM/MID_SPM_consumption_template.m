@@ -2,7 +2,7 @@
 
 matlabbatch{1}.spm.stats.fmri_spec.dir = '<UNDEFINED>';
 matlabbatch{1}.spm.stats.fmri_spec.timing.units = 'secs';
-matlabbatch{1}.spm.stats.fmri_spec.timing.RT = 2.0;
+matlabbatch{1}.spm.stats.fmri_spec.timing.RT = 2.05;
 matlabbatch{1}.spm.stats.fmri_spec.timing.fmri_t = 16;
 matlabbatch{1}.spm.stats.fmri_spec.timing.fmri_t0 = 8;
 matlabbatch{1}.spm.stats.fmri_spec.sess.scans = '<UNDEFINED>';
