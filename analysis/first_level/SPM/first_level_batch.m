@@ -39,7 +39,7 @@ directories{4} = '/projects/b1108/projects/BrainMAPD_func_conn/timing_files';
 directories{5} = '/projects/b1108/projects/BrainMAPD_func_conn/additional_files';
 
 % What run of your task are you looking at?
-run = 2;
+run = 1;
 % What session appears in your raw filenames when in BIDS format?
 ses = 2;
 % Do you want to overwrite previously estimated first levels or just add to
@@ -89,7 +89,7 @@ for sub = 1:length(new_list)
 %     '#SBATCH -p short\n'...
 %     '#SBATCH -t 00:20:00\n'...  
 %     '#SBATCH --mem=30G\n\n'...
-%     'matlab -nodisplay -nosplash -nodesktop -r "addpath(genpath(''' repodir ''')); run_subject_firstlevel_MID_consumption(' num2str(PID) ', ' num2str(ses) ',' num2str(run) ',' num2str(overwrite) '); quit"\n\n'];
+%     'matlab -nodisplay -nosplash -nodesktop -r "addpath(genpath(''' repodir ''')); run_subject_firstlevel_MID_anticipation(' num2str(PID) ', ' num2str(ses) ',' num2str(run) ',' num2str(overwrite) '); quit"\n\n'];
 %   
 %     scriptfile = fullfile(scriptdir, 'first_level_script.sh');
 %     fout = fopen(scriptfile, 'w');
