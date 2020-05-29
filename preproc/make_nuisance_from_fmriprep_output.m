@@ -53,7 +53,7 @@ motion18 = [diffs mo_sq mo_sq_diff];
 % in redesigning a whole pipeline and not trusting the work that had been
 % done previously.
 
-mot_names18 = [cellfun( @(x) [x '_diff'], mot_names, 'UniformOutput',false)]; % cellfun( @(x) [x '_sq'], mot_names, 'UniformOutput',false) cellfun( @(x) [x '_sq_diff'], mot_names, 'UniformOutput',false) ];
+mot_names18 = [cellfun( @(x) [x '_diff'], mot_names, 'UniformOutput',false) cellfun( @(x) [x '_sq'], mot_names, 'UniformOutput',false) cellfun( @(x) [x '_sq_diff'], mot_names, 'UniformOutput',false) ];
 motion18 = array2table(motion18, 'VariableNames', mot_names18);
 
 % remove previously saved motion cols 1) in case there was an error, and 2)
@@ -171,10 +171,10 @@ R = [R dvars_spikes_regs];
 regs = R.Properties.VariableNames;
 dvars_cols = contains(regs,'dvars_spikes'); 
 spike_cols = contains(regs,'nuisance_covs'); 
-% additional_spike_cols = contains(regs,'additional_spikes'); 
+additional_spike_cols = contains(regs,'additional_spikes'); 
 initial_vols = contains(regs,'initial_vols'); 
 
-[duplicate_rows, ~] = find(sum(R{:, spike_cols | dvars_cols | initial_vols}, 2)>1); %  additional_spike_cols |
+[duplicate_rows, ~] = find(sum(R{:, spike_cols | additional_spike_cols | dvars_cols | initial_vols}, 2)>1); 
 for i = 1:length(duplicate_rows) %This loop sets duplicate values to zero; drops them later (to keep indices the same during the loop)
     [~,curr_cols] = find(R{duplicate_rows(i),:}==1);
     R{duplicate_rows(i), curr_cols(2:end)} = 0;
@@ -182,11 +182,11 @@ end
 R = R(1:length(nuisance_covs), any(table2array(R)));
 
 % Select a subset of regressors to return for use in GLM to return to user
-% regs = R.Properties.VariableNames;
+regs = R.Properties.VariableNames;
 dvars_cols = contains(regs,'dvars_spikes'); 
 spike_cols = contains(regs,'nuisance_covs'); 
-% motion_cols = contains(regs,'rot') | contains(regs,'trans') | contains(regs,'diff'); 
-% % additional_spike_cols = contains(regs,'nuisance_covs_additional_spikes'); 
+motion_cols = contains(regs,'rot') | contains(regs,'trans') | contains(regs,'diff'); 
+additional_spike_cols = contains(regs,'nuisance_covs_additional_spikes'); 
 % 
 if size(R,2)==length(regs) == 0
     % Now, remove redundant spike regressors

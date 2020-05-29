@@ -41,7 +41,7 @@ PID = strcat('sub-',num2str(PID));
 fprintf(['Preparing 1st level model for MID task for ' PID ' / ' ses], ['Overwrite = ' num2str(overwrite)]);
 
 
-ndummies = 2;
+ndummies = 0;
 TR = 2;
 
 %% Model for MID task
@@ -76,7 +76,7 @@ confound_fname = filenames(fullfile(preproc_dir, PID, strcat('ses-',num2str(ses)
 rawrun = filenames(fullfile(raw_dir, PID, strcat('ses-',num2str(ses)), 'func', strcat('*task-MID_run-0',num2str(run),'_bold.nii*')));
 cd(fullfile(preproc_dir, PID));
 % get nuis covs
-[Rfull, Rselected, n_spike_regs, FD, gsr_final] = make_nuisance_from_fmriprep_output(confound_fname{run}, rawrun, TR);%, 4);
+[Rfull, Rselected, n_spike_regs, FD, gsr_final] = make_nuisance_from_fmriprep_output_MID(confound_fname{run}, rawrun, TR);%, 4);
 save(fullfile(save_dir, strcat('FD_',sub_str, '_ses', num2str(ses), '_run', num2str(run), '.mat')), 'FD')
 save(fullfile(save_dir, strcat('GSR_',sub_str, '_ses', num2str(ses), '_run', num2str(run), '.mat')), 'gsr_final')
 % choose which matrix to use

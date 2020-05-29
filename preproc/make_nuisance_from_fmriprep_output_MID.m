@@ -25,7 +25,7 @@
 % original spikes.
 % --Zach Anderson (4/19/19)
 
-function [Rfull, Rselected, n_spike_regs, framewise_displacement_final, gsr_final] = make_nuisance_covs_from_fmriprep_output(fmriprep_confounds_fname, raw_img_fname, TR, spike_additional_vols)
+function [Rfull, Rselected, n_spike_regs, framewise_displacement_final, gsr_final] = make_nuisance_covs_from_fmriprep_output_MID(fmriprep_confounds_fname, raw_img_fname, TR, spike_additional_vols)
 
 R = readtable(fmriprep_confounds_fname, 'TreatAsEmpty', 'n/a', 'filetype', 'text');
 
@@ -42,7 +42,7 @@ motion = R{:,mot_names};
 diffs = [zeros(1,6); diff(motion)];
 mo_sq = motion .^ 2;
 mo_sq_diff = [zeros(1,6); diff(mo_sq)];
-motion18 = [diffs mo_sq mo_sq_diff];
+motion18 = [diffs]; %mo_sq mo_sq_diff];
 
 % make a table of the 18 additional ones (ZA: 5/28/20 I've commented out 12
 % regressors worth of motion. I have a theory. I'm getting weak signal on
@@ -210,9 +210,9 @@ if size(R,2)==length(regs) == 0
 end
     
     
-Rselected = R(:,spike_cols | dvars_cols | additional_spike_cols);
-motion_final = [R.trans_x,R.trans_y,R.trans_z,R.rot_x,R.rot_y,R.rot_z,R.trans_x_derivative1,R.trans_y_derivative1,R.trans_z_derivative1,R.rot_x_derivative1,R.rot_y_derivative1,R.rot_z_derivative1,R.trans_x_power2,R.trans_y_power2,R.trans_z_power2,R.rot_x_power2,R.rot_y_power2,R.rot_z_power2,R.trans_x_derivative1_power2,R.trans_y_derivative1_power2,R.trans_z_derivative1_power2,R.rot_x_derivative1_power2,R.rot_y_derivative1_power2,R.rot_z_derivative1_power2];
-motion_final = array2table(motion_final);motion_final.Properties.VariableNames = {'trans_x','trans_y','trans_z','rot_x','rot_y','rot_z','trans_x_derivative1','trans_y_derivative1','trans_z_derivative1','rot_x_derivative1','rot_y_derivative1','rot_z_derivative1','trans_x_power2','trans_y_power2','trans_z_power2','rot_x_power2','rot_y_power2','rot_z_power2','trans_x_derivative1_power2','trans_y_derivative1_power2','trans_z_derivative1_power2','rot_x_derivative1_power2','rot_y_derivative1_power2','rot_z_derivative1_power2'};
+% Rselected = R(:,spike_cols | dvars_cols); %| additional_spike_cols);
+motion_final = [R.trans_x,R.trans_y,R.trans_z,R.rot_x,R.rot_y,R.rot_z,R.trans_x_derivative1,R.trans_y_derivative1,R.trans_z_derivative1,R.rot_x_derivative1,R.rot_y_derivative1,R.rot_z_derivative1]; %,R.trans_x_power2,R.trans_y_power2,R.trans_z_power2,R.rot_x_power2,R.rot_y_power2,R.rot_z_power2,R.trans_x_derivative1_power2,R.trans_y_derivative1_power2,R.trans_z_derivative1_power2,R.rot_x_derivative1_power2,R.rot_y_derivative1_power2,R.rot_z_derivative1_power2];
+motion_final = array2table(motion_final);motion_final.Properties.VariableNames = {'trans_x','trans_y','trans_z','rot_x','rot_y','rot_z','trans_x_derivative1','trans_y_derivative1','trans_z_derivative1','rot_x_derivative1','rot_y_derivative1','rot_z_derivative1'}; %,'trans_x_power2','trans_y_power2','trans_z_power2','rot_x_power2','rot_y_power2','rot_z_power2','trans_x_derivative1_power2','trans_y_derivative1_power2','trans_z_derivative1_power2','rot_x_derivative1_power2','rot_y_derivative1_power2','rot_z_derivative1_power2'};
 framewise_displacement_final = R.framewise_displacement;
 framewise_displacement_final = array2table(framewise_displacement_final);framewise_displacement_final.Properties.VariableNames = {'framewise_displacement'};
 csf_final = R.csf;
@@ -220,9 +220,9 @@ csf_final = array2table(csf_final);csf_final.Properties.VariableNames = {'csf'};
 gsr_final = R.global_signal;
 gsr_final = array2table(gsr_final);gsr_final.Properties.VariableNames = {'global_signal'};
 
-Rselected = [motion_final,framewise_displacement_final,csf_final,Rselected];
+Rselected = [motion_final,csf_final]; %,Rselected, framewise_displacement_final];
 % compute and output how many spikes total
-n_spike_regs = sum(dvars_cols | spike_cols | additional_spike_cols)
+n_spike_regs = sum(dvars_cols | spike_cols) % | additional_spike_cols)
 n_spike_regs_percent = n_spike_regs / height(R)
 
 
