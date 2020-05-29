@@ -7,9 +7,9 @@ end
 repodir = '/home/zaz3744/repo';
 savedir = '/home/zaz3744/projects';
 
-spm_dir=char(strcat(repodir, filesep, filesep, 'spm8')); 
+spm_dir=char(strcat('~', filesep, 'spm8')); 
 addpath(spm_dir); 
-afq_dir=char(strcat(repodir, filesep, filesep, 'AFQ')); 
+afq_dir=char(strcat(repodir, filesep, 'AFQ')); 
 p=genpath(afq_dir); 
 addpath(p); 
 vista_dir=char(strcat(repodir, filesep, filesep, 'vistasoft')); 
@@ -23,7 +23,7 @@ AFQdoc=strcat(AFQbase, filesep, 'doc');
 AFQgui=strcat(AFQbase, filesep, 'gui'); 
 cd(AFQdata); 
 
-roi_dir = '/projects/p30954/AFQ_MWMH113CV1_20150520/tpl/ROIs';
+roi_dir = '/home/zaz3744/repo/dti_masks';
 %%
 % The directory path to the first example subject within the AFQdata folder
 % will be:
@@ -38,8 +38,8 @@ dt = dtiLoadDt6(fullfile(sub_dir,'dt6.mat'));
 wholebrainFG = AFQ_WholebrainTractography(dt,'test');
 
 %% Trying out some boutique tracts
-roi1 = fullfile(roi_dir,'HO_Amygdala_50prob.nii');
-roi2 = fullfile(roi_dir,'OFC_8mmsphere_Oldham.nii');
+roi1 = fullfile(roi_dir,'L_Amygdala_mask.nii');
+roi2 = fullfile(roi_dir,'L_mOFC_mask.nii');
 
 [afq] = AFQ_run(AFQdata,[0]) ; % just creates a struct with all default params
 afq = AFQ_AddNewFiberGroup(afq,'test2',roi1,roi2,true,true,true)
@@ -64,5 +64,9 @@ if visualize == 1
     % Then add the slice X = -2 to the 3d rendering.
     AFQ_AddImageTo3dPlot(b0,[-2, 0, 0]);
 end
+
+
+
+
 
 save(fullfile(savedir,'AFQ_test.mat'))
