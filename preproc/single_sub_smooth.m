@@ -2,10 +2,10 @@
 function smooth_single_sub(PID,ses,run,overwrite)
 %% var set up
 if nargin==0 % defaults just for testing
-    PID = 10034;  
+    PID = 10001;  
     overwrite = 1;
     ses = 1;
-    run = 2;
+    run = 1;
 end
 
 % directories

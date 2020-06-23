@@ -52,16 +52,20 @@ ID_length = 5;
 %%%%%%% END USER DEFINED %%%%%%%%%%
 
 % This will give you PID, don't change this.
-foldernames = char(filenames(fullfile(directories{2},'sub*/')));
-sublist = foldernames(:,size(foldernames,2)-(ID_length):size(foldernames,2)-1);
-
-sublist = string(sublist);
+% foldernames = char(filenames(fullfile(directories{2},'sub*/')));
+% sublist = foldernames(:,size(foldernames,2)-(ID_length):size(foldernames,2)-1);
+% 
+% sublist = string(sublist);
 % I like this better than the overwrite option. This way, the list of
 % subjects to be run will change each time I run the script. The overwrite
 % option will still be helpful here to turn things on or off.
-
+file_list = filenames(fullfile(directories{2},strcat('*/ses-',num2str(ses),'/func/sub*MID*run',num2str(run),'*preproc_bold.nii')));
+for i = 1:length(file_list)
+    sublist{i} = file_list{i}(59:63);
+end
+sublist = string(sublist);
 if overwrite == 0
-    smooth_list = filenames(fullfile(directories{2},'*/ses-2/func/',strcat('ssub*','*run*',num2str(run),'*')));
+    smooth_list = filenames(fullfile(directories{2},strcat('*/ses-',num2str(ses),'/func/ssub*MID*run*',num2str(run),'*')));
     counter = 1;
     for sub = 1:length(sublist)
         curr_sub = num2str(sublist(sub));
@@ -77,7 +81,7 @@ end
 % Run/submit first level script
 
 cd(scriptdir)
-for sub = 1:length(sublist)
+for sub = 1:length(new_list)
     PID = sublist(sub);
 %     ses = 2;
 %     run = 2;

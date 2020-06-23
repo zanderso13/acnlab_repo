@@ -8,7 +8,7 @@ function run_subject_firstlevel_MID_consumption(PID, ses, run, overwrite)
 
 %% var set up
 if nargin==0 % defaults just for testing
-    PID = 20695;  
+    PID = 10081;  
     overwrite = 1;
     ses = 2;
     run = 2;

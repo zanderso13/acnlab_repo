@@ -183,8 +183,8 @@ R = R(1:length(nuisance_covs), any(table2array(R)));
 
 % Select a subset of regressors to return for use in GLM to return to user
 % regs = R.Properties.VariableNames;
-dvars_cols = contains(regs,'dvars_spikes'); 
-spike_cols = contains(regs,'nuisance_covs'); 
+% dvars_cols = contains(regs,'dvars_spikes'); 
+% spike_cols = contains(regs,'nuisance_covs'); 
 % motion_cols = contains(regs,'rot') | contains(regs,'trans') | contains(regs,'diff'); 
 % % additional_spike_cols = contains(regs,'nuisance_covs_additional_spikes'); 
 % 
@@ -220,9 +220,9 @@ csf_final = array2table(csf_final);csf_final.Properties.VariableNames = {'csf'};
 gsr_final = R.global_signal;
 gsr_final = array2table(gsr_final);gsr_final.Properties.VariableNames = {'global_signal'};
 
-Rselected = [motion_final,csf_final]; %,Rselected, framewise_displacement_final];
+Rselected = [motion_final,csf_final,R(:,spike_cols)]; %,Rselected, framewise_displacement_final];
 % compute and output how many spikes total
-n_spike_regs = sum(dvars_cols | spike_cols) % | additional_spike_cols)
+n_spike_regs = sum(spike_cols) % dvars_cols | additional_spike_cols)
 n_spike_regs_percent = n_spike_regs / height(R)
 
 

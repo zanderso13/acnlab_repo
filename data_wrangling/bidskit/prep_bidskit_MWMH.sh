@@ -7,12 +7,12 @@
 # USER SPECIFICATION
 # Set your project directory here!
 
-export raw_directory='/Users/anncarroll/BIDS/data/MWMH_dicoms'
+export raw_directory='/projects/b1108/data/to_format/MWMH_dicoms'
 
 # This is where your sourcedata directory will live
 # Where do you want to put your sourcedata folder?
 
-export project_directory='/Users/anncarroll/BIDS/data/MWMH_BIDS'
+export project_directory='/projects/b1108/data/to_format/MWMH_bidskit'
 
 # We have lots of longitudinal data! Put in how many sessions we need to account for
 # BrainMAPD has four sessions for instance
@@ -43,7 +43,7 @@ for sort in `seq 1 $sessions`;do
 		# This will actually move subject folders into session folders
 		# So we kind of begin the restructuring here
 		mkdir $raw_directory/$sort
-		mv $raw_directory/*CV$sort $raw_directory/$sort
+		mv $raw_directory/*CV$sort* $raw_directory/$sort
 	fi
 	echo "renaming subject folders"
 	cd $raw_directory/$sort

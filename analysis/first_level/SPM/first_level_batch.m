@@ -39,7 +39,7 @@ directories{4} = '/projects/b1108/projects/BrainMAPD_func_conn/timing_files';
 directories{5} = '/projects/b1108/projects/BrainMAPD_func_conn/additional_files';
 
 % What run of your task are you looking at?
-run = 1;
+run = 2;
 % What session appears in your raw filenames when in BIDS format?
 ses = 2;
 % Do you want to overwrite previously estimated first levels or just add to
@@ -52,13 +52,19 @@ ID_length = 5;
 %%%%%%% END USER DEFINED %%%%%%%%%%
 
 % This will give you PID, don't change this.
-foldernames = char(filenames(fullfile(directories{2},'sub*/')));
-sublist = foldernames(:,size(foldernames,2)-(ID_length):size(foldernames,2)-1);
-
-sublist = string(sublist);
+% foldernames = char(filenames(fullfile(directories{2},'sub*/')));
+% sublist = foldernames(:,size(foldernames,2)-(ID_length):size(foldernames,2)-1);
+% 
+% sublist = string(sublist);
 % I like this better than the overwrite option. This way, the list of
 % subjects to be run will change each time I run the script. The overwrite
 % option will still be helpful here to turn things on or off.
+file_list = filenames(fullfile(directories{2},strcat('*/ses-',num2str(ses),'/func/ssub*MID*run-0',num2str(run),'*preproc_bold.nii')));
+for i = 1:length(file_list)
+    sublist{i} = file_list{i}(59:63);
+end
+sublist = string(sublist);
+
 
 if overwrite == 0
     fl_list = filenames(fullfile(directories{1},'*/ses-2/',strcat('run-',num2str(run)),'/MID/SPM.mat'));
@@ -77,6 +83,7 @@ end
 % Run/submit first level script
 
 cd(scriptdir)
+keyboard
 for sub = 1:length(new_list)
     PID = new_list(sub);
 %     ses = 2;
