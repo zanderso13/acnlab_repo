@@ -25,12 +25,12 @@
 % usual warning signs of noise components. 
 ica_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA';
 con_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/hyperalignment/first_level_temp';
-spm_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output';
+spm_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output/first_level_output/';
 datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/fmriprep';
 timing_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1';
 %%
 ica_spatial_mask1 = fmri_data(fullfile(ica_dir,'gica_cmd_mean_component_ica_s_all_.nii'));
-ica_spatial_mask1.dat = ica_spatial_mask1.dat(:,1);
+ica_spatial_mask1.dat = ica_spatial_mask1.dat(:,5);
 ica_spatial_mask1.dat(ica_spatial_mask1.dat>-2 & ica_spatial_mask1.dat<2) = 0;
 ica_spatial_mask1.dat(ica_spatial_mask1.dat~=0) = 1;
 

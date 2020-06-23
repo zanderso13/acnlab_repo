@@ -24,6 +24,8 @@ AFQgui=strcat(AFQbase, filesep, 'gui');
 cd(AFQdata); 
 
 roi_dir = '/home/zaz3744/repo/dti_masks';
+template_dir = '/home/zaz3744/projects/transforms_20347_MR4';
+
 %%
 % The directory path to the first example subject within the AFQdata folder
 % will be:
@@ -40,9 +42,18 @@ wholebrainFG = AFQ_WholebrainTractography(dt,'test');
 %% Trying out some boutique tracts
 roi1 = fullfile(roi_dir,'L_Amygdala_mask.nii');
 roi2 = fullfile(roi_dir,'L_mOFC_mask.nii');
+roi3 = fullfile(roi_dir,'L_NAcc_mask.nii');
+roi4 = fullfile(roi_dir,'R_Amygdala_mask.nii');
+roi5 = fullfile(roi_dir,'R_mOFC_mask.nii');
+roi6 = fullfile(roi_dir,'R_NAcc_mask.nii');
 
-[afq] = AFQ_run(AFQdata,[0]) ; % just creates a struct with all default params
-afq = AFQ_AddNewFiberGroup(afq,'test2',roi1,roi2,true,true,true)
+[afq patient_data control_data norms abn abnTracts] = AFQ_run(AFQdata,[0]) ; % just creates a struct with all default params
+afq = AFQ_AddNewFiberGroup(afq,'LAmyg_mOFC',roi1,roi2,true,true,true,'WholeBrainFG.mat',true,template_dir)
+afq = AFQ_AddNewFiberGroup(afq,'LNAcc_Amyg',roi3,roi1,true,true,true,'WholeBrainFG.mat',true,template_dir)
+afq = AFQ_AddNewFiberGroup(afq,'LNAcc_mOFC',roi3,roi2,true,true,true,'WholeBrainFG.mat',true,template_dir)
+afq = AFQ_AddNewFiberGroup(afq,'RAmyg_mOFC',roi4,roi5,true,true,true,'WholeBrainFG.mat',true,template_dir)
+afq = AFQ_AddNewFiberGroup(afq,'RNAcc_Amyg',roi6,roi4,true,true,true,'WholeBrainFG.mat',true,template_dir)
+afq = AFQ_AddNewFiberGroup(afq,'RNAcc_mOFC',roi6,roi5,true,true,true,'WholeBrainFG.mat',true,template_dir)
 
 
 
@@ -63,6 +74,12 @@ if visualize == 1
 
     % Then add the slice X = -2 to the 3d rendering.
     AFQ_AddImageTo3dPlot(b0,[-2, 0, 0]);
+% Note that this image wasn't in the individuals brain space, I don't think...
+load('/projects/p30954/AFQ_MWMH113CV1_20150520/tpl/ROIs/Left-Amygdala.mat')
+AFQ_RenderRoi(roi)
+test=load('/projects/p30954/AFQ_MWMH113CV1_20150520/tpl/fibers/LAmyg_mOFC.mat')
+AFQ_RenderFibers(fg,'color',[1 1 0],'newfig',false);
+
 end
 
 
