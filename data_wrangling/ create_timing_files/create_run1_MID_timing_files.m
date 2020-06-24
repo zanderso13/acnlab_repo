@@ -6,8 +6,8 @@ cd(eprime_dir)
 
 %% create a working table for run 1
 
-curr_table = [BrainMAPDMIDT1EPrime(:,2),BrainMAPDMIDT1EPrime(:,54),BrainMAPDMIDT1EPrime(:,120),BrainMAPDMIDT1EPrime(:,124),BrainMAPDMIDT1EPrime(:,72)];
-curr_table.Properties.VariableNames = {'PID','ant','rwd','type','fbk'};
+curr_table = [BrainMAPDMIDT1EPrime(:,2),BrainMAPDMIDT1EPrime(:,54),BrainMAPDMIDT1EPrime(:,120),BrainMAPDMIDT1EPrime(:,124),BrainMAPDMIDT1EPrime(:,72),BrainMAPDMIDT1EPrime(:,78)];
+curr_table.Properties.VariableNames = {'PID','ant','rwd','type','fbk','motor'};
 
 curr_table(isnan(curr_table.ant),:) = [];
 %% run 1 timing
@@ -16,6 +16,7 @@ trial_ind2 = 48;
 
 for sub = 1:242
     curr_table.fbk(trial_ind1:trial_ind2) = curr_table.fbk(trial_ind1:trial_ind2) - curr_table.ant(trial_ind1);
+    curr_table.motor(trial_ind1:trial_ind2) = curr_table.motor(trial_ind1:trial_ind2) - curr_table.ant(trial_ind1);
     curr_table.ant(trial_ind1:trial_ind2) = curr_table.ant(trial_ind1:trial_ind2) - curr_table.ant(trial_ind1);
     if range(curr_table.PID(trial_ind1:trial_ind2)) ~= 0
         curr_table.PID(trial_ind1:trial_ind2)
@@ -26,10 +27,13 @@ end
 
 curr_table.ant = curr_table.ant ./ 1000;
 curr_table.fbk = curr_table.fbk ./ 1000;
+curr_table.motor = curr_table.motor ./ 1000;
 
 % convert to TRs which make soooo much more sense
 curr_table.ant = floor(curr_table.ant ./ 2.05);
 curr_table.fbk = floor(curr_table.fbk ./ 2.05);
+curr_table.motor = ceil(curr_table.motor ./ 2.05);
+
 
 %% Save new timing files for anticipation
 savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/anticipation/all_trial_types';
@@ -43,7 +47,7 @@ for sub = 1:242
         curr_table.PID(trial_ind1:trial_ind2)
     end
     % start with anticipation because it's a little easier
-    trial_type_strings = {'antgain_1.5','antgain_5','antgain_0','antloss_1.5','antloss_5','antloss_0', 'antgain_all','antloss_all'};
+    trial_type_strings = {'antgain_1.5','antgain_5','antgain_0','antloss_1.5','antloss_5','antloss_0', 'antgain_all','antloss_all','motor_all'};
     for files = 1:length(trial_type_strings)
         if strcmp(trial_type_strings{files}, 'antgain_1.5') == 1
             onsets{files} = temp_table.ant(temp_table.type(:) == 'Win' & temp_table.rwd(:) == 1.5);
@@ -77,6 +81,10 @@ for sub = 1:242
             onsets{files} = temp_table.ant(temp_table.type(:) == 'Lose' & temp_table.rwd(:) > 0);
             names{files} = trial_type_strings{files};
             durations{files} = ones(length(onsets{files}),1) .* 2;
+        elseif strcmp(trial_type_strings{files}, 'motor_all') == 1
+            onsets{files} = temp_table.motor;
+            names{files} = trial_type_strings{files};
+            durations{files} = ones(length(onsets{files}),1) .* 2;
         end
     end
     temp_file_name = strcat(num2str(curr_table.PID(trial_ind1)),'_anticipation_timing.mat');
@@ -99,7 +107,7 @@ for sub = 1:242
         curr_table.PID(trial_ind1:trial_ind2)
     end
     % start with anticipation because it's a little easier
-    trial_type_strings = {'antgain_all','antloss_all','antgain_0','antloss_0'};
+    trial_type_strings = {'antgain_all','antloss_all','antgain_0','antloss_0','motor_all'};
     for files = 1:length(trial_type_strings)   
         if strcmp(trial_type_strings{files}, 'antgain_all') == 1
             onsets{files} = temp_table.ant(temp_table.type(:) == 'Win' & temp_table.rwd(:) > 0);
@@ -116,7 +124,11 @@ for sub = 1:242
         elseif strcmp(trial_type_strings{files}, 'antloss_0') == 1
             onsets{files} = temp_table.ant(temp_table.type(:) == 'Lose' & temp_table.rwd(:) == 0);
             names{files} = trial_type_strings{files};
-            durations{files} = ones(length(onsets{files}),1) .* 2;      
+            durations{files} = ones(length(onsets{files}),1) .* 2;
+        elseif strcmp(trial_type_strings{files}, 'motor_all') == 1
+            onsets{files} = temp_table.motor;
+            names{files} = trial_type_strings{files};
+            durations{files} = ones(length(onsets{files}),1) .* 2;
         end
     end
     temp_file_name = strcat(num2str(curr_table.PID(trial_ind1)),'_anticipation_timing.mat');
@@ -173,6 +185,10 @@ for sub = 1:242
             onsets{files} = temp_table.fbk(temp_table.type(:) == 'Lose' & temp_table.rwd(:) > 0);
             names{files} = trial_type_strings{files};
             durations{files} = ones(length(onsets{files}),1) .* 2;
+        elseif strcmp(trial_type_strings{files}, 'motor_all') == 1
+            onsets{files} = temp_table.motor;
+            names{files} = trial_type_strings{files};
+            durations{files} = ones(length(onsets{files}),1) .* 2;
         end
     end
     temp_file_name = strcat(num2str(curr_table.PID(trial_ind1)),'_consumption_timing.mat');
@@ -212,7 +228,11 @@ for sub = 1:242
         elseif strcmp(trial_type_strings{files}, 'conloss_0') == 1
             onsets{files} = temp_table.fbk(temp_table.type(:) == 'Lose' & temp_table.rwd(:) == 0);
             names{files} = trial_type_strings{files};
-            durations{files} = ones(length(onsets{files}),1) .* 2;      
+            durations{files} = ones(length(onsets{files}),1) .* 2;  
+        elseif strcmp(trial_type_strings{files}, 'motor_all') == 1
+            onsets{files} = temp_table.motor;
+            names{files} = trial_type_strings{files};
+            durations{files} = ones(length(onsets{files}),1) .* 2;
         end
     end
     temp_file_name = strcat(num2str(curr_table.PID(trial_ind1)),'_consumption_timing.mat');

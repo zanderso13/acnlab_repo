@@ -12,7 +12,7 @@ spmdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/f
 maskdir = '/Users/zaz3744/Documents/current_projects/ACNlab/masks/ROI_BrainMAPD_functional/consumption';
 timecoursedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/bi_VS';
 ppimdldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/mdl_dir/consumption';
-tempderivativefldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/MID_contrasts_w_temp_der/nuisance_regressors';
+tempderivativefldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/nuisance_regressors';
 
 mask = 'OFC*Oldham'; 
 %% First, extract mean timecourses from a variable of interest
@@ -65,7 +65,7 @@ directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/fun
 % next is where the preprocessed data is
 directories{2} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/MID_data';
 % the timing files for modelling (onsets, durations, names)
-directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/consumption_timing';
+directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/anticipation/spm_all_vs_0_timing';
 % where your extra covariates are including PPI regressors
 directories{4} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/mdl_dir/consumption';
 

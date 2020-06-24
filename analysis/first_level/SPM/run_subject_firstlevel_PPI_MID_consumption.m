@@ -16,11 +16,11 @@ if nargin==0 % defaults just for testing
 end
 
 % directories
-directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/MID_contrasts_w_temp_der/fldir';
+directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output';
 % next is where the preprocessed data is
 directories{2} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/MID_data';
 % the timing files for modelling (onsets, durations, names)
-directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/consumption_timing';
+directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/anticipation/spm_all_vs_0_timing';
 % where your extra covariates are including PPI regressors
 % directories{4} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/mdl_dir/consumption';
 % rerunning original first levels with temporal derivatives because of
@@ -98,7 +98,7 @@ if ~skip
     % run spm FL estimation
     cwd = pwd;
     %job = 'MID_PPI_consumption_template.m';
-    job = 'MID_PPI_consumption_template.m';
+    job = 'MID_SPM_consumption_template.m';
     %%
     spm('defaults', 'FMRI')
     spm_jobman('serial',job,'',in{:});

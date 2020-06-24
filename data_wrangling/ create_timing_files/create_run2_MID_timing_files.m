@@ -10,7 +10,7 @@ curr_table = [BrainMAPDMIDT1EPrime(:,2),BrainMAPDMIDT1EPrime(:,85),BrainMAPDMIDT
 curr_table.Properties.VariableNames = {'PID','ant','rwd','type','fbk'};
 
 curr_table(isnan(curr_table.ant),:) = [];
-%% run 1 timing
+%% run 2 timing
 trial_ind1 = 1;
 trial_ind2 = 48;
 
@@ -32,7 +32,7 @@ curr_table.ant = floor(curr_table.ant ./ 2.05);
 curr_table.fbk = floor(curr_table.fbk ./ 2.05);
 
 %% Save new timing files for anticipation
-savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/anticipation/all_trial_types';
+savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-2/anticipation/all_trial_types';
 
 trial_ind1 = 1;
 trial_ind2 = 48;
@@ -87,7 +87,7 @@ end
 
 %% Save new timing files for anticipation, specifically for the SPM contrasts I'm hoping to run
 
-savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/anticipation/spm_all_vs_0_timing';
+savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-2/anticipation/spm_all_vs_0_timing';
 clear onsets names durations
 
 trial_ind1 = 1;
@@ -127,7 +127,7 @@ end
 
 %% Save new timing files for consumption
 
-savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/consumption/all_trial_types';
+savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-2/consumption/all_trial_types';
 clear onsets names durations
 
 trial_ind1 = 1;
@@ -183,7 +183,7 @@ end
 
 %% Save new timing files for consumption, specifically for the SPM contrasts I'm hoping to run
 
-savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/consumption/spm_all_vs_0_timing';
+savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-2/consumption/spm_all_vs_0_timing';
 clear onsets names durations
 
 trial_ind1 = 1;
