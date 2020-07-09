@@ -7,8 +7,8 @@
 
 
 % set up directories
-datadir = '/home/zach/Documents/current_projects/ACNlab/BrainMAPD/preproc';
-spmdir = '/home/zach/Documents/current_projects/ACNlab/BrainMAPD/nuisance/anticipation';
+datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/preproc';
+spmdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/nuisance/anticipation';
 maskdir = '/Users/zaz3744/Documents/current_projects/ACNlab/masks/ROI_BrainMAPD_functional/consumption';
 timecoursedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/bi_VS';
 ppimdldir = '/home/zach/Documents/current_projects/ACNlab/BrainMAPD/fldir';
@@ -63,13 +63,13 @@ end
 % This will run all subjects through the above 2 scripts
 
 % first is where your stats files will be output to
-directories{1} = '/home/zach/Documents/current_projects/ACNlab/BrainMAPD/fldir/anticipation_out';
+directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output/consumption';
 % next is where the preprocessed data is
-directories{2} = '/home/zach/Documents/current_projects/ACNlab/BrainMAPD/preproc';
+directories{2} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/MID_data';
 % the timing files for modelling (onsets, durations, names)
-directories{3} = '/home/zach/Documents/current_projects/ACNlab/BrainMAPD/timing/anticipation/spm_all_vs_0_timing';
+directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/consumption/spm_all_vs_0_timing';
 % where your extra covariates are including PPI regressors
-directories{4} = '/home/zach/Documents/current_projects/ACNlab/BrainMAPD/fldir';
+directories{4} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/nuisance_regressors';
 
 % What run of your task are you looking at?
 run = 1;
@@ -85,7 +85,7 @@ mask_string = 'OFC'; % OFC, VS, HO_VMPFC
 fnames = filenames(fullfile(directories{2}, '*.nii'));
 
 for sub = 1:length(fnames)
-    PID = fnames{sub}(69:73);
+    PID = fnames{sub}(88:92);
     spm_fname = filenames(fullfile(directories{4},strcat('*',PID,'*')));
     if isempty(spm_fname) == 0
         
