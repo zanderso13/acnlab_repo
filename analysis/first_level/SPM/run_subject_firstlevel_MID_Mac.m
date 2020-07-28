@@ -3,32 +3,31 @@
 % (default) or 1. before running this file, must run
 % read_timings_make_onsets.m
 
-function run_subject_firstlevel_PPI_MID_consumption(PID, ses, run, mask_string, directories, overwrite)
+function run_subject_firstlevel_PPI_MID_consumption(PID, ses, run, mask_string, overwrite)
 
 
 %% var set up
 if nargin==0 % defaults just for testing
-    % first is where your stats files will be output to
-    directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/ppi_fldir/consumption/LOFC_to_wholebrain';
-    % next is where the preprocessed data is
-    directories{2} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/MID_data';
-    % the timing files for modelling (onsets, durations, names)
-    directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/consumption/spm_all_vs_0_timing';
-    % where your extra covariates are including PPI regressors
-    directories{4} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/mdl_dir/anticipation/LOFC_to_wholebrain';
-    PID = '10004';  
+    PID = '21661';  
     overwrite = 1;
     ses = 2;
-    mask_string = 'bi_OFC';
+    mask_string = 'HO_VMPFC';
     run = 1;
 end
 
-
+% first is where your stats files will be output to
+directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output/consumption';
+% next is where the preprocessed data is
+directories{2} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/MID_data';
+% the timing files for modelling (onsets, durations, names)
+directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/consumption/spm_all_vs_0_timing';
+% where your extra covariates are including PPI regressors
+directories{4} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/nuisance_regressors';
 
 fl_dir = directories{1};
 preproc_dir = directories{2};
 timing_dir = directories{3};
-nuisance_ppi_dir = directories{4};
+mdl_dir = directories{4};
 
 if nargin==1
     overwrite = 1;
@@ -65,7 +64,7 @@ end
 %% nuisance covs
 
 % regressors = filenames(fullfile(mdl_dir,strcat(mask_string, '*', PID, '*.mat')));
-regressors = filenames(fullfile(nuisance_ppi_dir,strcat('*', PID, '*.mat')));
+regressors = filenames(fullfile(mdl_dir,strcat('*', PID, '*.mat')));
 in{4} = regressors;
 
 % checks
@@ -95,7 +94,8 @@ if ~skip
 
     % run spm FL estimation
     cwd = pwd;
-    job = 'MID_PPI_template.m';
+    %job = 'MID_PPI_consumption_template.m';
+    job = 'MID_SPM_consumption_template.m';
     %%
     spm('defaults', 'FMRI')
     spm_jobman('serial',job,'',in{:});

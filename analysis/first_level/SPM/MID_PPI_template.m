@@ -30,17 +30,12 @@ matlabbatch{3}.spm.stats.con.spmmat(1) = cfg_dep('Model estimation: SPM.mat File
 % matlabbatch{3}.spm.stats.con.consess{2}.tcon.name = 'GainAnticipation';
 % matlabbatch{3}.spm.stats.con.consess{2}.tcon.weights = [0 0 1 -1];
 % matlabbatch{3}.spm.stats.con.consess{2}.tcon.sessrep = 'none';
-matlabbatch{3}.spm.stats.con.consess{1}.tcon.name = 'LossvNoLoss';
-matlabbatch{3}.spm.stats.con.consess{1}.tcon.weights = [1 0 0 -1];
+matlabbatch{3}.spm.stats.con.consess{1}.tcon.name = 'GainvNoGain';
+matlabbatch{3}.spm.stats.con.consess{1}.tcon.weights = [0 0 0 0 0 1 0 -1];
 matlabbatch{3}.spm.stats.con.consess{1}.tcon.sessrep = 'none';
-matlabbatch{3}.spm.stats.con.consess{2}.tcon.name = 'GainvNoGain';
-matlabbatch{3}.spm.stats.con.consess{2}.tcon.weights = [0 1 -1];
+matlabbatch{3}.spm.stats.con.consess{2}.tcon.name = 'LossvNoLoss';
+matlabbatch{3}.spm.stats.con.consess{2}.tcon.weights = [0 0 0 0 0 0 1 0 -1];
 matlabbatch{3}.spm.stats.con.consess{2}.tcon.sessrep = 'none';
-matlabbatch{3}.spm.stats.con.consess{3}.tcon.name = 'PPILoss';
-matlabbatch{3}.spm.stats.con.consess{3}.tcon.weights = [0 0 0 0 0 1];
-matlabbatch{3}.spm.stats.con.consess{3}.tcon.sessrep = 'none';
-matlabbatch{3}.spm.stats.con.consess{4}.tcon.name = 'PPIGain';
-matlabbatch{3}.spm.stats.con.consess{4}.tcon.weights = [0 0 0 0 0 0 1];
-matlabbatch{3}.spm.stats.con.consess{4}.tcon.sessrep = 'none';
+
 
 matlabbatch{3}.spm.stats.con.delete = 1;
