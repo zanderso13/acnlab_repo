@@ -3,7 +3,7 @@
 % (default) or 1. before running this file, must run
 % read_timings_make_onsets.m
 
-function run_subject_firstlevel_PPI_MID_consumption(PID, ses, run, mask_string, directories, overwrite)
+function run_subject_firstlevel_PPI_MID(PID, ses, run, mask_string, directories, overwrite)
 
 
 %% var set up
