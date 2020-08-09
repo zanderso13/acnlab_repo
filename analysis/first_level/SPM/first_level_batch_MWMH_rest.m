@@ -17,7 +17,7 @@
 
 %%%%%%% USER DEFINED %%%%%%%%%%
 % Define some paths
-basedir = '/Users/zaz3744/Documents/current_projects/ACNlab/MWMH/rest';
+basedir = '/projects/b1108/projects/MWMH_project';
 
 % This is going to generate a first level script to be submitted to the
 % cluster with each run. Where do you want all these .sh scripts saved?
@@ -26,7 +26,7 @@ scriptdir = fullfile(basedir,'/first_levels/quest_submission');
 % Where are all your scripts saved for first levels? i.e. where is the
 % acnlab_repo folder? Also where is spm12... you need spm
 
-repodir = '~/Documents/repo';
+repodir = '~/repo';
 
 % directories
 % first is where your stats files will be output to
@@ -35,7 +35,7 @@ directories{1} = fullfile(basedir,'first_levels');
 directories{2} = fullfile(basedir,'fmriprep');
 % where the raw data lives (raw meaning before preprocessing)
 % directories{3} = '/projects/b1108/data/BrainMAPD';
-directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/MWMH/rest/raw';
+directories{3} = '/home/zaz3744/ACNlab/data/MWMH';
 % where framewise displacement files will be saved
 directories{4} = fullfile(basedir,'first_levels/FD');
 
@@ -78,8 +78,8 @@ end
 % Run/submit first level script
 
 cd(scriptdir)
-for sub = 1:length(new_list)
-    PID = new_list(sub);
+for sub = 1:length(sublist)
+    PID = sublist(sub);
 %    ses = 2;
 %    run = 1;
 %    overwrite = 0;

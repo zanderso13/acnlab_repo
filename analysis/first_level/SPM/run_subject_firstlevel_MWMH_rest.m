@@ -9,7 +9,7 @@ function run_subject_firstlevel_REST(PID, ses, run, overwrite,directories)
 %% var set up
 if nargin==0 % defaults just for testing 
     % Define some paths
-    basedir = '/Users/zaz3744/Documents/current_projects/ACNlab/MWMH/rest';
+    basedir = '/home/zaz3744/ACNlab/data/MWMH';
     % directories
     % first is where your stats files will be output to
     directories{1} = fullfile(basedir,'first_levels');
@@ -17,7 +17,7 @@ if nargin==0 % defaults just for testing
     directories{2} = fullfile(basedir,'fmriprep');
     % where the raw data lives (raw meaning before preprocessing)
     % directories{3} = '/projects/b1108/data/BrainMAPD';
-    directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/MWMH/rest/raw';
+    directories{3} = '/home/zaz3744/ACNlab/data/MWMH';
     % where framewise displacement files will be saved
     directories{4} = fullfile(basedir,'first_levels/FD');
     PID = 113;
@@ -68,7 +68,7 @@ cd(fullfile(preproc_dir, PID));
 
 % get nuis covs
 
-[Rfull, Rselected, n_spike_regs, FD] = make_nuisance_from_fmriprep_output_restMWMH(confound_fname{run}, rawrun, TR, 4);
+[Rfull, Rselected, n_spike_regs, FD] = make_nuisance_from_fmriprep_output_restMWMH(confound_fname{run}, rawrun, TR, 8);
 save(fullfile(save_dir, strcat(PID, '_ses', num2str(ses), '_run', num2str(run), '.mat')), 'FD')
 
 

@@ -112,19 +112,19 @@ end
 
 %% First, extract mean timecourses from a variable of interest
 datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/MID_data';
-maskdir = '/Users/zaz3744/Documents/current_projects/ACNlab/masks/ROI_BrainMAPD_functional/anticipation/right';
-timecoursedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/R_VS';
+maskdir = '/Users/zaz3744/Documents/current_projects/ACNlab/masks/ROI_BrainMAPD_functional/consumption/left';
+timecoursedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/L_VS';
 fnames = filenames(fullfile(datadir, '*.nii'));
-maskobj = fmri_data(filenames(fullfile(maskdir,strcat('R_VS_8mmsphere_Oldham_Loss.nii'))));
+maskobj = fmri_data(filenames(fullfile(maskdir,strcat('L_VS_8mmsphere_Oldham_Con.nii'))));
 
 for sub = 1:length(fnames)
     curr_id = fnames{sub}(88:92);
-    check_fname = filenames(fullfile(timecoursedir, strcat('R_VS_LossAnticipation_',curr_id,'_time_series.mat')));
+    check_fname = filenames(fullfile(timecoursedir, strcat('L_VS_Consumption_',curr_id,'_time_series.mat')));
     if isempty(check_fname) == 1
         dataobj = fmri_data(filenames(fullfile(datadir,strcat('*',curr_id,'*'))));
         [roiobj] = extract_roi_averages(dataobj,maskobj);
         mean_signal = roiobj.dat;
-        curr_save_file = strcat('R_VS_LossAnticipation_',curr_id,'_time_series.mat');
+        curr_save_file = strcat('L_VS_Consumption_',curr_id,'_time_series.mat');
         save(fullfile(timecoursedir,curr_save_file),'mean_signal');
     else
         continue
@@ -137,7 +137,7 @@ end
 % Involves loading up SPM.mat files and then adding columns for 
 fnames = filenames(fullfile(datadir, '*.nii'));
 ppimdldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/mdl_dir/anticipation/L_VS_AntRew_wholebrain';
-spmdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output/consumption';
+spmdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output/anticipation';
 
 timecoursedir1 = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/L_VS';
 %timecoursedir2 = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/bi_VS';
@@ -260,7 +260,8 @@ loss_data.X = R;
 
 storedir = '/Volumes/ZachExternal/ACNlab/BrainMAPD/func_conn/PPI/ppi_fldir';
 contrastdir = 'anticipation';
-curr_analysis_dir = {'L_VS_AntLoss_to_wholebrain','L_VS_AntRew_to_wholebrain','R_VS_AntLoss_to_wholebrain','R_VS_AntRew_to_wholebrain'};%{'ROFC_to_wholebrain','RHO_Accumbens_to_wholebrain','LOFC_to_wholebrain','LOFC2_to_wholebrain','LHO_Accumbens_to_wholebrain'};
+curr_analysis_dir = {'ROFC_to_wholebrain','RHO_Accumbens_to_wholebrain','LOFC_to_wholebrain','LOFC2_to_wholebrain','LHO_Accumbens_to_wholebrain'};
+%curr_analysis_dir = {'L_VS_AntLoss_to_wholebrain','L_VS_AntRew_to_wholebrain','R_VS_AntLoss_to_wholebrain','R_VS_AntRew_to_wholebrain'};
 
 for roi = 1:length(curr_analysis_dir)
     curr_fnames_gain = filenames(fullfile(storedir,contrastdir,curr_analysis_dir{roi},'*/*/*/*/con_0001.nii'));
@@ -275,14 +276,14 @@ for roi = 1:length(curr_analysis_dir)
     load(fullfile(clinicaldir,'BrainMAPD_clinical_diagnoses_final.mat'))
     if roi == 1
         for sub = 1:length(curr_fnames_gain)
-            PID(sub,1) = str2num(curr_fnames_gain{sub}(104:108));
+            PID(sub,1) = str2num(curr_fnames_gain{sub}(96:100));
             if isempty(find(clinical_info.PID(:) == PID(sub,1))) == 0
                 curr = find(clinical_info.PID(:) == PID(sub,1));
                 life_dep(sub,1) = clinical_info.dep_life_any(curr);
                 life_anx(sub,1) = clinical_info.anx_life_any(curr);
                 life_com(sub,1) = clinical_info.comorbid_life_dep_anx(curr);
             else
-                disp(strcat(curr_fnames_gain{sub}(104:108), ' missing clinical info'))
+                disp(strcat(curr_fnames_gain{sub}(96:100), ' missing clinical info'))
                 life_dep(sub,1) = 0;%NaN;
                 life_anx(sub,1) = 0;%NaN;
                 life_com(sub,1) = 0;%NaN;
@@ -295,8 +296,8 @@ for roi = 1:length(curr_analysis_dir)
     curr_dat_gain.X = R;
     curr_dat_loss.X = R;
     
-    temp_results_gain = regress(curr_dat_gain,'robust');
-    temp_results_loss = regress(curr_dat_loss,'robust');
+    temp_results_gain = regress(curr_dat_gain)%,'robust');
+    temp_results_loss = regress(curr_dat_loss)%,'robust');
     
     results_struct.gain.(curr_analysis_dir{roi}) = threshold(temp_results_gain.t,.001,'unc','k',50);
     results_struct.loss.(curr_analysis_dir{roi}) = threshold(temp_results_loss.t,.001,'unc','k',50);
