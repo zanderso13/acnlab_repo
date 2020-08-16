@@ -42,10 +42,10 @@ directories{4} = fullfile(basedir,'first_levels/FD');
 % What run of your task are you looking at?
 run = 1;
 % What session appears in your raw filenames when in BIDS format?
-ses = 1;
+ses = 2;
 % Do you want to overwrite previously estimated first levels or just add to
 % what you have? 1 overwrites, 0 adds
-overwrite = 1;
+overwrite = 0;
 % Last thing is janky but bear with me. How long are your participant ID's?
 % i.e. 10234 would correspond with a 5 for this variable
 ID_length = 3;
@@ -73,31 +73,34 @@ if overwrite == 0
             continue
         end
     end
+else
+    new_list = sublist;
 end
 
 % Run/submit first level script
 
 cd(scriptdir)
-for sub = 1:length(sublist)
-    PID = sublist(sub);
+
+for sub = 1:length(new_list) % changed this to only submit 20 subs at a time. I think I overwhelm the Quest job submission system/matlab license availability when I don't
+    PID = new_list(sub);
 %    ses = 2;
 %    run = 1;
 %    overwrite = 0;
-%     run_subject_firstlevel_MWMH_rest(PID,ses,run,overwrite,directories)
+%     run_subject_firstlevel_MWMH_rest(PID,ses,run,overwrite)
 
-        s = ['#!/bin/bash\n\n'...
-     '#SBATCH -A p30985\n'...
-     '#SBATCH -p short\n'...
-     '#SBATCH -t 00:10:00\n'...  
-     '#SBATCH --mem=30G\n\n'...
-     'matlab -nodisplay -nosplash -nodesktop -r "addpath(genpath(''' repodir ''')); run_subject_firstlevel_MWMH_rest(' num2str(PID) ', ' num2str(ses) ',' num2str(run) ',' num2str(overwrite) '); quit"\n\n'];
+       s = ['#!/bin/bash\n\n'...
+    '#SBATCH -A p30954\n'...
+    '#SBATCH -p short\n'...
+    '#SBATCH -t 00:45:00\n'...  
+    '#SBATCH --mem=50G\n\n'...
+    'matlab -nodisplay -nosplash -nodesktop -r "addpath(genpath(''' repodir ''')); run_subject_firstlevel_MWMH_rest(' num2str(PID) ', ' num2str(ses) ',' num2str(run) ',' num2str(overwrite) '); quit"\n\n'];
    
-     scriptfile = fullfile(scriptdir, 'first_level_script.sh');
-     fout = fopen(scriptfile, 'w');
-     fprintf(fout, s);
+    scriptfile = fullfile(scriptdir, 'first_level_script.sh');
+    fout = fopen(scriptfile, 'w');
+    fprintf(fout, s);
      
      
-     !chmod 777 first_level_script.sh
-     !sbatch first_level_script.sh
+    !chmod 777 first_level_script.sh
+    !sbatch first_level_script.sh
      
 end
