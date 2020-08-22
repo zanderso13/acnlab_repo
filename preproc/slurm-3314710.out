@@ -1,0 +1,1503 @@
+modules loaded
+/projects/b1108
+beginning preprocessing
+bids-validator@1.4.0
+
+[32mThis dataset appears to be BIDS compatible.[39m
+
+        [34m[4mSummary:[24m[39m                    [34m[4mAvailable Tasks:[24m[39m        [34m[4mAvailable Modalities:[24m[39m 
+        4995 Files, 438.14GB        rest                    T1w                   
+        267 - Subjects                                      dwi                   
+        2 - Sessions                                        bold                  
+                                                            events                
+
+
+[36m	If you have any questions, please post on https://neurostars.org/tags/bids.[39m
+
+200711-09:14:04,665 nipype.workflow IMPORTANT:
+	 
+    Running fMRIPREP version 20.1.1:
+      * BIDS dataset path: /projects/b1108/data/MWMH.
+      * Participant list: ['MWMH368'].
+      * Run identifier: 20200711-074931_d61ac22b-11cb-484c-9321-08e1fcca216f.
+      * Output spaces: MNI152NLin2009cAsym:res-native.
+      * Pre-run FreeSurfer's SUBJECTS_DIR: /projects/b1108/projects/MWMH_preproc/freesurfer.
+200711-09:14:27,762 nipype.workflow INFO:
+	 No single-band-reference found for sub-MWMH368_ses-1_task-rest_run-01_bold.nii.gz.
+200711-09:14:57,642 nipype.workflow IMPORTANT:
+	 Slice-timing correction will be included.
+200711-09:15:27,54 nipype.workflow INFO:
+	 fMRIPrep workflow graph with 307 nodes built successfully.
+200711-10:09:00,795 nipype.workflow IMPORTANT:
+	 fMRIPrep started!
+200711-10:09:59,950 nipype.workflow WARNING:
+	 Error while checking node hash, forcing re-run. Although this error may not prevent the workflow from running, it could indicate a major problem. Please report a new issue at https://github.com/nipy/nipype/issues adding the following information:
+
+	Node: fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_std_trans_wf.gen_ref
+	Interface: niworkflows.interfaces.utils.GenerateSamplingReference
+	Traceback:
+Traceback (most recent call last):
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/plugins/base.py", line 347, in _local_hash_check
+    cached, updated = self.procs[jobid].is_cached()
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 332, in is_cached
+    hashed_inputs, hashvalue = self._get_hashval()
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 538, in _get_hashval
+    self._get_inputs()
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 609, in _get_inputs
+    self.set_input(key, deepcopy(output_value))
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 302, in set_input
+    setattr(self.inputs, parameter, deepcopy(val))
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/interfaces/base/traits_extension.py", line 330, in validate
+    value = super(File, self).validate(objekt, name, value, return_pathlike=True)
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/interfaces/base/traits_extension.py", line 135, in validate
+    self.error(objekt, name, str(value))
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/trait_handlers.py", line 172, in error
+    value )
+
+traits.trait_errors.TraitError: The 'fixed_image' trait of a _GenerateSamplingReferenceInputSpec instance must be a pathlike object or string representing an existing file, but a value of '/home/kgt020/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_T1w.nii.gz' <class 'str'> was specified.
+
+Error setting node input:
+Node: gen_ref
+input: fixed_image
+results_file: /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_std_trans_wf/_std_target_MNI152NLin2009cAsym.resnative/select_tpl/result_select_tpl.pklz
+value: /home/kgt020/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_T1w.nii.gz
+
+200711-10:10:53,632 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_std_trans_wf.gen_ref" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_std_trans_wf/_std_target_MNI152NLin2009cAsym.resnative/gen_ref".
+200711-10:10:53,644 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.lap_tmpl" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/lap_tmpl".
+200711-10:10:53,648 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.init_aff" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/init_aff".
+200711-10:10:53,648 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.init_aff".
+200711-10:10:53,649 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.init_aff" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/init_aff".
+200711-10:10:53,650 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.init_aff".
+200711-10:10:53,655 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.lap_tmpl".
+200711-10:10:53,661 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.res_tmpl" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/res_tmpl".
+200711-10:10:53,662 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.res_tmpl".
+200711-10:10:53,744 nipype.workflow INFO:
+	 [Node] Running "init_aff" ("niworkflows.interfaces.ants.AI"), a CommandLine Interface with command:
+antsAI -c [10,0.000001,10] -d 3 -x /home/zaz3744/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_desc-brain_mask.nii.gz -m Mattes[/home/zaz3744/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_desc-fMRIPrep_boldref.nii.gz,/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/gen_ref/ref_bold.nii.gz,32,Regular,0.200000] -o initialization.mat -p 0 -s [20.000000,0.120000] -t Affine[0.100000] -v 1
+200711-10:10:53,753 nipype.workflow INFO:
+	 [Node] Running "lap_tmpl" ("niworkflows.interfaces.ants.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 tpl-OASIS30ANTs_res-01_T1w_maths.nii.gz Laplacian /home/zaz3744/.cache/templateflow/tpl-OASIS30ANTs/tpl-OASIS30ANTs_res-01_T1w.nii.gz 1.5 1
+200711-10:10:53,785 nipype.workflow INFO:
+	 [Node] Running "res_tmpl" ("niworkflows.interfaces.ants.ResampleImageBySpacing"), a CommandLine Interface with command:
+ResampleImageBySpacing 3 /home/zaz3744/.cache/templateflow/tpl-OASIS30ANTs/tpl-OASIS30ANTs_res-01_T1w.nii.gz tpl-OASIS30ANTs_res-01_T1w_resampled.nii.gz 4 4 4 1
+200711-10:10:53,982 nipype.workflow INFO:
+	 [Node] Running "init_aff" ("niworkflows.interfaces.ants.AI"), a CommandLine Interface with command:
+antsAI -c [10,0.000001,10] -d 3 -x /home/zaz3744/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_desc-brain_mask.nii.gz -m Mattes[/home/zaz3744/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_desc-fMRIPrep_boldref.nii.gz,/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/gen_ref/ref_bold.nii.gz,32,Regular,0.200000] -o initialization.mat -p 0 -s [20.000000,0.120000] -t Affine[0.100000] -v 1
+200711-10:10:54,525 nipype.workflow ERROR:
+	 Node gen_ref.a0 failed to run on host qnode6135.
+200711-10:10:56,376 nipype.workflow ERROR:
+	 Saving crash info to /projects/b1108/projects/MWMH_preproc/fmriprep/sub-MWMH368/log/20200711-074931_d61ac22b-11cb-484c-9321-08e1fcca216f/crash-20200711-101054-zaz3744-gen_ref.a0-eb96d2d4-bd70-435a-b792-a9eeda0b5481.txt
+Traceback (most recent call last):
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/plugins/multiproc.py", line 67, in run_node
+    result["result"] = node.run(updatehash=updatehash)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 443, in run
+    cached, updated = self.is_cached()
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 332, in is_cached
+    hashed_inputs, hashvalue = self._get_hashval()
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 538, in _get_hashval
+    self._get_inputs()
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 609, in _get_inputs
+    self.set_input(key, deepcopy(output_value))
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 302, in set_input
+    setattr(self.inputs, parameter, deepcopy(val))
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/interfaces/base/traits_extension.py", line 330, in validate
+    value = super(File, self).validate(objekt, name, value, return_pathlike=True)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/interfaces/base/traits_extension.py", line 135, in validate
+    self.error(objekt, name, str(value))
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/trait_handlers.py", line 172, in error
+    value )
+traits.trait_errors.TraitError: The 'fixed_image' trait of a _GenerateSamplingReferenceInputSpec instance must be a pathlike object or string representing an existing file, but a value of '/home/kgt020/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_T1w.nii.gz' <class 'str'> was specified.
+
+Error setting node input:
+Node: gen_ref
+input: fixed_image
+results_file: /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_std_trans_wf/_std_target_MNI152NLin2009cAsym.resnative/select_tpl/result_select_tpl.pklz
+value: /home/kgt020/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_T1w.nii.gz
+
+200711-10:11:13,700 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.res_tmpl".
+200711-10:11:41,36 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.init_aff".
+200711-10:11:41,469 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.init_aff".
+200711-10:11:53,257 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.norm" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/norm".
+200711-10:11:53,258 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.norm".
+200711-10:11:53,263 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.norm" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/norm".
+200711-10:11:53,264 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.norm".
+200711-10:11:53,366 nipype.workflow INFO:
+	 [Node] Running "norm" ("niworkflows.interfaces.fixes.FixHeaderRegistration"), a CommandLine Interface with command:
+antsRegistration --collapse-output-transforms 1 --dimensionality 3 --float 1 --initial-moving-transform [ /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/init_aff/initialization.mat, 0 ] --initialize-transforms-per-stage 0 --interpolation Linear --output transform --transform Affine[ 0.1 ] --metric Mattes[ /home/zaz3744/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_desc-fMRIPrep_boldref.nii.gz, /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/gen_ref/ref_bold.nii.gz, 1, 64, Random, 0.2 ] --convergence [ 200, 1e-09, 10 ] --smoothing-sigmas 2.0mm --shrink-factors 2 --use-estimate-learning-rate-once 1 --use-histogram-matching 1 --winsorize-image-intensities [ 0.05, 0.98 ]  --write-composite-transform 0
+200711-10:11:53,744 nipype.workflow INFO:
+	 [Node] Running "norm" ("niworkflows.interfaces.fixes.FixHeaderRegistration"), a CommandLine Interface with command:
+antsRegistration --collapse-output-transforms 1 --dimensionality 3 --float 1 --initial-moving-transform [ /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/init_aff/initialization.mat, 0 ] --initialize-transforms-per-stage 0 --interpolation Linear --output transform --transform Affine[ 0.1 ] --metric Mattes[ /home/zaz3744/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_desc-fMRIPrep_boldref.nii.gz, /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/gen_ref/ref_bold.nii.gz, 1, 64, Random, 0.2 ] --convergence [ 200, 1e-09, 10 ] --smoothing-sigmas 2.0mm --shrink-factors 2 --use-estimate-learning-rate-once 1 --use-histogram-matching 1 --winsorize-image-intensities [ 0.05, 0.98 ]  --write-composite-transform 0
+200711-10:11:57,607 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.lap_tmpl".
+200711-10:11:59,783 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.mrg_tmpl" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/mrg_tmpl".
+200711-10:11:59,784 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.mrg_tmpl".
+200711-10:11:59,827 nipype.workflow INFO:
+	 [Node] Running "mrg_tmpl" ("nipype.interfaces.utility.base.Merge")
+200711-10:11:59,833 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.mrg_tmpl".
+200711-10:12:03,364 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.norm".
+200711-10:12:03,670 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.norm".
+200711-10:12:15,653 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.map_brainmask" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/map_brainmask".
+200711-10:12:15,654 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.map_brainmask".
+200711-10:12:15,663 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.map_brainmask" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/map_brainmask".
+200711-10:12:15,663 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.map_brainmask".
+200711-10:12:15,675 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.init_aff" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/init_aff".
+200711-10:12:15,676 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.init_aff".
+200711-10:12:15,728 nipype.workflow INFO:
+	 [Node] Running "map_brainmask" ("niworkflows.interfaces.fixes.FixHeaderApplyTransforms"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --float 0 --input /home/zaz3744/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_desc-brain_mask.nii.gz --interpolation MultiLabel --output tpl-MNI152NLin2009cAsym_res-02_desc-brain_mask_trans.nii.gz --reference-image /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/gen_ref/ref_bold.nii.gz --transform [ /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/norm/transform0GenericAffine.mat, 1 ]
+200711-10:12:15,734 nipype.workflow INFO:
+	 [Node] Running "init_aff" ("niworkflows.interfaces.ants.AI"), a CommandLine Interface with command:
+antsAI -c [10,0.000001,10] -d 3 -x /home/zaz3744/.cache/templateflow/tpl-OASIS30ANTs/tpl-OASIS30ANTs_res-01_desc-BrainCerebellumExtraction_mask.nii.gz -m Mattes[/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/res_tmpl/tpl-OASIS30ANTs_res-01_T1w_resampled.nii.gz,/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/res_target/sub-MWMH368_ses-1_T1w_template_maths_corrected_resampled.nii.gz,32,Regular,0.250000] -o initialization.mat -p 0 -s [15.000000,0.100000] -t Affine[0.100000] -v 1
+200711-10:12:15,779 nipype.workflow INFO:
+	 [Node] Running "map_brainmask" ("niworkflows.interfaces.fixes.FixHeaderApplyTransforms"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --float 0 --input /home/zaz3744/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-02_desc-brain_mask.nii.gz --interpolation MultiLabel --output tpl-MNI152NLin2009cAsym_res-02_desc-brain_mask_trans.nii.gz --reference-image /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/gen_ref/ref_bold.nii.gz --transform [ /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/norm/transform0GenericAffine.mat, 1 ]
+200711-10:12:39,668 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.init_aff".
+200711-10:12:44,596 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.map_brainmask".
+200711-10:12:44,604 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.map_brainmask".
+200711-10:12:45,872 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.pre_mask_dilate" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/pre_mask_dilate".
+200711-10:12:45,873 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.pre_mask_dilate".
+200711-10:12:45,874 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.pre_mask_dilate" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/pre_mask_dilate".
+200711-10:12:45,874 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.pre_mask_dilate".
+200711-10:12:45,924 nipype.workflow INFO:
+	 [Node] Running "pre_mask_dilate" ("nipype.interfaces.fsl.maths.DilateImage"), a CommandLine Interface with command:
+fslmaths -dt char /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/map_brainmask/tpl-MNI152NLin2009cAsym_res-02_desc-brain_mask_trans.nii.gz -kernel sphere 3.0000 -dilF /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/pre_mask_dilate/tpl-MNI152NLin2009cAsym_res-02_desc-brain_mask_trans_dil.nii.gz
+200711-10:12:46,34 nipype.workflow INFO:
+	 [Node] Running "pre_mask_dilate" ("nipype.interfaces.fsl.maths.DilateImage"), a CommandLine Interface with command:
+fslmaths -dt char /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/map_brainmask/tpl-MNI152NLin2009cAsym_res-02_desc-brain_mask_trans.nii.gz -kernel sphere 3.0000 -dilF /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/pre_mask_dilate/tpl-MNI152NLin2009cAsym_res-02_desc-brain_mask_trans_dil.nii.gz
+200711-10:12:50,157 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.pre_mask_dilate".
+200711-10:12:50,240 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.pre_mask_dilate".
+200711-10:12:50,390 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.norm" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/norm".
+200711-10:12:50,391 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.norm".
+200711-10:12:50,473 nipype.workflow INFO:
+	 [Node] Running "norm" ("niworkflows.interfaces.fixes.FixHeaderRegistration"), a CommandLine Interface with command:
+antsRegistration --collapse-output-transforms 1 --dimensionality 3 --float 1 --initial-moving-transform [ /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/init_aff/initialization.mat, 0 ] --initialize-transforms-per-stage 0 --interpolation LanczosWindowedSinc --output [ anat_to_template, anat_to_template_Warped.nii.gz ] --transform Rigid[ 0.1 ] --metric MI[ /home/zaz3744/.cache/templateflow/tpl-OASIS30ANTs/tpl-OASIS30ANTs_res-01_T1w.nii.gz, /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/inu_n4/mapflow/_inu_n40/sub-MWMH368_ses-1_T1w_template_maths_corrected.nii.gz, 1, 32, Regular, 0.25 ] --convergence [ 1000x500x250x100, 1e-08, 10 ] --smoothing-sigmas 4.0x2.0x1.0x0.0vox --shrink-factors 8x4x2x1 --use-histogram-matching 1 --masks [ /home/zaz3744/.cache/templateflow/tpl-OASIS30ANTs/tpl-OASIS30ANTs_res-01_desc-BrainCerebellumExtraction_mask.nii.gz, NULL ] --transform Affine[ 0.1 ] --metric MI[ /home/zaz3744/.cache/templateflow/tpl-OASIS30ANTs/tpl-OASIS30ANTs_res-01_T1w.nii.gz, /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/inu_n4/mapflow/_inu_n40/sub-MWMH368_ses-1_T1w_template_maths_corrected.nii.gz, 1, 32, Regular, 0.25 ] --convergence [ 1000x500x250x100, 1e-08, 10 ] --smoothing-sigmas 4.0x2.0x1.0x0.0vox --shrink-factors 8x4x2x1 --use-histogram-matching 1 --masks [ /home/zaz3744/.cache/templateflow/tpl-OASIS30ANTs/tpl-OASIS30ANTs_res-01_desc-BrainCerebellumExtraction_mask.nii.gz, NULL ] --transform SyN[ 0.1, 3.0, 0.0 ] --metric CC[ /home/zaz3744/.cache/templateflow/tpl-OASIS30ANTs/tpl-OASIS30ANTs_res-01_T1w.nii.gz, /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/inu_n4/mapflow/_inu_n40/sub-MWMH368_ses-1_T1w_template_maths_corrected.nii.gz, 0.5, 4, None, 1 ] --metric CC[ /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/lap_tmpl/tpl-OASIS30ANTs_res-01_T1w_maths.nii.gz, /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/lap_target/sub-MWMH368_ses-1_T1w_template_maths_corrected_maths.nii.gz, 0.5, 4, None, 1 ] --convergence [ 50x10x0, 1e-09, 15 ] --smoothing-sigmas 2.0x1.0x0.0vox --shrink-factors 4x2x1 --use-histogram-matching 1 --masks [ /home/zaz3744/.cache/templateflow/tpl-OASIS30ANTs/tpl-OASIS30ANTs_res-01_desc-BrainCerebellumExtraction_mask.nii.gz, NULL ] -v --winsorize-image-intensities [ 0.025, 0.975 ]  --write-composite-transform 0
+200711-10:13:02,655 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.n4_correct" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/n4_correct".
+200711-10:13:02,656 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.n4_correct".
+200711-10:13:02,665 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.n4_correct" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/n4_correct".
+200711-10:13:02,666 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.n4_correct".
+200711-10:13:02,986 nipype.workflow INFO:
+	 [Node] Running "n4_correct" ("niworkflows.interfaces.fixes.FixN4BiasFieldCorrection"), a CommandLine Interface with command:
+N4BiasFieldCorrection --bspline-fitting [ 200 ] -d 3 --input-image /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/gen_ref/ref_bold.nii.gz --mask-image /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/check_hdr/tpl-MNI152NLin2009cAsym_res-02_desc-brain_mask_trans_dil_hdr.nii.gz --output ref_bold_corrected.nii.gz -r
+200711-10:13:07,197 nipype.workflow INFO:
+	 [Node] Running "n4_correct" ("niworkflows.interfaces.fixes.FixN4BiasFieldCorrection"), a CommandLine Interface with command:
+N4BiasFieldCorrection --bspline-fitting [ 200 ] -d 3 --input-image /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/n4_correct/ref_bold_scaled.nii.gz --mask-image /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/check_hdr/tpl-MNI152NLin2009cAsym_res-02_desc-brain_mask_trans_dil_hdr.nii.gz --output ref_bold_corrected.nii.gz -r
+200711-10:13:45,632 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.n4_correct".
+200711-10:13:46,528 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.n4_correct".
+200711-10:13:47,840 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_pass" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass".
+200711-10:13:47,841 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_pass".
+200711-10:13:47,842 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_pass" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass".
+200711-10:13:47,843 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_pass".
+200711-10:13:48,139 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_pass" ("nipype.interfaces.fsl.preprocess.BET"), a CommandLine Interface with command:
+bet /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/n4_correct/ref_bold_corrected.nii.gz /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain.nii.gz -f 0.20 -m
+200711-10:13:49,99 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_pass" ("nipype.interfaces.fsl.preprocess.BET"), a CommandLine Interface with command:
+bet /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/n4_correct/ref_bold_corrected.nii.gz /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain.nii.gz -f 0.20 -m
+200711-10:13:53,122 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_pass".
+200711-10:13:54,34 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_pass".
+200711-10:13:55,847 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_dilate" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate".
+200711-10:13:55,847 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_dilate".
+200711-10:13:55,857 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_dilate" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate".
+200711-10:13:55,857 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_dilate".
+200711-10:13:55,931 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_dilate" ("nipype.interfaces.fsl.maths.DilateImage"), a CommandLine Interface with command:
+fslmaths -dt char /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain_mask.nii.gz -kernel sphere 6.0000 -dilF /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate/ref_bold_corrected_brain_mask_dil.nii.gz
+200711-10:13:56,9 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_dilate" ("nipype.interfaces.fsl.maths.DilateImage"), a CommandLine Interface with command:
+fslmaths -dt char /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain_mask.nii.gz -kernel sphere 6.0000 -dilF /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate/ref_bold_corrected_brain_mask_dil.nii.gz
+200711-10:14:06,890 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_dilate".
+200711-10:14:07,3 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_dilate".
+200711-10:14:07,552 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_mask" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_mask".
+200711-10:14:07,552 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_mask".
+200711-10:14:07,608 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_mask" ("nipype.interfaces.fsl.maths.ApplyMask"), a CommandLine Interface with command:
+fslmaths /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain.nii.gz -mas /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate/ref_bold_corrected_brain_mask_dil.nii.gz /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_mask/ref_bold_corrected_brain_masked.nii.gz
+200711-10:14:09,608 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_mask" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_mask".
+200711-10:14:09,609 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_mask".
+200711-10:14:09,627 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_mask".
+200711-10:14:10,449 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_mask" ("nipype.interfaces.fsl.maths.ApplyMask"), a CommandLine Interface with command:
+fslmaths /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain.nii.gz -mas /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate/ref_bold_corrected_brain_mask_dil.nii.gz /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_mask/ref_bold_corrected_brain_masked.nii.gz
+200711-10:14:10,954 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_mask".
+200711-10:14:11,356 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.unifize" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/unifize".
+200711-10:14:11,357 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.unifize".
+200711-10:14:11,363 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.unifize" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/unifize".
+200711-10:14:11,363 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.unifize".
+200711-10:14:11,462 nipype.workflow INFO:
+	 [Node] Running "unifize" ("nipype.interfaces.afni.utils.Unifize"), a CommandLine Interface with command:
+3dUnifize -clfrac 0.2 -rbt 18.3 65.0 90.0 -prefix uni.nii.gz -T2 -input /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/unifize/ref_bold_corrected_brain_masked.nii.gz
+200711-10:14:11,677 nipype.workflow INFO:
+	 [Node] Running "unifize" ("nipype.interfaces.afni.utils.Unifize"), a CommandLine Interface with command:
+3dUnifize -clfrac 0.2 -rbt 18.3 65.0 90.0 -prefix uni.nii.gz -T2 -input /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/unifize/ref_bold_corrected_brain_masked.nii.gz
+200711-10:14:30,939 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.unifize".
+200711-10:14:33,163 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_unifize" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/fixhdr_unifize".
+200711-10:14:33,164 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_unifize".
+200711-10:14:33,700 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.unifize".
+200711-10:14:33,874 nipype.workflow INFO:
+	 [Node] Running "fixhdr_unifize" ("niworkflows.interfaces.utils.CopyXForm")
+200711-10:14:34,28 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_unifize".
+200711-10:14:35,163 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_second_pass" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_second_pass".
+200711-10:14:35,163 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_second_pass".
+200711-10:14:35,170 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_unifize" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/fixhdr_unifize".
+200711-10:14:35,170 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_unifize".
+200711-10:14:35,239 nipype.workflow INFO:
+	 [Node] Running "skullstrip_second_pass" ("nipype.interfaces.afni.preprocess.Automask"), a CommandLine Interface with command:
+3dAutomask -apply_prefix uni_xform_masked.nii.gz -dilate 1 -prefix uni_xform_mask.nii.gz /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_second_pass/uni_xform.nii.gz
+200711-10:14:35,328 nipype.workflow INFO:
+	 [Node] Running "fixhdr_unifize" ("niworkflows.interfaces.utils.CopyXForm")
+200711-10:14:35,596 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_unifize".
+200711-10:14:35,899 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_second_pass".
+200711-10:14:37,176 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_skullstrip2" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/fixhdr_skullstrip2".
+200711-10:14:37,176 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_skullstrip2".
+200711-10:14:37,183 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_second_pass" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_second_pass".
+200711-10:14:37,183 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_second_pass".
+200711-10:14:37,239 nipype.workflow INFO:
+	 [Node] Running "fixhdr_skullstrip2" ("niworkflows.interfaces.utils.CopyXForm")
+200711-10:14:37,310 nipype.workflow INFO:
+	 [Node] Running "skullstrip_second_pass" ("nipype.interfaces.afni.preprocess.Automask"), a CommandLine Interface with command:
+3dAutomask -apply_prefix uni_xform_masked.nii.gz -dilate 1 -prefix uni_xform_mask.nii.gz /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_second_pass/uni_xform.nii.gz
+200711-10:14:37,324 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_skullstrip2".
+200711-10:14:37,810 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_second_pass".
+200711-10:14:39,197 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_skullstrip2" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/fixhdr_skullstrip2".
+200711-10:14:39,198 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_skullstrip2".
+200711-10:14:39,585 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.combine_masks" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks".
+200711-10:14:39,586 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.combine_masks".
+200711-10:14:40,896 nipype.workflow INFO:
+	 [Node] Running "combine_masks" ("nipype.interfaces.fsl.maths.BinaryMaths"), a CommandLine Interface with command:
+fslmaths /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain_mask.nii.gz -mul /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/fixhdr_skullstrip2/uni_xform_mask_xform.nii.gz /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz
+200711-10:14:40,899 nipype.workflow INFO:
+	 [Node] Running "fixhdr_skullstrip2" ("niworkflows.interfaces.utils.CopyXForm")
+200711-10:14:41,13 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_skullstrip2".
+200711-10:14:41,282 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.combine_masks".
+200711-10:14:43,194 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.apply_mask" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask".
+200711-10:14:43,195 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.apply_mask".
+200711-10:14:43,202 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.combine_masks" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks".
+200711-10:14:43,202 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.combine_masks".
+200711-10:14:43,745 nipype.workflow INFO:
+	 [Node] Running "apply_mask" ("nipype.interfaces.fsl.maths.ApplyMask"), a CommandLine Interface with command:
+fslmaths /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/fixhdr_unifize/uni_xform.nii.gz -mas /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz
+200711-10:14:43,751 nipype.workflow INFO:
+	 [Node] Running "combine_masks" ("nipype.interfaces.fsl.maths.BinaryMaths"), a CommandLine Interface with command:
+fslmaths /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain_mask.nii.gz -mul /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/fixhdr_skullstrip2/uni_xform_mask_xform.nii.gz /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz
+200711-10:14:44,128 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.combine_masks".
+200711-10:14:44,183 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.apply_mask".
+200711-10:14:45,202 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.dvars" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/dvars".
+200711-10:14:45,202 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.dvars".
+200711-10:14:45,212 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.apply_mask" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask".
+200711-10:14:45,212 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.apply_mask".
+200711-10:14:45,328 nipype.workflow INFO:
+	 [Node] Running "apply_mask" ("nipype.interfaces.fsl.maths.ApplyMask"), a CommandLine Interface with command:
+fslmaths /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/fixhdr_unifize/uni_xform.nii.gz -mas /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz
+200711-10:14:45,339 nipype.workflow INFO:
+	 [Node] Running "dvars" ("nipype.algorithms.confounds.ComputeDVARS")
+200711-10:14:45,676 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_bold_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.apply_mask".
+200711-10:29:28,392 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.dvars".
+200711-11:46:57,983 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.norm".
+200711-11:47:02,282 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.map_brainmask" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/map_brainmask".
+200711-11:47:02,283 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.map_brainmask".
+200711-11:47:02,365 nipype.workflow INFO:
+	 [Node] Running "map_brainmask" ("niworkflows.interfaces.fixes.FixHeaderApplyTransforms"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --float 1 --input /home/zaz3744/.cache/templateflow/tpl-OASIS30ANTs/tpl-OASIS30ANTs_res-01_label-brain_probseg.nii.gz --interpolation Gaussian --output tpl-OASIS30ANTs_res-01_label-brain_probseg_trans.nii.gz --reference-image /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/anat_template_wf/t1w_merge/sub-MWMH368_ses-1_T1w_template.nii.gz --transform [ /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/norm/anat_to_template0GenericAffine.mat, 1 ] --transform [ /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/norm/anat_to_template1InverseWarp.nii.gz, 0 ]
+200711-11:48:11,791 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.map_brainmask".
+200711-11:48:16,324 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.thr_brainmask" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/thr_brainmask".
+200711-11:48:16,324 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.thr_brainmask".
+200711-11:48:16,433 nipype.workflow INFO:
+	 [Node] Running "thr_brainmask" ("niworkflows.interfaces.ants.ThresholdImage"), a CommandLine Interface with command:
+ThresholdImage 3 /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/map_brainmask/tpl-OASIS30ANTs_res-01_label-brain_probseg_trans.nii.gz tpl-OASIS30ANTs_res-01_label-brain_probseg_trans_resampled.nii.gz 0.500000 1.000000 1.000000 0.000000
+200711-11:48:19,33 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.thr_brainmask".
+200711-11:48:19,254 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.03_pad_mask" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/03_pad_mask".
+200711-11:48:19,255 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.03_pad_mask".
+200711-11:48:19,269 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.dil_brainmask" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/dil_brainmask".
+200711-11:48:19,270 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.dil_brainmask".
+200711-11:48:19,342 nipype.workflow INFO:
+	 [Node] Running "03_pad_mask" ("niworkflows.interfaces.ants.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 tpl-OASIS30ANTs_res-01_label-brain_probseg_trans_resampled_maths.nii.gz PadImage /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/thr_brainmask/tpl-OASIS30ANTs_res-01_label-brain_probseg_trans_resampled.nii.gz 10
+200711-11:48:19,362 nipype.workflow INFO:
+	 [Node] Running "dil_brainmask" ("niworkflows.interfaces.ants.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 tpl-OASIS30ANTs_res-01_label-brain_probseg_trans_resampled_maths.nii.gz MD /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/thr_brainmask/tpl-OASIS30ANTs_res-01_label-brain_probseg_trans_resampled.nii.gz 2
+200711-11:48:23,377 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.03_pad_mask".
+200711-11:48:24,229 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.dil_brainmask".
+200711-11:48:28,333 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.get_brainmask" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/get_brainmask".
+200711-11:48:28,334 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.get_brainmask".
+200711-11:48:28,378 nipype.workflow INFO:
+	 [Node] Running "get_brainmask" ("niworkflows.interfaces.ants.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 tpl-OASIS30ANTs_res-01_label-brain_probseg_trans_resampled_maths_maths.nii.gz GetLargestComponent /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/dil_brainmask/tpl-OASIS30ANTs_res-01_label-brain_probseg_trans_resampled_maths.nii.gz
+200711-11:48:30,973 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.get_brainmask".
+200711-11:48:31,302 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.01_atropos" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/01_atropos".
+200711-11:48:31,302 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.01_atropos".
+200711-11:48:31,355 nipype.workflow INFO:
+	 [Node] Running "01_atropos" ("nipype.interfaces.ants.segmentation.Atropos"), a CommandLine Interface with command:
+Atropos --image-dimensionality 3 --initialization KMeans[3] --intensity-image /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/inu_n4/mapflow/_inu_n40/sub-MWMH368_ses-1_T1w_template_maths_corrected.nii.gz --likelihood-model Gaussian --mask-image /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/get_brainmask/tpl-OASIS30ANTs_res-01_label-brain_probseg_trans_resampled_maths_maths.nii.gz --mrf [0.1,1x1x1] --convergence [3,0] --output [sub-MWMH368_ses-1_T1w_template_maths_corrected_labeled.nii.gz] --use-random-seed 1
+200711-11:50:29,59 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.01_atropos".
+200711-11:50:32,309 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.02_pad_segm" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/02_pad_segm".
+200711-11:50:32,310 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.02_pad_segm".
+200711-11:50:32,686 nipype.workflow INFO:
+	 [Node] Running "02_pad_segm" ("niworkflows.interfaces.ants.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 sub-MWMH368_ses-1_T1w_template_maths_corrected_labeled_maths.nii.gz PadImage /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/01_atropos/sub-MWMH368_ses-1_T1w_template_maths_corrected_labeled.nii.gz 10
+200711-11:50:35,418 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.02_pad_segm".
+200711-11:50:37,316 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.04_sel_labels" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/04_sel_labels".
+200711-11:50:37,316 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.04_sel_labels".
+200711-11:50:37,405 nipype.workflow INFO:
+	 [Node] Running "04_sel_labels" ("nipype.interfaces.utility.wrappers.Function")
+200711-11:50:38,26 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.04_sel_labels".
+200711-11:50:52,317 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.27_depad_csf" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/27_depad_csf".
+200711-11:50:52,317 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.27_depad_csf".
+200711-11:50:52,416 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.10_me_csf" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/10_me_csf".
+200711-11:50:52,417 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.10_me_csf".
+200711-11:50:52,691 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.06_get_gm" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/06_get_gm".
+200711-11:50:52,691 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.06_get_gm".
+200711-11:50:52,696 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.05_get_wm" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/05_get_wm".
+200711-11:50:52,696 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.05_get_wm".
+200711-11:50:52,853 nipype.workflow INFO:
+	 [Node] Running "10_me_csf" ("niworkflows.interfaces.ants.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 sub-MWMH368_ses-1_T1w_template_maths_corrected_labeled_maths_class-01_maths.nii.gz ME /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/04_sel_labels/sub-MWMH368_ses-1_T1w_template_maths_corrected_labeled_maths_class-01.nii.gz 10
+200711-11:50:52,944 nipype.workflow INFO:
+	 [Node] Running "27_depad_csf" ("niworkflows.interfaces.ants.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 sub-MWMH368_ses-1_T1w_template_maths_corrected_labeled_maths_class-01_maths.nii.gz PadImage /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/04_sel_labels/sub-MWMH368_ses-1_T1w_template_maths_corrected_labeled_maths_class-01.nii.gz -10
+200711-11:50:53,9 nipype.workflow INFO:
+	 [Node] Running "06_get_gm" ("niworkflows.interfaces.ants.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 sub-MWMH368_ses-1_T1w_template_maths_corrected_labeled_maths_class-02_maths.nii.gz GetLargestComponent /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/04_sel_labels/sub-MWMH368_ses-1_T1w_template_maths_corrected_labeled_maths_class-02.nii.gz
+200711-11:50:53,21 nipype.workflow INFO:
+	 [Node] Running "05_get_wm" ("niworkflows.interfaces.ants.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 sub-MWMH368_ses-1_T1w_template_maths_corrected_labeled_maths_class-03_maths.nii.gz GetLargestComponent /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/04_sel_labels/sub-MWMH368_ses-1_T1w_template_maths_corrected_labeled_maths_class-03.nii.gz
+200711-11:51:00,77 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.27_depad_csf".
+200711-11:51:04,344 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.05_get_wm".
+200711-11:51:04,657 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.06_get_gm".
+200711-11:51:05,430 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.09_relabel_wm" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/09_relabel_wm".
+200711-11:51:05,430 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.09_relabel_wm".
+200711-11:51:05,430 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.07_fill_gm" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/07_fill_gm".
+200711-11:51:05,431 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.07_fill_gm".
+200711-11:51:05,564 nipype.workflow INFO:
+	 [Node] Running "07_fill_gm" ("niworkflows.interfaces.ants.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 sub-MWMH368_ses-1_T1w_template_maths_corrected_labeled_maths_class-02_maths_maths.nii.gz FillHoles /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/06_get_gm/sub-MWMH368_ses-1_T1w_template_maths_corrected_labeled_maths_class-02_maths.nii.gz 2
+200711-11:51:05,571 nipype.workflow INFO:
+	 [Node] Running "09_relabel_wm" ("nipype.interfaces.ants.utils.MultiplyImages"), a CommandLine Interface with command:
+MultiplyImages 3 /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/05_get_wm/sub-MWMH368_ses-1_T1w_template_maths_corrected_labeled_maths_class-03_maths.nii.gz 3.0 09_relabel_wm.nii.gz
+200711-11:51:10,400 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.09_relabel_wm".
+200711-11:51:11,509 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.26_depad_wm" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/26_depad_wm".
+200711-11:51:11,509 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.26_depad_wm".
+200711-11:51:11,662 nipype.workflow INFO:
+	 [Node] Running "26_depad_wm" ("niworkflows.interfaces.ants.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 09_relabel_wm_maths.nii.gz PadImage /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/09_relabel_wm/09_relabel_wm.nii.gz -10
+200711-11:51:17,876 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.26_depad_wm".
+200711-11:51:19,719 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.10_me_csf".
+200711-11:51:30,608 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.07_fill_gm".
+200711-11:51:31,349 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.08_mult_gm" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/08_mult_gm".
+200711-11:51:31,349 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.08_mult_gm".
+200711-11:51:31,971 nipype.workflow INFO:
+	 [Node] Running "08_mult_gm" ("nipype.interfaces.ants.utils.MultiplyImages"), a CommandLine Interface with command:
+MultiplyImages 3 /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/06_get_gm/sub-MWMH368_ses-1_T1w_template_maths_corrected_labeled_maths_class-02_maths.nii.gz /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/07_fill_gm/sub-MWMH368_ses-1_T1w_template_maths_corrected_labeled_maths_class-02_maths_maths.nii.gz 08_mult_gm.nii.gz
+200711-11:51:33,973 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.08_mult_gm".
+200711-11:51:35,355 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.11_add_gm" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/11_add_gm".
+200711-11:51:35,355 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.11_add_gm".
+200711-11:51:35,519 nipype.workflow INFO:
+	 [Node] Running "11_add_gm" ("niworkflows.interfaces.ants.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 08_mult_gm_maths.nii.gz addtozero /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/08_mult_gm/08_mult_gm.nii.gz /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/10_me_csf/sub-MWMH368_ses-1_T1w_template_maths_corrected_labeled_maths_class-01_maths.nii.gz
+200711-11:51:43,397 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.11_add_gm".
+200711-11:51:45,358 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.12_relabel_gm" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/12_relabel_gm".
+200711-11:51:45,358 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.12_relabel_gm".
+200711-11:51:45,497 nipype.workflow INFO:
+	 [Node] Running "12_relabel_gm" ("nipype.interfaces.ants.utils.MultiplyImages"), a CommandLine Interface with command:
+MultiplyImages 3 /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/11_add_gm/08_mult_gm_maths.nii.gz 2.0 12_relabel_gm.nii.gz
+200711-11:51:47,26 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.12_relabel_gm".
+200711-11:51:47,387 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.13_add_gm_wm" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/13_add_gm_wm".
+200711-11:51:47,388 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.13_add_gm_wm".
+200711-11:51:48,203 nipype.workflow INFO:
+	 [Node] Running "13_add_gm_wm" ("niworkflows.interfaces.ants.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 09_relabel_wm_maths.nii.gz addtozero /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/09_relabel_wm/09_relabel_wm.nii.gz /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/12_relabel_gm/12_relabel_gm.nii.gz
+200711-11:51:52,513 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.25_depad_gm" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/25_depad_gm".
+200711-11:51:52,513 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.25_depad_gm".
+200711-11:51:52,612 nipype.workflow INFO:
+	 [Node] Running "25_depad_gm" ("niworkflows.interfaces.ants.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 12_relabel_gm_maths.nii.gz PadImage /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/12_relabel_gm/12_relabel_gm.nii.gz -10
+200711-11:51:57,382 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.25_depad_gm".
+200711-11:51:59,450 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.merge_tpms" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/merge_tpms".
+200711-11:51:59,451 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.merge_tpms".
+200711-11:51:59,576 nipype.workflow INFO:
+	 [Node] Running "merge_tpms" ("nipype.interfaces.utility.base.Merge")
+200711-11:51:59,580 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.merge_tpms".
+200711-11:52:00,871 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.13_add_gm_wm".
+200711-11:52:01,381 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.24_depad_segm" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/24_depad_segm".
+200711-11:52:01,381 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.24_depad_segm".
+200711-11:52:01,389 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.14_sel_labels2" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/14_sel_labels2".
+200711-11:52:01,390 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.14_sel_labels2".
+200711-11:52:01,466 nipype.workflow INFO:
+	 [Node] Running "14_sel_labels2" ("nipype.interfaces.utility.wrappers.Function")
+200711-11:52:01,529 nipype.workflow INFO:
+	 [Node] Running "24_depad_segm" ("niworkflows.interfaces.ants.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 09_relabel_wm_maths_maths.nii.gz PadImage /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/13_add_gm_wm/09_relabel_wm_maths.nii.gz -10
+200711-11:52:02,173 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.14_sel_labels2".
+200711-11:52:03,477 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.15_add_7" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/15_add_7".
+200711-11:52:03,478 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.15_add_7".
+200711-11:52:03,647 nipype.workflow INFO:
+	 [Node] Running "15_add_7" ("niworkflows.interfaces.ants.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 09_relabel_wm_maths_class-03_maths.nii.gz addtozero /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/14_sel_labels2/09_relabel_wm_maths_class-03.nii.gz /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/14_sel_labels2/09_relabel_wm_maths_class-02.nii.gz
+200711-11:52:04,361 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.24_depad_segm".
+200711-11:52:10,959 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.15_add_7".
+200711-11:52:11,382 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.16_me_7" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/16_me_7".
+200711-11:52:11,382 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.16_me_7".
+200711-11:52:11,682 nipype.workflow INFO:
+	 [Node] Running "16_me_7" ("niworkflows.interfaces.ants.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 09_relabel_wm_maths_class-03_maths_maths.nii.gz ME /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/15_add_7/09_relabel_wm_maths_class-03_maths.nii.gz 2
+200711-11:52:17,600 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.16_me_7".
+200711-11:52:19,379 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.17_comp_7" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/17_comp_7".
+200711-11:52:19,380 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.17_comp_7".
+200711-11:52:19,503 nipype.workflow INFO:
+	 [Node] Running "17_comp_7" ("niworkflows.interfaces.ants.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 09_relabel_wm_maths_class-03_maths_maths_maths.nii.gz GetLargestComponent /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/16_me_7/09_relabel_wm_maths_class-03_maths_maths.nii.gz
+200711-11:52:22,595 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.17_comp_7".
+200711-11:52:23,382 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.18_md_7" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/18_md_7".
+200711-11:52:23,383 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.18_md_7".
+200711-11:52:23,523 nipype.workflow INFO:
+	 [Node] Running "18_md_7" ("niworkflows.interfaces.ants.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 09_relabel_wm_maths_class-03_maths_maths_maths_maths.nii.gz MD /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/17_comp_7/09_relabel_wm_maths_class-03_maths_maths_maths.nii.gz 4
+200711-11:52:27,63 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.18_md_7".
+200711-11:52:27,386 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.19_fill_7" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/19_fill_7".
+200711-11:52:27,386 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.19_fill_7".
+200711-11:52:28,150 nipype.workflow INFO:
+	 [Node] Running "19_fill_7" ("niworkflows.interfaces.ants.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 09_relabel_wm_maths_class-03_maths_maths_maths_maths_maths.nii.gz FillHoles /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/18_md_7/09_relabel_wm_maths_class-03_maths_maths_maths_maths.nii.gz 2
+200711-11:52:44,856 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.19_fill_7".
+200711-11:52:45,397 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.20_add_7_2" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/20_add_7_2".
+200711-11:52:45,397 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.20_add_7_2".
+200711-11:52:45,510 nipype.workflow INFO:
+	 [Node] Running "20_add_7_2" ("niworkflows.interfaces.ants.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 09_relabel_wm_maths_class-03_maths_maths_maths_maths_maths_maths.nii.gz addtozero /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/19_fill_7/09_relabel_wm_maths_class-03_maths_maths_maths_maths_maths.nii.gz /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/03_pad_mask/tpl-OASIS30ANTs_res-01_label-brain_probseg_trans_resampled_maths.nii.gz
+200711-11:52:52,675 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.20_add_7_2".
+200711-11:52:56,483 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.21_md_7_2" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/21_md_7_2".
+200711-11:52:56,484 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.21_md_7_2".
+200711-11:52:56,714 nipype.workflow INFO:
+	 [Node] Running "21_md_7_2" ("niworkflows.interfaces.ants.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 09_relabel_wm_maths_class-03_maths_maths_maths_maths_maths_maths_maths.nii.gz MD /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/20_add_7_2/09_relabel_wm_maths_class-03_maths_maths_maths_maths_maths_maths.nii.gz 5
+200711-11:53:00,221 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.21_md_7_2".
+200711-11:53:01,406 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.22_me_7_2" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/22_me_7_2".
+200711-11:53:01,406 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.22_me_7_2".
+200711-11:53:01,513 nipype.workflow INFO:
+	 [Node] Running "22_me_7_2" ("niworkflows.interfaces.ants.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 09_relabel_wm_maths_class-03_maths_maths_maths_maths_maths_maths_maths_maths.nii.gz ME /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/21_md_7_2/09_relabel_wm_maths_class-03_maths_maths_maths_maths_maths_maths_maths.nii.gz 5
+200711-11:53:07,417 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.22_me_7_2".
+200711-11:53:12,518 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.23_depad_mask" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/23_depad_mask".
+200711-11:53:12,519 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.23_depad_mask".
+200711-11:53:12,743 nipype.workflow INFO:
+	 [Node] Running "23_depad_mask" ("niworkflows.interfaces.ants.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 09_relabel_wm_maths_class-03_maths_maths_maths_maths_maths_maths_maths_maths_maths.nii.gz PadImage /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/22_me_7_2/09_relabel_wm_maths_class-03_maths_maths_maths_maths_maths_maths_maths_maths.nii.gz -10
+200711-11:53:14,645 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.23_depad_mask".
+200711-11:53:15,412 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.msk_conform" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/msk_conform".
+200711-11:53:15,412 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.msk_conform".
+200711-11:53:15,500 nipype.workflow INFO:
+	 [Node] Running "msk_conform" ("nipype.interfaces.utility.wrappers.Function")
+200711-11:53:15,833 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.atropos_wf.msk_conform".
+200711-11:53:20,908 nipype.interface WARNING:
+	 Changing /projects/b1108/projects/MWMH_preproc/fmriprep/sub-MWMH368/anat/sub-MWMH368_desc-brain_mask.nii.gz dtype from int16 to uint8
+200711-11:53:21,838 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.inu_n4_final" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/inu_n4_final".
+200711-11:53:21,839 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.inu_n4_final".
+200711-11:53:21,906 nipype.workflow INFO:
+	 [Node] Setting-up "_inu_n4_final0" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/inu_n4_final/mapflow/_inu_n4_final0".
+200711-11:53:21,912 nipype.workflow INFO:
+	 [Node] Outdated cache found for "_inu_n4_final0".
+200711-11:53:22,28 nipype.workflow INFO:
+	 [Node] Running "_inu_n4_final0" ("nipype.interfaces.ants.segmentation.N4BiasFieldCorrection"), a CommandLine Interface with command:
+N4BiasFieldCorrection --bspline-fitting [ 200 ] -d 3 --input-image /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/anat_template_wf/t1w_merge/sub-MWMH368_ses-1_T1w_template.nii.gz --convergence [ 50x50x50x50x50, 1e-07 ] --output [ sub-MWMH368_ses-1_T1w_template_corrected.nii.gz, sub-MWMH368_ses-1_T1w_template_bias.nii.gz ] -r --shrink-factor 4 --weight-image /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/copy_xform/09_relabel_wm_maths_xform.nii.gz
+200711-11:55:54,406 nipype.workflow INFO:
+	 [Node] Finished "_inu_n4_final0".
+200711-11:55:54,423 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.inu_n4_final".
+200711-11:55:55,917 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.apply_mask" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/apply_mask".
+200711-11:55:55,918 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.apply_mask".
+200711-11:55:56,18 nipype.workflow INFO:
+	 [Node] Setting-up "_apply_mask0" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/apply_mask/mapflow/_apply_mask0".
+200711-11:55:56,21 nipype.workflow INFO:
+	 [Node] Outdated cache found for "_apply_mask0".
+200711-11:55:56,178 nipype.workflow INFO:
+	 [Node] Running "_apply_mask0" ("nipype.interfaces.fsl.maths.ApplyMask"), a CommandLine Interface with command:
+fslmaths /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/inu_n4_final/mapflow/_inu_n4_final0/sub-MWMH368_ses-1_T1w_template_corrected.nii.gz -mas /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/atropos_wf/copy_xform/09_relabel_wm_mask_xform.nii.gz /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/apply_mask/mapflow/_apply_mask0/sub-MWMH368_ses-1_T1w_template_corrected_masked.nii.gz
+200711-11:55:58,901 nipype.workflow INFO:
+	 [Node] Finished "_apply_mask0".
+200711-11:55:58,905 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.brain_extraction_wf.apply_mask".
+200711-11:56:09,609 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.anat_norm_wf.trunc_mov" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/anat_norm_wf/_template_MNI152NLin2009cAsym/trunc_mov".
+200711-11:56:09,609 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.anat_norm_wf.trunc_mov".
+200711-11:56:09,724 nipype.workflow INFO:
+	 [Node] Running "trunc_mov" ("niworkflows.interfaces.ants.ImageMath"), a CommandLine Interface with command:
+ImageMath 3 sub-MWMH368_ses-1_T1w_template_corrected_xform_maths.nii.gz TruncateImageIntensity /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/brain_extraction_wf/copy_xform/sub-MWMH368_ses-1_T1w_template_corrected_xform.nii.gz 0.01 0.999 256
+200711-11:56:27,908 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.anat_norm_wf.trunc_mov".
+200711-11:56:30,156 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.t1w_brain" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/t1w_brain".
+200711-11:56:30,157 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.t1w_brain".
+200711-11:56:30,162 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.t1w_dseg" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/t1w_dseg".
+200711-11:56:30,162 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.t1w_dseg".
+200711-11:56:30,246 nipype.workflow INFO:
+	 [Node] Running "t1w_brain" ("niworkflows.interfaces.nibabel.ApplyMask")
+200711-11:56:30,302 nipype.workflow INFO:
+	 [Node] Running "t1w_dseg" ("nipype.interfaces.fsl.preprocess.FAST"), a CommandLine Interface with command:
+fast -N -p -g -S 1 /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/t1w_dseg/sub-MWMH368_ses-1_T1w_template_corrected_masked_xform.nii.gz
+200711-11:56:30,339 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.anat_norm_wf.registration" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/anat_norm_wf/_template_MNI152NLin2009cAsym/registration".
+200711-11:56:30,340 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.anat_norm_wf.registration".
+200711-11:56:30,508 nipype.workflow INFO:
+	 [Node] Running "registration" ("niworkflows.interfaces.mni.RobustMNINormalization")
+200711-11:56:34,560 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.t1w_brain".
+200711-11:56:36,483 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.gen_ref" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/gen_ref".
+200711-11:56:36,484 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.gen_ref".
+200711-11:56:36,499 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reg_wf.fsl_bbr_wf.flt_bbr_init" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/flt_bbr_init".
+200711-11:56:36,499 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reg_wf.fsl_bbr_wf.flt_bbr_init".
+200711-11:56:36,990 nipype.workflow INFO:
+	 [Node] Running "gen_ref" ("niworkflows.interfaces.utils.GenerateSamplingReference")
+200711-11:56:37,1 nipype.workflow INFO:
+	 [Node] Running "flt_bbr_init" ("niworkflows.interfaces.registration.FLIRTRPT"), a CommandLine Interface with command:
+flirt -in /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz -ref /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/t1w_brain/sub-MWMH368_ses-1_T1w_template_corrected_xform_masked.nii.gz -out uni_xform_masked_flirt.nii.gz -omat uni_xform_masked_flirt.mat -dof 6 -usesqform
+200711-11:56:42,709 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.gen_ref".
+200711-12:12:55,80 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reg_wf.fsl_bbr_wf.flt_bbr_init".
+200711-12:34:23,256 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.t1w_dseg".
+200711-12:34:25,299 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.lut_t1w_dseg" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/lut_t1w_dseg".
+200711-12:34:25,299 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.lut_t1w_dseg".
+200711-12:34:25,413 nipype.workflow INFO:
+	 [Node] Running "lut_t1w_dseg" ("nipype.interfaces.utility.wrappers.Function")
+200711-12:34:29,644 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.lut_t1w_dseg".
+200711-12:35:33,548 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.wm_roi" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/wm_roi".
+200711-12:35:33,548 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.wm_roi".
+200711-12:35:33,560 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.csf_roi" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/csf_roi".
+200711-12:35:33,561 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.csf_roi".
+200711-12:35:33,582 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.acc_tpm" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/acc_tpm".
+200711-12:35:33,582 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.acc_tpm".
+200711-12:35:33,793 nipype.workflow INFO:
+	 [Node] Running "csf_roi" ("niworkflows.interfaces.utils.TPM2ROI")
+200711-12:35:33,817 nipype.workflow INFO:
+	 [Node] Running "acc_tpm" ("niworkflows.interfaces.utils.AddTPMs")
+200711-12:35:33,927 nipype.workflow INFO:
+	 [Node] Running "wm_roi" ("niworkflows.interfaces.utils.TPM2ROI")
+200711-12:35:50,678 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.csf_roi".
+200711-12:35:56,612 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.acc_tpm".
+200711-12:36:17,110 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.anat_reports_wf.seg_rpt" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/anat_reports_wf/seg_rpt".
+200711-12:36:17,110 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.anat_reports_wf.seg_rpt".
+200711-12:36:17,121 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reg_wf.fsl_bbr_wf.wm_mask" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/wm_mask".
+200711-12:36:17,121 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reg_wf.fsl_bbr_wf.wm_mask".
+200711-12:36:17,215 nipype.workflow INFO:
+	 [Node] Running "seg_rpt" ("niworkflows.interfaces.masks.ROIsPlot")
+200711-12:36:17,241 nipype.workflow INFO:
+	 [Node] Running "wm_mask" ("nipype.interfaces.utility.wrappers.Function")
+200711-12:36:18,379 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.acc_roi" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/acc_roi".
+200711-12:36:18,379 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.acc_roi".
+200711-12:36:18,509 nipype.workflow INFO:
+	 [Node] Running "acc_roi" ("niworkflows.interfaces.utils.TPM2ROI")
+200711-12:36:18,872 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reg_wf.fsl_bbr_wf.wm_mask".
+200711-12:36:20,247 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reg_wf.fsl_bbr_wf.flt_bbr" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/flt_bbr".
+200711-12:36:20,248 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reg_wf.fsl_bbr_wf.flt_bbr".
+200711-12:36:20,365 nipype.workflow INFO:
+	 [Node] Running "flt_bbr" ("niworkflows.interfaces.registration.FLIRTRPT"), a CommandLine Interface with command:
+flirt -in /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz -ref /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/t1w_brain/sub-MWMH368_ses-1_T1w_template_corrected_xform_masked.nii.gz -out uni_xform_masked_flirt.nii.gz -omat uni_xform_masked_flirt.mat -searchcost bbr -dof 6 -init /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/flt_bbr_init/uni_xform_masked_flirt.mat -schedule /usr/share/fsl/5.0/etc/flirtsch/bbr.sch -wmseg /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/wm_mask/sub-MWMH368_ses-1_T1w_template_corrected_masked_xform_seg_dseg_mask.nii.gz
+200711-12:37:22,327 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.wm_roi".
+200711-12:38:09,332 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.acc_roi".
+200711-12:57:01,324 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.anat_reports_wf.seg_rpt".
+200711-13:55:20,822 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reg_wf.fsl_bbr_wf.flt_bbr".
+200711-13:55:28,902 nipype.workflow INFO:
+	 [Node] Setting-up "_fsl_to_lta0" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta/mapflow/_fsl_to_lta0".
+200711-13:55:28,902 nipype.workflow INFO:
+	 [Node] Outdated cache found for "_fsl_to_lta0".
+200711-13:55:28,946 nipype.workflow INFO:
+	 [Node] Setting-up "_fsl_to_lta1" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta/mapflow/_fsl_to_lta1".
+200711-13:55:28,962 nipype.workflow INFO:
+	 [Node] Outdated cache found for "_fsl_to_lta1".
+200711-13:55:29,44 nipype.workflow INFO:
+	 [Node] Running "_fsl_to_lta0" ("niworkflows.interfaces.freesurfer.PatchedLTAConvert"), a CommandLine Interface with command:
+lta_convert --infsl /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/flt_bbr/uni_xform_masked_flirt.mat --outlta /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta/mapflow/_fsl_to_lta0/out.lta --src /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz --trg /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/t1w_brain/sub-MWMH368_ses-1_T1w_template_corrected_xform_masked.nii.gz
+200711-13:55:29,77 nipype.workflow INFO:
+	 [Node] Running "_fsl_to_lta1" ("niworkflows.interfaces.freesurfer.PatchedLTAConvert"), a CommandLine Interface with command:
+lta_convert --infsl /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/flt_bbr_init/uni_xform_masked_flirt.mat --outlta /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta/mapflow/_fsl_to_lta1/out.lta --src /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz --trg /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/t1w_brain/sub-MWMH368_ses-1_T1w_template_corrected_xform_masked.nii.gz
+200711-13:55:30,80 nipype.workflow INFO:
+	 [Node] Finished "_fsl_to_lta1".
+200711-13:55:30,101 nipype.workflow INFO:
+	 [Node] Finished "_fsl_to_lta0".
+200711-13:55:32,750 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reg_wf.fsl_bbr_wf.fsl_to_lta" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta".
+200711-13:55:32,784 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reg_wf.fsl_bbr_wf.fsl_to_lta".
+200711-13:55:32,868 nipype.workflow INFO:
+	 [Node] Setting-up "_fsl_to_lta0" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta/mapflow/_fsl_to_lta0".
+200711-13:55:32,870 nipype.workflow INFO:
+	 [Node] Cached "_fsl_to_lta0" - collecting precomputed outputs
+200711-13:55:32,870 nipype.workflow INFO:
+	 [Node] "_fsl_to_lta0" found cached.
+200711-13:55:32,875 nipype.workflow INFO:
+	 [Node] Setting-up "_fsl_to_lta1" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl_to_lta/mapflow/_fsl_to_lta1".
+200711-13:55:32,877 nipype.workflow INFO:
+	 [Node] Cached "_fsl_to_lta1" - collecting precomputed outputs
+200711-13:55:32,877 nipype.workflow INFO:
+	 [Node] "_fsl_to_lta1" found cached.
+200711-13:55:32,917 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reg_wf.fsl_bbr_wf.fsl_to_lta".
+200711-13:55:35,192 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reg_wf.fsl_bbr_wf.compare_transforms" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/compare_transforms".
+200711-13:55:35,192 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reg_wf.fsl_bbr_wf.compare_transforms".
+200711-13:55:35,235 nipype.workflow INFO:
+	 [Node] Running "compare_transforms" ("nipype.interfaces.utility.wrappers.Function")
+200711-13:55:35,343 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reg_wf.fsl_bbr_wf.compare_transforms".
+200711-13:55:40,847 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reg_wf.fsl_bbr_wf.fsl2itk_fwd" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_fwd".
+200711-13:55:40,847 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reg_wf.fsl_bbr_wf.fsl2itk_fwd".
+200711-13:55:40,877 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reg_wf.fsl_bbr_wf.invt_bbr" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/invt_bbr".
+200711-13:55:40,877 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reg_wf.fsl_bbr_wf.invt_bbr".
+200711-13:55:40,910 nipype.workflow INFO:
+	 [Node] Running "fsl2itk_fwd" ("nipype.interfaces.c3.C3dAffineTool"), a CommandLine Interface with command:
+c3d_affine_tool -ref /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/t1w_brain/sub-MWMH368_ses-1_T1w_template_corrected_xform_masked.nii.gz -src /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/flt_bbr/uni_xform_masked_flirt.mat -fsl2ras -oitk /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_fwd/affine.txt
+200711-13:55:40,956 nipype.workflow INFO:
+	 [Node] Running "invt_bbr" ("nipype.interfaces.fsl.utils.ConvertXFM"), a CommandLine Interface with command:
+convert_xfm -omat /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/invt_bbr/uni_xform_masked_flirt_inv.mat -inverse /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/flt_bbr/uni_xform_masked_flirt.mat
+200711-13:55:42,46 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reg_wf.fsl_bbr_wf.invt_bbr".
+200711-13:55:43,866 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reg_wf.fsl_bbr_wf.fsl2itk_inv" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_inv".
+200711-13:55:43,866 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reg_wf.fsl_bbr_wf.fsl2itk_inv".
+200711-13:55:43,961 nipype.workflow INFO:
+	 [Node] Running "fsl2itk_inv" ("nipype.interfaces.c3.C3dAffineTool"), a CommandLine Interface with command:
+c3d_affine_tool -ref /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz -src /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/t1w_brain/sub-MWMH368_ses-1_T1w_template_corrected_xform_masked.nii.gz /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/invt_bbr/uni_xform_masked_flirt_inv.mat -fsl2ras -oitk /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_inv/affine.txt
+200711-13:55:47,197 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reg_wf.fsl_bbr_wf.fsl2itk_fwd".
+200711-13:55:48,740 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_reg_wf.fsl_bbr_wf.fsl2itk_inv".
+200711-13:55:50,697 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.mask_t1w_tfm" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/mask_t1w_tfm".
+200711-13:55:50,698 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.mask_t1w_tfm".
+200711-13:55:50,734 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.tcc_tfm" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/tcc_tfm".
+200711-13:55:50,735 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.tcc_tfm".
+200711-13:55:50,750 nipype.workflow INFO:
+	 [Node] Running "mask_t1w_tfm" ("niworkflows.interfaces.fixes.FixHeaderApplyTransforms"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --float 0 --input /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz --interpolation MultiLabel --output ref_bold_corrected_brain_mask_maths_trans.nii.gz --reference-image /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/gen_ref/sub-MWMH368_ses-1_T1w_template_corrected_xform_masked_reference.nii.gz --transform /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_fwd/affine.txt
+200711-13:55:50,774 nipype.workflow INFO:
+	 [Node] Running "tcc_tfm" ("niworkflows.interfaces.fixes.FixHeaderApplyTransforms"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --float 1 --input /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/csf_roi/09_relabel_wm_mask_xform_eroded.nii.gz --interpolation NearestNeighbor --output 09_relabel_wm_mask_xform_eroded_trans.nii.gz --reference-image /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz --transform /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_inv/affine.txt
+200711-13:55:50,812 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.acc_tfm" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/acc_tfm".
+200711-13:55:50,813 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.acc_tfm".
+200711-13:55:50,875 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.wm_tfm" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/wm_tfm".
+200711-13:55:50,875 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.wm_tfm".
+200711-13:55:50,880 nipype.workflow INFO:
+	 [Node] Running "acc_tfm" ("niworkflows.interfaces.fixes.FixHeaderApplyTransforms"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --float 1 --input /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/acc_roi/sub-MWMH368_ses-1_T1w_template_corrected_masked_xform_prob_2_tpmsum_roi.nii.gz --interpolation NearestNeighbor --output sub-MWMH368_ses-1_T1w_template_corrected_masked_xform_prob_2_tpmsum_roi_trans.nii.gz --reference-image /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz --transform /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_inv/affine.txt
+200711-13:55:50,927 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.csf_tfm" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/csf_tfm".
+200711-13:55:50,927 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.csf_tfm".
+200711-13:55:50,967 nipype.workflow INFO:
+	 [Node] Running "wm_tfm" ("niworkflows.interfaces.fixes.FixHeaderApplyTransforms"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --float 1 --input /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/wm_roi/sub-MWMH368_ses-1_T1w_template_corrected_masked_xform_prob_2_roi.nii.gz --interpolation NearestNeighbor --output sub-MWMH368_ses-1_T1w_template_corrected_masked_xform_prob_2_roi_trans.nii.gz --reference-image /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz --transform /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_inv/affine.txt
+200711-13:55:51,23 nipype.workflow INFO:
+	 [Node] Running "csf_tfm" ("niworkflows.interfaces.fixes.FixHeaderApplyTransforms"), a CommandLine Interface with command:
+antsApplyTransforms --default-value 0 --float 1 --input /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/csf_roi/sub-MWMH368_ses-1_T1w_template_corrected_masked_xform_prob_0_roi.nii.gz --interpolation NearestNeighbor --output sub-MWMH368_ses-1_T1w_template_corrected_masked_xform_prob_0_roi_trans.nii.gz --reference-image /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_bold_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz --transform /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_reg_wf/fsl_bbr_wf/fsl2itk_inv/affine.txt
+200711-13:55:55,41 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.acc_tfm".
+200711-13:55:55,105 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.wm_tfm".
+200711-13:55:55,113 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.tcc_tfm".
+200711-13:55:55,155 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.csf_tfm".
+200711-13:55:57,664 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_to_t1w_transform" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_to_t1w_transform".
+200711-13:55:57,666 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_to_t1w_transform".
+200711-13:55:58,313 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.tcc_msk" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/tcc_msk".
+200711-13:55:58,313 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.tcc_msk".
+200711-13:55:58,335 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.acc_msk" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/acc_msk".
+200711-13:55:58,335 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.acc_msk".
+200711-13:55:58,352 nipype.workflow INFO:
+	 [Node] Running "tcc_msk" ("nipype.interfaces.utility.wrappers.Function")
+200711-13:55:58,373 nipype.workflow INFO:
+	 [Node] Running "acc_msk" ("nipype.interfaces.utility.wrappers.Function")
+200711-13:55:58,396 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.wm_msk" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/wm_msk".
+200711-13:55:58,396 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.wm_msk".
+200711-13:55:58,412 nipype.workflow INFO:
+	 [Node] Running "wm_msk" ("nipype.interfaces.utility.wrappers.Function")
+200711-13:55:58,445 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.csf_msk" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/csf_msk".
+200711-13:55:58,445 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.csf_msk".
+200711-13:55:58,460 nipype.workflow INFO:
+	 [Node] Running "csf_msk" ("nipype.interfaces.utility.wrappers.Function")
+200711-13:55:58,837 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.tcc_msk".
+200711-13:55:58,860 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.wm_msk".
+200711-13:55:58,867 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.acc_msk".
+200711-13:55:58,874 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.csf_msk".
+200711-13:56:01,316 nipype.workflow INFO:
+	 [Node] Running "bold_to_t1w_transform" ("niworkflows.interfaces.itk.MultiApplyTransforms")
+200711-13:57:13,769 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.mask_t1w_tfm".
+200711-13:57:16,146 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.pre_mask_dilate" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/pre_mask_dilate".
+200711-13:57:16,147 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.pre_mask_dilate".
+200711-13:57:16,205 nipype.workflow INFO:
+	 [Node] Running "pre_mask_dilate" ("nipype.interfaces.fsl.maths.DilateImage"), a CommandLine Interface with command:
+fslmaths -dt char /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/mask_t1w_tfm/ref_bold_corrected_brain_mask_maths_trans.nii.gz -kernel sphere 3.0000 -dilF /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/pre_mask_dilate/ref_bold_corrected_brain_mask_maths_trans_dil.nii.gz
+200711-13:57:27,213 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.pre_mask_dilate".
+200711-15:42:31,849 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_to_t1w_transform".
+200711-15:42:36,583 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.tcompcor" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/tcompcor".
+200711-15:42:36,583 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.tcompcor".
+200711-15:42:36,665 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.acompcor" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/acompcor".
+200711-15:42:36,665 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.acompcor".
+200711-15:42:36,696 nipype.workflow INFO:
+	 [Node] Running "acompcor" ("niworkflows.interfaces.patches.RobustACompCor")
+200711-15:42:36,702 nipype.workflow INFO:
+	 [Node] Running "tcompcor" ("niworkflows.interfaces.patches.RobustTCompCor")
+200711-15:42:36,764 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.signals" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/signals".
+200711-15:42:36,765 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.signals".
+200711-15:42:36,876 nipype.workflow INFO:
+	 [Node] Running "signals" ("niworkflows.interfaces.images.SignalExtraction")
+200711-15:42:39,642 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.merge" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/merge".
+200711-15:42:39,690 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.merge".
+200711-15:42:41,617 nipype.workflow INFO:
+	 [Node] Running "merge" ("niworkflows.interfaces.nilearn.Merge")
+200711-15:49:57,921 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.signals".
+200711-15:51:00,155 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.tcompcor".
+200711-15:51:01,971 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.tcc_metadata_fmt" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/tcc_metadata_fmt".
+200711-15:51:01,972 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.tcc_metadata_fmt".
+200711-15:51:02,4 nipype.workflow INFO:
+	 [Node] Running "tcc_metadata_fmt" ("niworkflows.interfaces.utils.TSV2JSON")
+200711-15:51:03,86 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.tcc_metadata_fmt".
+200711-15:51:04,392 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.rois_plot" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/rois_plot".
+200711-15:51:04,392 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.rois_plot".
+200711-15:51:04,788 nipype.workflow INFO:
+	 [Node] Running "rois_plot" ("niworkflows.interfaces.masks.ROIsPlot")
+200711-15:52:31,980 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.acompcor".
+200711-15:52:35,637 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.acc_metadata_fmt" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/acc_metadata_fmt".
+200711-15:52:35,637 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.acc_metadata_fmt".
+200711-15:52:35,684 nipype.workflow INFO:
+	 [Node] Running "acc_metadata_fmt" ("niworkflows.interfaces.utils.TSV2JSON")
+200711-15:52:39,852 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.acc_metadata_fmt".
+200711-15:53:24,370 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.compcor_plot" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/compcor_plot".
+200711-15:53:24,371 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.compcor_plot".
+200711-15:53:24,421 nipype.workflow INFO:
+	 [Node] Running "compcor_plot" ("niworkflows.interfaces.plotting.CompCorVariancePlot")
+200711-15:53:29,822 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.compcor_plot".
+200711-15:53:46,701 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.conf_corr_plot" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/conf_corr_plot".
+200711-15:53:46,701 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.conf_corr_plot".
+200711-15:53:46,723 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.model_expansion" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/model_expansion".
+200711-15:53:46,723 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.model_expansion".
+200711-15:53:46,762 nipype.workflow INFO:
+	 [Node] Running "conf_corr_plot" ("niworkflows.interfaces.plotting.ConfoundsCorrelationPlot")
+200711-15:53:46,766 nipype.workflow INFO:
+	 [Node] Running "model_expansion" ("niworkflows.interfaces.confounds.ExpandModel")
+200711-15:54:19,753 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.model_expansion".
+200711-15:54:22,978 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.spike_regressors" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_confounds_wf/spike_regressors".
+200711-15:54:22,978 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.spike_regressors".
+200711-15:54:23,45 nipype.workflow INFO:
+	 [Node] Running "spike_regressors" ("niworkflows.interfaces.confounds.SpikeRegressors")
+200711-15:54:50,905 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.spike_regressors".
+200711-15:55:09,339 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.conf_corr_plot".
+200711-15:56:21,785 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_confounds_wf.rois_plot".
+200711-16:00:50,50 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.merge".
+200711-16:00:52,517 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.validate" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/validate".
+200711-16:00:52,518 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.validate".
+200711-16:00:52,676 nipype.workflow INFO:
+	 [Node] Running "validate" ("niworkflows.interfaces.images.ValidateImage")
+200711-16:00:52,691 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.validate".
+200711-16:00:54,475 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.gen_ref" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/gen_ref".
+200711-16:00:54,475 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.gen_ref".
+200711-16:00:54,563 nipype.workflow INFO:
+	 [Node] Running "gen_ref" ("niworkflows.interfaces.registration.EstimateReferenceImage")
+200711-16:00:56,210 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.gen_ref".
+200711-16:01:00,968 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.n4_correct" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/n4_correct".
+200711-16:01:00,968 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.n4_correct".
+200711-16:01:02,18 nipype.workflow INFO:
+	 [Node] Running "n4_correct" ("niworkflows.interfaces.fixes.FixN4BiasFieldCorrection"), a CommandLine Interface with command:
+N4BiasFieldCorrection --bspline-fitting [ 200 ] -d 3 --input-image /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/n4_correct/ref_bold_scaled.nii.gz --mask-image /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/check_hdr/ref_bold_corrected_brain_mask_maths_trans_dil_hdr.nii.gz --output ref_bold_corrected.nii.gz -r
+200711-16:01:52,23 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.n4_correct".
+200711-16:01:52,804 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_pass" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass".
+200711-16:01:52,805 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_pass".
+200711-16:01:52,966 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_pass" ("nipype.interfaces.fsl.preprocess.BET"), a CommandLine Interface with command:
+bet /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/n4_correct/ref_bold_corrected.nii.gz /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain.nii.gz -f 0.20 -m
+200711-16:02:08,962 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_pass".
+200711-16:02:10,913 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_dilate" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate".
+200711-16:02:10,914 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_dilate".
+200711-16:02:11,41 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_dilate" ("nipype.interfaces.fsl.maths.DilateImage"), a CommandLine Interface with command:
+fslmaths -dt char /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain_mask.nii.gz -kernel sphere 6.0000 -dilF /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate/ref_bold_corrected_brain_mask_dil.nii.gz
+200711-16:02:34,818 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_dilate".
+200711-16:02:37,32 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_mask" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_mask".
+200711-16:02:37,32 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_mask".
+200711-16:02:37,227 nipype.workflow INFO:
+	 [Node] Running "skullstrip_first_mask" ("nipype.interfaces.fsl.maths.ApplyMask"), a CommandLine Interface with command:
+fslmaths /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain.nii.gz -mas /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_dilate/ref_bold_corrected_brain_mask_dil.nii.gz /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_mask/ref_bold_corrected_brain_masked.nii.gz
+200711-16:02:38,962 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_first_mask".
+200711-16:02:41,45 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.unifize" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/unifize".
+200711-16:02:41,46 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.unifize".
+200711-16:02:41,148 nipype.workflow INFO:
+	 [Node] Running "unifize" ("nipype.interfaces.afni.utils.Unifize"), a CommandLine Interface with command:
+3dUnifize -clfrac 0.2 -rbt 18.3 65.0 90.0 -prefix uni.nii.gz -T2 -input /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/unifize/ref_bold_corrected_brain_masked.nii.gz
+200711-16:03:28,96 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.unifize".
+200711-16:03:31,72 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_unifize" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/fixhdr_unifize".
+200711-16:03:31,72 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_unifize".
+200711-16:03:31,179 nipype.workflow INFO:
+	 [Node] Running "fixhdr_unifize" ("niworkflows.interfaces.utils.CopyXForm")
+200711-16:03:31,938 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_unifize".
+200711-16:03:33,73 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_second_pass" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_second_pass".
+200711-16:03:33,73 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_second_pass".
+200711-16:03:33,181 nipype.workflow INFO:
+	 [Node] Running "skullstrip_second_pass" ("nipype.interfaces.afni.preprocess.Automask"), a CommandLine Interface with command:
+3dAutomask -apply_prefix uni_xform_masked.nii.gz -dilate 1 -prefix uni_xform_mask.nii.gz /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_second_pass/uni_xform.nii.gz
+200711-16:03:35,636 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.skullstrip_second_pass".
+200711-16:03:37,69 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_skullstrip2" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/fixhdr_skullstrip2".
+200711-16:03:37,69 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_skullstrip2".
+200711-16:03:37,165 nipype.workflow INFO:
+	 [Node] Running "fixhdr_skullstrip2" ("niworkflows.interfaces.utils.CopyXForm")
+200711-16:03:37,397 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.fixhdr_skullstrip2".
+200711-16:03:39,79 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.combine_masks" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks".
+200711-16:03:39,79 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.combine_masks".
+200711-16:03:39,164 nipype.workflow INFO:
+	 [Node] Running "combine_masks" ("nipype.interfaces.fsl.maths.BinaryMaths"), a CommandLine Interface with command:
+fslmaths /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/skullstrip_first_pass/ref_bold_corrected_brain_mask.nii.gz -mul /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/fixhdr_skullstrip2/uni_xform_mask_xform.nii.gz /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz
+200711-16:03:40,282 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.combine_masks".
+200711-16:03:43,75 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.apply_mask" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask".
+200711-16:03:43,75 nipype.workflow INFO:
+	 [Node] Outdated cache found for "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.apply_mask".
+200711-16:03:43,169 nipype.workflow INFO:
+	 [Node] Running "apply_mask" ("nipype.interfaces.fsl.maths.ApplyMask"), a CommandLine Interface with command:
+fslmaths /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/fixhdr_unifize/uni_xform.nii.gz -mas /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/combine_masks/ref_bold_corrected_brain_mask_maths.nii.gz /projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/func_preproc_ses_1_task_rest_run_01_wf/bold_t1_trans_wf/bold_reference_wf/enhance_and_skullstrip_bold_wf/apply_mask/uni_xform_masked.nii.gz
+200711-16:03:44,788 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_t1_trans_wf.bold_reference_wf.enhance_and_skullstrip_bold_wf.apply_mask".
+200711-17:20:45,353 nipype.workflow INFO:
+	 [Node] Finished "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.anat_norm_wf.registration".
+200711-17:20:47,61 nipype.utils WARNING:
+	 No metadata was found in the pkl file. Make sure you are currently using the same Nipype version from the generated pkl.
+200711-17:20:47,63 nipype.workflow WARNING:
+	 Error while checking node hash, forcing re-run. Although this error may not prevent the workflow from running, it could indicate a major problem. Please report a new issue at https://github.com/nipy/nipype/issues adding the following information:
+
+	Node: fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.anat_norm_wf.std_mask
+	Interface: niworkflows.interfaces.fixes.FixHeaderApplyTransforms
+	Traceback:
+Traceback (most recent call last):
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/plugins/base.py", line 347, in _local_hash_check
+    cached, updated = self.procs[jobid].is_cached()
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 332, in is_cached
+    hashed_inputs, hashvalue = self._get_hashval()
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 538, in _get_hashval
+    self._get_inputs()
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 580, in _get_inputs
+    outputs = _load_resultfile(results_fname).outputs
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/utils.py", line 293, in load_resultfile
+    result = loadpkl(results_file)
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/utils/filemanip.py", line 672, in loadpkl
+    raise e
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/utils/filemanip.py", line 649, in loadpkl
+    unpkl = pickle.loads(pkl_contents)
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/has_traits.py", line 1440, in __setstate__
+    self.trait_set( trait_change_notify = trait_change_notify, **state )
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/has_traits.py", line 1543, in trait_set
+    setattr( self, name, value )
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/interfaces/base/traits_extension.py", line 330, in validate
+    value = super(File, self).validate(objekt, name, value, return_pathlike=True)
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/interfaces/base/traits_extension.py", line 135, in validate
+    self.error(objekt, name, str(value))
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/trait_handlers.py", line 172, in error
+    value )
+
+traits.trait_errors.TraitError: The 't1w_file' trait of a _TemplateFlowSelectOutputSpec instance must be a pathlike object or string representing an existing file, but a value of '/home/kgt020/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-01_T1w.nii.gz' <class 'str'> was specified.
+
+200711-17:20:47,65 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.anat_norm_wf.std_mask" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/anat_norm_wf/_template_MNI152NLin2009cAsym/std_mask".
+200711-17:20:47,91 nipype.utils WARNING:
+	 No metadata was found in the pkl file. Make sure you are currently using the same Nipype version from the generated pkl.
+200711-17:20:47,91 nipype.workflow WARNING:
+	 Error while checking node hash, forcing re-run. Although this error may not prevent the workflow from running, it could indicate a major problem. Please report a new issue at https://github.com/nipy/nipype/issues adding the following information:
+
+	Node: fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.anat_norm_wf.tpl_moving
+	Interface: niworkflows.interfaces.fixes.FixHeaderApplyTransforms
+	Traceback:
+Traceback (most recent call last):
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/plugins/base.py", line 347, in _local_hash_check
+    cached, updated = self.procs[jobid].is_cached()
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 332, in is_cached
+    hashed_inputs, hashvalue = self._get_hashval()
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 538, in _get_hashval
+    self._get_inputs()
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 580, in _get_inputs
+    outputs = _load_resultfile(results_fname).outputs
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/utils.py", line 293, in load_resultfile
+    result = loadpkl(results_file)
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/utils/filemanip.py", line 672, in loadpkl
+    raise e
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/utils/filemanip.py", line 649, in loadpkl
+    unpkl = pickle.loads(pkl_contents)
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/has_traits.py", line 1440, in __setstate__
+    self.trait_set( trait_change_notify = trait_change_notify, **state )
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/has_traits.py", line 1543, in trait_set
+    setattr( self, name, value )
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/interfaces/base/traits_extension.py", line 330, in validate
+    value = super(File, self).validate(objekt, name, value, return_pathlike=True)
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/interfaces/base/traits_extension.py", line 135, in validate
+    self.error(objekt, name, str(value))
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/trait_handlers.py", line 172, in error
+    value )
+
+traits.trait_errors.TraitError: The 't1w_file' trait of a _TemplateFlowSelectOutputSpec instance must be a pathlike object or string representing an existing file, but a value of '/home/kgt020/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-01_T1w.nii.gz' <class 'str'> was specified.
+
+200711-17:20:47,93 nipype.utils WARNING:
+	 No metadata was found in the pkl file. Make sure you are currently using the same Nipype version from the generated pkl.
+200711-17:20:47,95 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.anat_norm_wf.tpl_moving" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/anat_norm_wf/_template_MNI152NLin2009cAsym/tpl_moving".
+200711-17:20:47,104 nipype.workflow ERROR:
+	 Node std_tpms.a0 failed to run on host qnode6135.
+200711-17:20:47,111 nipype.workflow ERROR:
+	 Saving crash info to /projects/b1108/projects/MWMH_preproc/fmriprep/sub-MWMH368/log/20200711-074931_d61ac22b-11cb-484c-9321-08e1fcca216f/crash-20200711-172047-zaz3744-std_tpms.a0-ee3a116a-2548-4912-9131-75bb6b52e842.txt
+Traceback (most recent call last):
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/plugins/multiproc.py", line 292, in _send_procs_to_workers
+    num_subnodes = self.procs[jobid].num_subnodes()
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 1309, in num_subnodes
+    self._get_inputs()
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 1323, in _get_inputs
+    super(MapNode, self)._get_inputs()
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 580, in _get_inputs
+    outputs = _load_resultfile(results_fname).outputs
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/utils.py", line 293, in load_resultfile
+    result = loadpkl(results_file)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/utils/filemanip.py", line 672, in loadpkl
+    raise e
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/utils/filemanip.py", line 649, in loadpkl
+    unpkl = pickle.loads(pkl_contents)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/has_traits.py", line 1440, in __setstate__
+    self.trait_set( trait_change_notify = trait_change_notify, **state )
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/has_traits.py", line 1543, in trait_set
+    setattr( self, name, value )
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/interfaces/base/traits_extension.py", line 330, in validate
+    value = super(File, self).validate(objekt, name, value, return_pathlike=True)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/interfaces/base/traits_extension.py", line 135, in validate
+    self.error(objekt, name, str(value))
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/trait_handlers.py", line 172, in error
+    value )
+traits.trait_errors.TraitError: The 't1w_file' trait of a _TemplateFlowSelectOutputSpec instance must be a pathlike object or string representing an existing file, but a value of '/home/kgt020/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-01_T1w.nii.gz' <class 'str'> was specified.
+
+200711-17:20:47,149 nipype.utils WARNING:
+	 No metadata was found in the pkl file. Make sure you are currently using the same Nipype version from the generated pkl.
+200711-17:20:47,149 nipype.workflow WARNING:
+	 Error while checking node hash, forcing re-run. Although this error may not prevent the workflow from running, it could indicate a major problem. Please report a new issue at https://github.com/nipy/nipype/issues adding the following information:
+
+	Node: fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.anat_norm_wf.std_dseg
+	Interface: niworkflows.interfaces.fixes.FixHeaderApplyTransforms
+	Traceback:
+Traceback (most recent call last):
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/plugins/base.py", line 347, in _local_hash_check
+    cached, updated = self.procs[jobid].is_cached()
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 332, in is_cached
+    hashed_inputs, hashvalue = self._get_hashval()
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 538, in _get_hashval
+    self._get_inputs()
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 580, in _get_inputs
+    outputs = _load_resultfile(results_fname).outputs
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/utils.py", line 293, in load_resultfile
+    result = loadpkl(results_file)
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/utils/filemanip.py", line 672, in loadpkl
+    raise e
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/utils/filemanip.py", line 649, in loadpkl
+    unpkl = pickle.loads(pkl_contents)
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/has_traits.py", line 1440, in __setstate__
+    self.trait_set( trait_change_notify = trait_change_notify, **state )
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/has_traits.py", line 1543, in trait_set
+    setattr( self, name, value )
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/interfaces/base/traits_extension.py", line 330, in validate
+    value = super(File, self).validate(objekt, name, value, return_pathlike=True)
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/interfaces/base/traits_extension.py", line 135, in validate
+    self.error(objekt, name, str(value))
+
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/trait_handlers.py", line 172, in error
+    value )
+
+traits.trait_errors.TraitError: The 't1w_file' trait of a _TemplateFlowSelectOutputSpec instance must be a pathlike object or string representing an existing file, but a value of '/home/kgt020/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-01_T1w.nii.gz' <class 'str'> was specified.
+
+200711-17:20:47,151 nipype.workflow INFO:
+	 [Node] Setting-up "fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.anat_norm_wf.std_dseg" in "/projects/b1108/projects/MWMH_preproc/work/fmriprep_wf/single_subject_MWMH368_wf/anat_preproc_wf/anat_norm_wf/_template_MNI152NLin2009cAsym/std_dseg".
+200711-17:20:47,675 nipype.utils WARNING:
+	 No metadata was found in the pkl file. Make sure you are currently using the same Nipype version from the generated pkl.
+200711-17:20:47,707 nipype.utils WARNING:
+	 No metadata was found in the pkl file. Make sure you are currently using the same Nipype version from the generated pkl.
+200711-17:20:47,723 nipype.utils WARNING:
+	 No metadata was found in the pkl file. Make sure you are currently using the same Nipype version from the generated pkl.
+200711-17:20:48,434 nipype.workflow ERROR:
+	 Node std_mask.a0 failed to run on host qnode6135.
+200711-17:20:48,446 nipype.workflow ERROR:
+	 Saving crash info to /projects/b1108/projects/MWMH_preproc/fmriprep/sub-MWMH368/log/20200711-074931_d61ac22b-11cb-484c-9321-08e1fcca216f/crash-20200711-172048-zaz3744-std_mask.a0-1d3faecf-7e77-4b1c-94f8-0b10d1ef037d.txt
+Traceback (most recent call last):
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/plugins/multiproc.py", line 67, in run_node
+    result["result"] = node.run(updatehash=updatehash)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 443, in run
+    cached, updated = self.is_cached()
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 332, in is_cached
+    hashed_inputs, hashvalue = self._get_hashval()
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 538, in _get_hashval
+    self._get_inputs()
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 580, in _get_inputs
+    outputs = _load_resultfile(results_fname).outputs
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/utils.py", line 293, in load_resultfile
+    result = loadpkl(results_file)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/utils/filemanip.py", line 672, in loadpkl
+    raise e
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/utils/filemanip.py", line 649, in loadpkl
+    unpkl = pickle.loads(pkl_contents)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/has_traits.py", line 1440, in __setstate__
+    self.trait_set( trait_change_notify = trait_change_notify, **state )
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/has_traits.py", line 1543, in trait_set
+    setattr( self, name, value )
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/interfaces/base/traits_extension.py", line 330, in validate
+    value = super(File, self).validate(objekt, name, value, return_pathlike=True)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/interfaces/base/traits_extension.py", line 135, in validate
+    self.error(objekt, name, str(value))
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/trait_handlers.py", line 172, in error
+    value )
+traits.trait_errors.TraitError: The 't1w_file' trait of a _TemplateFlowSelectOutputSpec instance must be a pathlike object or string representing an existing file, but a value of '/home/kgt020/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-01_T1w.nii.gz' <class 'str'> was specified.
+
+200711-17:20:48,459 nipype.workflow ERROR:
+	 Node tpl_moving.a0 failed to run on host qnode6135.
+200711-17:20:48,470 nipype.workflow ERROR:
+	 Saving crash info to /projects/b1108/projects/MWMH_preproc/fmriprep/sub-MWMH368/log/20200711-074931_d61ac22b-11cb-484c-9321-08e1fcca216f/crash-20200711-172048-zaz3744-tpl_moving.a0-941b8578-49ee-4d3f-a406-2e79ae986623.txt
+Traceback (most recent call last):
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/plugins/multiproc.py", line 67, in run_node
+    result["result"] = node.run(updatehash=updatehash)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 443, in run
+    cached, updated = self.is_cached()
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 332, in is_cached
+    hashed_inputs, hashvalue = self._get_hashval()
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 538, in _get_hashval
+    self._get_inputs()
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 580, in _get_inputs
+    outputs = _load_resultfile(results_fname).outputs
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/utils.py", line 293, in load_resultfile
+    result = loadpkl(results_file)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/utils/filemanip.py", line 672, in loadpkl
+    raise e
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/utils/filemanip.py", line 649, in loadpkl
+    unpkl = pickle.loads(pkl_contents)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/has_traits.py", line 1440, in __setstate__
+    self.trait_set( trait_change_notify = trait_change_notify, **state )
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/has_traits.py", line 1543, in trait_set
+    setattr( self, name, value )
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/interfaces/base/traits_extension.py", line 330, in validate
+    value = super(File, self).validate(objekt, name, value, return_pathlike=True)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/interfaces/base/traits_extension.py", line 135, in validate
+    self.error(objekt, name, str(value))
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/trait_handlers.py", line 172, in error
+    value )
+traits.trait_errors.TraitError: The 't1w_file' trait of a _TemplateFlowSelectOutputSpec instance must be a pathlike object or string representing an existing file, but a value of '/home/kgt020/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-01_T1w.nii.gz' <class 'str'> was specified.
+
+200711-17:20:48,482 nipype.workflow ERROR:
+	 Node std_dseg.a0 failed to run on host qnode6135.
+200711-17:20:48,491 nipype.workflow ERROR:
+	 Saving crash info to /projects/b1108/projects/MWMH_preproc/fmriprep/sub-MWMH368/log/20200711-074931_d61ac22b-11cb-484c-9321-08e1fcca216f/crash-20200711-172048-zaz3744-std_dseg.a0-191b56b3-9991-4d34-9209-eacb31f053b4.txt
+Traceback (most recent call last):
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/plugins/multiproc.py", line 67, in run_node
+    result["result"] = node.run(updatehash=updatehash)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 443, in run
+    cached, updated = self.is_cached()
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 332, in is_cached
+    hashed_inputs, hashvalue = self._get_hashval()
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 538, in _get_hashval
+    self._get_inputs()
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/nodes.py", line 580, in _get_inputs
+    outputs = _load_resultfile(results_fname).outputs
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/pipeline/engine/utils.py", line 293, in load_resultfile
+    result = loadpkl(results_file)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/utils/filemanip.py", line 672, in loadpkl
+    raise e
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/utils/filemanip.py", line 649, in loadpkl
+    unpkl = pickle.loads(pkl_contents)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/has_traits.py", line 1440, in __setstate__
+    self.trait_set( trait_change_notify = trait_change_notify, **state )
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/has_traits.py", line 1543, in trait_set
+    setattr( self, name, value )
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/interfaces/base/traits_extension.py", line 330, in validate
+    value = super(File, self).validate(objekt, name, value, return_pathlike=True)
+  File "/usr/local/miniconda/lib/python3.7/site-packages/nipype/interfaces/base/traits_extension.py", line 135, in validate
+    self.error(objekt, name, str(value))
+  File "/usr/local/miniconda/lib/python3.7/site-packages/traits/trait_handlers.py", line 172, in error
+    value )
+traits.trait_errors.TraitError: The 't1w_file' trait of a _TemplateFlowSelectOutputSpec instance must be a pathlike object or string representing an existing file, but a value of '/home/kgt020/.cache/templateflow/tpl-MNI152NLin2009cAsym/tpl-MNI152NLin2009cAsym_res-01_T1w.nii.gz' <class 'str'> was specified.
+
+200711-17:20:50,431 nipype.workflow ERROR:
+	 could not run node: fmriprep_wf.single_subject_MWMH368_wf.func_preproc_ses_1_task_rest_run_01_wf.bold_std_trans_wf.gen_ref.a0
+200711-17:20:50,444 nipype.workflow ERROR:
+	 could not run node: fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.anat_norm_wf.std_mask.a0
+200711-17:20:50,455 nipype.workflow ERROR:
+	 could not run node: fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.anat_norm_wf.tpl_moving.a0
+200711-17:20:50,466 nipype.workflow ERROR:
+	 could not run node: fmriprep_wf.single_subject_MWMH368_wf.anat_preproc_wf.anat_norm_wf.std_dseg.a0
+200711-17:20:50,539 nipype.workflow CRITICAL:
+	 fMRIPrep failed: Workflow did not execute cleanly. Check log for details
+200711-17:20:56,653 cli ERROR:
+	 Preprocessing did not finish successfully. Errors occurred while processing data from participants: MWMH368 (5). Check the HTML reports for details.
