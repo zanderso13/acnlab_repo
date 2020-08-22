@@ -9,7 +9,7 @@ function run_subject_firstlevel_REST(PID, ses, run, overwrite,directories)
 %% var set up
 if nargin==0 % defaults just for testing 
     % Define some paths
-    basedir = '/home/zaz3744/ACNlab/data/MWMH';
+    basedir = '/home/zaz3744/ACNlab/projects/MWMH_project';
     % directories
     % first is where your stats files will be output to
     directories{1} = fullfile(basedir,'first_levels');

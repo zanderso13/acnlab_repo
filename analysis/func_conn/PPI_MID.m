@@ -4,11 +4,13 @@
 % product of that time course and the original design matrix. Right now I'm
 % going to leave the tasks separate but I need to control for all the
 % different kinds of trials.
-
+% DSM t1 analysis ~ line 260
+% trilevel t1 analysis ~ line 345
+% longitudinal analysis ~ line 428
 
 % set up directories
 datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/MID_data';
-spmdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output/anticipation';
+spmdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output/consumption';
 maskdir = '/Users/zaz3744/Documents/current_projects/ACNlab/masks/ROI_BrainMAPD_functional/consumption';
 %timecoursedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/bi_VS';
 %ppimdldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/mdl_dir/anticipation';
@@ -46,6 +48,7 @@ end
 % It's adapted from the original stuff I wrote to perform PPI but I needed
 % to change it in order to create new regressors for rerunning first levels
 % round 1 Going to copy and paste it in a new section below for PPI
+datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/MID_data';
 fnames = filenames(fullfile(datadir, '*.nii'));
 
 clear sub curr_id names
@@ -132,14 +135,15 @@ for sub = 1:length(fnames)
 end
     
 
-%% Need to create regressor files for PPI: ROI - ROI
+%% Need to create regressor files for PPI
 % This will be from a single ROI to whole brain
 % Involves loading up SPM.mat files and then adding columns for 
+datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/MID_data';
 fnames = filenames(fullfile(datadir, '*.nii'));
-ppimdldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/mdl_dir/anticipation/L_VS_AntRew_wholebrain';
-spmdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output/anticipation';
+ppimdldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/mdl_dir/consumption/R_VS_to_wholebrain';
+spmdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output/consumption';
 
-timecoursedir1 = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/L_VS';
+timecoursedir1 = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/R_VS';
 %timecoursedir2 = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/bi_VS';
 
 clear sub curr_id names
@@ -148,7 +152,7 @@ for sub = 1:length(fnames)
     spm_fname = filenames(fullfile(spmdir,strcat('*',curr_id,'/ses-2/run-1/MID/SPM*')));
     if isempty(spm_fname) == 0
         load(spm_fname{1});
-        timecourse_fname1 = filenames(fullfile(timecoursedir1,strcat('*Rew*',curr_id,'*')));
+        timecourse_fname1 = filenames(fullfile(timecoursedir1,strcat('*Consumption*',curr_id,'*')));
         %timecourse_fname2 = filenames(fullfile(timecoursedir2,strcat('*',curr_id,'*')));
         roi1 = load(timecourse_fname1{1});
         %roi2 = load(timecourse_fname2{1});
@@ -185,13 +189,13 @@ end
 % differences is what regressors I'm calling
 
 % first is where your stats files will be output to
-directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/ppi_fldir/anticipation/L_VS_AntRew_to_wholebrain';
+directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/ppi_fldir/consumption/L_VS_to_wholebrain';
 % next is where the preprocessed data is
 directories{2} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/MID_data';
 % the timing files for modelling (onsets, durations, names)
-directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/anticipation/spm_all_vs_0_timing';
+directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/consumption/spm_all_vs_0_timing';
 % where your extra covariates are including PPI regressors
-directories{4} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/mdl_dir/anticipation/L_VS_AntRew_wholebrain';
+directories{4} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/mdl_dir/consumption/L_VS_to_wholebrain';
 
 % What run of your task are you looking at?
 run = 1;
@@ -202,7 +206,7 @@ ses = 2;
 overwrite = 0;
 % specify which mask you're looking at. It should just be the first
 % characters of the file
-mask_string = 'L_VS_AntRew'; % OFC, VS, HO_VMPFC
+mask_string = 'L_VS'; % OFC, VS, HO_VMPFC
 
 fnames = filenames(fullfile(directories{2}, '*.nii'));
 
@@ -260,9 +264,13 @@ loss_data.X = R;
 
 storedir = '/Volumes/ZachExternal/ACNlab/BrainMAPD/func_conn/PPI/ppi_fldir';
 contrastdir = 'anticipation';
-curr_analysis_dir = {'ROFC_to_wholebrain','RHO_Accumbens_to_wholebrain','LOFC_to_wholebrain','LOFC2_to_wholebrain','LHO_Accumbens_to_wholebrain'};
-%curr_analysis_dir = {'L_VS_AntLoss_to_wholebrain','L_VS_AntRew_to_wholebrain','R_VS_AntLoss_to_wholebrain','R_VS_AntRew_to_wholebrain'};
 
+% all anticipation
+curr_analysis_dir = {'ROFC_to_wholebrain','RHO_Accumbens_to_wholebrain','LOFC_to_wholebrain','LOFC2_to_wholebrain','LHO_Accumbens_to_wholebrain','L_VS_AntLoss_to_wholebrain','L_VS_AntRew_to_wholebrain','R_VS_AntLoss_to_wholebrain','R_VS_AntRew_to_wholebrain'};
+
+%curr_analysis_dir = {'ROFC_to_wholebrain','RHO_Accumbens_to_wholebrain','LOFC_to_wholebrain','LOFC2_to_wholebrain','LHO_Accumbens_to_wholebrain'};
+%curr_analysis_dir = {'L_VS_AntLoss_to_wholebrain','L_VS_AntRew_to_wholebrain','R_VS_AntLoss_to_wholebrain','R_VS_AntRew_to_wholebrain'};
+%curr_analysis_dir = {'L_VS_to_wholebrain','R_VS_to_wholebrain'};
 for roi = 1:length(curr_analysis_dir)
     curr_fnames_gain = filenames(fullfile(storedir,contrastdir,curr_analysis_dir{roi},'*/*/*/*/con_0001.nii'));
     curr_fnames_loss = filenames(fullfile(storedir,contrastdir,curr_analysis_dir{roi},'*/*/*/*/con_0002.nii'));
@@ -296,11 +304,11 @@ for roi = 1:length(curr_analysis_dir)
     curr_dat_gain.X = R;
     curr_dat_loss.X = R;
     
-    temp_results_gain = regress(curr_dat_gain)%,'robust');
-    temp_results_loss = regress(curr_dat_loss)%,'robust');
+    temp_results_gain = regress(curr_dat_gain,'robust');
+    temp_results_loss = regress(curr_dat_loss,'robust');
     
-    results_struct.gain.(curr_analysis_dir{roi}) = threshold(temp_results_gain.t,.001,'unc','k',50);
-    results_struct.loss.(curr_analysis_dir{roi}) = threshold(temp_results_loss.t,.001,'unc','k',50);
+    results_struct.gain.(curr_analysis_dir{roi}) = threshold(temp_results_gain.t,.001,'unc','k',10);
+    results_struct.loss.(curr_analysis_dir{roi}) = threshold(temp_results_loss.t,.001,'unc','k',10);
     
     
 end
@@ -310,9 +318,11 @@ end
 analysis_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/results/DSM_analysis/anticipation';
 analysis_type = 'Robust'; % Also have OLS
 
-curr_analysis_dir = {'L_VS_AntLoss_to_wholebrain','L_VS_AntRew_to_wholebrain','R_VS_AntLoss_to_wholebrain','R_VS_AntRew_to_wholebrain'};%{'ROFC_to_wholebrain','RHO_Accumbens_to_wholebrain','LOFC_to_wholebrain','LOFC2_to_wholebrain','LHO_Accumbens_to_wholebrain'};
+%curr_analysis_dir = {'ROFC_to_wholebrain','RHO_Accumbens_to_wholebrain','LOFC_to_wholebrain','LOFC2_to_wholebrain','LHO_Accumbens_to_wholebrain'};
+curr_analysis_dir = {'L_VS_AntLoss_to_wholebrain','L_VS_AntRew_to_wholebrain','R_VS_AntLoss_to_wholebrain','R_VS_AntRew_to_wholebrain'};
+%curr_analysis_dir = {'L_VS_to_wholebrain','R_VS_to_wholebrain'};
 
-load_fname = filenames(fullfile(analysis_dir,strcat(analysis_type,'*2.mat')));
+load_fname = filenames(fullfile(analysis_dir,strcat(analysis_type,'*fdr*.mat')));
 load(load_fname{1})
 
 for roi = 1:length(curr_analysis_dir)
@@ -321,13 +331,13 @@ for roi = 1:length(curr_analysis_dir)
     
     cluster_out_loss = orthviews(results_struct.loss.(curr_analysis_dir{roi}))
     fname = strcat(curr_analysis_dir{roi},'.mat');
-    % save(fullfile(analysis_dir,fname),'cluster_out_gain','cluster_out_loss')
-    data(1,:) = [cluster_out_gain{1}(1).mm_center,cluster_out_gain{1}(1).numVox,mean(cluster_out_gain{1}(1).Z(:))]
-    data(2,:) = [cluster_out_gain{2}(1).mm_center,cluster_out_gain{2}(1).numVox,mean(cluster_out_gain{2}(1).Z(:))]
-    data(3,:) = [cluster_out_gain{3}(1).mm_center,cluster_out_gain{3}(1).numVox,mean(cluster_out_gain{3}(1).Z(:))]
-    data(4,:) = [cluster_out_loss{1}(1).mm_center,cluster_out_loss{1}(1).numVox,mean(cluster_out_loss{1}(1).Z(:))]
-    data(5,:) = [cluster_out_loss{2}(1).mm_center,cluster_out_loss{2}(1).numVox,mean(cluster_out_loss{2}(1).Z(:))]
-    data(6,:) = [cluster_out_loss{3}(1).mm_center,cluster_out_loss{3}(1).numVox,mean(cluster_out_loss{3}(1).Z(:))]
+    %save(fullfile(analysis_dir,fname),'cluster_out_gain','cluster_out_loss')
+    data_gain(1,:) = [cluster_out_gain{1}(1).mm_center,cluster_out_gain{1}(1).numVox,mean(cluster_out_gain{1}(1).Z(:))]
+    data_gain(2,:) = [cluster_out_gain{2}(1).mm_center,cluster_out_gain{2}(1).numVox,mean(cluster_out_gain{2}(1).Z(:))]
+    data_gain(3,:) = [cluster_out_gain{3}(1).mm_center,cluster_out_gain{3}(1).numVox,mean(cluster_out_gain{3}(1).Z(:))]
+    data_gain(4,:) = [cluster_out_loss{1}(1).mm_center,cluster_out_loss{1}(1).numVox,mean(cluster_out_loss{1}(1).Z(:))]
+    data_gain(5,:) = [cluster_out_loss{2}(1).mm_center,cluster_out_loss{2}(1).numVox,mean(cluster_out_loss{2}(1).Z(:))]
+    data_gain(6,:) = [cluster_out_loss{3}(1).mm_center,cluster_out_loss{3}(1).numVox,mean(cluster_out_loss{3}(1).Z(:))]
     keyboard
 end
 
@@ -409,49 +419,182 @@ for roi = 1:length(curr_analysis_dir)
     cluster_out_loss = orthviews(results_struct.loss.(curr_analysis_dir{roi}))
     fname = strcat(curr_analysis_dir{roi},'_Anhedonia.mat');
     save(fullfile(analysis_dir,fname),'cluster_out_gain','cluster_out_loss')
-    data(1,:) = [cluster_out_gain{1}(1).mm_center,cluster_out_gain{1}(1).numVox,mean(cluster_out_gain{1}(1).Z(:))]
-    data(2,:) = [cluster_out_loss{1}(1).mm_center,cluster_out_loss{1}(1).numVox,mean(cluster_out_loss{1}(1).Z(:))]
+    data_gain(1,:) = [cluster_out_gain{1}(1).mm_center,cluster_out_gain{1}(1).numVox,mean(cluster_out_gain{1}(1).Z(:))]
+    data_gain(2,:) = [cluster_out_loss{1}(1).mm_center,cluster_out_loss{1}(1).numVox,mean(cluster_out_loss{1}(1).Z(:))]
     keyboard
 end
 
-%% OLD
-clinicaldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/clinical_data';
+%% longitudinal analysis
+% need to load in regressors 
 
-clear sub
- 
-load(fullfile(clinicaldir,'trilevel_factors.mat'));
-trilevel_array = [trilevel.ID,trilevel.GenDis,trilevel.Anhedon,trilevel.Fears];
-for sub = 1:length(loss_fnames)
-    PID(sub,1) = str2num(loss_fnames{sub}(104:108));
-    if isempty(find(trilevel.ID(:) == PID(sub,1))) == 0
-        curr = find(trilevel.ID(:) == PID(sub,1));
-        trilevel_regressors(sub,:) = trilevel_array(curr,:);
-    else
-        % for OFC loss_ppi_fnames{sub}(100:104); for HO_VMPFC loss_ppi_fnames{sub}(105:109)
-        disp(strcat(loss_fnames{sub}(104:108), ' missing clinical info')) 
-        trilevel_regressors(sub,:) = NaN;
-        trilevel_regressors(sub,1) = PID(sub,1);
-        loss_data.dat(:,sub) = [];
-        gain_data.dat(:,sub) = [];
+storedir = '/Volumes/ZachExternal/ACNlab/BrainMAPD/func_conn/PPI/ppi_fldir';
+contrastdir = 'consumption';
+
+% all anticipation
+%curr_analysis_dir = {'ROFC_to_wholebrain','RHO_Accumbens_to_wholebrain','LOFC_to_wholebrain','LOFC2_to_wholebrain','LHO_Accumbens_to_wholebrain','L_VS_AntLoss_to_wholebrain','L_VS_AntRew_to_wholebrain','R_VS_AntLoss_to_wholebrain','R_VS_AntRew_to_wholebrain'};
+
+curr_analysis_dir = {'ROFC_to_wholebrain','RHO_Accumbens_to_wholebrain','LOFC_to_wholebrain','LOFC2_to_wholebrain','LHO_Accumbens_to_wholebrain','L_VS_to_wholebrain','R_VS_to_wholebrain'};%};
+%curr_analysis_dir = {'L_VS_AntLoss_to_wholebrain','L_VS_AntRew_to_wholebrain','R_VS_AntLoss_to_wholebrain','R_VS_AntRew_to_wholebrain'};
+%curr_analysis_dir = {'L_VS_to_wholebrain','R_VS_to_wholebrain'};
+for roi = 1:length(curr_analysis_dir)
+    curr_fnames_gain = filenames(fullfile(storedir,contrastdir,curr_analysis_dir{roi},'*/*/*/*/con_0001.nii'));
+    curr_fnames_loss = filenames(fullfile(storedir,contrastdir,curr_analysis_dir{roi},'*/*/*/*/con_0002.nii'));
+    
+    curr_dat_gain = fmri_data(curr_fnames_gain);
+    curr_dat_loss = fmri_data(curr_fnames_loss);
+    
+    % Load in clinical data for group analysis
+    clinicaldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/clinical_data';
+    t1 = load(fullfile(clinicaldir,'BrainMAPD_clinical_diagnoses_final_T1.mat'))
+    t2 = load(fullfile(clinicaldir,'BrainMAPD_clinical_diagnoses_final_T2.mat'))
+    t3 = load(fullfile(clinicaldir,'BrainMAPD_clinical_diagnoses_final_T3.mat'))
+    t4 = load(fullfile(clinicaldir,'BrainMAPD_clinical_diagnoses_final_T4.mat'))
+    if roi == 1
+        for sub = 1:length(curr_fnames_gain)
+            PID(sub,1) = str2num(curr_fnames_gain{sub}(95:99));
+            
+            % Second time point
+            if isempty(find(t3.clinical_info.PID(:) == PID(sub,1))) == 0
+                curr = find(t3.clinical_info.PID(:) == PID(sub,1));
+                life_dep2(sub,1) = t3.clinical_info.dep_life_any(curr);
+                life_anx2(sub,1) = t3.clinical_info.anx_life_any(curr);
+                life_com2(sub,1) = t3.clinical_info.comorbid_life_anx_dep(curr);
+            elseif isempty(find(t4.clinical_info.PID(:) == PID(sub,1))) == 0
+                curr = find(t4.clinical_info.PID(:) == PID(sub,1));                
+                life_dep2(sub,1) = t4.clinical_info.dep_life_any(curr);
+                life_anx2(sub,1) = t4.clinical_info.anx_life_any(curr);
+                life_com2(sub,1) = t4.clinical_info.comorbid_life_anx_dep(curr);
+            else    
+                disp(strcat(curr_fnames_gain{sub}(95:99), ' missing clinical info: Time point 2'))
+                life_dep2(sub,1) = NaN;
+                life_anx2(sub,1) = NaN;
+                life_com2(sub,1) = NaN;
+                %curr_dat_loss.dat(:,sub) = [];
+                %curr_dat_gain.dat(:,sub) = [];
+            end
+        end
+        ind_to_remove = life_dep2;
+        life_dep2(any(isnan(life_dep2), 2), :) = [];
+        life_anx2(any(isnan(life_anx2), 2), :) = [];
+        life_com2(any(isnan(life_com2), 2), :) = [];
+        PID(any(isnan(ind_to_remove), 2), :) = [];
     end
+    
+    curr_dat_loss.dat(:,any(isnan(ind_to_remove), 2)) = [];
+    curr_dat_gain.dat(:,any(isnan(ind_to_remove), 2)) = [];
+    
+    % Run an additional loop to prepare regressors related to the first
+    % time point diagnoses. Gotta control for these in the models to find
+    % areas uniquely predictive of future onset... maybe... well it'll be
+    % useful to have them regardless I suppose
+    for clinical_sub = 1:length(PID)
+        % First time point
+        if isempty(find(t1.clinical_info.PID(:) == PID(clinical_sub,1))) == 0
+            curr = find(t1.clinical_info.PID(:) == PID(clinical_sub,1));
+            life_dep1(clinical_sub,1) = t1.clinical_info.dep_life_any(curr);
+            life_anx1(clinical_sub,1) = t1.clinical_info.anx_life_any(curr);
+            life_com1(clinical_sub,1) = t1.clinical_info.comorbid_life_anx_dep(curr);
+        elseif isempty(find(t2.clinical_info.PID(:) == PID(clinical_sub,1))) == 0
+            curr = find(t2.clinical_info.PID(:) == PID(clinical_sub,1));                
+            life_dep1(clinical_sub,1) = t2.clinical_info.dep_life_any(curr);
+            life_anx1(clinical_sub,1) = t2.clinical_info.anx_life_any(curr);
+            life_com1(clinical_sub,1) = t2.clinical_info.comorbid_life_anx_dep(curr);
+        else    
+            disp(strcat(curr_fnames_gain{clinical_sub}(96:100), ' missing clinical info: Time point 1'))
+            life_dep1(clinical_sub,1) = NaN;
+            life_anx1(clinical_sub,1) = NaN;
+            life_com1(clinical_sub,1) = NaN;
+            %curr_dat_loss.dat(:,sub) = [];
+            %curr_dat_gain.dat(:,sub) = [];
+        end
+    end
+    
+    
+    R = [life_dep1,life_anx1,life_com1,life_anx2,life_dep2,life_com2];
+    
+    curr_dat_gain.X = R;
+    curr_dat_loss.X = R;
+    
+    temp_results_gain = regress(curr_dat_gain,'robust');
+    temp_results_loss = regress(curr_dat_loss,'robust');
+    
+    results_struct.gain.(curr_analysis_dir{roi}) = threshold(temp_results_gain.t,.001,'unc','k',10);
+    results_struct.loss.(curr_analysis_dir{roi}) = threshold(temp_results_loss.t,.001,'unc','k',10);
+    
+    
 end
 
-GenDis = trilevel_regressors(:,2);
-Anhedonia = trilevel_regressors(:,3);
-Fears = trilevel_regressors(:,4);
 
-GenDis(any(isnan(GenDis), 2), :) = [];
-Anhedonia(any(isnan(Anhedonia), 2), :) = [];
-Fears(any(isnan(Fears), 2), :) = [];
+%% quick visualization loop: DSM longitudinal
+analysis_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/results/DSM_analysis/anticipation';
+analysis_type = 'Robust'; % Also have OLS
 
-trilevel_analysis_table = [mean(loss_data.dat,1)', mean(gain_data.dat,1)',GenDis,Anhedonia,Fears];
-trilevel_analysis_table = array2table(trilevel_analysis_table); trilevel_analysis_table.Properties.VariableNames = {'loss_activation','gain_activation','GenDis','Anhedonia','Fears'};
-% loss_data.X = R;
-% regress(loss_data, .01, 'unc')
-% gain_data.X = R;
-% regress(gain_data, .01, 'unc')
-% fitlm(trilevel_analysis_table, 'loss_activation~GenDis')
+% All anticipation
+curr_analysis_dir = {'ROFC_to_wholebrain','RHO_Accumbens_to_wholebrain','LOFC_to_wholebrain','LOFC2_to_wholebrain','LHO_Accumbens_to_wholebrain','L_VS_AntLoss_to_wholebrain','L_VS_AntRew_to_wholebrain','R_VS_AntLoss_to_wholebrain','R_VS_AntRew_to_wholebrain'};
+% All consumption
+% curr_analysis_dir = {'ROFC_to_wholebrain','RHO_Accumbens_to_wholebrain','LOFC_to_wholebrain','LOFC2_to_wholebrain','LHO_Accumbens_to_wholebrain','L_VS_to_wholebrain','R_VS_to_wholebrain'};%};
+load_fname = filenames(fullfile(analysis_dir,strcat(analysis_type,'*longitudinal*.mat')));
+load(load_fname{1})
 
+for roi = 1:length(curr_analysis_dir)
+    curr_analysis_dir{roi}
+    cluster_out_gain = orthviews(results_struct.gain.(curr_analysis_dir{roi}))
+    
+    cluster_out_loss = orthviews(results_struct.loss.(curr_analysis_dir{roi}))
+    fname = strcat('longitudinal_result_objects_',curr_analysis_dir{roi},'.mat');
+    obj_struct.gain.life_dep1_dat_gain = fmri_data('/Users/zaz3744/Documents/repo/spm12/canonical/avg152T1.nii'); obj_struct.gain.life_dep1_dat_gain.dat = results_struct.gain.(curr_analysis_dir{roi}).dat(:,1) .* results_struct.gain.(curr_analysis_dir{roi}).sig(:,1);
+    obj_struct.gain.life_anx1_dat_gain = fmri_data('/Users/zaz3744/Documents/repo/spm12/canonical/avg152T1.nii'); obj_struct.gain.life_anx1_dat_gain.dat = results_struct.gain.(curr_analysis_dir{roi}).dat(:,2) .* results_struct.gain.(curr_analysis_dir{roi}).sig(:,2);
+    obj_struct.gain.life_com1_dat_gain = fmri_data('/Users/zaz3744/Documents/repo/spm12/canonical/avg152T1.nii'); obj_struct.gain.life_com1_dat_gain.dat = results_struct.gain.(curr_analysis_dir{roi}).dat(:,3) .* results_struct.gain.(curr_analysis_dir{roi}).sig(:,3);
+    obj_struct.gain.life_dep2_dat_gain = fmri_data('/Users/zaz3744/Documents/repo/spm12/canonical/avg152T1.nii'); obj_struct.gain.life_dep2_dat_gain.dat = results_struct.gain.(curr_analysis_dir{roi}).dat(:,5) .* results_struct.gain.(curr_analysis_dir{roi}).sig(:,5);
+    obj_struct.gain.life_anx2_dat_gain = fmri_data('/Users/zaz3744/Documents/repo/spm12/canonical/avg152T1.nii'); obj_struct.gain.life_anx2_dat_gain.dat = results_struct.gain.(curr_analysis_dir{roi}).dat(:,4) .* results_struct.gain.(curr_analysis_dir{roi}).sig(:,4);
+    obj_struct.gain.life_com2_dat_gain = fmri_data('/Users/zaz3744/Documents/repo/spm12/canonical/avg152T1.nii'); obj_struct.gain.life_com2_dat_gain.dat = results_struct.gain.(curr_analysis_dir{roi}).dat(:,6) .* results_struct.gain.(curr_analysis_dir{roi}).sig(:,6);
+    
+    obj_struct.loss.life_dep1_dat_loss = fmri_data('/Users/zaz3744/Documents/repo/spm12/canonical/avg152T1.nii'); obj_struct.loss.life_dep1_dat_loss.dat = results_struct.gain.(curr_analysis_dir{roi}).dat(:,1) .* results_struct.gain.(curr_analysis_dir{roi}).sig(:,1);
+    obj_struct.loss.life_anx1_dat_loss = fmri_data('/Users/zaz3744/Documents/repo/spm12/canonical/avg152T1.nii'); obj_struct.loss.life_anx1_dat_loss.dat = results_struct.gain.(curr_analysis_dir{roi}).dat(:,2) .* results_struct.gain.(curr_analysis_dir{roi}).sig(:,2);
+    obj_struct.loss.life_com1_dat_loss = fmri_data('/Users/zaz3744/Documents/repo/spm12/canonical/avg152T1.nii'); obj_struct.loss.life_com1_dat_loss.dat = results_struct.gain.(curr_analysis_dir{roi}).dat(:,3) .* results_struct.gain.(curr_analysis_dir{roi}).sig(:,3);
+    obj_struct.loss.life_dep2_dat_loss = fmri_data('/Users/zaz3744/Documents/repo/spm12/canonical/avg152T1.nii'); obj_struct.loss.life_dep2_dat_loss.dat = results_struct.gain.(curr_analysis_dir{roi}).dat(:,5) .* results_struct.gain.(curr_analysis_dir{roi}).sig(:,5);
+    obj_struct.loss.life_anx2_dat_loss = fmri_data('/Users/zaz3744/Documents/repo/spm12/canonical/avg152T1.nii'); obj_struct.loss.life_anx2_dat_loss.dat = results_struct.gain.(curr_analysis_dir{roi}).dat(:,4) .* results_struct.gain.(curr_analysis_dir{roi}).sig(:,4);
+    obj_struct.loss.life_com2_dat_loss = fmri_data('/Users/zaz3744/Documents/repo/spm12/canonical/avg152T1.nii'); obj_struct.loss.life_com2_dat_loss.dat = results_struct.gain.(curr_analysis_dir{roi}).dat(:,6) .* results_struct.gain.(curr_analysis_dir{roi}).sig(:,6);
+
+    
+    save(fullfile(analysis_dir,fname),'obj_struct','cluster_out_gain','cluster_out_loss')
+%     data_gain(1,:) = [cluster_out_gain{1}(1).mm_center,cluster_out_gain{1}(1).numVox,mean(cluster_out_gain{1}(1).Z(:))]
+%     data_gain(2,:) = [cluster_out_gain{2}(1).mm_center,cluster_out_gain{2}(1).numVox,mean(cluster_out_gain{2}(1).Z(:))]
+%     data_gain(3,:) = [cluster_out_gain{3}(1).mm_center,cluster_out_gain{3}(1).numVox,mean(cluster_out_gain{3}(1).Z(:))]
+%     data_gain(4,:) = [cluster_out_gain{4}(1).mm_center,cluster_out_gain{4}(1).numVox,mean(cluster_out_gain{4}(1).Z(:))]
+%     data_gain(5,:) = [cluster_out_gain{5}(1).mm_center,cluster_out_gain{5}(1).numVox,mean(cluster_out_gain{5}(1).Z(:))]
+%     data_gain(6,:) = [cluster_out_gain{6}(1).mm_center,cluster_out_gain{6}(1).numVox,mean(cluster_out_gain{6}(1).Z(:))]
+%    
+%     data_loss(1,:) = [cluster_out_loss{1}(1).mm_center,cluster_out_loss{1}(1).numVox,mean(cluster_out_loss{1}(1).Z(:))]
+%     data_loss(2,:) = [cluster_out_loss{2}(1).mm_center,cluster_out_loss{2}(1).numVox,mean(cluster_out_loss{2}(1).Z(:))]
+%     data_loss(3,:) = [cluster_out_loss{3}(1).mm_center,cluster_out_loss{3}(1).numVox,mean(cluster_out_loss{3}(1).Z(:))]
+%     data_loss(4,:) = [cluster_out_loss{4}(1).mm_center,cluster_out_loss{1}(1).numVox,mean(cluster_out_loss{4}(1).Z(:))]
+%     data_loss(5,:) = [cluster_out_loss{5}(1).mm_center,cluster_out_loss{2}(1).numVox,mean(cluster_out_loss{5}(1).Z(:))]
+%     data_loss(6,:) = [cluster_out_loss{6}(1).mm_center,cluster_out_loss{3}(1).numVox,mean(cluster_out_loss{6}(1).Z(:))]
+    
+end
+
+
+%% Create a report for each ROI
+% All anticipation
+curr_analysis = {'ROFC_to_wholebrain','RHO_Accumbens_to_wholebrain','LOFC_to_wholebrain','LOFC2_to_wholebrain','LHO_Accumbens_to_wholebrain','L_VS_AntLoss_to_wholebrain','L_VS_AntRew_to_wholebrain','R_VS_AntLoss_to_wholebrain','R_VS_AntRew_to_wholebrain'};
+title_names = {'ROFC to wholebrain','RHO Accumbens to wholebrain','LOFC to wholebrain','LOFC2 to wholebrain','LHO Accumbens to wholebrain','L VS AntLoss to wholebrain','L VS AntRew to wholebrain','R VS AntLoss to wholebrain','R VS AntRew to wholebrain'};
+% All consumption
+%curr_analysis = {'ROFC_to_wholebrain','RHO_Accumbens_to_wholebrain','LOFC_to_wholebrain','LOFC2_to_wholebrain','LHO_Accumbens_to_wholebrain','L_VS_to_wholebrain','R_VS_to_wholebrain'};%};
+%title_names = {'ROFC to wholebrain','RHO Accumbens to wholebrain','LOFC to wholebrain','LOFC2 to wholebrain','LHO Accumbens to wholebrain','L VS to wholebrain','R VS to wholebrain'};%};
+publish_dir = '/Users/zaz3744/Documents/repo/acnlab_repo/publish/html/';
+analysisdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/results/DSM_analysis/';
+condir = 'anticipation';
+for roi = 1:length(curr_analysis)
+    close all
+    curr_ROI = curr_analysis{roi};
+    curr_title = title_names{roi};
+    options.codeToEvaluate = 'curr_ROI = curr_analysis{roi}; publish_PPI_results_montage(curr_ROI)';
+    publish publish_PPI_results_montage(evalin('base','curr_ROI'),evalin('base','curr_title'),evalin('base','analysisdir'),evalin('base','condir'))
+    mkdir(fullfile(publish_dir,curr_analysis{roi}));
+    movefile(fullfile(publish_dir,'*png'),fullfile(publish_dir,curr_analysis{roi}));    
+    movefile(fullfile(publish_dir,'*html'),fullfile(publish_dir,curr_analysis{roi}));    
+end
 %% try something a little crazy. Going to hyperalign conn matrices
 % and then test for diagnosis related differences
 clear aligned transforms ha_input ha_output corr_mat_unaligned corr_mat_aligned
