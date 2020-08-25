@@ -11,3 +11,24 @@
 % corrcoef on that to get corr matrix
 % 6. Fishers r to z
 % 7. Save resulting files .mat
+
+% First, a quick thing for Robin. Need to check how many volumes are
+% dropped per sub and apply various motion cutoffs.
+
+% 1.
+maskdir = '/home/zaz3744/repo/acnlab_repo/masks';
+
+load(fullfile(maskdir,'Power_atlas_obj.mat'))
+
+%% 2. 
+
+datadir = '/projects/b1108/projects/MWMH_project/first_levels';
+testdir = 'sub-MWMH102/*/*/rest/'
+
+fnames = filenames(fullfile(datadir,testdir,'Res*.nii'));
+
+dat = fmri_data(fnames);
+
+
+
+
