@@ -78,9 +78,45 @@ Fears = trilevel_regressors(:,4);
 Narrow = trilevel_regressors(:,5);
 
 
+% CHANGE THIS
+R = [GenDis,Anhedonia,Fears,med_regressors,site_regressors];
+intercept = ones(length(R),1);
+
+R = [R,intercept];
+
+%% DSM diagnoses
+% Load in clinical data for group analysis
+clinicaldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/clinical_data';
+
+load(fullfile(clinicaldir,'BrainMAPD_clinical_diagnoses_final_T1.mat'))
+clinical_info.dep_life_any(clinical_info.comorbid_life_anx_dep==1) = 0;
+clinical_info.anx_life_any(clinical_info.comorbid_life_anx_dep==1) = 0;
+
+for sub = 1:length(sub_list)
+    PID(sub,1) = sub_list(sub);
+    if isempty(find(clinical_info.PID(:) == PID(sub,1))) == 0
+        curr = find(clinical_info.PID(:) == PID(sub,1));
+        life_dep(sub,1) = clinical_info.dep_life_any(curr);
+        life_anx(sub,1) = clinical_info.anx_life_any(curr);
+        life_com(sub,1) = clinical_info.comorbid_life_anx_dep(curr);
+    else
+        disp(strcat(num2str(sub_list(sub)), ' missing clinical info'))
+        life_dep(sub,1) = 0;%NaN;
+        life_anx(sub,1) = 0;%NaN;
+        life_com(sub,1) = 0;%NaN;
+    end
+end
+
+R = [life_anx,life_dep,life_com];
+life_healthy = zeros(length(R),1);
+life_healthy(find(sum(R,2)==0)) = 1;
+%R = [R,ones(length(life_dep),1)];
+gain_data.X = R;
+loss_data.X = R;
+
 %% SVM model
 
-GenDis_mdl = fitrsvm(dat1',GenDis);
+GenDis_mdl = fitrsvm(dat1',R);
 
 %% Cross validate the model generated above
 
