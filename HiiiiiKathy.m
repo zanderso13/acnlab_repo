@@ -51,9 +51,9 @@ end
 
 for sub = 1:length(sub_list)
 
-    if isempty(find(trilevel_T1.ID(:) == sub_list(sub,1))) == 0
-        curr = find(trilevel_T1.ID(:) == sub_list(sub,1));
-        trilevel_regressors(sub,:) = trilevel_array(curr,:);
+    if isempty(find(trilevel_T1.PID(:) == sub_list(sub,1))) == 0
+        curr = find(trilevel_T1.PID(:) == sub_list(sub,1));
+        trilevel_regressors(sub,:) = trilevel_T1(curr,:);
     else
         % for OFC loss_ppi_fnames{sub}(100:104); for HO_VMPFC loss_ppi_fnames{sub}(105:109)
         disp(strcat(num2str(PID(sub,1)), ' missing clinical info')) 
@@ -90,6 +90,9 @@ CV_GenDis_mdl = crossval(GenDis_mdl,'KFold',10);
 
 yfit = kfoldPredict(CV_GenDis_mdl);
 
+%%
+for sub = 1:length(clinical_info.PID)
+    curr = find(clinical_info.PID
 
 
 

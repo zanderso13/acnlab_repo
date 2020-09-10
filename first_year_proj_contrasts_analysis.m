@@ -132,32 +132,42 @@ table(r_loss.Fears)
 
 %% 8. 
 roidir = '/Users/zaz3744/Documents/current_projects/ACNlab/masks/ROI_BrainMAPD_functional';
-condir = 'anticipation'
-bilateral_roi_fnames = filenames(fullfile(roidir,condir,'*.nii'));
-right_roi_fnames = filenames(fullfile(roidir,condir,'*.nii'));
-left_roi_fnames = filenames(fullfile(roidir,condir,'*.nii'));
-region_name_list = {'Ng_Amyg','BA9BA46','bi_vs_sphere','Ng_Caudate','HO_Accumbens','HO_Amyg','HO_Caudate','HO_Pallidum','HO_Putamen','HO_vmPFC','Knutson_mPFC','Knutson_OFC','Ng_OFC','Oldham_loss_VS','Oldham_gain_VS','VS_sphere'};
+% condir = 'anticipation';
+% bilateral_roi_fnames = filenames(fullfile(roidir,condir,'*.nii'));
+% right_roi_fnames = filenames(fullfile(roidir,condir,'*.nii'));
+% left_roi_fnames = filenames(fullfile(roidir,condir,'*.nii'));
+% region_name_list = {'Ng_Amyg','BA9BA46','bi_vs_sphere','Ng_Caudate','HO_Accumbens','HO_Amyg','HO_Caudate','HO_Pallidum','HO_Putamen','HO_vmPFC','Knutson_mPFC','Knutson_OFC','Ng_OFC','Oldham_loss_VS','Oldham_gain_VS','VS_sphere'};
+bilateral_roi_fnames = filenames(fullfile('/Users/zaz3744/Documents/repo/acnlab_repo/masks/ROI*nii'));
+
 for region = 1:length(bilateral_roi_fnames)
-    disp(region_name_list{region})
+%     disp(region_name_list{region})
     roi_fname = filenames(fullfile(bilateral_roi_fnames{region}));
     roi = fmri_data(roi_fname);
     roi_avg_gain(region,:) = extract_roi_averages(curr_dat_gain,roi);
-    roi_avg_gain(region,:).title = region_name_list{region}; 
+%     roi_avg_gain(region,:).title = region_name_list{region}; 
     roi_gain_table(:,region) = roi_avg_gain(region,:).dat;
-    gain_mdl.(region_name_list{region}) = fitlm(curr_dat_gain.X,roi_avg_gain(region,:).dat)
+%     gain_mdl.(region_name_list{region}) = fitlm(curr_dat_gain.X,roi_avg_gain(region,:).dat)
     roi_avg_loss(region,:) = extract_roi_averages(curr_dat_loss,roi);
-    roi_avg_loss(region,:).title = region_name_list{region};
+%     roi_avg_loss(region,:).title = region_name_list{region};
     roi_loss_table(:,region) = roi_avg_loss(region,:).dat;
-    loss_mdl.(region_name_list{region}) = fitlm(curr_dat_gain.X,roi_avg_gain(region,:).dat)
+%     loss_mdl.(region_name_list{region}) = fitlm(curr_dat_gain.X,roi_avg_gain(region,:).dat)
 end
 
 % roi_gain_table = [curr_dat_gain.X,roi_gain_table]; roi_gain_table = array2table(roi_gain_table); 
-% roi_gain_table.Properties.VariableNames = {'GenDis','Anhedonia','Fears','Ng_Amyg','BA9BA46','bi_vs_sphere','Ng_Caudate','HO_Accumbens','HO_Amyg','HO_Caudate','HO_Pallidum','HO_Putamen','HO_vmPFC','Knutson_mPFC','Knutson_OFC','Ng_OFC','Oldham_loss_VS','Oldham_gain_VS','VS_sphere'};
+% roi_gain_table.Properties.VariableNames = {'GenDis','Anhedonia','Fears','Meds1','Meds2','Site','Intercept','Ng_Amyg','BA9BA46','bi_vs_sphere','Ng_Caudate','HO_Accumbens','HO_Amyg','HO_Caudate','HO_Pallidum','HO_Putamen','HO_vmPFC','Knutson_mPFC','Knutson_OFC','Ng_OFC','Oldham_loss_VS','Oldham_gain_VS','VS_sphere'};
 % roi_loss_table = [curr_dat_gain.X,roi_loss_table]; roi_loss_table = array2table(roi_loss_table); 
-% roi_loss_table.Properties.VariableNames = {'GenDis','Anhedonia','Fears','Ng_Amyg','BA9BA46','bi_vs_sphere','Ng_Caudate','HO_Accumbens','HO_Amyg','HO_Caudate','HO_Pallidum','HO_Putamen','HO_vmPFC','Knutson_mPFC','Knutson_OFC','Ng_OFC','Oldham_loss_VS','Oldham_gain_VS','VS_sphere'};
-     
-    
-    
-    
-    
+% roi_loss_table.Properties.VariableNames = {'GenDis','Anhedonia','Fears','Meds1','Meds2','Site','Intercept','Ng_Amyg','BA9BA46','bi_vs_sphere','Ng_Caudate','HO_Accumbens','HO_Amyg','HO_Caudate','HO_Pallidum','HO_Putamen','HO_vmPFC','Knutson_mPFC','Knutson_OFC','Ng_OFC','Oldham_loss_VS','Oldham_gain_VS','VS_sphere'};
+%      
+%%
+% svm_in_X = [curr_dat_gain.dat',R_final_gain(:,2:7)];
+% svm_in_Y = R_final_gain(:,1);
+% T = readtable('anticipation_roi_loss_table.txt');
+% T = readtable('anticipation_roi_gain_table.txt');
+svm_Y = T.Fears(:);
+svm_mdl = fitrsvm(T(:,7:270),svm_Y,'KFold',10,'KernelFunction','polynomial');
+
+% get mse
+rmse = sqrt(kfoldLoss(svm_mdl));    
+
+   
     

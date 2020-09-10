@@ -15,12 +15,17 @@
 
 analysisdir = '/Volumes/ZachExternal/ACNlab/BrainMAPD/func_conn/PPI/ppi_fldir';
 condir = 'consumption';%/bi_OFC_to_wholebrain';
-region_list = {'bi_OFC*','L_VS_AntRew*','L_VS_AntLoss*'
+concode = 2; % 1 - anticipation, other - consumption
 
+if concode == 1
+    region_list = {'biOFC_to_wholebrain','L_VS_AntRew_to_wholebrain','L_VS_AntLoss_to_wholebrain','LHO_Accumbens_to_wholebrain','LOFC2_to_wholebrain','LOFC_to_wholebrain','R_VS_AntLoss_to_wholebrain','R_VS_AntRew_to_wholebrain','RHO_Accumbens_to_wholebrain','ROFC_to_wholebrain'};
+else
+    region_list = {'biOFC_to_wholebrain','L_VS_to_wholebrain','LHO_Accumbens_to_wholebrain','LOFC2_to_wholebrain','LOFC_to_wholebrain','R_VS_to_wholebrain','RHO_Accumbens_to_wholebrain','ROFC_to_wholebrain'};
+end
 
 for seed_region = 1:length(region_list)
 
-    cd(fullfile(analysisdir,condir))
+    cd(fullfile(analysisdir,condir,region_list{seed_region}))
 
     D = dir; D(1:2,:) = [];
     for sub = 1:length(D)
@@ -111,54 +116,80 @@ for seed_region = 1:length(region_list)
     temp_results_gain = regress(curr_dat_gain,'robust');
     temp_results_loss = regress(curr_dat_loss,'robust');
 
-    results_struct.gain = threshold(temp_results_gain.t,.001,'unc','k',30);
-    results_struct.loss = threshold(temp_results_loss.t,.001,'unc','k',30);
+    results_struct.gain.(region_list{seed_region}) = threshold(temp_results_gain.t,.001,'unc','k',30);
+    results_struct.loss.(region_list{seed_region}) = threshold(temp_results_loss.t,.001,'unc','k',30);
 
     %% 6. gain
 
-    orthviews(results_struct.gain)
+    % orthviews(results_struct.gain.(region_list{seed_region}))
     %% 6. loss
-    orthviews(results_struct.loss)
+    % orthviews(results_struct.loss.(region_list{seed_region}))
 
     %% 7. 
     % CHANGE THIS
     symptom_names = {'GenDis','Anhedonia','Fears'};
 
     for symptom = 1:length(symptom_names)
-        r_gain.(symptom_names{symptom}) = region(select_one_image(results_struct.gain,symptom));
-        r_loss.(symptom_names{symptom}) = region(select_one_image(results_struct.loss,symptom));
+        r_gain.(region_list{seed_region}).(symptom_names{symptom}) = region(select_one_image(results_struct.gain.(region_list{seed_region}),symptom));
+        r_loss.(region_list{seed_region}).(symptom_names{symptom}) = region(select_one_image(results_struct.loss.(region_list{seed_region}),symptom));
     end
 
     %% GenDis Anhedonia Fears r_gain r_loss
-    montage(r_loss.Fears) %, 'colormap', 'regioncenters');
-
-    table(r_loss.Fears)
+%     region_list{seed_region}
+%     orthviews(r_loss.(region_list{seed_region}).Fears) %, 'colormap', 'regioncenters');
+% 
+%     table(r_loss.(region_list{seed_region}).Fears)
 
     %% 8. 
     roidir = '/Users/zaz3744/Documents/current_projects/ACNlab/masks/ROI_BrainMAPD_functional';
-    condir = 'anticipation'
+    %condir = 'consumption';
     bilateral_roi_fnames = filenames(fullfile(roidir,condir,'*.nii'));
     right_roi_fnames = filenames(fullfile(roidir,condir,'*.nii'));
     left_roi_fnames = filenames(fullfile(roidir,condir,'*.nii'));
     region_name_list = {'Ng_Amyg','BA9BA46','bi_vs_sphere','Ng_Caudate','HO_Accumbens','HO_Amyg','HO_Caudate','HO_Pallidum','HO_Putamen','HO_vmPFC','Knutson_mPFC','Knutson_OFC','Ng_OFC','Oldham_loss_VS','Oldham_gain_VS','VS_sphere'};
-    for region = 1:length(bilateral_roi_fnames)
-        disp(region_name_list{region})
-        roi_fname = filenames(fullfile(bilateral_roi_fnames{region}));
+    for i = 1:length(bilateral_roi_fnames)
+        disp(region_name_list{i})
+        roi_fname = filenames(fullfile(bilateral_roi_fnames{i}));
         roi = fmri_data(roi_fname);
-        roi_avg_gain(region,:) = extract_roi_averages(curr_dat_gain,roi);
-        roi_avg_gain(region,:).title = region_name_list{region}; 
-        roi_gain_table(:,region) = roi_avg_gain(region,:).dat;
-        gain_mdl.(region_name_list{region}) = fitlm(curr_dat_gain.X,roi_avg_gain(region,:).dat)
-        roi_avg_loss(region,:) = extract_roi_averages(curr_dat_loss,roi);
-        roi_avg_loss(region,:).title = region_name_list{region};
-        roi_loss_table(:,region) = roi_avg_loss(region,:).dat;
-        loss_mdl.(region_name_list{region}) = fitlm(curr_dat_gain.X,roi_avg_gain(region,:).dat)
+        roi_avg_gain(i,:) = extract_roi_averages(curr_dat_gain,roi);
+        roi_avg_gain(i,:).title = region_name_list{i}; 
+        roi_gain_table(:,i) = roi_avg_gain(i,:).dat;
+        % Note that the structure that is created below will have two
+        % layers. The first refers to the seed region for this analysis.
+        % The second will refer to the end region in this seed to seed func
+        % conn analysis
+        gain_mdl.(region_list{seed_region}).(region_name_list{i}) = fitlm(curr_dat_gain.X,roi_avg_gain(i,:).dat)
+        roi_avg_loss(i,:) = extract_roi_averages(curr_dat_loss,roi);
+        roi_avg_loss(i,:).title = region_name_list{i};
+        roi_loss_table(:,i) = roi_avg_loss(i,:).dat;
+        loss_mdl.(region_list{seed_region}).(region_name_list{i}) = fitlm(curr_dat_gain.X,roi_avg_gain(i,:).dat)
     end
 
     % roi_gain_table = [curr_dat_gain.X,roi_gain_table]; roi_gain_table = array2table(roi_gain_table); 
     % roi_gain_table.Properties.VariableNames = {'GenDis','Anhedonia','Fears','Ng_Amyg','BA9BA46','bi_vs_sphere','Ng_Caudate','HO_Accumbens','HO_Amyg','HO_Caudate','HO_Pallidum','HO_Putamen','HO_vmPFC','Knutson_mPFC','Knutson_OFC','Ng_OFC','Oldham_loss_VS','Oldham_gain_VS','VS_sphere'};
     % roi_loss_table = [curr_dat_gain.X,roi_loss_table]; roi_loss_table = array2table(roi_loss_table); 
     % roi_loss_table.Properties.VariableNames = {'GenDis','Anhedonia','Fears','Ng_Amyg','BA9BA46','bi_vs_sphere','Ng_Caudate','HO_Accumbens','HO_Amyg','HO_Caudate','HO_Pallidum','HO_Putamen','HO_vmPFC','Knutson_mPFC','Knutson_OFC','Ng_OFC','Oldham_loss_VS','Oldham_gain_VS','VS_sphere'};
+
+    %% SVM test
+
+    svm_in_X = [curr_dat_gain.dat',R_final_gain(:,2:7)];
+    svm_in_Y = R_final_gain(:,1);
+
+    svm_mdl.(region_list{seed_region}) = fitrsvm(svm_in_X,svm_in_Y);
+
+    % Cross validate the model generated above
+
+    svm_mdl_cv.(region_list{seed_region}) = crossval(svm_mdl.(region_list{seed_region}),'KFold',10);
+
+    % Once you have a cross validated model, predict responses based on that model
+
+    yfit.(region_list{seed_region}) = kfoldPredict(svm_mdl_cv.(region_list{seed_region}));
+
+    % RMSE
+
+    RMSE.(region_list{seed_region}) = sqrt(mean((svm_in_Y - yfit.(region_list{seed_region})).^2));  
+    
+
 end
 
 
