@@ -1,7 +1,7 @@
 % group ica
-gica_cmd --data sub_list.txt --o '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/gica_output'
+gica_cmd --data smooth_ICA_sub_list.txt --o '/home/zaz3744/ACNlab/projects/BrainMAPD_func_conn/ICA'
 % gig-ica
-gica_cmd --data sub_list.txt --templates '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/gica_cmd_agg__component_ica_.nii' --a gig-ica --o '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/gigica_output'
+gica_cmd --data smooth_ICA_sub_list.txt --templates '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/gica_cmd_agg__component_ica_.nii' --a gig-ica --o '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/gigica_output'
 %load clinical data
 
 clinicaldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/clinical_data';

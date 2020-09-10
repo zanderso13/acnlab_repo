@@ -1,0 +1,237 @@
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2018 The MathWorks, Inc.
+                   R2018b (9.5.0.944444) 64-bit (glnxa64)
+                              August 28, 2018
+
+ 
+To get started, type doc.
+For product information, visit www.mathworks.com.
+ 
+[Warning: Function iscolumn has the same name as a MATLAB builtin. We suggest
+you rename the function to avoid a potential name conflict.] 
+[> In path (line 109)
+  In addpath (line 86)] 
+[Warning: Function ismatrix has the same name as a MATLAB builtin. We suggest
+you rename the function to avoid a potential name conflict.] 
+[> In path (line 109)
+  In addpath (line 86)] 
+[Warning: Function isrow has the same name as a MATLAB builtin. We suggest you
+rename the function to avoid a potential name conflict.] 
+[> In path (line 109)
+  In addpath (line 86)] 
+[Warning: Function narginchk has the same name as a MATLAB builtin. We suggest
+you rename the function to avoid a potential name conflict.] 
+[> In path (line 109)
+  In addpath (line 86)] 
+[Warning: Function isequaln has the same name as a MATLAB builtin. We suggest
+you rename the function to avoid a potential name conflict.] 
+[> In path (line 109)
+  In addpath (line 86)] 
+[Warning: Function contains has the same name as a MATLAB builtin. We suggest
+you rename the function to avoid a potential name conflict.] 
+[> In path (line 109)
+  In addpath (line 86)] 
+[Warning: Function endsWith has the same name as a MATLAB builtin. We suggest
+you rename the function to avoid a potential name conflict.] 
+[> In path (line 109)
+  In addpath (line 86)] 
+[Warning: Function newline has the same name as a MATLAB builtin. We suggest you
+rename the function to avoid a potential name conflict.] 
+[> In path (line 109)
+  In addpath (line 86)] 
+[Warning: Function startsWith has the same name as a MATLAB builtin. We suggest
+you rename the function to avoid a potential name conflict.] 
+[> In path (line 109)
+  In addpath (line 86)] 
+[Warning: Function isfile has the same name as a MATLAB builtin. We suggest you
+rename the function to avoid a potential name conflict.] 
+[> In path (line 109)
+  In addpath (line 86)] 
+[Warning: Function isfolder has the same name as a MATLAB builtin. We suggest
+you rename the function to avoid a potential name conflict.] 
+[> In path (line 109)
+  In addpath (line 86)] 
+..............................................
+............GICA COMMAND LINE ................
+..............................................
+
+Creating Mask
+Default mask includes voxels >= mean. Using first file of each subject to create default mask ...
+Done Creating Mask
+Doing dimensionality estimation ...
+
+..............................................
+Loading data set 1
+
+ Performing variance normalization ...
+ P1:
+ Selecting Gaussian principal components ...
+
+ Estimate effectively i.i.d. samples: 
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Perform EVD on the effectively i.i.d. samples ...
+ P2:
+ Effective number of i.i.d. samples: 2491 
+
+ Perform eigen spectrum adjustment ...
+ Estimating the dimension ...
+Estimated components is found out to be 14
+
+
+..............................................
+Loading data set 2
+
+ Performing variance normalization ...
+ P1:
+ Selecting Gaussian principal components ...
+
+ Estimate effectively i.i.d. samples: 
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Perform EVD on the effectively i.i.d. samples ...
+ P2:
+ Effective number of i.i.d. samples: 2491 
+
+ Perform eigen spectrum adjustment ...
+ Estimating the dimension ...
+Estimated components is found out to be 21
+
+
+..............................................
+Loading data set 3
+
+ Performing variance normalization ...
+ P1:
+ Selecting Gaussian principal components ...
+
+ Estimate effectively i.i.d. samples: 
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Perform EVD on the effectively i.i.d. samples ...
+ P2:
+ Effective number of i.i.d. samples: 2491 
+
+ Perform eigen spectrum adjustment ...
+ Estimating the dimension ...
+Estimated components is found out to be 24
+
+
+..............................................
+Loading data set 4
+
+ Performing variance normalization ...
+ P1:
+ Selecting Gaussian principal components ...
+
+ Estimate effectively i.i.d. samples: 
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Perform EVD on the effectively i.i.d. samples ...
+ P2:
+ Effective number of i.i.d. samples: 2491 
+
+ Perform eigen spectrum adjustment ...
+ Estimating the dimension ...
+Estimated components is found out to be 15
+
+
+..............................................
+Loading data set 5
+
+ Performing variance normalization ...
+ P1:
+ Selecting Gaussian principal components ...
+
+ Estimate effectively i.i.d. samples: 
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Perform EVD on the effectively i.i.d. samples ...
+ P2:
+ Effective number of i.i.d. samples: 2491 
+
+ Perform eigen spectrum adjustment ...
+ Estimating the dimension ...
+Estimated components is found out to be 28
+
+
+..............................................
+Loading data set 6
+
+ Performing variance normalization ...
+ P1:
+ Selecting Gaussian principal components ...
+
+ Estimate effectively i.i.d. samples: 
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1, 2, 3, 4, Done;
+
+ Estimating the entropy rate of the Gaussian component with subsampling depth 1,slurmstepd: error: *** JOB 767932 ON qnode5079 CANCELLED AT 2020-09-07T02:25:30 DUE TO TIME LIMIT ***
