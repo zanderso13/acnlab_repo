@@ -115,19 +115,19 @@ end
 
 %% First, extract mean timecourses from a variable of interest
 datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/MID_data';
-maskdir = '/Users/zaz3744/Documents/current_projects/ACNlab/masks/ROI_BrainMAPD_functional/consumption/left';
-timecoursedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/L_VS';
+maskdir = '/Users/zaz3744/Documents/current_projects/ACNlab/masks/ROI_BrainMAPD_functional/anticipation';
+timecoursedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/bi_vmpfc';
 fnames = filenames(fullfile(datadir, '*.nii'));
-maskobj = fmri_data(filenames(fullfile(maskdir,strcat('L_VS_8mmsphere_Oldham_Con.nii'))));
+maskobj = fmri_data(filenames(fullfile(maskdir,strcat('HO_VMPFC_50prob.nii'))));
 
 for sub = 1:length(fnames)
     curr_id = fnames{sub}(88:92);
-    check_fname = filenames(fullfile(timecoursedir, strcat('L_VS_Consumption_',curr_id,'_time_series.mat')));
+    check_fname = filenames(fullfile(timecoursedir, strcat('HO_VMPFC_anticipation_',curr_id,'_time_series.mat')));
     if isempty(check_fname) == 1
         dataobj = fmri_data(filenames(fullfile(datadir,strcat('*',curr_id,'*'))));
         [roiobj] = extract_roi_averages(dataobj,maskobj);
         mean_signal = roiobj.dat;
-        curr_save_file = strcat('L_VS_Consumption_',curr_id,'_time_series.mat');
+        curr_save_file = strcat('HO_VMPFC_anticipation_',curr_id,'_time_series.mat');
         save(fullfile(timecoursedir,curr_save_file),'mean_signal');
     else
         continue
@@ -140,19 +140,19 @@ end
 % Involves loading up SPM.mat files and then adding columns for 
 datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/MID_data';
 fnames = filenames(fullfile(datadir, '*.nii'));
-ppimdldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/mdl_dir/consumption/R_VS_to_wholebrain';
-spmdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output/consumption';
+ppimdldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/mdl_dir/anticipation/bi_vmPFC';
+spmdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output/anticipation';
 
-timecoursedir1 = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/R_VS';
+timecoursedir1 = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/bi_vmpfc';
 %timecoursedir2 = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/bi_VS';
 
 clear sub curr_id names
 for sub = 1:length(fnames)
     curr_id = fnames{sub}(88:92);
-    spm_fname = filenames(fullfile(spmdir,strcat('*',curr_id,'/ses-2/run-1/MID/SPM*')));
+    spm_fname = filenames(fullfile(spmdir,strcat(curr_id,'/ses-2/run-1/MID/SPM*')));
     if isempty(spm_fname) == 0
         load(spm_fname{1});
-        timecourse_fname1 = filenames(fullfile(timecoursedir1,strcat('*Consumption*',curr_id,'*')));
+        timecourse_fname1 = filenames(fullfile(timecoursedir1,strcat('*',curr_id,'*')));
         %timecourse_fname2 = filenames(fullfile(timecoursedir2,strcat('*',curr_id,'*')));
         roi1 = load(timecourse_fname1{1});
         %roi2 = load(timecourse_fname2{1});
@@ -165,6 +165,7 @@ for sub = 1:length(fnames)
         R = [ppi_regressor1, ppi_regressor2, ppi_regressor3, ppi_regressor4, mean_signal1(3:281,:), SPM.xX.X(:,6:size(SPM.xX.X,2))];
         %R = [SPM.xX.X(:,6:size(SPM.xX.X,2))];
         names{1} = 'gain_ppi_any'; names{2} = 'loss_ppi_any'; names{3} = 'gain_ppi_0'; names{4} = 'loss_ppi_0'; names{5} = 'timecourse_roi1'; 
+        keyboard % you need to check to remove additional constant terms that you don't want/need
         names = [names,SPM.xX.name(1,6:length(SPM.xX.name))];
         curr_save_file = strcat(curr_id,'_nuisance.mat'); % include mask name in this too, ppi_regressors.mat');
         
@@ -189,13 +190,13 @@ end
 % differences is what regressors I'm calling
 
 % first is where your stats files will be output to
-directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/ppi_fldir/consumption/L_VS_to_wholebrain';
+directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/ppi_fldir/consumption/bi_vmPFC_to_wholebrain';
 % next is where the preprocessed data is
 directories{2} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/MID_data';
 % the timing files for modelling (onsets, durations, names)
 directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/consumption/spm_all_vs_0_timing';
 % where your extra covariates are including PPI regressors
-directories{4} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/mdl_dir/consumption/L_VS_to_wholebrain';
+directories{4} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/mdl_dir/consumption/bi_vmPFC';
 
 % What run of your task are you looking at?
 run = 1;
@@ -206,7 +207,7 @@ ses = 2;
 overwrite = 0;
 % specify which mask you're looking at. It should just be the first
 % characters of the file
-mask_string = 'L_VS'; % OFC, VS, HO_VMPFC
+mask_string = 'bi_vmPFC'; % OFC, VS, HO_VMPFC
 
 fnames = filenames(fullfile(directories{2}, '*.nii'));
 
