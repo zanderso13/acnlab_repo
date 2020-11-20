@@ -65,9 +65,9 @@ T = text(min(get(gca, 'xlim')), max(get(gca, 'ylim')), str);
 set(T, 'fontsize', 14, 'verticalalignment', 'top', 'horizontalalignment', 'left');
 
 saveas(gcf,fullfile(datadir,'RSA1.jpg'))
-%% mOFC - bilateral VS vs Big three symptoms
+%% Extended Bilateral VS - bilateral Amygdala vs Big three symptoms
 
-ppi_data2 = [roi_avg_gain2.biOFC_to_wholebrain.bi_vs_sphere.all_data,roi_avg_loss2.biOFC_to_wholebrain.bi_vs_sphere.all_data];
+ppi_data2 = [roi_avg_gain2.bi_VS_AntRew.HO_Amyg.all_data,roi_avg_loss2.bi_VS_AntLoss.HO_Amyg.all_data];
 ppi_corr_mat2 = corrcoef(ppi_data2');
 ppi_disim2 = 1 - ppi_corr_mat2;
 
@@ -97,7 +97,7 @@ for i = 1:iterations
     compare_dist(i) = 1 - corr2(lower_half_ppi_dist,lower_half_symp_dist);
 end
 
-figure(); histogram(compare_dist); title("General Distress, Fears, Anhedonia: mOFC - bilateral VS")          
+figure(); histogram(compare_dist); title("General Distress, Fears, Anhedonia: bilateral VS - bilateral Amygdala")          
 str = [' r = ',num2str(compare_actual)];
 T = text(min(get(gca, 'xlim')), max(get(gca, 'ylim')), str);
 set(T, 'fontsize', 14, 'verticalalignment', 'top', 'horizontalalignment', 'left');
@@ -108,7 +108,7 @@ saveas(gcf,fullfile(datadir,'RSA2.jpg'))
 
 ppi_data3 = [roi_avg_gain2.biOFC_to_wholebrain.Amyg_Ng.all_data,roi_avg_loss2.biOFC_to_wholebrain.Amyg_Ng.all_data];
 ppi_corr_mat3 = corrcoef(ppi_data3');
-ppi_disim3 = 1 - ppi_corr_mat1;
+ppi_disim3 = 1 - ppi_corr_mat3;
 
 symp_data2 = trilevel_regressors;
 symp_corr_mat2 = corrcoef(symp_data2');
@@ -122,12 +122,12 @@ saveas(gcf,fullfile(datadir,'heatmap3.jpg'))
 lower_half_ppi3 = tril(ppi_disim3);
 lower_half_symp2 = tril(symp_disim2);
 
-compare_actual = 1 - corr2(lower_half_ppi1,lower_half_symp2);
+compare_actual = 1 - corr2(lower_half_ppi3,lower_half_symp2);
 % Need to bootstrap to get a comparison condition
 
 for i = 1:iterations
     index = randperm(length(ppi_disim3));
-    bootstrapped_brain = ppi_data1(:,index);
+    bootstrapped_brain = ppi_data3(:,index);
     bootstrapped_ppi_corr = corrcoef(bootstrapped_brain');
     bootstrapped_disim = 1 - bootstrapped_ppi_corr;
     lower_half_ppi_dist = tril(bootstrapped_disim);
@@ -146,8 +146,8 @@ saveas(gcf,fullfile(datadir,'RSA3.jpg'))
 %% bilateral VS - bilateral Amyg vs all symptoms
 
 ppi_data4 = [roi_avg_gain2.bi_VS_AntRew.HO_Amyg.all_data,roi_avg_loss2.bi_VS_AntLoss.HO_Amyg.all_data];
-ppi_corr_mat4 = corrcoef(ppi_data1');
-ppi_disim4 = 1 - ppi_corr_mat1;
+ppi_corr_mat4 = corrcoef(ppi_data4');
+ppi_disim4 = 1 - ppi_corr_mat4;
 
 symp_data2 = trilevel_regressors;
 symp_corr_mat2 = corrcoef(symp_data2');
@@ -166,7 +166,7 @@ compare_actual = 1 - corr2(lower_half_ppi4,lower_half_symp2);
 
 for i = 1:iterations
     index = randperm(length(ppi_disim4));
-    bootstrapped_brain = ppi_data1(:,index);
+    bootstrapped_brain = ppi_data4(:,index);
     bootstrapped_ppi_corr = corrcoef(bootstrapped_brain');
     bootstrapped_disim = 1 - bootstrapped_ppi_corr;
     lower_half_ppi_dist = tril(bootstrapped_disim);
@@ -175,7 +175,7 @@ for i = 1:iterations
     compare_dist(i) = 1 - corr2(lower_half_ppi_dist,lower_half_symp_dist);
 end
 
-figure(); histogram(compare_dist); title("General Distress, Fears, Anhedonia: mOFC - bilateral VS")          
+figure(); histogram(compare_dist); title("All symptoms: bilateral VS - bilateral Amygdala")          
 str = [' r = ',num2str(compare_actual)];
 T = text(min(get(gca, 'xlim')), max(get(gca, 'ylim')), str);
 set(T, 'fontsize', 14, 'verticalalignment', 'top', 'horizontalalignment', 'left');

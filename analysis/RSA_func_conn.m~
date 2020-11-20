@@ -37,9 +37,9 @@ symp_data = [GenDis, Fears, Anhedonia];
 symp_corr_mat1 = corrcoef(symp_data');
 symp_disim1 = 1 - symp_corr_mat1;
 
-heatmap_input1 = [tril(symp_disim1),triu(ppi_disim1)];
+heatmap_input1 = tril(symp_disim1) + triu(ppi_disim1);
 
-figure(); heatmap([tril(symp_disim1),triu(ppi_disim1)])
+figure(); heatmap(heatmap_input1)
 saveas(gcf,fullfile(datadir,'heatmap1.jpg'))
 
 lower_half_ppi1 = tril(ppi_disim1);
@@ -75,7 +75,9 @@ symp_data = [GenDis, Fears, Anhedonia];
 symp_corr_mat1 = corrcoef(symp_data');
 symp_disim1 = 1 - symp_corr_mat1;
 
-figure(); heatmap(tril(symp_disim1),triu(ppi_disim2))
+heatmap_input2 = tril(symp_disim1) + triu(ppi_disim2);
+
+figure(); heatmap(heatmap_input2)
 saveas(gcf,fullfile(datadir,'heatmap2.jpg'))
 
 lower_half_ppi1 = tril(ppi_disim2);
@@ -112,7 +114,9 @@ symp_data2 = trilevel_regressors;
 symp_corr_mat2 = corrcoef(symp_data2');
 symp_disim2 = 1 - symp_corr_mat2;
 
-figure(); heatmap(tril(symp_disim2),triu(ppi_disim3))
+heatmap_input3 = tril(symp_disim2) + triu(ppi_disim3);
+
+figure(); heatmap(heatmap_input3)
 saveas(gcf,fullfile(datadir,'heatmap3.jpg'))
 
 lower_half_ppi3 = tril(ppi_disim3);
@@ -143,13 +147,15 @@ saveas(gcf,fullfile(datadir,'RSA3.jpg'))
 
 ppi_data4 = [roi_avg_gain2.bi_VS_AntRew.HO_Amyg.all_data,roi_avg_loss2.bi_VS_AntLoss.HO_Amyg.all_data];
 ppi_corr_mat4 = corrcoef(ppi_data1');
-ppi_disim4 = 1 - ppi_corr_mat1;
+ppi_disim4 = 1 - ppi_corr_mat4;
 
 symp_data2 = trilevel_regressors;
 symp_corr_mat2 = corrcoef(symp_data2');
 symp_disim2 = 1 - symp_corr_mat2;
 
-figure(); heatmap(tril(symp_disim2),triu(ppi_disim4))
+heatmap_input4 = tril(symp_disim2) + triu(ppi_disim4);
+
+figure(); heatmap(heatmap_input4)
 saveas(gcf,fullfile(datadir,'heatmap4.jpg'))
 
 lower_half_ppi4 = tril(ppi_disim4);
@@ -169,7 +175,7 @@ for i = 1:iterations
     compare_dist(i) = 1 - corr2(lower_half_ppi_dist,lower_half_symp_dist);
 end
 
-figure(); histogram(compare_dist); title("General Distress, Fears, Anhedonia: mOFC - bilateral VS")          
+figure(); histogram(compare_dist); title("All symptoms: mOFC - bilateral VS")          
 str = [' r = ',num2str(compare_actual)];
 T = text(min(get(gca, 'xlim')), max(get(gca, 'ylim')), str);
 set(T, 'fontsize', 14, 'verticalalignment', 'top', 'horizontalalignment', 'left');
