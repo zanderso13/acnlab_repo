@@ -1,12 +1,16 @@
 % group ica
-gica_cmd --data smooth_ICA_sub_list.txt --o '/home/zaz3744/ACNlab/projects/BrainMAPD_func_conn/ICA'
+gica_cmd --data gica_sub_list.txt --o '/Volumes/ADAPTlab/gica_output'
 % gig-ica
-gica_cmd --data smooth_ICA_sub_list.txt --templates '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/gica_cmd_agg__component_ica_.nii' --a gig-ica --o '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/gigica_output'
+gica_cmd --data gica_sub_list.txt --templates '/Volumes/ADAPTlab/gica_output/gica_cmd_agg__component_ica_.nii' --a gig-ica --o '/Volumes/ADAPTlab/gigica_output'
 %load clinical data
 
 clinicaldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/clinical_data';
 motiondir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/Oldham_ROI_by_diagnosis/motion';
 
+% Bad subjects Schizconnect
+%/Volumes/ADAPTlab/fmriprep/sub-A00018129/ses-20100101/func/sub-A00018129_ses-20100101_task-rest_space-MNI152NLin2009cAsym_desc-preproc_bold.nii
+%/Volumes/ADAPTlab/fmriprep/sub-A00018129/ses-20110101/func/sub-A00018129_ses-20110101_task-rest_space-MNI152NLin2009cAsym_desc-preproc_bold.nii
+%/Volumes/ADAPTlab/fmriprep/sub-A00017294/ses-20110101/func/sub-A00017294_ses-20110101_task-rest_space-MNI152NLin2009cAsym_desc-preproc_bold.nii
 
 %import sub_list.csv
 load(fullfile(clinicaldir,'BrainMAPD_clinical_diagnoses_final.mat'))

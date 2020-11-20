@@ -96,3 +96,25 @@ for sub = 1:length(clinical_info.PID)
 
 
 
+                mdl = fitlm(Anhedonia,roi_avg_gain.HO_Amyg.dat);
+                figure(); title(" "); scatter(Anhedonia,roi_avg_gain.HO_Amyg.dat);
+                h1 = lsline();
+                h1.LineWidth = 2;
+                h1.Color = 'r';
+                r1 = corrcoef(Anhedonia(:,1),roi_avg_gain.(region_name_list_for_struct{r}).dat(:,1),'rows','complete');
+                disp(r1(1,2));
+                str = [' r = ',num2str(r1(1,2))]
+                T = text(min(get(gca, 'xlim')), max(get(gca, 'ylim')), str);
+                set(T, 'fontsize', 14, 'verticalalignment', 'top', 'horizontalalignment', 'left');
+                
+
+                hold on; plot(mdl); legend off
+                drawnow, snapnow
+                clear mdl
+                
+                
+                
+                
+                
+                
+

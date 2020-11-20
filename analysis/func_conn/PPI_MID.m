@@ -65,7 +65,7 @@ for sub = 1:length(fnames)
         %R = [ppi_regressor1, ppi_regressor2, mean_signal(3:281,:), SPM.xX.X(:,6:size(SPM.xX.X,2))];
         R = [SPM.xX.X(:,6:size(SPM.xX.X,2))];
         %names{1} = 'loss_ppi'; names{2} = 'gain_ppi'; names{3} = 'time_course'; 
-        name = [SPM.xX.name(1,6:length(SPM.xX.name))];
+        names = [SPM.xX.name(1,6:length(SPM.xX.name))];
         curr_save_file = strcat(curr_id,'_nuisance.mat'); % include mask name in this too, ppi_regressors.mat');
         
         save(fullfile(ppimdldir,curr_save_file),'R', 'names')
@@ -75,6 +75,8 @@ end
 
 % At this point, go to: run_subject_firstlevel_PPI_MID_consumption.m and
 % MID_PPI_consumption_template.m
+
+
 %% I will write the section of batch script here
 % Rerun first level models, NOT PPI
 % You don't need to run the above sections, this stands alone. It makes
@@ -83,11 +85,11 @@ end
 % preprocessing
 
 % first is where your stats files will be output to
-directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output/consumption';
+directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/MID_all_trial_types/flout/anticipation';
 % next is where the preprocessed data is
 directories{2} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/MID_data';
 % the timing files for modelling (onsets, durations, names)
-directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/consumption/spm_all_vs_0_timing';
+directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/anticipation/separate_trial_types/';
 % where your extra covariates are including PPI regressors
 directories{4} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/nuisance_regressors';
 
@@ -115,19 +117,19 @@ end
 
 %% First, extract mean timecourses from a variable of interest
 datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/MID_data';
-maskdir = '/Users/zaz3744/Documents/current_projects/ACNlab/masks/ROI_BrainMAPD_functional/anticipation';
-timecoursedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/bi_vmpfc';
+maskdir = '/Users/zaz3744/Documents/current_projects/ACNlab/masks/ROI_BrainMAPD_functional/consumption';
+timecoursedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/bi_VS';
 fnames = filenames(fullfile(datadir, '*.nii'));
-maskobj = fmri_data(filenames(fullfile(maskdir,strcat('HO_VMPFC_50prob.nii'))));
+maskobj = fmri_data(filenames(fullfile(maskdir,strcat('VS*Oldham*.nii'))));
 
 for sub = 1:length(fnames)
     curr_id = fnames{sub}(88:92);
-    check_fname = filenames(fullfile(timecoursedir, strcat('HO_VMPFC_anticipation_',curr_id,'_time_series.mat')));
+    check_fname = filenames(fullfile(timecoursedir, strcat('Oldham_VS_Consump_',curr_id,'_time_series.mat')));
     if isempty(check_fname) == 1
         dataobj = fmri_data(filenames(fullfile(datadir,strcat('*',curr_id,'*'))));
         [roiobj] = extract_roi_averages(dataobj,maskobj);
         mean_signal = roiobj.dat;
-        curr_save_file = strcat('HO_VMPFC_anticipation_',curr_id,'_time_series.mat');
+        curr_save_file = strcat('Oldham_VS_Consump_',curr_id,'_time_series.mat');
         save(fullfile(timecoursedir,curr_save_file),'mean_signal');
     else
         continue
@@ -140,10 +142,10 @@ end
 % Involves loading up SPM.mat files and then adding columns for 
 datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/MID_data';
 fnames = filenames(fullfile(datadir, '*.nii'));
-ppimdldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/mdl_dir/anticipation/bi_vmPFC';
-spmdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output/anticipation';
+ppimdldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/mdl_dir/consumption/bi_VS';
+spmdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output/consumption';
 
-timecoursedir1 = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/bi_vmpfc';
+timecoursedir1 = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/bi_VS';
 %timecoursedir2 = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/bi_VS';
 
 clear sub curr_id names
@@ -152,7 +154,7 @@ for sub = 1:length(fnames)
     spm_fname = filenames(fullfile(spmdir,strcat(curr_id,'/ses-2/run-1/MID/SPM*')));
     if isempty(spm_fname) == 0
         load(spm_fname{1});
-        timecourse_fname1 = filenames(fullfile(timecoursedir1,strcat('*',curr_id,'*')));
+        timecourse_fname1 = filenames(fullfile(timecoursedir1,strcat('*Consump*',curr_id,'*')));
         %timecourse_fname2 = filenames(fullfile(timecoursedir2,strcat('*',curr_id,'*')));
         roi1 = load(timecourse_fname1{1});
         %roi2 = load(timecourse_fname2{1});
@@ -162,11 +164,11 @@ for sub = 1:length(fnames)
         ppi_regressor2 = SPM.xX.X(:,2) .* mean_signal1(3:281,1); % loss, both for ant and con
         ppi_regressor3 = SPM.xX.X(:,3) .* mean_signal1(3:281,1); % gain 0, both for ant and con
         ppi_regressor4 = SPM.xX.X(:,4) .* mean_signal1(3:281,1); % loss 0, both for ant and con
-        R = [ppi_regressor1, ppi_regressor2, ppi_regressor3, ppi_regressor4, mean_signal1(3:281,:), SPM.xX.X(:,6:size(SPM.xX.X,2))];
+        R = [ppi_regressor1, ppi_regressor2, ppi_regressor3, ppi_regressor4, mean_signal1(3:281,:), SPM.xX.X(:,6:size(SPM.xX.X,2)-2)];
         %R = [SPM.xX.X(:,6:size(SPM.xX.X,2))];
         names{1} = 'gain_ppi_any'; names{2} = 'loss_ppi_any'; names{3} = 'gain_ppi_0'; names{4} = 'loss_ppi_0'; names{5} = 'timecourse_roi1'; 
-        keyboard % you need to check to remove additional constant terms that you don't want/need
-        names = [names,SPM.xX.name(1,6:length(SPM.xX.name))];
+         % you need to check to remove additional constant terms that you don't want/need
+        names = [names,SPM.xX.name(1,6:length(SPM.xX.name)-2)];
         curr_save_file = strcat(curr_id,'_nuisance.mat'); % include mask name in this too, ppi_regressors.mat');
         
         save(fullfile(ppimdldir,curr_save_file),'R', 'names')
@@ -190,13 +192,13 @@ end
 % differences is what regressors I'm calling
 
 % first is where your stats files will be output to
-directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/ppi_fldir/consumption/bi_vmPFC_to_wholebrain';
+directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/ppi_fldir/consumption/bi_VS_Oldham';
 % next is where the preprocessed data is
 directories{2} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/MID_data';
 % the timing files for modelling (onsets, durations, names)
 directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/consumption/spm_all_vs_0_timing';
 % where your extra covariates are including PPI regressors
-directories{4} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/mdl_dir/consumption/bi_vmPFC';
+directories{4} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/mdl_dir/consumption/bi_VS';
 
 % What run of your task are you looking at?
 run = 1;
@@ -207,7 +209,7 @@ ses = 2;
 overwrite = 0;
 % specify which mask you're looking at. It should just be the first
 % characters of the file
-mask_string = 'bi_vmPFC'; % OFC, VS, HO_VMPFC
+mask_string = 'bi_VS_Oldham'; % OFC, VS, HO_VMPFC
 
 fnames = filenames(fullfile(directories{2}, '*.nii'));
 
@@ -631,49 +633,66 @@ figure();heatmap(corr_mat_aligned)
 % subtracting 1.9 seconds from each of Ann's onsets and changing durations
 % to be 4 seconds. 
 
+% UPDATE (11/12/20) - I'm adapting this to read in a mat file containing
+% all the sub id's I've been using in analyses. This is so I can rerun
+% first levels and estimate regressors for all the specific trial types.
+% Both for James' analyses but also for reliability and RSA
+
 % load in txt that has missing subjects
-txtdir = '/home/zach/Documents/current_projects/ACNlab/BrainMAPD';
+txtdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD';
 ant_timing_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/Oldham_ROI_by_diagnosis/TimingFiles_082218/FSL_anticipation_072418/';
-savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/anticipation/spm_all_vs_0_timing';
-% load(fullfile(txtdir, 'subs_left_out.txt'));
-% subs_left_out
+savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/anticipation/separate_trial_types/anticipation';
+load(fullfile(txtdir, 'PID.mat'));
+
 clear sub
-for sub = 1:length(subs_left_out)
-    curr_sub = num2str(subs_left_out(sub));    
-    trial_type_strings = {'antgain_all','antloss_all','antgain_0','antloss_0','motor_all'};
+for sub = 1:length(PID)
+    curr_sub = num2str(PID(sub));    
+    trial_type_strings = {'antgain_5','antgain_150','antgain_0','antloss_5','antloss_150','antloss_0','motor_all'};
     
     if isfile(filenames(fullfile(ant_timing_dir,strcat(curr_sub,'*'),strcat(curr_sub,'_Anticipation_Win_Run1.txt')))) == 1
         for event = 1:length(trial_type_strings)
-            if strcmp(trial_type_strings{event}, 'antgain_all') == 1
-                fname = filenames(fullfile(ant_timing_dir,strcat(curr_sub,'*'),strcat(curr_sub,'_Anticipation_Win_Run1.txt')));
+            if strcmp(trial_type_strings{event}, 'antgain_5') == 1
+                fname = filenames(fullfile(ant_timing_dir,strcat(curr_sub,'*'),strcat(curr_sub,'_Anticipation_Win5_Run1.txt')));
                 temp = load(fname{1});
                 onsets{event} = temp(:,1) - 1.9;
              
-                name{event} = trial_type_strings{event};
+                names{event} = trial_type_strings{event};
                 durations{event} = ones(length(onsets{event}),1) .* 4;
-            elseif strcmp(trial_type_strings{event}, 'antloss_all') == 1
-                fname = filenames(fullfile(ant_timing_dir,strcat(curr_sub,'*'),strcat(curr_sub,'_Anticipation_Loss_Run1.txt')));
+            elseif strcmp(trial_type_strings{event}, 'antgain_150') == 1
+                fname = filenames(fullfile(ant_timing_dir,strcat(curr_sub,'*'),strcat(curr_sub,'_Anticipation_Win150_Run1.txt')));
                 temp = load(fname{1});
                 onsets{event} = temp(:,1) - 1.9;
-                name{event} = trial_type_strings{event};
+                names{event} = trial_type_strings{event};
                 durations{event} = ones(length(onsets{event}),1) .* 4;
             elseif strcmp(trial_type_strings{event}, 'antgain_0') == 1
                 fname = filenames(fullfile(ant_timing_dir,strcat(curr_sub,'*'),strcat(curr_sub,'_Anticipation_Win0_Run1.txt')));
                 temp = load(fname{1});
                 onsets{event} = temp(:,1) - 1.9;
-                name{event} = trial_type_strings{event};
+                names{event} = trial_type_strings{event};
+                durations{event} = ones(length(onsets{event}),1) .* 4;
+            elseif strcmp(trial_type_strings{event}, 'antloss_5') == 1
+                fname = filenames(fullfile(ant_timing_dir,strcat(curr_sub,'*'),strcat(curr_sub,'_Anticipation_Loss5_Run1.txt')));
+                temp = load(fname{1});
+                onsets{event} = temp(:,1) - 1.9;
+                names{event} = trial_type_strings{event};
+                durations{event} = ones(length(onsets{event}),1) .* 4;
+            elseif strcmp(trial_type_strings{event}, 'antloss_150') == 1
+                fname = filenames(fullfile(ant_timing_dir,strcat(curr_sub,'*'),strcat(curr_sub,'_Anticipation_Loss150_Run1.txt')));
+                temp = load(fname{1});
+                onsets{event} = temp(:,1) - 1.9;
+                names{event} = trial_type_strings{event};
                 durations{event} = ones(length(onsets{event}),1) .* 4;
             elseif strcmp(trial_type_strings{event}, 'antloss_0') == 1
                 fname = filenames(fullfile(ant_timing_dir,strcat(curr_sub,'*'),strcat(curr_sub,'_Anticipation_Loss0_Run1.txt')));
                 temp = load(fname{1});
                 onsets{event} = temp(:,1) - 1.9;
-                name{event} = trial_type_strings{event};
+                names{event} = trial_type_strings{event};
                 durations{event} = ones(length(onsets{event}),1) .* 4;
             elseif strcmp(trial_type_strings{event}, 'motor_all') == 1
                 fname = filenames(fullfile(ant_timing_dir,strcat(curr_sub,'*'),strcat(curr_sub,'_Motor_Run1.txt')));
                 temp = load(fname{1});
                 onsets{event} = temp(:,1);
-                name{event} = trial_type_strings{event};
+                names{event} = trial_type_strings{event};
                 durations{event} = ones(length(onsets{event}),1) .* 4;
             end
         end
@@ -686,6 +705,32 @@ for sub = 1:length(subs_left_out)
     
 end
 
+%% This section temporarily replaces the next. 
+% Somehow I got all the trial types I need for consumption extracted and
+% now I just need to refine the mat files a bit. So I'm just going to load
+% them and pull what I need
+txtdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD';
+load(fullfile(txtdir, 'PID.mat'));
+savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/anticipation/separate_trial_types/consumption';
+
+all_timing_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/consumption/all_trial_types';
+all_timing_fnames = fullfile(filenames(all_timing_dir,'*.mat'));
+
+for sub = 1:length(PID)
+    curr_sub = num2str(PID(sub));
+    curr_file = filenames(fullfile(all_timing_dir,strcat(curr_sub,'*mat')));
+    if length(curr_file)>0
+        load(curr_file{1})
+        onsets = [onsets(2),onsets(1),onsets(3),onsets(5),onsets(4),onsets(6),onsets(9)];
+        names = [names(2),names(1),names(3),names(5),names(4),names(6),names(9)];
+        durations = [durations(2),durations(1),durations(3),durations(5),durations(4),durations(6),durations(9)];
+        temp_file_name = strcat(num2str(PID(sub)),'_consumption_timing.mat');
+        save(fullfile(savedir, temp_file_name),'onsets','names','durations')
+    else
+        disp(curr_sub)
+    end
+end
+
 %% temporary 2
 
 % Missing timing files from Brian's csv so I need to pull Ann's old files
@@ -694,48 +739,47 @@ end
 % to be 4 seconds. 
 
 % load in txt that has missing subjects
-txtdir = '/home/zach/Documents/current_projects/ACNlab/BrainMAPD';
+txtdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD';
 ant_timing_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/Oldham_ROI_by_diagnosis/TimingFiles_082218/FSL_consumption_110818';
-savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/consumption/spm_all_vs_0_timing';
-%load(fullfile(txtdir, 'subs_left_out.txt'));
+savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/anticipation/separate_trial_types/consumption';
+%load(fullfile(txtdir, 'PID.txt'));
 
 clear sub
-for sub = 1:length(subs_left_out)
-    curr_sub = num2str(subs_left_out(sub));    
-    trial_type_strings = {'congain_all','conloss_all','congain_0','conloss_0','motor_all'};
+for sub = 1:length(PID)
+    curr_sub = num2str(PID(sub));    
+    trial_type_strings = {'congain_5','congain_150','congain_0','conloss_5','conloss_150','conloss_0','motor_all'};
     
     if isfile(filenames(fullfile(ant_timing_dir,strcat(curr_sub,'*'),strcat(curr_sub,'_Hit_Win_Feedback_Run1.txt')))) == 1
         for event = 1:length(trial_type_strings)
-            if strcmp(trial_type_strings{event}, 'congain_all') == 1
-                fname = filenames(fullfile(ant_timing_dir,strcat(curr_sub,'*'),strcat(curr_sub,'_Hit_Win_Feedback_Run1.txt')));
+            if strcmp(trial_type_strings{event}, 'congain_5') == 1
+                fname = filenames(fullfile(ant_timing_dir,strcat(curr_sub,'*'),strcat(curr_sub,'_Hit_Win5_Feedback_Run1.txt')));
                 temp = load(fname{1});
-                onsets{event} = temp(:,1);
-             
-                name{event} = trial_type_strings{event};
+                onsets{event} = temp(:,1);             
+                names{event} = trial_type_strings{event};
                 durations{event} = ones(length(onsets{event}),1) .* 4;
             elseif strcmp(trial_type_strings{event}, 'conloss_all') == 1
                 fname = filenames(fullfile(ant_timing_dir,strcat(curr_sub,'*'),strcat(curr_sub,'_Miss_Loss_Feedback_Run1.txt')));
                 temp = load(fname{1});
                 onsets{event} = temp(:,1);
-                name{event} = trial_type_strings{event};
+                names{event} = trial_type_strings{event};
                 durations{event} = ones(length(onsets{event}),1) .* 4;
             elseif strcmp(trial_type_strings{event}, 'congain_0') == 1
                 fname = filenames(fullfile(ant_timing_dir,strcat(curr_sub,'*'),strcat(curr_sub,'_Hit_Win_0_Feedback_Run1.txt')));
                 temp = load(fname{1});
                 onsets{event} = temp(:,1);
-                name{event} = trial_type_strings{event};
+                names{event} = trial_type_strings{event};
                 durations{event} = ones(length(onsets{event}),1) .* 4;
             elseif strcmp(trial_type_strings{event}, 'conloss_0') == 1
                 fname = filenames(fullfile(ant_timing_dir,strcat(curr_sub,'*'),strcat(curr_sub,'_Miss_Loss_0_Feedback_Run1.txt')));
                 temp = load(fname{1});
                 onsets{event} = temp(:,1);
-                name{event} = trial_type_strings{event};
+                names{event} = trial_type_strings{event};
                 durations{event} = ones(length(onsets{event}),1) .* 4;
             elseif strcmp(trial_type_strings{event}, 'motor_all') == 1
                 fname = filenames(fullfile(ant_timing_dir,strcat(curr_sub,'*'),strcat(curr_sub,'_Motor_Run1.txt')));
                 temp = load(fname{1});
                 onsets{event} = temp(:,1);
-                name{event} = trial_type_strings{event};
+                names{event} = trial_type_strings{event};
                 durations{event} = ones(length(onsets{event}),1) .* 4;
             end
         end

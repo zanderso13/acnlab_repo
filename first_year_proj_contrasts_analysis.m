@@ -1,4 +1,3 @@
-%% Started as an Atrik script, now it's going to form the backbone of my project probs
 % Description: 
 % 1. find filenames associated with MID anticipation period for gain and
 % loss
@@ -14,7 +13,7 @@
 % 1.
 
 analysisdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output';
-condir = 'anticipation';%/bi_OFC_to_wholebrain';
+condir = 'consumption';%/bi_OFC_to_wholebrain';
 
 cd(fullfile(analysisdir,condir))
 
@@ -31,18 +30,20 @@ curr_dat_gain = fmri_data(curr_fnames_gain');
 curr_dat_loss = fmri_data(curr_fnames_loss');
 
 
-
 %% 3. and 4. 
 % Load in clinical data for group analysis
 clinicaldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/clinical_data';
 med_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD';
-
-load(fullfile(clinicaldir,'trilevel_longitudinal.mat'));
+demo_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD';
+load(fullfile(clinicaldir,'first_year_project_trilevel_T1.mat'));
 load(fullfile(med_dir,'Medication_T2.mat'));
+load(fullfile(demo_dir,'demographics.mat'));
 
-trilevel_array = [trilevel_T1.ID,trilevel_T1.GenDis,trilevel_T1.Anhedonia,trilevel_T1.Fears,trilevel_T1.Narrow];
-med_array = [T2MedicationInventory3(:,1),T2MedicationInventory3(:,88),T2MedicationInventory3(:,89)];
+trilevel_array = [trilevel_T1.id,trilevel_T1.GenDis,trilevel_T1.Anhedon,trilevel_T1.Fears];
+med_array = [T2MedicationInventory3(:,1),T2MedicationInventory3(:,88)];
 med_array = table2array(med_array);
+dem_array = [BrainMAPDT1S1Demo.PID,BrainMAPDT1S1Demo.sex];
+%dem_array = table2array(dem_array);
 
 for sub = 1:length(curr_fnames_gain)
     PID(sub,1) = str2num(curr_fnames_gain{sub}(1:5));
@@ -51,8 +52,8 @@ end
 
 for sub = 1:length(curr_fnames_gain)
 
-    if isempty(find(trilevel_T1.ID(:) == PID(sub,1))) == 0
-        curr = find(trilevel_T1.ID(:) == PID(sub,1));
+    if isempty(find(trilevel_T1.id(:) == PID(sub,1))) == 0
+        curr = find(trilevel_T1.id(:) == PID(sub,1));
         trilevel_regressors(sub,:) = trilevel_array(curr,:);
     else
         % for OFC loss_ppi_fnames{sub}(100:104); for HO_VMPFC loss_ppi_fnames{sub}(105:109)
@@ -62,12 +63,19 @@ for sub = 1:length(curr_fnames_gain)
     end
     if isempty(find(med_array(:,1) == PID(sub,1))) == 0
         curr2 = find(med_array(:,1) == PID(sub,1));
-        med_regressors(sub,:) = [med_array(curr2,2),med_array(curr2,3)];
+        med_regressors(sub,:) = med_array(curr2,2);
     else
         disp(strcat(num2str(PID(sub,1)), ' missing medication info'))
-        med_regressors(sub,:) = [0,0];
+        med_regressors(sub,:) = [0];
     end
-    
+    if isempty(find(dem_array(:,1) == PID(sub,1))) == 0
+        curr2 = find(dem_array(:,1) == PID(sub,1));
+        demographic_regressors(sub,:) = dem_array(curr2,2);
+    else
+        disp(strcat(num2str(PID(sub,1)), ' missing demographic info'))
+        demographic_regressors(sub,:) = 0;
+    end
+
 end
 
 site_regressors = (PID < 20000);
@@ -75,20 +83,19 @@ site_regressors = (PID < 20000);
 GenDis = trilevel_regressors(:,2);
 Anhedonia = trilevel_regressors(:,3);
 Fears = trilevel_regressors(:,4);
-Narrow = trilevel_regressors(:,5);
-
 
 % CHANGE THIS
-R = [GenDis,Anhedonia,Fears,med_regressors,site_regressors];
+R = [GenDis,Anhedonia,Fears,med_regressors,site_regressors]; %demographic_regressors = sex
 intercept = ones(length(R),1);
 
-R = [R,intercept];
+%R = [R,intercept];
 
 R_gain_temp = [R,curr_dat_gain.dat'];
 R_loss_temp = [R,curr_dat_loss.dat'];
 
 R_gain_temp(any(isnan(R_gain_temp),2),:)=[];
 R_loss_temp(any(isnan(R_loss_temp),2),:)=[];
+PID(any(isnan(R_loss_temp),2),:)=[];
 
 R_final_gain = R_gain_temp(:,1:size(R,2));
 R_final_loss = R_loss_temp(:,1:size(R,2));
@@ -102,19 +109,16 @@ curr_dat_loss.X = R_final_loss;
 curr_dat_gain.dat = dat_final_gain';
 curr_dat_loss.dat = dat_final_loss';
 
-
 %% 5. 
-temp_results_gain = regress(curr_dat_gain,'robust');
-temp_results_loss = regress(curr_dat_loss,'robust');
-
-results_struct.gain = threshold(temp_results_gain.t,.001,'unc','k',30);
-results_struct.loss = threshold(temp_results_loss.t,.001,'unc','k',30);
-
+temp_results_gain= regress(curr_dat_gain); %,'robust');
+temp_results_loss= regress(curr_dat_loss); %,'robust');
+results_struct.gain= threshold(temp_results_gain.t,.001,'unc','k',10);
+results_struct.loss= threshold(temp_results_loss.t,.001,'unc','k',10);
 %% 6. gain
 
-orthviews(results_struct.gain)
+% orthviews(results_struct.gain)
 %% 6. loss
-orthviews(results_struct.loss)
+% orthviews(results_struct.loss)
 
 %% 7. 
 % CHANGE THIS
@@ -125,49 +129,206 @@ for symptom = 1:length(symptom_names)
     r_loss.(symptom_names{symptom}) = region(select_one_image(results_struct.loss,symptom));
 end
 
-%% GenDis Anhedonia Fears r_gain r_loss
-montage(r_loss.Fears) %, 'colormap', 'regioncenters');
+% GenDis Anhedonia Fears r_gain r_loss
 
-table(r_loss.Fears)
 
 %% 8. 
 roidir = '/Users/zaz3744/Documents/current_projects/ACNlab/masks/ROI_BrainMAPD_functional';
-% condir = 'anticipation';
-% bilateral_roi_fnames = filenames(fullfile(roidir,condir,'*.nii'));
-% right_roi_fnames = filenames(fullfile(roidir,condir,'*.nii'));
-% left_roi_fnames = filenames(fullfile(roidir,condir,'*.nii'));
-% region_name_list = {'Ng_Amyg','BA9BA46','bi_vs_sphere','Ng_Caudate','HO_Accumbens','HO_Amyg','HO_Caudate','HO_Pallidum','HO_Putamen','HO_vmPFC','Knutson_mPFC','Knutson_OFC','Ng_OFC','Oldham_loss_VS','Oldham_gain_VS','VS_sphere'};
-bilateral_roi_fnames = filenames(fullfile('/Users/zaz3744/Documents/repo/acnlab_repo/masks/ROI*nii'));
+condir = 'anticipation';
+bilateral_roi_fnames = filenames(fullfile(roidir,condir,'*VS*Oldham*.nii'));
+right_roi_fnames = filenames(fullfile(roidir,condir,'right','*VS*Oldham*.nii'));
+left_roi_fnames = filenames(fullfile(roidir,condir,'left','*VS*Oldham*.nii'));
+region_name_list = {'OFC*Oldham*','Amyg*Ng*','BA9BA46*','bi_vs_sphere*','Caudate*Ng*','HO_Accumbens*','HO_Amyg*','HO_Caudate*','HO_Pallidum*','HO_Putamen*','HO_VMPFC*','*MPFC*Knutson*','OFC*Knutson*','OFC*Ng*','VS*Oldham_Loss*','VS*Oldham_Rew*','VS_Sphere*'};
+region_name_list_for_struct = {'bi_OFC_Oldham','Amyg_Ng','BA9BA46','bi_vs_sphere','Caudate_Ng','HO_Accumbens','HO_Amyg','HO_Caudate','HO_Pallidum','HO_Putamen','HO_VMPFC','mPFC_Knutson','OFC_Knutson','OFC_Ng','VS_Oldham_Loss','VS_Oldham_Rew','VS_sphere'};
 
-for region = 1:length(bilateral_roi_fnames)
-%     disp(region_name_list{region})
-    roi_fname = filenames(fullfile(bilateral_roi_fnames{region}));
-    roi = fmri_data(roi_fname);
-    roi_avg_gain(region,:) = extract_roi_averages(curr_dat_gain,roi);
-%     roi_avg_gain(region,:).title = region_name_list{region}; 
-    roi_gain_table(:,region) = roi_avg_gain(region,:).dat;
-%     gain_mdl.(region_name_list{region}) = fitlm(curr_dat_gain.X,roi_avg_gain(region,:).dat)
-    roi_avg_loss(region,:) = extract_roi_averages(curr_dat_loss,roi);
-%     roi_avg_loss(region,:).title = region_name_list{region};
-    roi_loss_table(:,region) = roi_avg_loss(region,:).dat;
-%     loss_mdl.(region_name_list{region}) = fitlm(curr_dat_gain.X,roi_avg_gain(region,:).dat)
+
+for i = 1:length(region_name_list_for_struct)
+    disp(region_name_list_for_struct{i})
+    roi_fname = filenames(fullfile(roidir,condir,region_name_list{i}));
+    roi = fmri_data(roi_fname{1});
+    roi_avg_gain.(region_name_list_for_struct{i}) = extract_roi_averages(curr_dat_gain,roi);
+    roi_avg_gain.(region_name_list_for_struct{i}).title = region_name_list_for_struct{i}; 
+    roi_gain_table(:,i) = roi_avg_gain.(region_name_list_for_struct{i}).dat;
+    % Note that the structure that is created below will have two
+    % layers. The first refers to the seed region for this analysis.
+    % The second will refer to the end region in this seed to seed func
+    % conn analysis
+    %gain_mdl.(region_name_list_for_struct{i}) = fitlm(curr_dat_gain.X(:,1:5),roi_avg_gain(i,:).dat);
+    %fitlm(curr_dat_gain.X(:,1:5),roi_avg_gain(i,:).dat)
+    gain_mdl.(region_name_list_for_struct{i}) = fitlm(R_final_gain,roi_avg_gain.(region_name_list_for_struct{i}).dat);
+    fitlm(R_final_gain,roi_avg_gain.(region_name_list_for_struct{i}).dat)
+    roi_avg_loss.(region_name_list_for_struct{i}) = extract_roi_averages(curr_dat_loss,roi);
+    roi_avg_loss.(region_name_list_for_struct{i}).title = region_name_list_for_struct{i};
+    roi_loss_table(:,i) = roi_avg_loss.(region_name_list_for_struct{i}).dat;
+    %loss_mdl.(region_name_list_for_struct{i}) = fitlm(curr_dat_loss.X(:,1:5),roi_avg_loss(i,:).dat);
+    %fitlm(curr_dat_gain.X(:,1:5),roi_avg_loss(i,:).dat)
+    loss_mdl.(region_name_list_for_struct{i}) = fitlm(R_final_loss,roi_avg_loss.(region_name_list_for_struct{i}).dat);
+    fitlm(R_final_loss,roi_avg_loss.(region_name_list_for_struct{i}).dat)
+    disp(strcat('ROI: ',region_name_list_for_struct{i}))
+    
+    %keyboard
 end
 
-% roi_gain_table = [curr_dat_gain.X,roi_gain_table]; roi_gain_table = array2table(roi_gain_table); 
-% roi_gain_table.Properties.VariableNames = {'GenDis','Anhedonia','Fears','Meds1','Meds2','Site','Intercept','Ng_Amyg','BA9BA46','bi_vs_sphere','Ng_Caudate','HO_Accumbens','HO_Amyg','HO_Caudate','HO_Pallidum','HO_Putamen','HO_vmPFC','Knutson_mPFC','Knutson_OFC','Ng_OFC','Oldham_loss_VS','Oldham_gain_VS','VS_sphere'};
-% roi_loss_table = [curr_dat_gain.X,roi_loss_table]; roi_loss_table = array2table(roi_loss_table); 
-% roi_loss_table.Properties.VariableNames = {'GenDis','Anhedonia','Fears','Meds1','Meds2','Site','Intercept','Ng_Amyg','BA9BA46','bi_vs_sphere','Ng_Caudate','HO_Accumbens','HO_Amyg','HO_Caudate','HO_Pallidum','HO_Putamen','HO_vmPFC','Knutson_mPFC','Knutson_OFC','Ng_OFC','Oldham_loss_VS','Oldham_gain_VS','VS_sphere'};
-%      
-%%
-% svm_in_X = [curr_dat_gain.dat',R_final_gain(:,2:7)];
-% svm_in_Y = R_final_gain(:,1);
-% T = readtable('anticipation_roi_loss_table.txt');
-% T = readtable('anticipation_roi_gain_table.txt');
-svm_Y = T.Fears(:);
-svm_mdl = fitrsvm(T(:,7:270),svm_Y,'KFold',10,'KernelFunction','polynomial');
 
-% get mse
-rmse = sqrt(kfoldLoss(svm_mdl));    
+R_region_name_list = {'R_OFC*Oldham*','R_VS_Sphere*','*Caudate*Ng*','HO*_Accumbens*','HO*_Amyg*','HO*_Caudate*','HO*_Pallidum*','HO*_Putamen*','*OFC*Ng*','*VS*Oldham_Loss*','*VS*Oldham_Rew*'};
+R_region_name_list_for_struct = {'R_OFC_Oldham','R_VS_sphere','R_Caudate_Ng','R_HO_Accumbens','R_HO_Amyg','R_HO_Caudate','R_HO_Pallidum','R_HO_Putamen','R_OFC_Ng','R_VS_Oldham_Loss','R_VS_Oldham_Rew'};
 
-   
+% Right lateralized
+for i = 1:length(R_region_name_list_for_struct)
+    disp(R_region_name_list_for_struct{i})
+    roi_fname = filenames(fullfile(roidir,condir,'right',R_region_name_list{i}));
+    roi = fmri_data(roi_fname{1});
+    roi_avg_gain.(R_region_name_list_for_struct{i}) = extract_roi_averages(curr_dat_gain,roi);
+    roi_avg_gain.(R_region_name_list_for_struct{i}).title = R_region_name_list_for_struct{i}; 
+    roi_gain_table(:,i) = roi_avg_gain.(R_region_name_list_for_struct{i}).dat;
+    % Note that the structure that is created below will have two
+    % layers. The first refers to the seed region for this analysis.
+    % The second will refer to the end region in this seed to seed func
+    % conn analysis
+    %gain_mdl.(region_name_list_for_struct{i}) = fitlm(curr_dat_gain.X(:,1:5),roi_avg_gain(i,:).dat);
+    %fitlm(curr_dat_gain.X(:,1:5),roi_avg_gain(i,:).dat)
+    gain_mdl.(R_region_name_list_for_struct{i}) = fitlm(R_final_gain,roi_avg_gain.(R_region_name_list_for_struct{i}).dat);
+    fitlm(R_final_gain,roi_avg_gain.(R_region_name_list_for_struct{i}).dat)
+    roi_avg_loss.(R_region_name_list_for_struct{i}) = extract_roi_averages(curr_dat_loss,roi);
+    roi_avg_loss.(R_region_name_list_for_struct{i}).title = R_region_name_list_for_struct{i};
+    roi_loss_table(:,i) = roi_avg_loss.(R_region_name_list_for_struct{i}).dat;
+    %loss_mdl.(region_name_list_for_struct{i}) = fitlm(curr_dat_loss.X(:,1:5),roi_avg_loss(i,:).dat);
+    %fitlm(curr_dat_gain.X(:,1:5),roi_avg_loss(i,:).dat)
+    loss_mdl.(R_region_name_list_for_struct{i}) = fitlm(R_final_loss,roi_avg_loss.(R_region_name_list_for_struct{i}).dat);
+    fitlm(R_final_loss,roi_avg_loss.(R_region_name_list_for_struct{i}).dat)
+    disp(strcat('ROI: ',R_region_name_list_for_struct{i}))
     
+    %keyboard
+end
+
+L_region_name_list = {'L_OFC_*Oldham.nii','L_OFC_*Oldham2.nii','L*Amyg*Ng.nii','L*Amyg*Ng_2*','L_VS_Sphere*','*Caudate*Ng*','HO*_Accumbens*','HO*_Amyg*','HO*_Caudate*','HO*_Pallidum*','HO*_Putamen*','*OFC*Ng*','*VS*Oldham_Loss*','*VS*Oldham_Rew*'};
+L_region_name_list_for_struct = {'L_OFC1_Oldham','L_OFC2_Oldham','L_Amyg_Ng','L_Amyg_Ng_2','L_VS_Sphere','L_Caudate_Ng','L_HO_Accumbens','L_HO_Amyg','L_HO_Caudate','L_HO_Pallidum','L_HO_Putamen','L_OFC_Ng','L_VS_Oldham_Loss','L_VS_Oldham_Rew'};
+
+% left lateralized
+
+for i = 1:length(L_region_name_list_for_struct)
+    disp(L_region_name_list_for_struct{i})
+    roi_fname = filenames(fullfile(roidir,condir,'left',L_region_name_list{i}));
+    roi = fmri_data(roi_fname{1});
+    roi_avg_gain.(L_region_name_list_for_struct{i}) = extract_roi_averages(curr_dat_gain,roi);
+    roi_avg_gain.(L_region_name_list_for_struct{i}).title = L_region_name_list_for_struct{i}; 
+    roi_gain_table(:,i) = roi_avg_gain.(L_region_name_list_for_struct{i}).dat;
+    % Note that the structure that is created below will have two
+    % layers. The first refers to the seed region for this analysis.
+    % The second will refer to the end region in this seed to seed func
+    % conn analysis
+    %gain_mdl.(region_name_list_for_struct{i}) = fitlm(curr_dat_gain.X(:,1:5),roi_avg_gain(i,:).dat);
+    %fitlm(curr_dat_gain.X(:,1:5),roi_avg_gain(i,:).dat)
+    gain_mdl.(L_region_name_list_for_struct{i}) = fitlm(R_final_gain,roi_avg_gain.(L_region_name_list_for_struct{i}).dat);
+    fitlm(R_final_gain,roi_avg_gain.(L_region_name_list_for_struct{i}).dat)
+    roi_avg_loss.(L_region_name_list_for_struct{i}) = extract_roi_averages(curr_dat_loss,roi);
+    roi_avg_loss.(L_region_name_list_for_struct{i}).title = L_region_name_list_for_struct{i};
+    roi_loss_table(:,i) = roi_avg_loss.(L_region_name_list_for_struct{i}).dat;
+    %loss_mdl.(region_name_list_for_struct{i}) = fitlm(curr_dat_loss.X(:,1:5),roi_avg_loss(i,:).dat);
+    %fitlm(curr_dat_gain.X(:,1:5),roi_avg_loss(i,:).dat)
+    loss_mdl.(L_region_name_list_for_struct{i}) = fitlm(R_final_loss,roi_avg_loss.(L_region_name_list_for_struct{i}).dat);
+    fitlm(R_final_loss,roi_avg_loss.(L_region_name_list_for_struct{i}).dat)
+    disp(strcat('ROI: ',L_region_name_list_for_struct{i}))
+    
+    %keyboard
+end
+
+
+%% Same analyses as above but controlling for loss/gain condition
+% bilateral
+for i = 1:length(region_name_list_for_struct)
+    disp(region_name_list_for_struct{i})
+    roi_fname = filenames(fullfile(roidir,condir,region_name_list{i}));
+    roi = fmri_data(roi_fname{1});
+
+    % Note that the structure that is created below will have two
+    % layers. The first refers to the seed region for this analysis.
+    % The second will refer to the end region in this seed to seed func
+    % conn analysis
+
+    % extract roi data for gain and loss
+    roi_avg_gain2.(region_name_list_for_struct{i}) = extract_roi_averages(curr_dat_gain,roi);
+    roi_avg_gain2.(region_name_list_for_struct{i}).title = region_name_list_for_struct{i}; 
+    roi_avg_loss2.(region_name_list_for_struct{i}) = extract_roi_averages(curr_dat_loss,roi);
+    roi_avg_loss2.(region_name_list_for_struct{i}).title = region_name_list_for_struct{i};
+
+    % add the loss condition to the gain model to control for
+    % activation during loss anticipation
+    R_final_gain2 = [R_final_gain,roi_avg_loss2.(region_name_list_for_struct{i}).dat];
+    gain_mdl2.(region_name_list_for_struct{i}) = fitlm(R_final_gain2,roi_avg_gain2.(region_name_list_for_struct{i}).dat);
+    fitlm(R_final_gain2,roi_avg_gain2.(region_name_list_for_struct{i}).dat)
+
+    % add the gain condition to the loss model to control for
+    % activation during gain anticipation
+    R_final_loss2 = [R_final_loss,roi_avg_gain.(region_name_list_for_struct{i}).dat];
+    loss_mdl2.(region_name_list_for_struct{i}) = fitlm(R_final_loss2,roi_avg_loss2.(region_name_list_for_struct{i}).dat);
+    fitlm(R_final_loss2,roi_avg_loss2.(region_name_list_for_struct{i}).dat)
+    disp(strcat('ROI: ',region_name_list_for_struct{i}))
+    %keyboard
+end
+
+% right lateralized
+for i = 1:length(R_region_name_list_for_struct)
+    disp(R_region_name_list_for_struct{i})
+    roi_fname = filenames(fullfile(roidir,condir,'right',R_region_name_list{i}));
+    roi = fmri_data(roi_fname{1});
+
+    % Note that the structure that is created below will have two
+    % layers. The first refers to the seed region for this analysis.
+    % The second will refer to the end region in this seed to seed func
+    % conn analysis
+
+    % extract roi data for gain and loss
+    roi_avg_gain2.(R_region_name_list_for_struct{i}) = extract_roi_averages(curr_dat_gain,roi);
+    roi_avg_gain2.(R_region_name_list_for_struct{i}).title = R_region_name_list_for_struct{i}; 
+    roi_avg_loss2.(R_region_name_list_for_struct{i}) = extract_roi_averages(curr_dat_loss,roi);
+    roi_avg_loss2.(R_region_name_list_for_struct{i}).title = R_region_name_list_for_struct{i};
+
+    % add the loss condition to the gain model to control for
+    % activation during loss anticipation
+    R_final_gain2 = [R_final_gain,roi_avg_loss2.(R_region_name_list_for_struct{i}).dat];
+    gain_mdl2.(R_region_name_list_for_struct{i}) = fitlm(R_final_gain2,roi_avg_gain2.(R_region_name_list_for_struct{i}).dat);
+    fitlm(R_final_gain2,roi_avg_gain2.(R_region_name_list_for_struct{i}).dat)
+
+    % add the gain condition to the loss model to control for
+    % activation during gain anticipation
+    R_final_loss2 = [R_final_loss,roi_avg_gain.(R_region_name_list_for_struct{i}).dat];
+    loss_mdl2.(R_region_name_list_for_struct{i}) = fitlm(R_final_loss2,roi_avg_loss2.(R_region_name_list_for_struct{i}).dat);
+    fitlm(R_final_loss2,roi_avg_loss2.(R_region_name_list_for_struct{i}).dat)
+    disp(strcat('ROI: ',R_region_name_list_for_struct{i}))
+    %keyboard
+end
+
+% left lateralized
+for i = 1:length(L_region_name_list_for_struct)
+    disp(L_region_name_list_for_struct{i})
+    roi_fname = filenames(fullfile(roidir,condir,'left',L_region_name_list{i}));
+    roi = fmri_data(roi_fname{1});
+
+    % Note that the structure that is created below will have two
+    % layers. The first refers to the seed region for this analysis.
+    % The second will refer to the end region in this seed to seed func
+    % conn analysis
+
+    % extract roi data for gain and loss
+    roi_avg_gain2.(L_region_name_list_for_struct{i}) = extract_roi_averages(curr_dat_gain,roi);
+    roi_avg_gain2.(L_region_name_list_for_struct{i}).title = L_region_name_list_for_struct{i}; 
+    roi_avg_loss2.(L_region_name_list_for_struct{i}) = extract_roi_averages(curr_dat_loss,roi);
+    roi_avg_loss2.(L_region_name_list_for_struct{i}).title = L_region_name_list_for_struct{i};
+
+    % add the loss condition to the gain model to control for
+    % activation during loss anticipation
+    R_final_gain2 = [R_final_gain,roi_avg_loss2.(L_region_name_list_for_struct{i}).dat];
+    gain_mdl2.(L_region_name_list_for_struct{i}) = fitlm(R_final_gain2,roi_avg_gain2.(L_region_name_list_for_struct{i}).dat);
+    fitlm(R_final_gain2,roi_avg_gain2.(L_region_name_list_for_struct{i}).dat)
+
+    % add the gain condition to the loss model to control for
+    % activation during gain anticipation
+    R_final_loss2 = [R_final_loss,roi_avg_gain.(L_region_name_list_for_struct{i}).dat];
+    loss_mdl2.(L_region_name_list_for_struct{i}) = fitlm(R_final_loss2,roi_avg_loss2.(L_region_name_list_for_struct{i}).dat);
+    fitlm(R_final_loss2,roi_avg_loss2.(L_region_name_list_for_struct{i}).dat)
+    disp(strcat('ROI: ',L_region_name_list_for_struct{i}))
+    %keyboard
+end
+
+

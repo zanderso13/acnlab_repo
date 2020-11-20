@@ -36,7 +36,7 @@ curr_table.motor = round(curr_table.motor ./ 1000,2);
 
 
 %% Save new timing files for anticipation
-savedir = '/home/zach/Documents/current_projects/ACNlab/BrainMAPD/timing/anticipation/all_trial_types';
+savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/anticipation/separate_trial_types';
 
 trial_ind1 = 1;
 trial_ind2 = 48;
