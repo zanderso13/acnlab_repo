@@ -9,13 +9,13 @@ function run_subject_firstlevel_PPI_MID(PID, ses, run, mask_string, directories,
 %% var set up
 if nargin==0 % defaults just for testing
     % first is where your stats files will be output to
-    directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/ppi_fldir/consumption/LOFC_to_wholebrain';
+    directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/MID_all_trial_types/flout/consumption';
     % next is where the preprocessed data is
     directories{2} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/MID_data';
     % the timing files for modelling (onsets, durations, names)
-    directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/consumption/spm_all_vs_0_timing';
+    directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/MID_all_trial_types/timing_files';
     % where your extra covariates are including PPI regressors
-    directories{4} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/mdl_dir/anticipation/LOFC_to_wholebrain';
+    directories{4} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/MID_all_trial_types/nuisance_regressors';
     PID = '10004';  
     overwrite = 1;
     ses = 2;
@@ -95,7 +95,7 @@ if ~skip
 
     % run spm FL estimation
     cwd = pwd;
-    job = 'MID_PPI_template.m';
+    job = 'MID_James_template.m';
     %%
     spm('defaults', 'FMRI')
     spm_jobman('serial',job,'',in{:});

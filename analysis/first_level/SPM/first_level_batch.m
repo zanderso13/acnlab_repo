@@ -89,7 +89,7 @@ for sub = 1:length(new_list)
 %     ses = 2;
 %     run = 2;
 %    overwrite = 0;
-     run_subject_firstlevel_MID_consumption(PID,ses,run,overwrite)
+     run_subject_firstlevel_MID_consumption(PID,ses,run,directories,overwrite)
 
 %        s = ['#!/bin/bash\n\n'...
 %     '#SBATCH -A p30954\n'...

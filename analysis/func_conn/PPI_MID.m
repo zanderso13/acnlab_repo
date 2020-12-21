@@ -111,7 +111,7 @@ for sub = 1:length(fnames)
     spm_fname = filenames(fullfile(directories{4},strcat('*',PID,'*')));
     if isempty(spm_fname) == 0
         
-        run_subject_firstlevel_MID_Mac(PID, ses, run, mask_string, overwrite)
+        run_subject_firstlevel_MID_Mac(PID, ses, run, mask_string, directories, overwrite)
     end
 end
 
@@ -138,11 +138,18 @@ end
     
 
 %% Need to create regressor files for PPI
+% See below
+
+%%
+% TEMPORARILY USING THIS TO CREATE NUISANCE COVS FOR JAMES ANALYSIS!!!!!!
+
+
+
 % This will be from a single ROI to whole brain
 % Involves loading up SPM.mat files and then adding columns for 
 datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/MID_data';
 fnames = filenames(fullfile(datadir, '*.nii'));
-ppimdldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/mdl_dir/consumption/bi_VS';
+ppimdldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/MID_all_trial_types/nuisance_regressors';
 spmdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output/consumption';
 
 timecoursedir1 = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/bi_VS';
@@ -154,21 +161,22 @@ for sub = 1:length(fnames)
     spm_fname = filenames(fullfile(spmdir,strcat(curr_id,'/ses-2/run-1/MID/SPM*')));
     if isempty(spm_fname) == 0
         load(spm_fname{1});
-        timecourse_fname1 = filenames(fullfile(timecoursedir1,strcat('*Consump*',curr_id,'*')));
-        %timecourse_fname2 = filenames(fullfile(timecoursedir2,strcat('*',curr_id,'*')));
-        roi1 = load(timecourse_fname1{1});
-        %roi2 = load(timecourse_fname2{1});
-        mean_signal1 = zscore(roi1.mean_signal);
-        %mean_signal2 = zscore(roi2.mean_signal);
-        ppi_regressor1 = SPM.xX.X(:,1) .* mean_signal1(3:281,1); % gain any, both for ant and con
-        ppi_regressor2 = SPM.xX.X(:,2) .* mean_signal1(3:281,1); % loss, both for ant and con
-        ppi_regressor3 = SPM.xX.X(:,3) .* mean_signal1(3:281,1); % gain 0, both for ant and con
-        ppi_regressor4 = SPM.xX.X(:,4) .* mean_signal1(3:281,1); % loss 0, both for ant and con
-        R = [ppi_regressor1, ppi_regressor2, ppi_regressor3, ppi_regressor4, mean_signal1(3:281,:), SPM.xX.X(:,6:size(SPM.xX.X,2)-2)];
-        %R = [SPM.xX.X(:,6:size(SPM.xX.X,2))];
-        names{1} = 'gain_ppi_any'; names{2} = 'loss_ppi_any'; names{3} = 'gain_ppi_0'; names{4} = 'loss_ppi_0'; names{5} = 'timecourse_roi1'; 
+%         timecourse_fname1 = filenames(fullfile(timecoursedir1,strcat('*Consump*',curr_id,'*')));
+%         %timecourse_fname2 = filenames(fullfile(timecoursedir2,strcat('*',curr_id,'*')));
+%         roi1 = load(timecourse_fname1{1});
+%         %roi2 = load(timecourse_fname2{1});
+%         mean_signal1 = zscore(roi1.mean_signal);
+%         %mean_signal2 = zscore(roi2.mean_signal);
+%         ppi_regressor1 = SPM.xX.X(:,1) .* mean_signal1(3:281,1); % gain any, both for ant and con
+%         ppi_regressor2 = SPM.xX.X(:,2) .* mean_signal1(3:281,1); % loss, both for ant and con
+%         ppi_regressor3 = SPM.xX.X(:,3) .* mean_signal1(3:281,1); % gain 0, both for ant and con
+%         ppi_regressor4 = SPM.xX.X(:,4) .* mean_signal1(3:281,1); % loss 0, both for ant and con
+%        R = [ppi_regressor1, ppi_regressor2, ppi_regressor3, ppi_regressor4, mean_signal1(3:281,:), SPM.xX.X(:,6:size(SPM.xX.X,2)-2)];
+        R = [SPM.xX.X(:,6:size(SPM.xX.X,2)-2)];
+        %names{1} = 'gain_ppi_any'; names{2} = 'loss_ppi_any'; names{3} = 'gain_ppi_0'; names{4} = 'loss_ppi_0'; names{5} = 'timecourse_roi1'; 
          % you need to check to remove additional constant terms that you don't want/need
-        names = [names,SPM.xX.name(1,6:length(SPM.xX.name)-2)];
+        %names = [names,SPM.xX.name(1,6:length(SPM.xX.name)-2)];
+        names = SPM.xX.name(1,6:length(SPM.xX.name)-2);
         curr_save_file = strcat(curr_id,'_nuisance.mat'); % include mask name in this too, ppi_regressors.mat');
         
         save(fullfile(ppimdldir,curr_save_file),'R', 'names')
@@ -184,6 +192,15 @@ end
 
 
 %% So now let's get back to PPI
+
+% NOTE: This isn't just for PPI. As I perform different analyses with
+% different breakdowns of the MID task, this bit is generally useful for
+% rerunning first levels because it incorporates nuisance regressors really
+% smoothly. If I had all the raw data on my machine too, this wouldn't be
+% a problem. But I don't lol so I've just been concatenating first level
+% SPM files manually and then passing them into SPM as though this was a
+% resting state scan.
+
 % PPI first involves the estimation of task regressors which is done in the
 % section above. Now I need to rerun first levels with two additional
 % regressors 1. The time avg time course from a target ROI 2. An
@@ -192,13 +209,13 @@ end
 % differences is what regressors I'm calling
 
 % first is where your stats files will be output to
-directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/ppi_fldir/consumption/bi_VS_Oldham';
+directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/MID_all_trial_types/flout/consumption';
 % next is where the preprocessed data is
 directories{2} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/MID_data';
 % the timing files for modelling (onsets, durations, names)
-directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/consumption/spm_all_vs_0_timing';
+directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/MID_all_trial_types/timing_files';
 % where your extra covariates are including PPI regressors
-directories{4} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/mdl_dir/consumption/bi_VS';
+directories{4} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/MID_all_trial_types/nuisance_regressors';
 
 % What run of your task are you looking at?
 run = 1;
@@ -741,7 +758,7 @@ end
 % load in txt that has missing subjects
 txtdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD';
 ant_timing_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/Oldham_ROI_by_diagnosis/TimingFiles_082218/FSL_consumption_110818';
-savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/anticipation/separate_trial_types/consumption';
+savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/consumption/separate_trial_types/';
 %load(fullfile(txtdir, 'PID.txt'));
 
 clear sub
