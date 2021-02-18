@@ -1,12 +1,5 @@
 #!/bin/bash
 
-Usage() {
-        echo ‘Usage: WIN_dsi_trk_loop <subject list>’
-        exit 0
-}
-
-[ ‘$1’ = ‘’ ] && Usage
-
 # Subject list for loop
 subs=`cat ${1}`          # make sure txt file is full fib file names
 
@@ -17,7 +10,7 @@ cd ${projdir}
 for sub in ${subs}
 do
 	
-./BrainMAPD_dsi_trk_L-NAcc_Amyg ${sub}
+./MWMH_uncinate_stats.sh ${sub}
 
 echo ‘done for subject: ‘ ${sub}
 done

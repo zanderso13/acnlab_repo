@@ -13,7 +13,7 @@
 % 1.
 
 analysisdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output';
-condir = 'consumption';%/bi_OFC_to_wholebrain';
+condir = 'anticipation';%/bi_OFC_to_wholebrain';
 
 cd(fullfile(analysisdir,condir))
 
@@ -39,7 +39,7 @@ load(fullfile(clinicaldir,'first_year_project_trilevel_T1.mat'));
 load(fullfile(med_dir,'Medication_T2.mat'));
 load(fullfile(demo_dir,'demographics.mat'));
 
-trilevel_array = [trilevel_T1.id,trilevel_T1.GenDis,trilevel_T1.Anhedon,trilevel_T1.Fears];
+trilevel_array = [trilevel_T1.id,trilevel_T1.GenDis,trilevel_T1.Anhedon,trilevel_T1.Fears,trilevel_T1.narrow];
 med_array = [T2MedicationInventory3(:,1),T2MedicationInventory3(:,88)];
 med_array = table2array(med_array);
 dem_array = [BrainMAPDT1S1Demo.PID,BrainMAPDT1S1Demo.sex];
@@ -83,9 +83,10 @@ site_regressors = (PID < 20000);
 GenDis = trilevel_regressors(:,2);
 Anhedonia = trilevel_regressors(:,3);
 Fears = trilevel_regressors(:,4);
+Narrow = trilevel_regressors(:,5);
 
 % CHANGE THIS
-R = [GenDis,Anhedonia,Fears,med_regressors,site_regressors]; %demographic_regressors = sex
+R = [GenDis,Anhedonia,Fears,Narrow,med_regressors,site_regressors]; %demographic_regressors = sex
 intercept = ones(length(R),1);
 
 %R = [R,intercept];

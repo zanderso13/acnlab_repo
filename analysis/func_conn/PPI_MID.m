@@ -44,28 +44,29 @@ for sub = 1:length(fnames)
 end
 
 
-%% This section was written to redo first levels based on new timing files
-% It's adapted from the original stuff I wrote to perform PPI but I needed
-% to change it in order to create new regressors for rerunning first levels
-% round 1 Going to copy and paste it in a new section below for PPI
+%% This is now PPi again but for general contrasts instead of the James specific ones
 datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/MID_data';
 fnames = filenames(fullfile(datadir, '*.nii'));
-
+timecoursedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/anatomical';
+ppimdldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/mdl_dir/consumption/HOAmyg';
+spmdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output/consumption';
 clear sub curr_id names
 for sub = 1:length(fnames)
     curr_id = fnames{sub}(88:92);
     spm_fname = filenames(fullfile(spmdir,strcat('*',curr_id,'/ses-2/run-1/MID/SPM*')));
     if isempty(spm_fname) == 0
         load(spm_fname{1});
-        %timecourse_fname = filenames(fullfile(timecoursedir,strcat('*',curr_id,'*')));
-        %load(timecourse_fname{1})
-        %mean_signal = zscore(mean_signal);
-        %ppi_regressor1 = SPM.xX.X(:,1) .* mean_signal(3:281,1);
-        %ppi_regressor2 = SPM.xX.X(:,2) .* mean_signal(3:281,1);
-        %R = [ppi_regressor1, ppi_regressor2, mean_signal(3:281,:), SPM.xX.X(:,6:size(SPM.xX.X,2))];
-        R = [SPM.xX.X(:,6:size(SPM.xX.X,2))];
-        %names{1} = 'loss_ppi'; names{2} = 'gain_ppi'; names{3} = 'time_course'; 
-        names = [SPM.xX.name(1,6:length(SPM.xX.name))];
+        timecourse_fname = filenames(fullfile(timecoursedir,strcat('HOAmyg*',curr_id,'*'))); %CHANGE
+        load(timecourse_fname{1})
+        mean_signal = zscore(mean_signal);
+        ppi_regressor1 = SPM.xX.X(:,1) .* mean_signal(3:281,1);
+        ppi_regressor2 = SPM.xX.X(:,2) .* mean_signal(3:281,1);
+        ppi_regressor3 = SPM.xX.X(:,3) .* mean_signal(3:281,1);
+        ppi_regressor4 = SPM.xX.X(:,4) .* mean_signal(3:281,1);
+        R = [ppi_regressor1, ppi_regressor2, ppi_regressor3, ppi_regressor4, mean_signal(3:281,:), SPM.xX.X(:,6:size(SPM.xX.X,2)-2)];
+        %R = [SPM.xX.X(:,6:size(SPM.xX.X,2))];
+        names{1} = 'gain_ppi'; names{2} = 'loss_ppi'; names{4} = 'gain0_ppi'; names{5} = 'loss0_ppi'; names{3} = 'time_course'; 
+        names = [names,SPM.xX.name(1,6:size(SPM.xX.name,2)-2)];
         curr_save_file = strcat(curr_id,'_nuisance.mat'); % include mask name in this too, ppi_regressors.mat');
         
         save(fullfile(ppimdldir,curr_save_file),'R', 'names')
@@ -117,19 +118,20 @@ end
 
 %% First, extract mean timecourses from a variable of interest
 datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/MID_data';
-maskdir = '/Users/zaz3744/Documents/current_projects/ACNlab/masks/ROI_BrainMAPD_functional/consumption';
-timecoursedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/bi_VS';
+maskdir = '/Users/zaz3744/Documents/current_projects/ACNlab/masks/ROI_BrainMAPD_functional/anticipation';
+timecoursedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/anatomical';
 fnames = filenames(fullfile(datadir, '*.nii'));
-maskobj = fmri_data(filenames(fullfile(maskdir,strcat('VS*Oldham*.nii'))));
+
+maskobj = fmri_data(filenames(fullfile(maskdir,strcat('HO_Amyg*.nii')))); %HO_Amyg HO_Accumbens HO_VMPFC
 
 for sub = 1:length(fnames)
     curr_id = fnames{sub}(88:92);
-    check_fname = filenames(fullfile(timecoursedir, strcat('Oldham_VS_Consump_',curr_id,'_time_series.mat')));
+    check_fname = filenames(fullfile(timecoursedir, strcat('HOAmyg_',curr_id,'_time_series.mat')));
     if isempty(check_fname) == 1
         dataobj = fmri_data(filenames(fullfile(datadir,strcat('*',curr_id,'*'))));
         [roiobj] = extract_roi_averages(dataobj,maskobj);
         mean_signal = roiobj.dat;
-        curr_save_file = strcat('Oldham_VS_Consump_',curr_id,'_time_series.mat');
+        curr_save_file = strcat('HOAmyg_',curr_id,'_time_series.mat');
         save(fullfile(timecoursedir,curr_save_file),'mean_signal');
     else
         continue
@@ -138,21 +140,15 @@ end
     
 
 %% Need to create regressor files for PPI
-% See below
-
-%%
-% TEMPORARILY USING THIS TO CREATE NUISANCE COVS FOR JAMES ANALYSIS!!!!!!
-
-
 
 % This will be from a single ROI to whole brain
 % Involves loading up SPM.mat files and then adding columns for 
 datadir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/MID_data';
 fnames = filenames(fullfile(datadir, '*.nii'));
-ppimdldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/MID_all_trial_types/nuisance_regressors';
-spmdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output/consumption';
+ppimdldir = '/Volumes/ZachExternal/ACNlab/BrainMAPD/func_conn/all_trial_types_analyses/regressors/anatomical/HOAccumbens'; %HOAccumbens HOAmyg HOvmPFC
+spmdir = '/Volumes/ZachExternal/ACNlab/BrainMAPD/James_study/flout/consumption';
 
-timecoursedir1 = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/bi_VS';
+timecoursedir1 = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/NgAmyg';
 %timecoursedir2 = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/time_courses/bi_VS';
 
 clear sub curr_id names
@@ -161,22 +157,31 @@ for sub = 1:length(fnames)
     spm_fname = filenames(fullfile(spmdir,strcat(curr_id,'/ses-2/run-1/MID/SPM*')));
     if isempty(spm_fname) == 0
         load(spm_fname{1});
-%         timecourse_fname1 = filenames(fullfile(timecoursedir1,strcat('*Consump*',curr_id,'*')));
-%         %timecourse_fname2 = filenames(fullfile(timecoursedir2,strcat('*',curr_id,'*')));
-%         roi1 = load(timecourse_fname1{1});
-%         %roi2 = load(timecourse_fname2{1});
-%         mean_signal1 = zscore(roi1.mean_signal);
-%         %mean_signal2 = zscore(roi2.mean_signal);
-%         ppi_regressor1 = SPM.xX.X(:,1) .* mean_signal1(3:281,1); % gain any, both for ant and con
-%         ppi_regressor2 = SPM.xX.X(:,2) .* mean_signal1(3:281,1); % loss, both for ant and con
-%         ppi_regressor3 = SPM.xX.X(:,3) .* mean_signal1(3:281,1); % gain 0, both for ant and con
-%         ppi_regressor4 = SPM.xX.X(:,4) .* mean_signal1(3:281,1); % loss 0, both for ant and con
-%        R = [ppi_regressor1, ppi_regressor2, ppi_regressor3, ppi_regressor4, mean_signal1(3:281,:), SPM.xX.X(:,6:size(SPM.xX.X,2)-2)];
-        R = [SPM.xX.X(:,6:size(SPM.xX.X,2)-2)];
-        %names{1} = 'gain_ppi_any'; names{2} = 'loss_ppi_any'; names{3} = 'gain_ppi_0'; names{4} = 'loss_ppi_0'; names{5} = 'timecourse_roi1'; 
-         % you need to check to remove additional constant terms that you don't want/need
-        %names = [names,SPM.xX.name(1,6:length(SPM.xX.name)-2)];
-        names = SPM.xX.name(1,6:length(SPM.xX.name)-2);
+        timecourse_fname1 = filenames(fullfile(timecoursedir1,strcat('*Amyg*',curr_id,'*')));
+        %timecourse_fname2 = filenames(fullfile(timecoursedir2,strcat('*',curr_id,'*')));
+        roi1 = load(timecourse_fname1{1});
+        %roi2 = load(timecourse_fname2{1});
+        mean_signal1 = zscore(roi1.mean_signal);
+        %mean_signal2 = zscore(roi2.mean_signal);
+        ppi_regressor1 = SPM.xX.X(:,1) .* mean_signal1(3:281,1); % gain 5, success
+        ppi_regressor2 = SPM.xX.X(:,2) .* mean_signal1(3:281,1); % gain 5, failure
+        ppi_regressor3 = SPM.xX.X(:,3) .* mean_signal1(3:281,1); % gain 1.5, success
+        ppi_regressor4 = SPM.xX.X(:,4) .* mean_signal1(3:281,1); % gain 1.5, failure
+        ppi_regressor5 = SPM.xX.X(:,5) .* mean_signal1(3:281,1); % gain 0, success
+        ppi_regressor6 = SPM.xX.X(:,6) .* mean_signal1(3:281,1); % gain 0, failure
+        ppi_regressor7 = SPM.xX.X(:,7) .* mean_signal1(3:281,1); % loss 5, success
+        ppi_regressor8 = SPM.xX.X(:,8) .* mean_signal1(3:281,1); % loss 5, failure
+        ppi_regressor9 = SPM.xX.X(:,9) .* mean_signal1(3:281,1); % loss 1.5, success
+        ppi_regressor10 = SPM.xX.X(:,10) .* mean_signal1(3:281,1); % loss 1.5, failure
+        ppi_regressor11 = SPM.xX.X(:,11) .* mean_signal1(3:281,1); % loss 0, success
+        ppi_regressor12 = SPM.xX.X(:,12) .* mean_signal1(3:281,1); % loss 0, failure
+        
+        R = [ppi_regressor1, ppi_regressor2, ppi_regressor3, ppi_regressor4, ppi_regressor5, ppi_regressor6, ppi_regressor7, ppi_regressor8, ppi_regressor9, ppi_regressor10, ppi_regressor11, ppi_regressor12, mean_signal1(3:281,:), SPM.xX.X(:,13:size(SPM.xX.X,2)-2)];
+        % R = [SPM.xX.X(:,6:size(SPM.xX.X,2)-2)];
+        names{1} = 'ppi_gain5W'; names{2} = 'ppi_gain5L'; names{3} = 'ppi_gain150W'; names{4} = 'ppi_gain150L'; names{5} = 'ppi_gain0W'; names{6} = 'ppi_gain0L'; names{7} = 'ppi_loss5W'; names{8} = 'ppi_loss5L'; names{9} = 'ppi_loss150W'; names{10} = 'ppi_loss150L'; names{11} = 'ppi_loss0W'; names{12} = 'ppi_loss0L'; names{13} = 'timecourse_roi1'; 
+        % you need to check to remove additional constant terms that you don't want/need
+        names = [names,SPM.xX.name(1,13:length(SPM.xX.name)-2)];
+        % names = SPM.xX.name(1,12:length(SPM.xX.name)-2);
         curr_save_file = strcat(curr_id,'_nuisance.mat'); % include mask name in this too, ppi_regressors.mat');
         
         save(fullfile(ppimdldir,curr_save_file),'R', 'names')
@@ -209,13 +214,13 @@ end
 % differences is what regressors I'm calling
 
 % first is where your stats files will be output to
-directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/MID_all_trial_types/flout/consumption';
+directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/ppi_fldir/anticipation';
 % next is where the preprocessed data is
 directories{2} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/MID_data';
 % the timing files for modelling (onsets, durations, names)
-directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/MID_all_trial_types/timing_files';
+directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/anticipation/spm_all_vs_0_timing';
 % where your extra covariates are including PPI regressors
-directories{4} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/MID_all_trial_types/nuisance_regressors';
+directories{4} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/mdl_dir/anticipation/HOAmyg';
 
 % What run of your task are you looking at?
 run = 1;
@@ -226,7 +231,7 @@ ses = 2;
 overwrite = 0;
 % specify which mask you're looking at. It should just be the first
 % characters of the file
-mask_string = 'bi_VS_Oldham'; % OFC, VS, HO_VMPFC
+mask_string = 'HOAmyg'; % OFC, VS, HO_VMPFC
 
 fnames = filenames(fullfile(directories{2}, '*.nii'));
 
@@ -241,8 +246,8 @@ end
 
 %% Fast Group analysis (see next section for analysis pulling clusters from deep storage)
 curr_analysis_dir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/ppi_fldir/anticipation';
-gain_fnames = filenames(fullfile(curr_analysis_dir,'LHO_Accumbens_to_wholebrain/*/*/*/*/con_0001.nii')); %con_0003.nii'));
-loss_fnames = filenames(fullfile(curr_analysis_dir,'LHO_Accumbens_to_wholebrain/*/*/*/*/con_0002.nii')); %con_0004.nii'));
+gain_fnames = filenames(fullfile(curr_analysis_dir,'LHO_Accumbens_to_wholebrain/*/*/*/*/con_0006.nii')); %con_0003.nii'));
+loss_fnames = filenames(fullfile(curr_analysis_dir,'LHO_Accumbens_to_wholebrain/*/*/*/*/con_0009.nii')); %con_0004.nii'));
 
 loss_data = fmri_data(loss_fnames);
 gain_data = fmri_data(gain_fnames);

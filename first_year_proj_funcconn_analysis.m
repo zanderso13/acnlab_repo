@@ -17,15 +17,24 @@
 % two options can be set to 1
 trilevel = 1;
 dsm = 0;
-
+life_stress = 0;
 
 analysisdir = '/Volumes/ZachExternal/ACNlab/BrainMAPD/func_conn/PPI/ppi_fldir';
-condir = 'anticipation';
+condir = 'consumption';
 % Generate a model to plot with the scatter
 savedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/results/Trilevel_analysis/figures';
-constring = 'Anticipation';
+constring = 'Consumption';
 
-% May want to run the model for individual symptoms
+% OPTIONS FOR MODELS TO RUN
+% symptom_names = {'GenDis','Anhedonia','Fears'};
+% symptom_names = {'Anhedonia'};
+% symptom_names = {'GenDis'};
+% symptom_names = {'Fears'};
+% symptom_names = {'StressxAnhedonia','Anhedonia','Stress','GenDis','Fears'};
+% symptom_names = {'StressxAnhedonia','Anhedonia','Stress'};
+% symptom_names = {'FearsxAnhedonia','Anhedonia','GenDis','Fears'};
+% symptom_names = {'GenDisxFearsxAnhedonia','FearsxAnhedonia','Anhedonia','GenDisxFears','GenDisxAnhedonia','Fears','GenDis'};
+
 if trilevel == 1
     symptom_names = {'GenDis','Anhedonia','Fears'};
 elseif dsm == 1
@@ -41,10 +50,13 @@ end
 % end
 if strcmp(condir, 'anticipation')
     % anticipation list for first year project region_list = {'biOFC_to_wholebrain','bi_VS_AntRew','bi_VS_AntLoss','ROFC_to_wholebrain','LOFC2_to_wholebrain','LOFC_to_wholebrain','L_VS_AntRew_to_wholebrain','L_VS_AntLoss_to_wholebrain','R_VS_AntLoss_to_wholebrain','R_VS_AntRew_to_wholebrain'};
-    region_list = {'biOFC_to_wholebrain','bi_VS_AntLoss','bi_VS_AntRew','ROFC_to_wholebrain'};%,'LOFC2_to_wholebrain','LOFC_to_wholebrain','R_VS_AntRew_to_wholebrain','L_VS_AntRew_to_wholebrain'};
+    region_list = {'biOFC_to_wholebrain','bi_VS_AntLoss','bi_VS_AntRew','bi_Amyg_to_wholebrain','ROFC_to_wholebrain','LOFC_to_wholebrain','LOFC2_to_wholebrain'};%,'LOFC2_to_wholebrain','LOFC_to_wholebrain','R_VS_AntRew_to_wholebrain','L_VS_AntRew_to_wholebrain'};
+    % region_list = {'biOFC_to_wholebrain','bi_VS_AntLoss','bi_VS_AntRew','HOAmygdala','HOAccumbens','HOvmPFC'};
 else
     % consumption
-    region_list = {'bi_VS_Oldham','ROFC_to_wholebrain','LOFC_to_wholebrain','LOFC2_to_wholebrain','biOFC_to_wholebrain'};%{'biOFC_to_wholebrain','bi_VS_Oldham','ROFC_to_wholebrain','LOFC2_to_wholebrain','LOFC_to_wholebrain'};%,'R_VS_to_wholebrain','L_VS_to_wholebrain'};
+    region_list = {'biOFC_to_wholebrain','bi_VS_Oldham','bi_Amyg_to_wholebrain','ROFC_to_wholebrain','LOFC_to_wholebrain','LOFC2_to_wholebrain'};%{'biOFC_to_wholebrain','bi_VS_Oldham','ROFC_to_wholebrain','LOFC2_to_wholebrain','LOFC_to_wholebrain'};%,'R_VS_to_wholebrain','L_VS_to_wholebrain'};
+    %region_list = {'biOFC_to_wholebrain','bi_VS_Oldham','HOAmygdala','HOAccumbens','HOvmPFC'};
+    
 end
 
 
@@ -83,7 +95,9 @@ for seed_region = 1:length(region_list)
     clinicaldir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/clinical_data';
     load(fullfile('/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/PID.mat'))
     load(fullfile(clinicaldir,'first_year_project_BrainMAPD_clinical_diagnoses_final.mat'))
-
+    
+    stressdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/life_stress';
+    load(fullfile(stressdir,'LSI_T1.mat'))
     
 
     %% calculate number currently in episode
@@ -101,7 +115,7 @@ for seed_region = 1:length(region_list)
 
     end 
 
-    %% Just for shits, let's do all the func conn analyses but on diagnostic group
+    %%  code below takes different kinds of regressors into account
     
     for sub = 1:length(PID)
         curr_sub = PID(sub);
@@ -121,20 +135,23 @@ for seed_region = 1:length(region_list)
 
     
     
-    trilevel_array = table2array(trilevel_T1);%[trilevel_T1.id,trilevel_T1.GenDis,trilevel_T1.Anhedon,trilevel_T1.Fears];
-    trilevel_array = trilevel_array(:,2:size(trilevel_array,2));
+    trilevel_array = [trilevel_T1.id,trilevel_T1.GenDis,trilevel_T1.Anhedon,trilevel_T1.Fears,trilevel_T1.narrow];
+    %trilevel_array = trilevel_array(:,2:size(trilevel_array,2));
     med_array = [T2MedicationInventory3(:,1),T2MedicationInventory3(:,88)];
     med_array = table2array(med_array);
     dem_array = [BrainMAPDT1S1Demo.PID,BrainMAPDT1S1Demo.sex,BrainMAPDT1S1Demo.ethnicity,BrainMAPDT1S1Demo.race,BrainMAPDT1S1Demo.race2];
+    lsi_array = [LSI_T1(:,1),LSI_T1(:,6),LSI_T1(:,8:9),LSI_T1(:,11:13),LSI_T1(:,15),LSI_T1(:,17:19)];
+    lsi_array = table2array(lsi_array);
+    lsi_array(any(isnan(lsi_array),2),:)=[];
     %dem_array = table2array(dem_array);
-    
+    clear sub PID
     for sub = 1:length(curr_fnames_gain)
         PID(sub,1) = str2num(curr_fnames_gain{sub}(1:5));
     end        
 
 
     for sub = 1:length(curr_fnames_gain)
-
+        % trilevel 
         if isempty(find(trilevel_T1.id(:) == PID(sub,1))) == 0
             curr = find(trilevel_T1.id(:) == PID(sub,1));
             trilevel_regressors(sub,:) = trilevel_array(curr,:);
@@ -144,6 +161,7 @@ for seed_region = 1:length(region_list)
             trilevel_regressors(sub,:) = NaN;
             trilevel_regressors(sub,1) = PID(sub,1);
         end
+        % medication
         if isempty(find(med_array(:,1) == PID(sub,1))) == 0
             curr2 = find(med_array(:,1) == PID(sub,1));
             med_regressors(sub,:) = med_array(curr2,2);
@@ -151,6 +169,7 @@ for seed_region = 1:length(region_list)
             disp(strcat(num2str(PID(sub,1)), ' missing medication info'))
             med_regressors(sub,:) = [0];
         end
+        % demographics
         if isempty(find(dem_array(:,1) == PID(sub,1))) == 0
             curr2 = find(dem_array(:,1) == PID(sub,1));
             demographic_regressors(sub,:) = dem_array(curr2,2);%:5);
@@ -158,26 +177,40 @@ for seed_region = 1:length(region_list)
             disp(strcat(num2str(PID(sub,1)), ' missing demographic info'))
             demographic_regressors(sub,:) = 0;
         end
-
+        % life stress
+        if isempty(find(lsi_array(:,1) == PID(sub,1))) == 0
+            curr2 = find(lsi_array(:,1) == PID(sub,1));
+            lsi_regressors(sub,:) = sum(lsi_array(curr2,2:11));
+        else
+            disp(strcat(num2str(PID(sub,1)), ' missing life stress info'))
+            lsi_regressors(sub,1) = NaN;
+        end
     end
 
+    
     site_regressors = (PID < 20000);
 
     GenDis = trilevel_regressors(:,2);
     Anhedonia = trilevel_regressors(:,3);
     Fears = trilevel_regressors(:,4);
-   
-
+    Narrow = trilevel_regressors(:,5);
+    
 
     % CHANGE THIS
     if trilevel == 1
         % Will also run models separately for each diagnosis. 
-        if length(symptom_names) > 1
-            R = [GenDis,Anhedonia,Fears,med_regressors,site_regressors,demographic_regressors]; %demographic_regressors = sex
+        if length(symptom_names) == 5
+            R = [Anhedonia.*lsi_regressors,Anhedonia,lsi_regressors,GenDis,Fears,Narrow,med_regressors,site_regressors,demographic_regressors]; %demographic_regressors = sex
         elseif strcmp(symptom_names{1},'GenDis')
-            R = [GenDis,med_regressors,site_regressors,demographic_regressors];
+            R = [GenDis,Anhedonia,Fears,med_regressors,site_regressors,demographic_regressors];
         elseif strcmp(symptom_names{1},'Anhedonia')
             R = [Anhedonia,med_regressors,site_regressors,demographic_regressors];
+        elseif strcmp(symptom_names{1},'StressxAnhedonia')
+            R = [Anhedonia.*lsi_regressors,Anhedonia,lsi_regressors,med_regressors,site_regressors,demographic_regressors];
+        elseif strcmp(symptom_names{1},'FearsxAnhedonia')
+            R = [Fears.*Anhedonia, Anhedonia, GenDis, Fears, med_regressors,site_regressors,demographic_regressors];
+        elseif strcmp(symptom_names{1},'GenDisxFearsxAnhedonia')
+            R = [GenDis.*Fears.*Anhedonia,Fears.*Anhedonia,Anhedonia,GenDis.*Fears,GenDis.*Anhedonia,Fears,GenDis,med_regressors,site_regressors,demographic_regressors];
         elseif strcmp(symptom_names{1},'Fears')
             R = [Fears,med_regressors,site_regressors,demographic_regressors];
         end
@@ -191,6 +224,8 @@ for seed_region = 1:length(region_list)
         R_gain_temp(any(isnan(R_gain_temp),2),:)=[];
         R_loss_temp(any(isnan(R_loss_temp),2),:)=[];
         PID(any(isnan(R_loss_temp),2),:)=[];
+        R_gain_temp(:,3) = zscore(R_gain_temp(:,3));
+        R_loss_temp(:,3) = zscore(R_loss_temp(:,3));
 
         R_final_gain = R_gain_temp(:,1:size(R,2));
         R_final_loss = R_loss_temp(:,1:size(R,2));
@@ -228,13 +263,34 @@ for seed_region = 1:length(region_list)
 
         curr_dat_gain.(region_list{seed_region}).dat = dat_final_gain';
         curr_dat_loss.(region_list{seed_region}).dat = dat_final_loss';
-    
+    elseif life_stress == 1
+        R = [lsi_regressors(:,1),med_regressors,site_regressors,demographic_regressors]; %demographic_regressors = sex
+        intercept = ones(length(R),1);
+        
+        R_gain_temp = [R,curr_dat_gain.(region_list{seed_region}).dat'];
+        R_loss_temp = [R,curr_dat_loss.(region_list{seed_region}).dat'];
+
+        R_gain_temp(any(isnan(R_gain_temp),2),:)=[];
+        R_loss_temp(any(isnan(R_loss_temp),2),:)=[];
+        PID(any(isnan(R_loss_temp),2),:)=[];
+
+        R_final_gain = R_gain_temp(:,1:size(R,2));
+        R_final_loss = R_loss_temp(:,1:size(R,2));
+
+        dat_final_gain = R_gain_temp(:,size(R,2)+1:size(R_gain_temp,2));
+        dat_final_loss = R_loss_temp(:,size(R,2)+1:size(R_loss_temp,2));
+
+        curr_dat_gain.(region_list{seed_region}).X = R_final_gain;
+        curr_dat_loss.(region_list{seed_region}).X = R_final_loss;
+
+        curr_dat_gain.(region_list{seed_region}).dat = dat_final_gain';
+        curr_dat_loss.(region_list{seed_region}).dat = dat_final_loss';
     end
     %% 5. 
     temp_results_gain.(region_list{seed_region}) = regress(curr_dat_gain.(region_list{seed_region}));%,'robust');
     temp_results_loss.(region_list{seed_region}) = regress(curr_dat_loss.(region_list{seed_region}));%,'robust');
-    results_struct.gain.(region_list{seed_region}) = threshold(temp_results_gain.(region_list{seed_region}).t,.1,'fdr','k',1);
-    results_struct.loss.(region_list{seed_region}) = threshold(temp_results_loss.(region_list{seed_region}).t,.1,'fdr','k',1);
+    results_struct.gain.(region_list{seed_region}) = threshold(temp_results_gain.(region_list{seed_region}).t,.05,'fdr','k',1);
+    results_struct.loss.(region_list{seed_region}) = threshold(temp_results_loss.(region_list{seed_region}).t,.05,'fdr','k',1);
     %% 6. gain
 
     % orthviews(results_struct.gain.(region_list{seed_region}))
@@ -243,12 +299,12 @@ for seed_region = 1:length(region_list)
 
     %% 7. 
     % CHANGE THIS
-
-    for symptom = 1:length(symptom_names)
-        r_gain.(region_list{seed_region}).(symptom_names{symptom}) = region(select_one_image(results_struct.gain.(region_list{seed_region}),symptom));
-        r_loss.(region_list{seed_region}).(symptom_names{symptom}) = region(select_one_image(results_struct.loss.(region_list{seed_region}),symptom));
+    if trilevel == 1
+        for symptom = 1:length(symptom_names)
+            r_gain.(region_list{seed_region}).(symptom_names{symptom}) = region(select_one_image(results_struct.gain.(region_list{seed_region}),symptom));
+            r_loss.(region_list{seed_region}).(symptom_names{symptom}) = region(select_one_image(results_struct.loss.(region_list{seed_region}),symptom));
+        end
     end
-
     % GenDis Anhedonia Fears r_gain r_loss
      
 
@@ -261,10 +317,17 @@ for seed_region = 1:length(region_list)
         left_roi_fnames = filenames(fullfile(roidir,condir,'left','*VS*Oldham*.nii'));
         if strcmp(condir, 'consumption')
             region_name_list = {'Amyg*Ng*','BA9BA46*','bi_vs_sphere*','Caudate*Ng*','HO_Accumbens*','HO_Amyg*','HO_Caudate*','HO_Pallidum*','HO_Putamen*','HO_VMPFC*','OFC*Ng*','VS*Oldham*'}; %'VS*Oldham_Loss*','VS*Oldham_Rew*','VS_Sphere*'};
+            %region_name_list = {'HO_Accumbens*','HO_Amyg*','HO_Caudate*','HO_Pallidum*','HO_Putamen*','HO_VMPFC*'}; %'VS*Oldham_Loss*','VS*Oldham_Rew*','VS_Sphere*'};
+            
             region_name_list_for_struct = {'Amyg_Ng','BA9BA46','bi_vs_sphere','Caudate_Ng','HO_Accumbens','HO_Amyg','HO_Caudate','HO_Pallidum','HO_Putamen','HO_VMPFC','OFC_Ng','bi_VS_Oldham'};%'VS_Oldham_Loss','VS_Oldham_Rew','VS_sphere'};
+            %region_name_list_for_struct = {'HO_Amyg','HO_Caudate','HO_Pallidum','HO_Putamen','HO_VMPFC'};%'VS_Oldham_Loss','VS_Oldham_Rew','VS_sphere'};
+        
         else
             region_name_list = {'Amyg*Ng*','BA9BA46*','bi_vs_sphere*','Caudate*Ng*','HO_Accumbens*','HO_Amyg*','HO_Caudate*','HO_Pallidum*','HO_Putamen*','HO_VMPFC*','OFC*Ng*','VS*Oldham_Loss*','VS*Oldham_Rew*','VS_Sphere*'};
+            %region_name_list = {'HO_Accumbens*','HO_Amyg*','HO_Caudate*','HO_Pallidum*','HO_Putamen*','HO_VMPFC*'};
+            
             region_name_list_for_struct = {'Amyg_Ng','BA9BA46','bi_vs_sphere','Caudate_Ng','HO_Accumbens','HO_Amyg','HO_Caudate','HO_Pallidum','HO_Putamen','HO_VMPFC','OFC_Ng','VS_Oldham_Loss','VS_Oldham_Rew','VS_sphere'};
+            %region_name_list_for_struct = {'HO_Amyg','HO_Caudate','HO_Pallidum','HO_Putamen','HO_VMPFC'};%'VS_Oldham_Loss','VS_Oldham_Rew','VS_sphere'};
         end
         % region_name_list = {'VS_loss','VS_reward'};
         for i = 1:length(region_name_list)
@@ -376,6 +439,121 @@ for seed_region = 1:length(region_list)
     end
     %% Same analyses but for dsm diagnoses and controlling for loss/gain condition
     if dsm == 1
+        roidir = '/Users/zaz3744/Documents/current_projects/ACNlab/masks/ROI_BrainMAPD_functional';
+
+        bilateral_roi_fnames = filenames(fullfile(roidir,condir,'*VS*Oldham*.nii'));
+        right_roi_fnames = filenames(fullfile(roidir,condir,'right','*VS*Oldham*.nii'));
+        left_roi_fnames = filenames(fullfile(roidir,condir,'left','*VS*Oldham*.nii'));
+        if strcmp(condir, 'consumption')
+            region_name_list = {'Amyg*Ng*','BA9BA46*','bi_vs_sphere*','Caudate*Ng*','HO_Accumbens*','HO_Amyg*','HO_Caudate*','HO_Pallidum*','HO_Putamen*','HO_VMPFC*','OFC*Ng*','VS*Oldham*'}; %'VS*Oldham_Loss*','VS*Oldham_Rew*','VS_Sphere*'};
+            region_name_list_for_struct = {'Amyg_Ng','BA9BA46','bi_vs_sphere','Caudate_Ng','HO_Accumbens','HO_Amyg','HO_Caudate','HO_Pallidum','HO_Putamen','HO_VMPFC','OFC_Ng','bi_VS_Oldham'};%'VS_Oldham_Loss','VS_Oldham_Rew','VS_sphere'};
+        else
+            region_name_list = {'Amyg*Ng*','BA9BA46*','bi_vs_sphere*','Caudate*Ng*','HO_Accumbens*','HO_Amyg*','HO_Caudate*','HO_Pallidum*','HO_Putamen*','HO_VMPFC*','OFC*Ng*','VS*Oldham_Loss*','VS*Oldham_Rew*','VS_Sphere*'};
+            region_name_list_for_struct = {'Amyg_Ng','BA9BA46','bi_vs_sphere','Caudate_Ng','HO_Accumbens','HO_Amyg','HO_Caudate','HO_Pallidum','HO_Putamen','HO_VMPFC','OFC_Ng','VS_Oldham_Loss','VS_Oldham_Rew','VS_sphere'};
+        end
+        % region_name_list = {'VS_loss','VS_reward'};
+        for i = 1:length(region_name_list)
+            disp(region_name_list_for_struct{i})
+            roi_fname = filenames(fullfile(roidir,condir,region_name_list{i}));
+            roi = fmri_data(roi_fname{1});
+            roi_avg_gain.(region_list{seed_region}).(region_name_list_for_struct{i}) = extract_roi_averages(curr_dat_gain.(region_list{seed_region}),roi);
+            roi_avg_gain.(region_list{seed_region}).(region_name_list_for_struct{i}).title = region_name_list_for_struct{i}; 
+            roi_gain_table(:,i) = roi_avg_gain.(region_list{seed_region}).(region_name_list_for_struct{i}).dat;
+            % Note that the structure that is created below will have two
+            % layers. The first refers to the seed region for this analysis.
+            % The second will refer to the end region in this seed to seed func
+            % conn analysis
+            %gain_mdl.(region_list{seed_region}).(region_name_list_for_struct{i}) = fitlm(curr_dat_gain.(region_list{seed_region}).X(:,1:5),roi_avg_gain(i,:).dat);
+            %fitlm(curr_dat_gain.(region_list{seed_region}).X(:,1:5),roi_avg_gain(i,:).dat)
+            gain_mdl.(region_list{seed_region}).(region_name_list_for_struct{i}) = fitlm(R_final_gain,roi_avg_gain.(region_list{seed_region}).(region_name_list_for_struct{i}).dat);
+            fitlm(R_final_gain,roi_avg_gain.(region_list{seed_region}).(region_name_list_for_struct{i}).dat)
+            roi_avg_loss.(region_list{seed_region}).(region_name_list_for_struct{i}) = extract_roi_averages(curr_dat_loss.(region_list{seed_region}),roi);
+            roi_avg_loss.(region_list{seed_region}).(region_name_list_for_struct{i}).title = region_name_list_for_struct{i};
+            roi_loss_table(:,i) = roi_avg_loss.(region_list{seed_region}).(region_name_list_for_struct{i}).dat;
+            %loss_mdl.(region_list{seed_region}).(region_name_list_for_struct{i}) = fitlm(curr_dat_loss.(region_list{seed_region}).X(:,1:5),roi_avg_loss(i,:).dat);
+            %fitlm(curr_dat_gain.(region_list{seed_region}).X(:,1:5),roi_avg_loss(i,:).dat)
+            loss_mdl.(region_list{seed_region}).(region_name_list_for_struct{i}) = fitlm(R_final_loss,roi_avg_loss.(region_list{seed_region}).(region_name_list_for_struct{i}).dat);
+            fitlm(R_final_loss,roi_avg_loss.(region_list{seed_region}).(region_name_list_for_struct{i}).dat)
+            disp(strcat('Seed region is: ',region_list{seed_region}))
+            disp(strcat('End region is: ', region_name_list_for_struct{i}))
+            %keyboard
+        end
+        
+        % same analysis controlling for opposite condition
+        for i = 1:length(region_name_list)
+            disp(region_name_list_for_struct{i})
+            roi_fname = filenames(fullfile(roidir,condir,region_name_list{i}));
+            roi = fmri_data(roi_fname{1});
+
+            % Note that the structure that is created below will have two
+            % layers. The first refers to the seed region for this analysis.
+            % The second will refer to the end region in this seed to seed func
+            % conn analysis
+
+            % extract roi data for gain and loss
+            roi_avg_gain2.(region_list{seed_region}).(region_name_list_for_struct{i}) = extract_roi_averages(curr_dat_gain.(region_list{seed_region}),roi);
+            roi_avg_gain2.(region_list{seed_region}).(region_name_list_for_struct{i}).title = region_name_list_for_struct{i}; 
+            roi_avg_loss2.(region_list{seed_region}).(region_name_list_for_struct{i}) = extract_roi_averages(curr_dat_loss.(region_list{seed_region}),roi);
+            roi_avg_loss2.(region_list{seed_region}).(region_name_list_for_struct{i}).title = region_name_list_for_struct{i};
+
+            % add the loss condition to the gain model to control for
+            % activation during loss anticipation
+            R_final_gain2 = [R_final_gain,roi_avg_loss2.(region_list{seed_region}).(region_name_list_for_struct{i}).dat];
+            gain_mdl2.(region_list{seed_region}).(region_name_list_for_struct{i}) = fitlm(R_final_gain2,roi_avg_gain2.(region_list{seed_region}).(region_name_list_for_struct{i}).dat);
+            fitlm(R_final_gain2,roi_avg_gain2.(region_list{seed_region}).(region_name_list_for_struct{i}).dat)
+
+            % add the gain condition to the loss model to control for
+            % activation during gain anticipation
+            R_final_loss2 = [R_final_loss,roi_avg_gain.(region_list{seed_region}).(region_name_list_for_struct{i}).dat];
+            loss_mdl2.(region_list{seed_region}).(region_name_list_for_struct{i}) = fitlm(R_final_loss2,roi_avg_loss2.(region_list{seed_region}).(region_name_list_for_struct{i}).dat);
+            fitlm(R_final_loss2,roi_avg_loss2.(region_list{seed_region}).(region_name_list_for_struct{i}).dat)
+            disp(strcat('Seed region is: ',region_list{seed_region}))
+            disp(strcat('End region is: ', region_name_list_for_struct{i}))
+            %keyboard
+            % plot residual scatter and model for presentations
+    %        symptoms = [GenDis,Anhedonia,Fears];
+    %         for symp = 1:length(symptom_names)
+    %             % for gain
+    %             resid_mdl_R = [R_final_gain2(:,1),R_final_gain2(:,3:6)];
+    %             resid_mdl_gain = fitlm(resid_mdl_R,roi_avg_gain2.(region_list{seed_region}).(region_name_list_for_struct{i}).dat);
+    %             plot_mdl = fitlm(symptoms(:,symp),resid_mdl_gain.Residuals.Raw)
+    %             figure();scatter(symptoms(:,symp),resid_mdl_gain.Residuals.Raw)
+    %             h1 = lsline();
+    %             h1.LineWidth = 2;
+    %             h1.Color = 'r';
+    %             r1 = corrcoef(symptoms(:,symp),resid_mdl_gain.Residuals.Raw,'rows','complete');
+    %             disp(r1(1,2));
+    %             str = [' r = ',num2str(r1(1,2))];
+    %             T = text(min(get(gca, 'xlim')), max(get(gca, 'ylim')), str);
+    %             set(T, 'fontsize', 14, 'verticalalignment', 'top', 'horizontalalignment', 'left');
+    %             hold on; plot(plot_mdl); title(strcat("Gain ",condir,":",region_list{seed_region},"-",region_name_list_for_struct{i}));xlabel(symptom_names{symp});ylabel("Functional Connectivity");legend off
+    %             drawnow, snapnow
+    %             filename = strcat(symptom_names{symp},"_Gain",constring,":",region_list{seed_region},"-",region_name_list_for_struct{i},'.jpg');
+    %             saveas(gcf,fullfile(savedir,filename))
+    %             % for loss
+    %             resid_mdl_R = [R_final_loss2(:,1),R_final_loss2(:,3:6)];
+    %             resid_mdl_loss = fitlm(resid_mdl_R,roi_avg_loss2.(region_list{seed_region}).(region_name_list_for_struct{i}).dat);
+    %             plot_mdl = fitlm(symptoms(:,symp),resid_mdl_loss.Residuals.Raw)
+    %             figure();scatter(symptoms(:,symp),resid_mdl_loss.Residuals.Raw)
+    %             h1 = lsline();
+    %             h1.LineWidth = 2;
+    %             h1.Color = 'r';
+    %             r1 = corrcoef(symptoms(:,symp),resid_mdl_loss.Residuals.Raw,'rows','complete');
+    %             disp(r1(1,2));
+    %             str = [' r = ',num2str(r1(1,2))];
+    %             T = text(min(get(gca, 'xlim')), max(get(gca, 'ylim')), str);
+    %             set(T, 'fontsize', 14, 'verticalalignment', 'top', 'horizontalalignment', 'left');
+    %             hold on; plot(plot_mdl); title(strcat("Loss ",condir,":",region_list{seed_region},"-",region_name_list_for_struct{i}));xlabel(symptom_names{symp});ylabel("Functional Connectivity");legend off
+    %             drawnow, snapnow
+    %             filename = strcat(symptom_names{symp},"_Loss",constring,":",region_list{seed_region},"-",region_name_list_for_struct{i},'.jpg');
+    %             saveas(gcf,fullfile(savedir,filename))
+    %        end
+            close all
+        end
+    end
+    
+    %% I guess I'm doing one more round for life stress
+    if life_stress == 1
         roidir = '/Users/zaz3744/Documents/current_projects/ACNlab/masks/ROI_BrainMAPD_functional';
 
         bilateral_roi_fnames = filenames(fullfile(roidir,condir,'*VS*Oldham*.nii'));

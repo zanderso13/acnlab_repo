@@ -8,7 +8,7 @@ function run_subject_firstlevel_MID_Mac(PID, ses, run, mask_string, overwrite)
 
 %% var set up
 if nargin==0 % defaults just for testing
-    PID = '21661';  
+    PID = '10081';  
     overwrite = 1;
     ses = 2;
     mask_string = 'HO_VMPFC';
@@ -16,11 +16,11 @@ if nargin==0 % defaults just for testing
 end
 
 % first is where your stats files will be output to
-directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/MID_all_trial_types/flout/anticipation';
+directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/first_level_output/consumption';
 % next is where the preprocessed data is
 directories{2} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/MID_data';
 % the timing files for modelling (onsets, durations, names)
-directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/anticipation/separate_trial_types/';
+directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/consumption/spm_all_vs_0_timing/';
 % where your extra covariates are including PPI regressors
 directories{4} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/first_levels/nuisance_regressors';
 

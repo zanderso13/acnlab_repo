@@ -1,5 +1,5 @@
 % group ica
-gica_cmd --data sub_list.txt --o '/Volumes/ADAPTlab/gica_output'
+gica_cmd --data sub_list.txt --n 20 --o '/Volumes/ADAPTlab/gica_output_20components'
 % gig-ica
 gica_cmd --data gica_sub_list.txt --templates '/Volumes/ADAPTlab/gica_output/gica_cmd_agg__component_ica_.nii' --a gig-ica --o '/Volumes/ADAPTlab/gigica_output'
 %load clinical data

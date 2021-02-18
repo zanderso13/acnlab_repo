@@ -8,7 +8,9 @@
 
 % So what are our tracks, this really will reference folder names. 
 
-track_list = {'L_Amyg_mOFC','L_NAcc_Amyg','L_NAcc_mOFC','R_Amyg_mOFC','R_NAcc_Amyg','R_NAcc_mOFC'};
+%track_list = {'L_Amyg_mOFC','L_NAcc_Amyg','L_NAcc_mOFC','R_Amyg_mOFC','R_NAcc_Amyg','R_NAcc_mOFC'};
+track_list = {'Uncinate'};
+
 suppress_figures = 1; % This is a little haphazard but this is easier than going back into the extraction script and removing the plots... so...
 % I should say the above will suppress graphs of the distributions of each
 % of the white matter outcomes we extract for these tracks.
@@ -16,7 +18,7 @@ suppress_figures = 1; % This is a little haphazard but this is easier than going
 % Get your toolbox first and set up some paths
 repodir = '~/Documents/repo';
 %addpath(genpath(repodir))
-basedir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/dti/'; % basedir, add from above track list to get datadir which is the var you want
+basedir = '/Volumes/ZachExternal/ACNlab/MWMH/dti/results'; % basedir, add from above track list to get datadir which is the var you want
 datamatdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/dti/mat_files';
 figdir = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/dti/figures';
 

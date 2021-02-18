@@ -1,7 +1,8 @@
 % specs for whole brain analysis
 
-primary_threshold = 0.001;
-cluster_size = 25;
+primary_threshold = 0.05;
+cluster_size = 1;
+threshold_type = 'fdr';
 analysis_string = ' consumption';
 do_all = 1; % Check out line 15 for this. I don't have sig results but I'd like to get all the plots that will at least tell a story into my presentation
 publish_region_name_list_for_struct = [region_name_list_for_struct, R_region_name_list_for_struct, L_region_name_list_for_struct];
@@ -324,8 +325,8 @@ clear r_gain r_loss
 disp('STARTING WHOLE BRAIN ANALYSIS AND VISUALIZATION')
 disp('_________________________________________________________________________')
 
-results_struct.gain = threshold(temp_results_gain.t, primary_threshold,'unc','k',cluster_size);
-results_struct.loss = threshold(temp_results_loss.t, primary_threshold,'unc','k',cluster_size);
+results_struct.gain = threshold(temp_results_gain.t, primary_threshold,threshold_type,'k',cluster_size);
+results_struct.loss = threshold(temp_results_loss.t, primary_threshold,threshold_type,'k',cluster_size);
 
 for s = 1:length(symptom_names)
 

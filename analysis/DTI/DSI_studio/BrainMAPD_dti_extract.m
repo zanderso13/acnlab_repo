@@ -33,7 +33,7 @@ end
 
 % FD(find(FD_sub_id==0),:)=[];
 %% Snag those files
-fnames = filenames(fullfile(datadir,'*.stat.txt'));
+fnames = filenames(fullfile(datadir,'*left*.stat.txt'));
 if pull_from_txt == 1
     % Load in stats txt files. Let's find out what we're looking at IF
     % NEEDED
