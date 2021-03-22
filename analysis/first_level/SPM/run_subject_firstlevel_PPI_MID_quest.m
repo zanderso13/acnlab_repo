@@ -3,7 +3,7 @@
 % (default) or 1. before running this file, must run
 % read_timings_make_onsets.m
 
-function run_subject_firstlevel_PPI_MID(PID, ses, run, directories, overwrite)
+function run_subject_firstlevel_PPI_MID(PID, ses, run, overwrite)
 
 
 %% var set up
@@ -26,10 +26,12 @@ end
 
 
 con_string = 'con'; %'ant' or 'con'
-fl_dir = directories{1};
-preproc_dir = directories{2};
-timing_dir = directories{3};
-nuisance_ppi_dir = directories{4};
+job = 'SPM_MID_anticipation_quest_template.m'; %'SPM_MID_anticipation_quest_template.m' or 'SPM_MID_consumption_quest_template'
+fl_dir = '/projects/b1108/projects/BrainMAPD_func_analysis/first_levels/first_level_output/run-2/anticipation';
+preproc_dir = '/projects/b1108/projects/BrainMAPD_func_analysis/fmriprep';
+raw_dir = '/projects/b1108/data/BrainMAPD';
+timing_dir = '/projects/b1108/projects/BrainMAPD_func_analysis/timing_files/final/';
+save_dir = '/projects/b1108/projects/BrainMAPD_func_analysis/first_levels/additional_files';
 
 if nargin==1
     overwrite = 1;
@@ -96,8 +98,7 @@ if ~skip
 
     % run spm FL estimation
     cwd = pwd;
-    job = 'MID_PPI_template.m';
-    % job = 'first_year_project_followup_SPM_template.m';
+    % job = 'MID_PPI_template.m';
     %%
     spm('defaults', 'FMRI')
     spm_jobman('serial',job,'',in{:});

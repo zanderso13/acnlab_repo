@@ -202,7 +202,7 @@ for seed_region = 1:length(region_list)
         if length(symptom_names) == 5
             R = [Anhedonia.*lsi_regressors,Anhedonia,lsi_regressors,GenDis,Fears,Narrow,med_regressors,site_regressors,demographic_regressors]; %demographic_regressors = sex
         elseif strcmp(symptom_names{1},'GenDis')
-            R = [GenDis,Anhedonia,Fears,med_regressors,site_regressors,demographic_regressors];
+            R = [GenDis,Anhedonia,Fears,med_regressors, site_regressors,demographic_regressors]; %Anhedonia,Fears,,med_regressors
         elseif strcmp(symptom_names{1},'Anhedonia')
             R = [Anhedonia,med_regressors,site_regressors,demographic_regressors];
         elseif strcmp(symptom_names{1},'StressxAnhedonia')
