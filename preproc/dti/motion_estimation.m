@@ -4,11 +4,12 @@
 % Finally, reslice actually generates the motion parameters: spm_reslice
 
 
-fnames = filenames('/Users/zaz3744/Documents/current_projects/ACNlab/dti_BrainMAPD/nii/data/*');
+fnames = filenames('/projects/b1108/data/MWMH/*/ses-1/dwi/*.nii.gz');
 
 for sub = 1:length(fnames)
-    sub_folder = fnames{sub}(77:81);
-    datadir = strcat('/Users/zaz3744/Documents/current_projects/ACNlab/dti_BrainMAPD/nii/home/zaz3744/ACNlab/data/BrainMAPD/',sub_folder,'ses-2/dwi');
+    
+    sub_folder = fnames{sub}(31:37);
+    datadir = strcat('',sub_folder,'ses-2/dwi');
     sub_num = strcat('sub-',num2str(fnames{sub}(77:81)));
     P = spm_select('FPList', pwd, strcat('^',sub_num,'.*\.nii$'));
     spm_realign(P)

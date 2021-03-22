@@ -3,34 +3,39 @@
 % (default) or 1. before running this file, must run
 % read_timings_make_onsets.m
 
-function run_subject_firstlevel_MID(PID, ses, run, directories, overwrite)
+function run_subject_firstlevel_MID_quest(PID, ses, run, overwrite)
 
 
 %% var set up
 if nargin==0 % defaults just for testing
-    PID = 10001;  
+    PID = 20520;  
     overwrite = 1;
     ses = 2;
-    run = 1;
+    run = 2;
+    contrast = 'ant'; %'ant' or 'con'
     % directories
     % first is where your stats files will be output to
     directories{1} = '/projects/b1108/projects/BrainMAPD_func_analysis/first_levels/first_level_output/anticipation';
     % next is where the preprocessed data is
-    directories{2} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/ICA/MID_data';
+    directories{2} = '/projects/b1108/projects/BrainMAPD_func_analysis/fmriprep';
     % where the raw data lives (raw meaning before preprocessing)
     directories{3} = '/projects/b1108/data/BrainMAPD';
     % the timing files for modelling (onsets, durations, names)
-    directories{4} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run-1/consumption/separate_trial_types';
+    directories{4} = '/projects/b1108/projects/BrainMAPD_func_analysis/timing_files/final/';
     % where framewise displacement files will be saved
-    directories{5} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/MID_all_trial_types/flout/FD';
+    directories{5} = '/projects/b1108/projects/BrainMAPD_func_analysis/first_levels/additional_files';
+else
+    % what contrast are you running?
+    contrast = 'ant'; %'ant' or 'con'
+    
 end
     
-    
-fl_dir = directories{1};
-preproc_dir = directories{2};
-raw_dir = directories{3};
-timing_dir = directories{4};
-save_dir = directories{5};
+job = 'SPM_MID_anticipation_quest_template.m'; %'SPM_MID_anticipation_quest_template.m' or 'SPM_MID_consumption_quest_template'   
+fl_dir = '/projects/b1108/projects/BrainMAPD_func_analysis/first_levels/first_level_output/run-2/anticipation';
+preproc_dir = '/projects/b1108/projects/BrainMAPD_func_analysis/fmriprep';
+raw_dir = '/projects/b1108/data/BrainMAPD';
+timing_dir = '/projects/b1108/projects/BrainMAPD_func_analysis/timing_files/final/';
+save_dir = '/projects/b1108/projects/BrainMAPD_func_analysis/first_levels/additional_files';
 
 if nargin==1
     overwrite = 1;
@@ -38,11 +43,11 @@ end
 
 PID = strcat('sub-',num2str(PID));
 
-fprintf(['Preparing 1st level model for MID task for ' PID ' / ' ses], ['Overwrite = ' num2str(overwrite)]);
+%fprintf(['Preparing 1st level model for MID task for ' PID ' / ' ses], ['Overwrite = ' num2str(overwrite)]);
 
 
-ndummies = 4;
-TR = 2;
+ndummies = 2;
+TR = 2.05;
 
 %% Model for MID task
 
@@ -60,7 +65,7 @@ end
 
 % onset files
 sub_str = PID(5:9);
-in{3} = filenames(fullfile(timing_dir, strcat('run-', num2str(run)), strcat(sub_str,'.mat')));
+in{3} = filenames(fullfile(timing_dir, strcat('run', num2str(run)), strcat(sub_str,'*',contrast,'*.mat')));
 
 if isempty(in{3})
     warning('No modeling found (behav data might be missing)')
@@ -76,7 +81,7 @@ confound_fname = filenames(fullfile(preproc_dir, PID, strcat('ses-',num2str(ses)
 rawrun = filenames(fullfile(raw_dir, PID, strcat('ses-',num2str(ses)), 'func', strcat('*task-MID_run-0',num2str(run),'_bold.nii*')));
 cd(fullfile(preproc_dir, PID));
 % get nuis covs
-[Rfull, Rselected, n_spike_regs, FD, gsr_final] = make_nuisance_from_fmriprep_output(confound_fname{run}, rawrun, TR);%, 4);
+[Rfull, Rselected, n_spike_regs, FD, gsr_final] = make_nuisance_from_fmriprep_output_MID(confound_fname{run}, rawrun, TR);%, 4);
 save(fullfile(save_dir, strcat('FD_',sub_str, '_ses', num2str(ses), '_run', num2str(run), '.mat')), 'FD')
 save(fullfile(save_dir, strcat('GSR_',sub_str, '_ses', num2str(ses), '_run', num2str(run), '.mat')), 'gsr_final')
 % choose which matrix to use
@@ -122,7 +127,7 @@ if ~skip
 
     % run spm FL estimation
     cwd = pwd;
-    job = 'MID_SPM_template.m';
+    %job = 'SPM_MID_anticipation_quest_template.m';
     %%
     spm('defaults', 'FMRI')
     spm_jobman('serial',job,'',in{:});

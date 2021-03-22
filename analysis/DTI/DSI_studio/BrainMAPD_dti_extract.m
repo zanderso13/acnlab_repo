@@ -17,16 +17,16 @@ for sub_motion = 1:length(fnames_motion)
     % need to convert radian units output from spm to mm. I'm making a
     % pretty big assumption here but I'm hoping our age group has an
     % average head radius ~ 50 mm as does Power et al (2012)
-    motion(:,4:6) = motion(:,4:6) * 50;
+    motion(:,4:6) = motion(:,4:6) * 25;
     for mot = 2:length(motion)
         diff_curr(1) = 0;
         diff_curr(mot) = abs(sum(motion(mot,:) - motion(mot-1,:))); 
     end    
-    if length(motion) == 129
-        FD(sub_motion,1) = str2num(fnames_motion{sub_motion}(80:84));
+    if length(motion) == 69
+        FD(sub_motion,1) = str2num(fnames_motion{sub_motion}(59:61));
         FD(sub_motion,2) = mean(diff_curr);
     else
-        FD(sub_motion,1) = str2num(fnames_motion{sub_motion}(80:84));
+        FD(sub_motion,1) = str2num(fnames_motion{sub_motion}(59:61));
         FD(sub_motion,2) = NaN;
     end  
 end
