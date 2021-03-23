@@ -19,7 +19,7 @@
 % Define some paths
 % This is going to generate a first level script to be submitted to the
 % cluster with each run. Where do you want all these .sh scripts saved?
-scriptdir = '/projects/b1108/projects/BrainMAPD_func_analysis/first_levels/quest_submission';
+scriptdir = '/projects/b1108/projects/BrainMAPD_func_analysis/PPI/quest_submission';
 
 % Where are all your scripts saved for first levels? i.e. where is the
 % acnlab_repo folder? Also where is spm12... you need spm
@@ -28,7 +28,7 @@ repodir = '~/repo';
 
 % directories
 % first is where your stats files will be output to
-fldir = '/projects/b1108/projects/BrainMAPD_func_analysis/first_levels/first_level_output/run-2/anticipation';
+fldir = '/projects/b1108/projects/BrainMAPD_func_analysis/PPI/ppi_fldir/anticipation/HOAmyg';
 % next is where the preprocessed data is
 datadir = '/projects/b1108/projects/BrainMAPD_func_analysis/fmriprep';
 % where the raw data lives (raw meaning before preprocessing)
@@ -39,7 +39,7 @@ datadir = '/projects/b1108/projects/BrainMAPD_func_analysis/fmriprep';
 %directories{5} = '/projects/b1108/projects/BrainMAPD_func_analysis/first_levels/additional_files';
 
 % What run of your task are you looking at?
-run = 2;
+run = 1;
 % What session appears in your raw filenames when in BIDS format?
 ses = 2;
 % Do you want to overwrite previously estimated first levels or just add to

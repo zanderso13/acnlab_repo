@@ -8,40 +8,30 @@ function run_subject_firstlevel_PPI_MID(PID, ses, run, overwrite)
 
 %% var set up
 if nargin==0 % defaults just for testing
-    % first is where your stats files will be output to
-    directories{1} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/ppi_fldir/anticipation/OldhamOFC';
-    % next is where the preprocessed data is
-    directories{2} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/MID_data';
-    % the timing files for modelling (onsets, durations, names)
-    directories{3} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/final_timing_files/run1';
-    % where your extra covariates are including PPI regressors
-    directories{4} = '/Users/zaz3744/Documents/current_projects/ACNlab/BrainMAPD/func_conn/PPI/mdl_dir/anticipation/OldhamOFC';
-
-    PID = '20520';  
+    PID = '10004';  
     overwrite = 1;
     ses = 2;
-    mask_string = 'OldhamOFC';
     run = 1;
 end
 
 
-con_string = 'con'; %'ant' or 'con'
-job = 'SPM_MID_anticipation_quest_template.m'; %'SPM_MID_anticipation_quest_template.m' or 'SPM_MID_consumption_quest_template'
-fl_dir = '/projects/b1108/projects/BrainMAPD_func_analysis/first_levels/first_level_output/run-2/anticipation';
+con_string = 'ant'; %'ant' or 'con'
+job = 'MID_PPI_template.m'; %
+fl_dir = '/projects/b1108/projects/BrainMAPD_func_analysis/PPI/ppi_fldir/anticipation/HOAmyg';
 preproc_dir = '/projects/b1108/projects/BrainMAPD_func_analysis/fmriprep';
-raw_dir = '/projects/b1108/data/BrainMAPD';
-timing_dir = '/projects/b1108/projects/BrainMAPD_func_analysis/timing_files/final/';
-save_dir = '/projects/b1108/projects/BrainMAPD_func_analysis/first_levels/additional_files';
-
+nuisance_ppi_dir = '/projects/b1108/projects/BrainMAPD_func_analysis/PPI/mdl_dir/anticipation/HOAmyg';
+timing_dir = '/projects/b1108/projects/BrainMAPD_func_analysis/timing_files/final/run1';
+save_dir = '/projects/b1108/projects/BrainMAPD_func_analysis/PPI/additional_files';
+PID = num2str(PID);
 if nargin==1
     overwrite = 1;
 end  
 
-fprintf(['Preparing 1st level model for MID task for ' PID ' / ' num2str(ses)], ['Overwrite = ' num2str(overwrite)]);
+%fprintf(['Preparing 1st level model for MID task for ' PID ' / ' num2str(ses)], ['Overwrite = ' num2str(overwrite)]);
 
 
 ndummies = 2;
-TR = 2;
+TR = 2.05;
 
 %% Model for MID task
 
@@ -49,7 +39,7 @@ TR = 2;
 in{1} = {fullfile(fl_dir, PID, strcat('ses-',num2str(ses)), strcat('run-', num2str(run)), 'MID')};
 
 % preproc images
-rundir = fullfile(preproc_dir);
+rundir = fullfile(preproc_dir, strcat('sub-',PID,'/ses-',num2str(ses),'/func'));
 in{2} = cellstr(spm_select('ExtFPList', rundir, strcat('ssub-',PID,'.*task-MID_run-0',num2str(run),'_space-MNI152NLin2009cAsym_desc-preproc_bold.nii'), ndummies+1:9999));
 
 if isempty(in{2}{1})

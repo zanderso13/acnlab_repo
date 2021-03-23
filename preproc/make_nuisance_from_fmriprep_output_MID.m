@@ -27,7 +27,7 @@
 
 function [Rfull, Rselected, n_spike_regs, framewise_displacement_final, gsr_final] = make_nuisance_covs_from_fmriprep_output_MID(fmriprep_confounds_fname, raw_img_fname, TR, spike_additional_vols)
 
-R = readtable(fmriprep_confounds_fname, 'TreatAsEmpty', 'n/a', 'filetype', 'text');
+R = readtable(fmriprep_confounds_fname, 'TreatAsEmpty', 'n/a', 'filetype', 'text', 'ReadVariableNames', true);
 
 % replace NaNs in first row with Os
 wh_replace = ismissing(R(1,:));
@@ -38,6 +38,7 @@ end
 
 % compute 24 motion regs
 mot_names = {'trans_x','trans_y','trans_z','rot_x','rot_y','rot_z'};
+
 motion = R{:,mot_names};
 diffs = [zeros(1,6); diff(motion)];
 mo_sq = motion .^ 2;

@@ -28,7 +28,7 @@ repodir = '~/repo';
 
 % directories
 % first is where your stats files will be output to
-fldir = '/projects/b1108/projects/BrainMAPD_func_analysis/first_levels/first_level_output/run-2/anticipation';
+fldir = '/projects/b1108/projects/BrainMAPD_func_analysis/first_levels/first_level_output/run-1/consumption';
 % next is where the preprocessed data is
 datadir = '/projects/b1108/projects/BrainMAPD_func_analysis/fmriprep';
 % where the raw data lives (raw meaning before preprocessing)
@@ -39,7 +39,7 @@ datadir = '/projects/b1108/projects/BrainMAPD_func_analysis/fmriprep';
 %directories{5} = '/projects/b1108/projects/BrainMAPD_func_analysis/first_levels/additional_files';
 
 % What run of your task are you looking at?
-run = 2;
+run = 1;
 % What session appears in your raw filenames when in BIDS format?
 ses = 2;
 % Do you want to overwrite previously estimated first levels or just add to
@@ -69,7 +69,7 @@ sublist = string(sublist);
 
 
 if overwrite == 0
-    fl_list = filenames(fullfile(fldir,strcat('*/ses-',num2str(ses)),strcat('run-',num2str(run)),'/MID/con_0001.nii'));
+    fl_list = filenames(fullfile(fldir,strcat('*/ses-',num2str(ses)),strcat('run-',num2str(run)),'/MID/SPM.mat'));
     counter = 1;
     for sub = 1:length(sublist)
         curr_sub = num2str(sublist(sub));
@@ -85,28 +85,24 @@ end
 % Run/submit first level script
 
 cd(scriptdir)
-keyboard
+
 for sub = 1:length(new_list)
     PID = new_list(sub);
-%     ses = 2;
-%     run = 2;
-%     overwrite = 0;
-%     run_subject_firstlevel_MID_quest(PID,ses,run,directories,overwrite)
-%    run_subject_firstlevel_MID_quest(PID, ses, run,overwrite)
-        s = ['#!/bin/bash\n\n'...
-     '#SBATCH -A p30954\n'...
-     '#SBATCH -p short\n'...
-     '#SBATCH -t 00:20:00\n'...  
-     '#SBATCH --mem=30G\n\n'...
-     'matlab -nodisplay -nosplash -nodesktop -r "addpath(genpath(''' repodir ''')); run_subject_firstlevel_MID_quest(' num2str(PID) ', ' num2str(ses) ',' num2str(run) ',' num2str(overwrite) '); quit"\n\n'];
-%   
-     scriptfile = fullfile(scriptdir, 'first_level_script.sh');
-     fout = fopen(scriptfile, 'w');
-     fprintf(fout, s);
-%     
-%     
-     !chmod 777 first_level_script.sh
-     !sbatch first_level_script.sh
+    run_subject_firstlevel_MID_quest(PID)
+%         s = ['#!/bin/bash\n\n'...
+%      '#SBATCH -A p30954\n'...
+%      '#SBATCH -p short\n'...
+%      '#SBATCH -t 00:15:00\n'...  
+%      '#SBATCH --mem=30G\n\n'...
+%      'matlab -nodisplay -nosplash -nodesktop -r "addpath(genpath(''' repodir ''')); run_subject_firstlevel_MID_quest(' num2str(PID) '); quit"\n\n'];
+% %   
+%      scriptfile = fullfile(scriptdir, 'first_level_script.sh');
+%      fout = fopen(scriptfile, 'w');
+%      fprintf(fout, s);
+% %     
+% %     
+%      !chmod 777 first_level_script.sh
+%      !sbatch first_level_script.sh
 %     
 end
 % I probably want to add flags or warnings that will be easy to reference
