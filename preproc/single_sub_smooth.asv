@@ -8,7 +8,9 @@ if nargin==0 % defaults just for testing
     run = 1;
 end
 
+
 preproc_dir = '/projects/b1108/projects/BrainMAPD_func_conn/fmriprep';
+
 
 if nargin==1
     overwrite = 1;
