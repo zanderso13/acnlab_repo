@@ -17,18 +17,17 @@ overwrite = 0;
 ID_length = 5;
 
 
-file_list = filenames(fullfile(directories{2},strcat('*/ses-',num2str(ses),'/func/sub*MID*run',num2str(run),'*preproc_bold.nii')));
+file_list = filenames(fullfile(directories{2},strcat('*/ses-',num2str(ses),'/func/sub*REST*run-',num2str(run),'*preproc_bold.nii')));
 for i = 1:length(file_list)
-    sublist{i} = file_list{i}(59:63);
+    sublist{i} = file_list{i}(76:80);
 end
-keyboard
-sublist = string(sublist);
+
 if overwrite == 0
-    smooth_list = filenames(fullfile(directories{2},strcat('*/ses-',num2str(ses),'/func/ssub*MID*run*',num2str(run),'*')));
+    smooth_list = filenames(fullfile(directories{2},strcat('*/ses-',num2str(ses),'/func/ssub*REST*run-*',num2str(run),'*')));
     counter = 1;
     for sub = 1:length(sublist)
-        curr_sub = num2str(sublist(sub));
-        if isempty(find(contains(smooth_list,curr_sub)))
+        curr_sub = sublist(sub);
+        if sum(contains(smooth_list,curr_sub)) == 0 
             new_list(counter) = sublist(sub);
             counter = counter + 1;
         else
@@ -38,10 +37,10 @@ if overwrite == 0
 end
 
 % Run/submit first level script
-
+keyboard
 cd(scriptdir)
 for sub = 1:length(new_list)
-    PID = sublist(sub);
+    PID = new_list{sub};
 %     ses = 2;
 %     run = 2;
 %    overwrite = 0;
@@ -52,7 +51,7 @@ for sub = 1:length(new_list)
      '#SBATCH -p short\n'...
      '#SBATCH -t 00:10:00\n'...  
      '#SBATCH --mem=30G\n\n'...
-     'matlab -nodisplay -nosplash -nodesktop -r "addpath(genpath(''' repodir ''')); single_sub_smooth(' num2str(PID) ', ' num2str(ses) ',' num2str(run) ',' num2str(overwrite) '); quit"\n\n'];
+     'matlab -nodisplay -nosplash -nodesktop -r "addpath(genpath(''' repodir ''')); single_sub_smooth(' PID ', ' num2str(ses) ',' num2str(run) ',' num2str(overwrite) '); quit"\n\n'];
    
      scriptfile = fullfile(scriptdir, 'smoothing_script.sh');
      fout = fopen(scriptfile, 'w');
